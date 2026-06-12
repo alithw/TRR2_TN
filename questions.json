@@ -2086,8 +2086,8 @@
       "E": "E = {3, 4, 1, 5, 2, 3, 5}."
     },
     "correctAnswer": "D",
-    "explanation": "<p>Cả hai phương án D và E đều biểu diễn các đường đi Euler hợp lệ. Tuy nhiên, nếu áp dụng thuật toán tìm đường đi Euler với quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất (quy tắc chuẩn được ngầm định và sử dụng nhất quán trong các câu hỏi khác), từ đỉnh 3 ta sẽ ưu tiên đi theo cạnh (3,2) đầu tiên thay vì (3,4). Quá trình duyệt này sinh ra chính xác dãy đỉnh ở phương án D: E = {3, 2, 5, 1, 4, 3, 5}. Việc đáp án chọn E là sai logic ưu tiên.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đường đi Euler phải bắt đầu tại đỉnh bậc lẻ nhỏ nhất (đỉnh 3) và kết thúc tại đỉnh bậc lẻ còn lại (đỉnh 5). Nhìn nhanh các phương án xem dãy nào bắt đầu bằng 3 và kết thúc bằng 5. Kiểm tra tính liên tục của các cạnh trong dãy đó để chọn đáp án E.</p>"
+    "explanation": "<p>Cả hai phương án D và E đều biểu diễn các đường đi Euler hợp lệ trên đồ thị. Tuy nhiên, khi áp dụng thuật toán tìm đường đi Euler với quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất (quy tắc nhất quán trong toàn bộ hệ thống):</p><ul><li>Xuất phát từ đỉnh bậc lẻ 3.</li><li>Đỉnh kề của 3 là 2, 4, 5. Chọn đỉnh nhỏ nhất là 2 $\\rightarrow$ đi theo cạnh $(3,2)$.</li><li>Từ 2 kề {1, 3, 4, 5}. Chọn đỉnh nhỏ nhất chưa đi là 5 (cạnh $(2,5)$).</li><li>Tiếp tục duyệt theo thứ tự kề nhỏ nhất sẽ sinh ra chính xác dãy đỉnh của phương án <strong>D</strong>: $E = \\{3, 2, 5, 1, 4, 3, 5\\}$.</li></ul><p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đường đi Euler phải bắt đầu tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại. Đồ thị có hai đỉnh bậc lẻ là 3 và 5. Dãy đỉnh phải bắt đầu bằng 3 và kết thúc bằng 5. Xét quy tắc ưu tiên đỉnh kề có chỉ số nhỏ nhất, từ 3 ta phải đi sang 2 trước. Do đó loại phương án E (đi sang 4 trước) và chọn phương án <strong>D</strong>.</p>"
   },
   {
     "id": 132,
@@ -2182,8 +2182,8 @@
       "E": "E = {3, 2, 4, 5, 3, 1, 2, 3}."
     },
     "correctAnswer": "B",
-    "explanation": "<p>Lời giải thích cho rằng do không chỉ rõ quy tắc ưu tiên nên chọn A (Các phương án khác đều sai). Tuy nhiên, điều này mâu thuẫn với toàn bộ các câu hỏi vết thuật toán khác trong hệ thống (luôn ngầm định quy tắc ưu tiên duyệt đỉnh có chỉ số nhỏ nhất). Nếu áp dụng thuật toán với quy tắc ưu tiên đỉnh nhỏ nhất xuất phát từ s=3, quá trình duyệt sẽ đi theo nhánh: (3,1) -> (1,2) -> (2,3) -> (3,2) -> (2,4) -> (4,5) -> (5,3). Dãy thu được hoàn toàn khớp với phương án B: E = {3, 1, 2, 3, 2, 4, 5, 3}. Do đó, đáp án đúng phải là B mới đảm bảo tính nhất quán.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nếu gặp câu hỏi về kết quả chu trình Euler mà đồ thị có quá nhiều chu trình Euler khả dĩ hợp lệ tùy thuộc cách cài đặt thuật toán, hãy ưu tiên chọn phương án 'Các phương án khác đều sai' (A) trừ khi có một phương án mô tả chính xác thuật toán duyệt ưu tiên số đỉnh nhỏ nhất.</p>"
+    "explanation": "<p>Áp dụng thuật toán tìm đường đi Euler xuất phát từ đỉnh $s = 3$ với quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất (nhất quán với các câu hỏi khác trong hệ thống):</p><ul><li>Từ đỉnh 3, các đỉnh kề chưa xét là 1, 2, 4, 5. Chọn đỉnh nhỏ nhất là 1 $\\rightarrow$ đi theo cạnh $(3, 1)$.</li><li>Từ đỉnh 1, đi sang 2 $\\rightarrow$ đi theo cạnh $(1, 2)$.</li><li>Từ đỉnh 2, đi sang 3 $\\rightarrow$ đi theo cạnh $(2, 3)$.</li><li>Từ đỉnh 3, đi sang 2 (qua cạnh song song thứ hai) $\\rightarrow$ đi theo cạnh $(3, 2)$.</li><li>Từ đỉnh 2, đi sang 4 $\\rightarrow$ đi theo cạnh $(2, 4)$.</li><li>Từ đỉnh 4, đi sang 5 $\\rightarrow$ đi theo cạnh $(4, 5)$.</li><li>Từ đỉnh 5, quay về 3 $\\rightarrow$ đi theo cạnh $(5, 3)$.</li></ul><p>Dãy đỉnh đi qua thu được là: $E = \\{3, 1, 2, 3, 2, 4, 5, 3\\}$, khớp hoàn toàn với phương án <strong>B</strong>. Do đó, chọn phương án <strong>B</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Khi có nhiều chu trình/đường đi Euler hợp lệ, thuật toán luôn tuân theo quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất. Xuất phát từ 3, đỉnh kề nhỏ nhất là 1. Đối chiếu các phương án bắt đầu bằng 3 -> 1, chỉ có phương án B thỏa mãn. Chọn phương án <strong>B</strong>.</p>"
   },
   {
     "id": 138,
@@ -2311,7 +2311,7 @@
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Phân tích các đồ thị trong hình:</strong></p><ul><li>Đồ thị thứ nhất là đồ thị đầy đủ $K_3$ (cũng là đồ thị vòng $C_3$).</li><li>Đồ thị thứ hai là đồ thị vòng $C_4$ (không phải $K_4$ vì không có đường chéo).</li><li>Đồ thị thứ ba là đồ thị đầy đủ $K_5$ (có đầy đủ tất cả các cạnh nối giữa mọi cặp đỉnh).</li></ul><p>Ba đồ thị này không cùng thuộc một loại (chúng không cùng là đồ thị hai phía, không cùng là đồ thị vòng, không cùng là đồ thị đầy đủ). Do đó, tất cả các phương án gọi tên một loại đồ thị chung đều sai.</p><p>Đáp án chính xác là <strong>B. Các phương án khác đều sai.</strong></p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đồ thị hai phía thường được vẽ dưới dạng các đỉnh chia thành 2 cột song song (hoặc 2 nhóm trên và dưới), các cạnh chỉ nối chéo qua lại giữa hai nhóm này mà không nối nội bộ trong nhóm. Đây là đặc điểm trực quan của đồ thị hai phía ở hình vẽ, chọn A.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Kiểm tra nhanh xem ba đồ thị có cùng thuộc một loại cơ bản nào không. Ví dụ, đồ thị thứ nhất ($K_3$) và thứ ba ($K_5$) có chứa chu trình lẻ nên không thể là đồ thị hai phía. Đồ thị thứ hai không phải là đồ thị đầy đủ. Do đó, các phương án A, C, D, E đều bị loại, chọn phương án <strong>B</strong>.</p>"
   },
   {
     "id": 146,
@@ -2567,7 +2567,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p>Thuật toán Fleury/DFS-stack ưu tiên đỉnh có chỉ số nhỏ hơn. Từ đỉnh 2 kề {1, 3, 4}, thuật toán sẽ ưu tiên đi tới đỉnh 1, tạo ra chu trình 5, 2, 1, 4, 2, 3, 5 (đáp án C), không phải đáp án A.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Chu trình Euler xuất phát từ 5 phải kết thúc tại 5. Kiểm tra các phương án bắt đầu và kết thúc bằng 5. Kiểm tra xem các cạnh liên tiếp có hợp lệ và đi qua đủ tất cả 6 cạnh không lặp cạnh nào không. Dãy E ở phương án A thỏa mãn hoàn toàn. Chọn A.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Áp dụng quy tắc ưu tiên đỉnh kề có chỉ số nhỏ nhất. Xuất phát từ 5, kề {2, 3} $\\rightarrow$ chọn 2. Từ 2 kề {1, 3, 4} $\\rightarrow$ chọn 1 (đỉnh nhỏ nhất). Đối chiếu các phương án bắt đầu bằng 5 -> 2 -> 1, chỉ có phương án C khớp. Chọn phương án <strong>C</strong>.</p>"
   },
   {
     "id": 162,
@@ -4627,7 +4627,7 @@
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Đồ thị vô hướng nền của đồ thị có hướng:</strong></p><ul><li>Đồ thị vô hướng nền (underlying undirected graph) của đồ thị có hướng G thu được bằng cách bỏ đi chiều của tất cả các cung.</li><li>Trên đồ thị G, có cung nối từ 4 đến 5 ($4 \\to 5$). Khi chuyển sang đồ thị vô hướng nền, cung này trở thành cạnh vô hướng $(4,5)$, và cạnh vô hướng $(4,5)$ cũng chính là cạnh $(5,4)$.</li><li>Không có cung nào nối giữa 3 và 4 hay 1 và 3, nên các phương án B, C sai.</li></ul><p>Do đó, khẳng định D (chứa cạnh 5,4) là đúng. Đáp án chính xác là <strong>D</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đồ thị nền vô hướng chỉ đơn giản là bỏ đi chiều mũi tên. Nếu giữa 3 và 4 có mũi tên nối với nhau thì đồ thị nền có cạnh (3,4). Chọn phương án B.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đồ thị vô hướng nền được tạo ra bằng cách loại bỏ chiều của mọi mũi tên. Trên đồ thị ban đầu có cung từ 4 đến 5 ($4 \\to 5$), nên đồ thị nền vô hướng phải chứa cạnh $\\{4,5\\}$, viết cách khác là cạnh $(5,4)$. Do đó, chọn phương án <strong>D</strong>.</p>"
   },
   {
     "id": 291,
@@ -4689,8 +4689,8 @@
       "D": "<p>T là cây khung của G vì T liên thông và có n đỉnh.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Một đồ thị con T là cây khung (spanning tree) của G khi và chỉ khi nó liên thông, có n đỉnh và n-1 cạnh. Nếu chỉ có \"liên thông và có n đỉnh\" (như phương án D) thì nó có thể chứa chu trình và không phải là cây. Do đó, phương án B (liên thông, n đỉnh, n-1 cạnh) mới là lý do chính xác về mặt toán học để T là một cây khung. Giải thích hiện tại chọn D là không chặt chẽ.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Cây khung (Spanning Tree) của đồ thị $G$ theo định nghĩa là đồ thị con của $G$ có dạng cây (liên thông, không chu trình) và phải đi qua tất cả các đỉnh của $G$ (chứa $n$ đỉnh). Chọn phương án D.</p>"
+    "explanation": "<p>Một đồ thị con $T$ là cây khung (spanning tree) của $G$ khi và chỉ khi nó đồng thời thỏa mãn các điều kiện: liên thông, chứa tất cả các đỉnh của $G$ ($n$ đỉnh) và không có chu trình (tương đương với việc có đúng $n-1$ cạnh).</p><ul><li>Phương án B phát biểu đầy đủ: $T$ liên thông, có $n$ đỉnh và $n-1$ cạnh. Điều này đảm bảo $T$ là một cây và đi qua mọi đỉnh của $G$, tức là một cây khung.</li><li>Phương án D chỉ ghi \"T liên thông và có n đỉnh\" là chưa đủ để khẳng định $T$ là cây (vì có thể có nhiều hơn $n-1$ cạnh và chứa chu trình).</li></ul><p>Do đó, phương án <strong>B</strong> là lý do chính xác nhất. Chọn đáp án <strong>B</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Theo định nghĩa, cây khung của đồ thị $G$ bắt buộc phải là một cây (liên thông, không có chu trình, tương đương với có đúng $n-1$ cạnh) và đi qua mọi đỉnh của $G$. Phương án B nêu đầy đủ các điều kiện này. Do đó, chọn phương án <strong>B</strong>.</p>"
   },
   {
     "id": 295,
