@@ -5,11 +5,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s = 4 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 2→4 với độ dài d[2] = 2.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→3 với độ dài d[3] = 5.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 1→4 với độ dài d[1] = 8.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 2→4 với độ dài d[2] = 2.",
+      "B": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→3 với độ dài d[3] = 5.",
+      "C": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 1→4 với độ dài d[1] = 8.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 2.</pre>"
+      "E": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 2."
     },
     "correctAnswer": "E",
     "explanation": "<p>Sử dụng thuật toán Dijkstra để tìm đường đi ngắn nhất từ đỉnh xuất phát s = 4:</p><ul><li>Khởi tạo: d[4] = 0, d[1] = 8, d[2] = 2, d[3] = 5. Tập đỉnh chưa duyệt Q = {1, 2, 3, 4}.</li><li>Bước 1: Chọn đỉnh u = 4 có d[4] = 0 nhỏ nhất. Loại 4 khỏi Q. Đỉnh kề của 4 chưa duyệt là 1, 2, 3. Cập nhật khoảng cách:<br>- d[1] = min(8, d[4] + w(4,1)) = min(8, 0 + 8) = 8. Trước[1] = 4.<br>- d[2] = min(∞, d[4] + w(4,2)) = min(∞, 0 + 2) = 2. Trước[2] = 4.<br>- d[3] = min(5, d[4] + w(4,3)) = min(5, 0 + 5) = 5. Trước[3] = 4.</li><li>Bước 2: Đỉnh có d nhỏ nhất trong Q là u = 2 (d[2] = 2). Loại 2 khỏi Q. Đỉnh kề của 2 chưa duyệt là 1, 3. Cập nhật:<br>- d[1] = min(8, d[2] + w(2,1)) = min(8, 2 + 4) = 6. Trước[1] = 2.<br>- d[3] = min(5, d[2] + w(2,3)) = min(5, 2 + 1) = 3. Trước[3] = 2.</li><li>Bước 3: Đỉnh có d nhỏ nhất trong Q là u = 3 (d[3] = 3). Loại 3 khỏi Q. Đỉnh kề của 3 chưa duyệt là 1. Cập nhật:<br>- d[1] = min(6, d[3] + w(3,1)) = min(6, 3 + 3) = 6 (không đổi).</li><li>Bước 4: Loại đỉnh 1 còn lại khỏi Q.</li></ul><p>Đường đi ngắn nhất từ 4 đến 2 là cạnh trực tiếp 4 &rarr; 2 (viết là 42) có độ dài d[2] = 2. Do đó, phương án đúng là E.</p>",
@@ -53,10 +53,10 @@
     "questionText": "<p>16 Cho đơn đồ thị vô hướng G gồm 4 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 1 1 1\n1 0 1 1\n1 1 0 1\n1 1 1 0</pre>\n<pre class=\"code-block\">Sử dụng thuật toán DFS tìm cây khung T của G bắt đầu tại đỉnh s = 1. Các cạnh của cây khung T theo thứ tự tìm kiếm của DFS là:</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,2), (1,4), (2,3)}.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,2), (2,3), (3,4)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,2), (2,3), (2,4)}.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,2), (1,3), (3,4)}.</pre>"
+      "A": "T = {(1,2), (1,4), (2,3)}.",
+      "B": "T = {(1,2), (2,3), (3,4)}.",
+      "C": "T = {(1,2), (2,3), (2,4)}.",
+      "D": "T = {(1,2), (1,3), (3,4)}."
     },
     "correctAnswer": "B",
     "explanation": "<p>Thuật toán DFS bắt đầu từ s = 1. Đồ thị là đồ thị đầy đủ K_4:</p><ul><li>Từ 1, đi đến đỉnh kề chưa duyệt nhỏ nhất là 2. Thêm cạnh (1, 2).</li><li>Từ 2, đi đến đỉnh kề chưa duyệt nhỏ nhất là 3. Thêm cạnh (2, 3).</li><li>Từ 3, đi đến đỉnh kề chưa duyệt nhỏ nhất là 4. Thêm cạnh (3, 4).</li><li>Từ 4, không còn đỉnh kề nào chưa duyệt, thuật toán quay lui.</li></ul><p>Tập cạnh cây khung DFS theo thứ tự tìm kiếm là T = {(1, 2), (2, 3), (3, 4)}. Chọn B.</p>",
@@ -116,11 +116,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 1 3 3\n1 0 2 2\n3 2 0 2\n3 2 2 0</pre>\n<p>Sử dụng thuật toán Kruskal với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,3), (1,4), (2,3)} với WT = 9.</pre>",
+      "A": "T = {(1,3), (1,4), (2,3)} với WT = 9.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">T = {(1,3), (1,4), (2,3)} với WT = 8.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,3), (1,4), (3,4)} với WT = 8.</pre>",
-      "E": "<pre class=\"code-block\">T = {(1,3), (1,4), (2,4)} với WT = 8.</pre>"
+      "C": "T = {(1,3), (1,4), (2,3)} với WT = 8.",
+      "D": "T = {(1,3), (1,4), (3,4)} với WT = 8.",
+      "E": "T = {(1,3), (1,4), (2,4)} với WT = 8."
     },
     "correctAnswer": "C",
     "explanation": "<p>Tìm cây khung lớn nhất bằng thuật toán Kruskal (sắp xếp cạnh giảm dần theo trọng số):</p><ul><li>Các cạnh giảm dần: (1,3) wt 3; (1,4) wt 3; (2,3) wt 2; (2,4) wt 2; (3,4) wt 2; (1,2) wt 1.</li><li>Chọn (1, 3) wt 3.</li><li>Chọn (1, 4) wt 3.</li><li>Xét (2, 3) wt 2: Đỉnh 2 chưa liên kết nên thêm cạnh (2, 3) mà không tạo chu trình.</li><li>Đồ thị lúc này đã liên thông và đủ n-1 = 3 cạnh. Tổng trọng số WT = 3 + 3 + 2 = 8.</li></ul><p>Tập cạnh cây khung lớn nhất là T = {(1,3), (1,4), (2,3)} với WT = 8. Chọn C.</p>",
@@ -212,11 +212,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 1 1 0 0\n1 0 1 1 1\n1 1 0 1 0\n0 1 1 0 1\n0 1 0 1 0</pre>\n<p>Nếu M là ma trận liên thuộc với các cạnh được xét theo thứ tự từ điển của G thì:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">M gồm 7 hàng và 5 cột với M[1][2] = M[2][2] = 1.</pre>",
-      "B": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột với M[3][7] = M[5][7] = 1.</pre>",
+      "A": "M gồm 7 hàng và 5 cột với M[1][2] = M[2][2] = 1.",
+      "B": "M gồm 5 hàng và 7 cột với M[3][7] = M[5][7] = 1.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột với M[1][2] = M[2][1] = 1.</pre>",
-      "E": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột với M[3][6] = M[4][6] = 1.</pre>"
+      "D": "M gồm 5 hàng và 7 cột với M[1][2] = M[2][1] = 1.",
+      "E": "M gồm 5 hàng và 7 cột với M[3][6] = M[4][6] = 1."
     },
     "correctAnswer": "E",
     "explanation": "<p>Đồ thị có 5 đỉnh và các cạnh được sắp xếp theo thứ tự từ điển: 1. (1,2), 2. (1,3), 3. (2,3), 4. (2,4), 5. (2,5), 6. (3,4), 7. (4,5). Trong ma trận liên thuộc M cỡ 5 &times; 7, cột 6 tương ứng với cạnh thứ 6 là (3, 4). Cạnh này nối đỉnh 3 và đỉnh 4, do đó M[3][6] = 1 và M[4][6] = 1. Tất cả các hàng khác ở cột 6 bằng 0. Điều này phù hợp với phương án E. Chọn E.</p>",
@@ -261,10 +261,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {4, 1, 5, 3, 2, 5, 4, 3}.</pre>",
-      "C": "<pre class=\"code-block\">E = {5, 3, 2, 5, 4, 1, 5, 3}.</pre>",
-      "D": "<pre class=\"code-block\">E = {3, 2, 5, 3, 4, 1, 5, 4}.</pre>",
-      "E": "<pre class=\"code-block\">E = {3, 4, 1, 5, 3, 2, 5, 4}.</pre>"
+      "B": "E = {4, 1, 5, 3, 2, 5, 4, 3}.",
+      "C": "E = {5, 3, 2, 5, 4, 1, 5, 3}.",
+      "D": "E = {3, 2, 5, 3, 4, 1, 5, 4}.",
+      "E": "E = {3, 4, 1, 5, 3, 2, 5, 4}."
     },
     "correctAnswer": "D",
     "explanation": "<p>Đồ thị có hướng G có 7 cạnh. Bậc các đỉnh: deg+(3) - deg-(3) = 2 - 1 = 1 (đỉnh xuất phát), deg-(4) - deg+(4) = 2 - 1 = 1 (đỉnh kết thúc). Các đỉnh khác có bán bậc vào bằng bán bậc ra. Nên tồn tại đường đi Euler từ 3 đến 4. Sử dụng thuật toán tìm đường đi Euler bắt đầu từ 3 (ưu tiên đỉnh kề có số hiệu nhỏ hơn):</p><ul><li>Từ 3 đi đến 2 (cạnh 3&rarr;2).</li><li>Từ 2 đi đến 5 (cạnh 2&rarr;5).</li><li>Từ 5 đi đến 3 (cạnh 5&rarr;3).</li><li>Từ 3 đi đến 4 (cạnh 3&rarr;4).</li><li>Từ 4 đi đến 1 (cạnh 4&rarr;1).</li><li>Từ 1 đi đến 5 (cạnh 1&rarr;5).</li><li>Từ 5 đi đến 4 (cạnh 5&rarr;4).</li></ul><p>Thứ tự các đỉnh của đường đi Euler thu được là E = {3, 2, 5, 3, 4, 1, 5, 4}. Chọn D.</p>",
@@ -324,11 +324,11 @@
     "questionText": "<p>Cho đơn đồ thị có trọng số G = (V,E) gồm n đỉnh. Cần tìm đường đi ngắn nhất giữa các cặp đỉnh của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Nên sử dụng thuật toán Floyd tìm đường đi ngắn nhất giữa tất cả các cặp đỉnh trên đồ thị trong trường hợp G do thuật toán này phù hợp nhất.</pre>",
-      "B": "<pre class=\"code-block\">Nên sử dụng n lần thuật toán Dijkstra tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này có tốc độ tính toán nhanh hơn.</pre>",
+      "A": "Nên sử dụng thuật toán Floyd tìm đường đi ngắn nhất giữa tất cả các cặp đỉnh trên đồ thị trong trường hợp G do thuật toán này phù hợp nhất.",
+      "B": "Nên sử dụng n lần thuật toán Dijkstra tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này có tốc độ tính toán nhanh hơn.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Nên sử dụng n lần thuật toán Bellman-Ford tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này có thể phát hiện G có chứa chu trình âm.</pre>",
-      "E": "<pre class=\"code-block\">Nên sử dụng n lần thuật toán Bellman-Ford tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này dễ cài đặt hơn.</pre>"
+      "D": "Nên sử dụng n lần thuật toán Bellman-Ford tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này có thể phát hiện G có chứa chu trình âm.",
+      "E": "Nên sử dụng n lần thuật toán Bellman-Ford tương ứng tìm đường đi ngắn nhất từ các đỉnh 1, …, n đến các đỉnh còn lại trên đồ thị do thuật toán này dễ cài đặt hơn."
     },
     "correctAnswer": "A",
     "explanation": "<p>Khi cần tìm đường đi ngắn nhất giữa mọi cặp đỉnh của đơn đồ thị có trọng số G:</p><ul><li>Thuật toán Floyd được thiết kế chuyên biệt để tìm đường đi ngắn nhất giữa tất cả các cặp đỉnh trong đồ thị có trọng số (có thể âm nhưng không có chu trình âm) với độ phức tạp O(n^3), rất dễ cài đặt và tối ưu nhất cho bài toán này.</li><li>Chạy Dijkstra n lần chỉ phù hợp khi đồ thị không có trọng số âm, chạy Bellman-Ford n lần có độ phức tạp rất cao O(n^2 &times; m).</li></ul><p>Do đó, phương án đúng là A.</p>",
@@ -421,10 +421,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {1, 4, 2, 1, 5, 3, 4, 5, 1}.</pre>",
-      "C": "<pre class=\"code-block\">E = {1, 5, 1, 4, 5, 3, 4. 2, 1}.</pre>",
-      "D": "<pre class=\"code-block\">E = {1, 4, 5, 3, 4, 2, 1, 5, 1}.</pre>",
-      "E": "<pre class=\"code-block\">E = {1, 5, 3, 4, 2, 1, 4, 5, 1}.</pre>"
+      "B": "E = {1, 4, 2, 1, 5, 3, 4, 5, 1}.",
+      "C": "E = {1, 5, 1, 4, 5, 3, 4. 2, 1}.",
+      "D": "E = {1, 4, 5, 3, 4, 2, 1, 5, 1}.",
+      "E": "E = {1, 5, 3, 4, 2, 1, 4, 5, 1}."
     },
     "correctAnswer": "B",
     "explanation": "<p>Đồ thị có hướng G có 8 cạnh và mọi đỉnh u đều có deg+(u) = deg-(u). G là đồ thị Euler. Sử dụng thuật toán Hierholzer tìm chu trình Euler xuất phát từ 1 (ưu tiên đỉnh có số hiệu nhỏ):</p><ul><li>Xuất phát từ 1: đi qua cạnh 1&rarr;4, 4&rarr;2, 2&rarr;1. Ta có chu trình con C1 = 1-4-2-1.</li><li>Từ đỉnh 1 trên C1, đi theo các cạnh chưa dùng: 1&rarr;5, 5&rarr;3, 3&rarr;4, 4&rarr;5, 5&rarr;1. Chu trình con C2 = 1-5-3-4-5-1.</li><li>Ghép C2 vào C1 tại đỉnh 1 ta được chu trình Euler hoàn chỉnh: E = {1, 4, 2, 1, 5, 3, 4, 5, 1}. Chọn B.</p>",
@@ -482,11 +482,11 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">0</th>\n<th style=\"text-align: center;\">5</th>\n<th style=\"text-align: center;\">∞</th>\n<th style=\"text-align: center;\">-4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">-6</td>\n<td style=\"text-align: center;\">∞</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">-2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[1][4] = -4.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[1][4] = -4.",
       "B": "<p>Các phương án khác đều sai.</p>",
       "C": "<p>G chứa chu trình âm.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[3][1] = 3.</pre>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[4][2] = 2.</pre>"
+      "D": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[3][1] = 3.",
+      "E": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[4][2] = 2."
     },
     "correctAnswer": "C",
     "explanation": "<p>Xét các chu trình trong đồ thị G:</p><ul><li>Chu trình 2 &rarr; 3 &rarr; 4 &rarr; 2 có tổng trọng số là w(2,3) + w(3,4) + w(4,2) = -6 + (-2) + 2 = -6 < 0.</li><li>Chu trình 1 &rarr; 4 &rarr; 1 có tổng trọng số là w(1,4) + w(4,1) = -4 + 1 = -3 < 0.</li></ul><p>Vì đồ thị có chứa chu trình âm, thuật toán Floyd sẽ phát hiện ra điều này (phần tử trên đường chéo chính d[i][i] < 0). Do đó phương án chính xác là C. Chọn C.</p>",
@@ -562,11 +562,11 @@
     "questionText": "<pre class=\"code-block\">Đồ thị vô hướng G = (V, E) gồm 5 đỉnh được biểu diễn dưới dạng ma trận kề như bên dưới. Đâu là thứ tự duyệt các đỉnh của thuật toán DFS?  </pre>\n<pre class=\"matrix\">0 1 1 1 1\n1 0 0 0 1\n1 0 0 1 0\n1 0 1 0 1\n1 1 0 1 0</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">{5, 4, 3, 2, 1}</pre>",
-      "B": "<pre class=\"code-block\">{1, 2, 5, 4, 3}</pre>",
+      "A": "{5, 4, 3, 2, 1}",
+      "B": "{1, 2, 5, 4, 3}",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">{2, 3, 4, 5, 1}</pre>",
-      "E": "<pre class=\"code-block\">{1, 5, 4, 3, 2}</pre>"
+      "D": "{2, 3, 4, 5, 1}",
+      "E": "{1, 5, 4, 3, 2}"
     },
     "correctAnswer": "B",
     "explanation": "<p>Duyệt đồ thị bằng thuật toán DFS bắt đầu từ 1 (ưu tiên đỉnh số hiệu nhỏ hơn):</p><ul><li>Thăm 1. Các đỉnh kề chưa duyệt của 1 là {2, 3, 4, 5}. Chọn 2.</li><li>Thăm 2. Đỉnh kề chưa duyệt của 2 là {5}. Chọn 5.</li><li>Thăm 5. Đỉnh kề chưa duyệt của 5 là {4}. Chọn 4.</li><li>Thăm 4. Đỉnh kề chưa duyệt của 4 là {3}. Chọn 3.</li><li>Thăm 3. Không còn đỉnh kề chưa duyệt. Kết thúc.</li></ul><p>Thứ tự duyệt các đỉnh là {1, 2, 5, 4, 3}. Chọn B.</p>",
@@ -610,10 +610,10 @@
     "questionText": "<p>Xét thuật toán tìm luồng cực đại trên mang G = (V, E) sau đây:</p>\n<pre class=\"code-block\">Thuật toán Max_Flow {\n    (1) for u ∈ V do\n            for v ∈ V do f(u, v) = 0;\n    (2) Stop = 0;\n    (3) while (Stop = 0) do {\n    (4)     &lt;Xác định đồ thị tăng luồng Gf &gt;;\n    (5)     if (Tìm được đường tăng luồng P bằng Bfs(s)) {\n    (6)         &lt;Tìm d là trọng số nhỏ nhất trên P&gt;;\n                &lt;Tăng luồng f theo P&gt;;\n    (7)     } else Stop = 1;\n        }\n    (8) Return (f, val(f));\n}</pre>\n<p>Các thao tác trong bước (6) là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">d là trọng số nhỏ nhất trên P>; ;</pre>",
-      "B": "<pre class=\"code-block\">d là trọng số nhỏ nhất trên P>; ;</pre>",
-      "C": "<pre class=\"code-block\">d là trọng số lớn nhất trên P>; ;</pre>",
-      "D": "<pre class=\"code-block\">d là trọng số nhỏ nhất trên G>; ;</pre>",
+      "A": "d là trọng số nhỏ nhất trên P>; ;",
+      "B": "d là trọng số nhỏ nhất trên P>; ;",
+      "C": "d là trọng số lớn nhất trên P>; ;",
+      "D": "d là trọng số nhỏ nhất trên G>; ;",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -626,10 +626,10 @@
     "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<pre class=\"code-block\">void ceu(int a[][], int n, int u) {\n    int top = 0, v; k = 0;\n    top++; s[top] = u;\n    while (top &gt; 0) {\n        int v = s[top];\n        int ok = 1;\n        for (int x = 1; x &lt;= n; x++) {\n            if (a[v][x] == 1) {\n                …\n                break;\n            }\n        }\n        if (ok == 1) {\n            k++;\n            ce[k] = v;\n            top--;\n        }\n    }\n    for (v = k; v &gt; 0; v--) {\n        cout &lt;&lt; ce[v] &lt;&lt; \" \";\n    }\n}</pre>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">s[top]= x; ok= 0;</pre>",
-      "B": "<pre class=\"code-block\">top++; s[top]= x;</pre>",
-      "C": "<pre class=\"code-block\">top++; s[top]= x; a[v][x]= 0;</pre>",
-      "D": "<pre class=\"code-block\">top++; s[top]= x; ok= 0; a[v][x]= 0;</pre>",
+      "A": "<pre class=\"choice-code\">s[top]= x; ok= 0;</pre>",
+      "B": "<pre class=\"choice-code\">top++; s[top]= x;</pre>",
+      "C": "<pre class=\"choice-code\">top++; s[top]= x; a[v][x]= 0;</pre>",
+      "D": "<pre class=\"choice-code\">top++; s[top]= x; ok= 0; a[v][x]= 0;</pre>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
@@ -658,11 +658,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s = 2 đến đỉnh t = 4 của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[4] = 4.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[4] = 4.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→1→4 với độ dài d[4] = 4.</pre>",
+      "C": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→1→4 với độ dài d[4] = 4.",
       "D": "<p>Không sử dụng được thuật toán Dijkstra cho đồ thị vô hướng.</p>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→1→3→4 với độ dài d[4] = 4.</pre>"
+      "E": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→1→3→4 với độ dài d[4] = 4."
     },
     "correctAnswer": "C",
     "explanation": "<p>Áp dụng thuật toán Dijkstra từ s = 2:</p><ul><li>Khởi tạo: d[2]=0, d[1]=1, d[3]=2, d[4]=5. Q = {1, 2, 3, 4}.</li><li>Bước 1: Chọn u = 2 (d[2]=0).</li><li>Bước 2: Chọn u = 1 (d[1]=1). Cập nhật:<br>- d[3] = min(2, d[1] + w(1,3)) = min(2, 1+1) = 2. Trước[3] = 2.<br>- d[4] = min(5, d[1] + w(1,4)) = min(5, 1+3) = 4. Trước[4] = 1.</li><li>Bước 3: Chọn u = 3 (d[3]=2). Cập nhật:<br>- d[4] = min(4, d[3] + w(3,4)) = min(4, 2+2) = 4.</li><li>Bước 4: Chọn u = 4 (d[4]=4).</li></ul><p>Đường đi ngắn nhất từ 2 đến 4 có độ dài d[4] = 4, và đi qua các đỉnh 2 &rarr; 1 &rarr; 4. Chọn C.</p>",
@@ -675,10 +675,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">Lát cắt (X, X*) với X = {1, 3} có khả năng thông qua là C(X, X*) = 12.</pre>",
-      "C": "<pre class=\"code-block\">Lát cắt (X, X*) với X = {3, 5} có khả năng thông qua là C(X, X*) = 6.</pre>",
-      "D": "<pre class=\"code-block\">Lát cắt (X, X*) với X = {3, 5} có khả năng thông qua là C(X, X*) = 12.</pre>",
-      "E": "<pre class=\"code-block\">Lát cắt (X, X*) với X = {1, 3} có khả năng thông qua là C(X, X*) = 14.</pre>"
+      "B": "Lát cắt (X, X*) với X = {1, 3} có khả năng thông qua là C(X, X*) = 12.",
+      "C": "Lát cắt (X, X*) với X = {3, 5} có khả năng thông qua là C(X, X*) = 6.",
+      "D": "Lát cắt (X, X*) với X = {3, 5} có khả năng thông qua là C(X, X*) = 12.",
+      "E": "Lát cắt (X, X*) với X = {1, 3} có khả năng thông qua là C(X, X*) = 14."
     },
     "correctAnswer": "B",
     "explanation": "<p>Khả năng thông qua của lát cắt (X, X*) ký hiệu là C(X, X*), được tính bằng tổng khả năng thông qua của các cạnh đi từ tập X sang tập X*:</p><ul><li>Với X = {1, 3}, tập X* = {2, 4, 5}.</li><li>Các cạnh đi từ X sang X* là: 1&rarr;4 (khả năng thông qua 6), 1&rarr;5 (khả năng thông qua 2), 3&rarr;2 (khả năng thông qua 4).</li><li>C(X, X*) = c(1,4) + c(1,5) + c(3,2) = 6 + 2 + 4 = 12.</li></ul><p>Vậy khả năng thông qua của lát cắt này là 12. Chọn B.</p>",
@@ -803,10 +803,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[1][1] = 1, M[3][1] = 1.</pre>",
-      "C": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[2][5] = 1, M[5][5] = 1.</pre>",
-      "D": "<pre class=\"code-block\">M gồm 7 hàng và 7 cột và có M[2][3] = 1, M[3][3] = -1.</pre>",
-      "E": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[4][7] = -1, M[5][7] = 1.</pre>"
+      "B": "M gồm 5 hàng và 7 cột và có M[1][1] = 1, M[3][1] = 1.",
+      "C": "M gồm 5 hàng và 7 cột và có M[2][5] = 1, M[5][5] = 1.",
+      "D": "M gồm 7 hàng và 7 cột và có M[2][3] = 1, M[3][3] = -1.",
+      "E": "M gồm 5 hàng và 7 cột và có M[4][7] = -1, M[5][7] = 1."
     },
     "correctAnswer": "C",
     "explanation": "<p>Sắp xếp danh sách cạnh của đồ thị theo thứ tự từ điển: 1. (1,2), 2. (1,3), 3. (2,3), 4. (2,4), 5. (2,5), 6. (3,4), 7. (4,5). Trong ma trận liên thuộc M vô hướng cỡ 5 &times; 7, cột 5 ứng với cạnh thứ 5 là (2, 5). Cạnh này nối đỉnh 2 và đỉnh 5, do đó M[2][5] = 1 và M[5][5] = 1. Chọn C.</p>",
@@ -836,9 +836,9 @@
     "options": {
       "A": "<p>G chứa chu trình âm.</p>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→2→4 với độ dài d[4] = -1.</pre>",
+      "C": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→2→4 với độ dài d[4] = -1.",
       "D": "<p>Không tìm được đường đi ngắn nhất từ đỉnh 1 dến đỉnh 4.</p>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = -1.</pre>"
+      "E": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = -1."
     },
     "correctAnswer": "A",
     "explanation": "<p>Xét các chu trình trong đồ thị G:</p><ul><li>Chu trình 2 &rarr; 4 &rarr; 3 &rarr; 2 có tổng trọng số là w(2,4) + w(4,3) + w(3,2) = 1 + 2 + (-4) = -1 < 0.</li><li>Chu trình âm này có thể đi tới được từ đỉnh xuất phát s = 1 (qua đường đi 1&rarr;2).</li></ul><p>Do đó, đồ thị chứa chu trình âm đi qua được từ nguồn, thuật toán Bellman-Ford sẽ phát hiện điều này và thông báo 'G chứa chu trình âm'. Chọn A.</p>",
@@ -850,10 +850,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">0</th>\n<th style=\"text-align: center;\">∞</th>\n<th style=\"text-align: center;\">4</th>\n<th style=\"text-align: center;\">1</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">-2</td>\n<td style=\"text-align: center;\">9</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s = 2 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→3→4→1 với độ dài d[1] = 1.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[3] = -2.</pre>",
-      "C": "<pre class=\"code-block\">Không sử dụng được thuật toán Dijkstra do G chứa trọng số âm.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[4] = -1.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→3→4→1 với độ dài d[1] = 1.",
+      "B": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[3] = -2.",
+      "C": "Không sử dụng được thuật toán Dijkstra do G chứa trọng số âm.",
+      "D": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[4] = -1.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "C",
@@ -899,9 +899,9 @@
     "image": "",
     "options": {
       "A": "<p>Không sử dụng được thuật toán Dijkstra cho đồ thị có hướng.</p>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→2→3 với độ dài d[3] = 4.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 1→2→4→3 với độ dài d[3] = 4.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3 với độ dài d[3] = 4.</pre>",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→2→3 với độ dài d[3] = 4.",
+      "C": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 1→2→4→3 với độ dài d[3] = 4.",
+      "D": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3 với độ dài d[3] = 4.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
@@ -931,10 +931,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = 4.</pre>",
+      "B": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = 4.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→2→3 với độ dài d[3] = 2.</pre>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 4.</pre>"
+      "D": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→2→3 với độ dài d[3] = 2.",
+      "E": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 4."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Giải thích chi tiết:</strong></p><p>Từ ma trận trọng số, ta liệt kê được các cung có hướng và trọng số tương ứng:</p><ul><li>1 &rarr; 4: trọng số -1</li><li>2 &rarr; 3: trọng số -2</li><li>3 &rarr; 1: trọng số 2</li><li>4 &rarr; 2: trọng số 4</li><li>4 &rarr; 3: trọng số 3</li></ul><p>Áp dụng thuật toán Bellman-Ford để tìm đường đi ngắn nhất từ đỉnh nguồn s = 4:</p><ul><li><strong>Khởi tạo:</strong> d[4] = 0, d[1] = d[2] = d[3] = &infin;.</li><li><strong>Bước lặp 1:</strong>  <ul>    <li>Cập nhật các cung đi ra từ 4: d[2] = d[4] + 4 = 4; d[3] = d[4] + 3 = 3.</li>    <li>Cập nhật cung 2 &rarr; 3: d[3] = min(3, d[2] - 2) = min(3, 4 - 2) = 2 (Đỉnh đi trước của 3 là 2).</li>    <li>Cập nhật cung 3 &rarr; 1: d[1] = min(&infin;, d[3] + 2) = min(&infin;, 2 + 2) = 4 (Đỉnh đi trước của 1 là 3).</li>  </ul></li><li><strong>Bước lặp 2 và 3:</strong> Không có khoảng cách nào được cập nhật thêm (đồ thị không chứa chu trình âm).</li></ul><p>Kết quả khoảng cách ngắn nhất từ đỉnh 4:</p><ul><li>Đến đỉnh 2: d[2] = 4, đường đi là 4 &rarr; 2 (khớp hoàn toàn với phương án E).</li><li>Đến đỉnh 3: d[3] = 2, đường đi là 4 &rarr; 2 &rarr; 3 (khớp hoàn toàn với phương án D).</li><li>Đến đỉnh 1: d[1] = 4, đường đi là 4 &rarr; 2 &rarr; 3 &rarr; 1 (khớp hoàn toàn với phương án B).</li></ul><p>Vì cả ba phương án B, D, E đều hoàn toàn chính xác, đáp án đúng nhất là <strong>A. Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</strong></p>",
@@ -1026,10 +1026,10 @@
     "image": "",
     "options": {
       "A": "<p>G chứa chu trình âm.</p>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→1 với độ dài d[4][1] = -6.</pre>",
+      "B": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→1 với độ dài d[4][1] = -6.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→3 với độ dài d[4][1] = 1.</pre>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[2][3] = -5.</pre>"
+      "D": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→3 với độ dài d[4][1] = 1.",
+      "E": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[2][3] = -5."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Giải thích chi tiết:</strong></p><p>Xét đồ thị có hướng có trọng số G. Ta hãy kiểm tra các chu trình trong đồ thị:</p><ul><li>Chu trình <strong>1 &rarr; 2 &rarr; 3 &rarr; 4 &rarr; 1</strong> có tổng trọng số là:<br/>w(1,2) + w(2,3) + w(3,4) + w(4,1) = 3 + (-5) + 1 + (-6) = -7 &lt; 0.</li></ul><p>Vì tồn tại một chu trình có tổng trọng số âm (chu trình âm), thuật toán Floyd-Warshall tìm đường đi ngắn nhất giữa mọi cặp đỉnh sẽ không thể hội tụ đối với các đỉnh thuộc hoặc đi qua chu trình này (khoảng cách sẽ giảm dần tới âm vô cùng khi ta đi vòng quanh chu trình âm vô số lần). Cụ thể, phần tử trên đường chéo chính của ma trận khoảng cách D[4][4] sẽ trở nên âm (bằng -7) sau bước lặp xét đỉnh trung gian 3.</p><p>Do đó, đồ thị G chứa chu trình âm và đáp án chính xác là <strong>A. G chứa chu trình âm.</strong></p>",
@@ -1075,9 +1075,9 @@
     "options": {
       "A": "<p>Cặp tập (X, X*), trong đó X là tập con của V và X* = V, với s ∈ X và  t ∈ X*.</p>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Cặp tập (X, X*), trong đó X = {s} và X* = V\\X.</pre>",
+      "C": "Cặp tập (X, X*), trong đó X = {s} và X* = V\\X.",
       "D": "<p>Cặp tập (X, X*), trong đó X là tập các đỉnh, X* = V\\X với s ∈ X và  t ∈ X*.</p>",
-      "E": "<pre class=\"code-block\">Cặp tập (X, X*), trong đó X = {s, t} và X* = V\\X.</pre>"
+      "E": "Cặp tập (X, X*), trong đó X = {s, t} và X* = V\\X."
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Định nghĩa lát cắt trong mạng luồng:</strong></p><p>Trong mạng G = (V, E) có đỉnh phát s và đỉnh thu t:</p><ul><li>Một <strong>lát cắt (Cut)</strong> phân tách s và t là một cách phân hoạch tập đỉnh V thành hai tập con không giao nhau X và X* sao cho X ∪ X* = V (tức là X* = V \\ X).</li><li>Đồng thời, tập X phải chứa đỉnh phát s (s ∈ X) và tập X* phải chứa đỉnh thu t (t ∈ X*).</li></ul><p>Đối chiếu với các phương án:</p><ul><li>Đáp án D phát biểu chính xác: \"Cặp tập (X, X*), trong đó X là tập các đỉnh, X* = V\\X với s ∈ X và t ∈ X*\".</li></ul>",
@@ -1153,11 +1153,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">7</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n</tbody>\n</table>\n<pre class=\"matrix\">1 4 8 3 4 6</pre>\n<p>Sử dụng thuật toán Prim với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất bắt đầu tại đỉnh s = 1. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,4), (4,2), (4,3)} với WT = 20.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,4), (4,2), (2,3)} với WT = 20.</pre>",
+      "A": "T = {(1,4), (4,2), (4,3)} với WT = 20.",
+      "B": "T = {(1,4), (4,2), (2,3)} với WT = 20.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">T = {(1,4), (4,2), (1,3)} với WT = 20.</pre>",
-      "E": "<pre class=\"code-block\">T = {(1,4), (4,2), (1,3)} với WT = 21.</pre>"
+      "D": "T = {(1,4), (4,2), (1,3)} với WT = 20.",
+      "E": "T = {(1,4), (4,2), (1,3)} với WT = 21."
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Tìm cây khung lớn nhất bằng thuật toán Prim sửa đổi:</strong></p><p>Để tìm cây khung có tổng trọng số <strong>lớn nhất</strong>, tại mỗi bước của thuật toán Prim, ta chọn cạnh có trọng số <strong>lớn nhất</strong> nối từ một đỉnh đã có trong cây đến một đỉnh chưa có trong cây.</p><ul><li>Bắt đầu với V_T = {1}, T = {}</li><li>Bước 1: Các cạnh nối từ đỉnh 1 là (1,2) w=6, (1,3) w=6, (1,4) w=8. Trọng số lớn nhất là 8 (cạnh (1,4)). Thêm đỉnh 4 và cạnh (1,4). V_T = {1, 4}, T = {(1,4)}.</li><li>Bước 2: Các cạnh nối từ {1, 4} đến các đỉnh ngoài {2, 3} là: (1,2) w=6, (1,3) w=6, (4,2) w=7, (4,3) w=6. Trọng số lớn nhất là 7 (cạnh (4,2)). Thêm đỉnh 2 và cạnh (4,2). V_T = {1, 4, 2}, T = {(1,4), (4,2)}.</li><li>Bước 3: Các cạnh nối từ {1, 4, 2} đến đỉnh ngoài {3} là: (1,3) w=6, (2,3) w=6, (4,3) w=6. Vì tất cả đều có trọng số là 6, ta có thể chọn bất kỳ cạnh nào, ở đây chọn cạnh (1,3). Thêm đỉnh 3 và cạnh (1,3). V_T = {1, 4, 2, 3}, T = {(1,4), (4,2), (1,3)}.</li></ul><p>Tổng trọng số cây khung lớn nhất WT = 8 + 7 + 6 = 21. Kết quả này khớp với phương án <strong>E</strong>.</p>",
@@ -1170,10 +1170,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">T = {(2,1), (2,4), (3,4)} với WT = 5.</pre>",
-      "C": "<pre class=\"code-block\">T = {(2,1), (1,4), (4,3)} với WT = 5.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,2), (2,4), (4,3)} với WT = 4.</pre>",
-      "E": "<pre class=\"code-block\">T = {(2,1), (1,4), (4,3)} với WT = 4.</pre>"
+      "B": "T = {(2,1), (2,4), (3,4)} với WT = 5.",
+      "C": "T = {(2,1), (1,4), (4,3)} với WT = 5.",
+      "D": "T = {(1,2), (2,4), (4,3)} với WT = 4.",
+      "E": "T = {(2,1), (1,4), (4,3)} với WT = 4."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tìm cây khung nhỏ nhất bắt đầu từ s = 2:</strong></p><ul><li>Khởi tạo V_T = {2}, T = {}</li><li>Bước 1: Các cạnh từ 2 là (2,1) w=1, (2,3) w=3, (2,4) w=2. Cạnh nhỏ nhất là (2,1) w=1. Thêm đỉnh 1 và cạnh (2,1). V_T = {2, 1}, T = {(2,1)}.</li><li>Bước 2: Các cạnh nối {2, 1} đến đỉnh ngoài {3, 4} là: (1,3) w=3, (1,4) w=2, (2,3) w=3, (2,4) w=2. Nhỏ nhất là w=2 (cạnh (2,4) hoặc (1,4)). Chọn cạnh (2,4) nối đỉnh 4. V_T = {2, 1, 4}, T = {(2,1), (2,4)}.</li><li>Bước 3: Các cạnh nối {2, 1, 4} đến đỉnh ngoài {3} là: (1,3) w=3, (2,3) w=3, (4,3) w=2. Nhỏ nhất là w=2 (cạnh (4,3) hay (3,4)). Thêm đỉnh 3 và cạnh (3,4). V_T = {2, 1, 4, 3}, T = {(2,1), (2,4), (3,4)}.</li></ul><p>Tổng trọng số cây khung WT = 1 + 2 + 2 = 5. Khớp với phương án <strong>B</strong>.</p>",
@@ -1202,10 +1202,10 @@
     "image": "images/image1.jpg",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">Đồ thị H với tập đỉnh {3,4,5} và tập cạnh {(3,4), (4,5)}.</pre>",
-      "C": "<pre class=\"code-block\">Đồ thị H với tập đỉnh {1,2,4} và tập cạnh {(1,2), (2,4)}.</pre>",
-      "D": "<pre class=\"code-block\">Đồ thị H với tập đỉnh {3,5,6} và tập cạnh {(1,4), (4,5)}.</pre>",
-      "E": "<pre class=\"code-block\">Đồ thị H với tập đỉnh {1,2,6} và tập cạnh {(1,2), (1,5)}.</pre>"
+      "B": "Đồ thị H với tập đỉnh {3,4,5} và tập cạnh {(3,4), (4,5)}.",
+      "C": "Đồ thị H với tập đỉnh {1,2,4} và tập cạnh {(1,2), (2,4)}.",
+      "D": "Đồ thị H với tập đỉnh {3,5,6} và tập cạnh {(1,4), (4,5)}.",
+      "E": "Đồ thị H với tập đỉnh {1,2,6} và tập cạnh {(1,2), (1,5)}."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Xác định đồ thị con (Subgraph):</strong></p><p>Đồ thị H = (V_H, E_H) là đồ thị con của G = (V, E) nếu V_H ⊆ V và E_H ⊆ E, đồng thời mọi cạnh trong E_H chỉ nối các đỉnh thuộc V_H.</p><p>Từ hình vẽ của đồ thị G:</p><ul><li>Tập đỉnh V = {1, 2, 3, 4, 5, 6}</li><li>Tập cạnh E gồm các cạnh: (6,4), (4,5), (4,3), (3,2), (5,2), (5,1), (2,1).</li></ul><p>Xét các phương án:</p><ul><li>Phương án B: Đồ thị H có V_H = {3,4,5} ⊆ V và E_H = {(3,4), (4,5)} ⊆ E. Các cạnh (3,4) và (4,5) đều có các đầu mút nằm trong V_H. Vậy H là đồ thị con của G.</li><li>Phương án C: Chứa cạnh (2,4), nhưng trong đồ thị G không có cạnh nào nối 2 và 4. Loại.</li><li>Phương án D: E_H có cạnh (1,4) nhưng V_H = {3,5,6} không chứa đỉnh 1, 4. Loại.</li><li>Phương án E: E_H có cạnh (1,5) nhưng V_H = {1,2,6} không chứa đỉnh 5. Loại.</li></ul><p>Do đó, phương án đúng là <strong>B</strong>.</p>",
@@ -1329,10 +1329,10 @@
     "questionText": "<p>17 Cho đơn đồ thị vô hướng G gồm 4 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 1 1 1\n1 0 1 1\n1 1 0 1\n1 1 1 0</pre>\n<pre class=\"code-block\">Sử dụng thuật toán BFS tìm cây khung T của G bắt đầu tại đỉnh s = 2. Các cạnh của cây khung T theo thứ tự tìm kiếm của BFS là:</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(2, 1), (1, 3), (1, 4)}.</pre>",
-      "B": "<pre class=\"code-block\">T = {(2, 1), (1, 3), (2, 4)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(2, 1), (2,3), (2,4)}.</pre>",
-      "D": "<pre class=\"code-block\">T = {(2, 1), (2, 3), (3, 4)}.</pre>"
+      "A": "T = {(2, 1), (1, 3), (1, 4)}.",
+      "B": "T = {(2, 1), (1, 3), (2, 4)}.",
+      "C": "T = {(2, 1), (2,3), (2,4)}.",
+      "D": "T = {(2, 1), (2, 3), (3, 4)}."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Duyệt BFS tìm cây khung xuất phát từ s = 2:</strong></p><p>Đồ thị kề là đồ thị đầy đủ K₄. Đỉnh 2 kề trực tiếp với tất cả các đỉnh còn lại: 1, 3, 4.</p><ul><li>Bắt đầu tại s = 2. Queue = [2], chuaxet[2] = False.</li><li>Lấy 2 ra khỏi hàng đợi. Các đỉnh kề chưa xét của 2 là 1, 3, 4 (ưu tiên đỉnh nhỏ hơn).</li><li>Thêm các đỉnh 1, 3, 4 vào hàng đợi, đánh dấu đã xét. Thêm các cạnh tương ứng vào cây khung: <strong>(2, 1)</strong>, <strong>(2, 3)</strong>, <strong>(2, 4)</strong>.</li><li>Queue = [1, 3, 4]. Lần lượt lấy 1, 3, 4 ra khỏi Queue nhưng không có đỉnh kề nào chưa xét. Thuật toán kết thúc.</li></ul><p>Tập cạnh cây khung T = {(2, 1), (2, 3), (2, 4)}. Khớp với phương án <strong>C</strong>.</p>",
@@ -1392,10 +1392,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">-7</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 1 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→2 với độ dài d[1] = 1.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→2→3→4 với độ dài d[4] = 11.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→2 với độ dài d[1] = 1.",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→2→3→4 với độ dài d[4] = 11.",
       "C": "<p>G không thỏa mãn điều kiện để sử dụng thuật toán Bellman-Ford.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→2→3 với độ dài d[3] = 5.</pre>",
+      "D": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→2→3 với độ dài d[3] = 5.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "C",
@@ -1505,10 +1505,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">{1, 2, 4, 3, 5}</pre>",
-      "C": "<pre class=\"code-block\">{1, 2, 4, 5, 3}</pre>",
-      "D": "<pre class=\"code-block\">{1, 2, 3, 4, 5}</pre>",
-      "E": "<pre class=\"code-block\">{1, 2, 5, 4, 3}</pre>"
+      "B": "{1, 2, 4, 3, 5}",
+      "C": "{1, 2, 4, 5, 3}",
+      "D": "{1, 2, 3, 4, 5}",
+      "E": "{1, 2, 5, 4, 3}"
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Duyệt BFS đồ thị bắt đầu tại đỉnh 1:</strong></p><ul><li>Khởi tạo: Hàng đợi Queue = [1], chuaxet[1] = False. Thứ tự duyệt bắt đầu: 1.</li><li>Lấy 1 ra khỏi Queue. Các đỉnh kề chưa xét của 1 là: 2, 4. Đưa 2, 4 vào Queue. Queue = [2, 4], đánh dấu đã xét 2, 4. Thứ tự duyệt lúc này: 1, 2, 4.</li><li>Lấy 2 ra khỏi Queue. Các đỉnh kề chưa xét của 2 là: 3, 5. Đưa 3, 5 vào Queue. Queue = [4, 3, 5], đánh dấu đã xét 3, 5. Thứ tự duyệt lúc này: 1, 2, 4, 3, 5.</li><li>Lấy 4 ra khỏi Queue. Đỉnh kề của 4 là 1, 3 đều đã xét.</li><li>Lấy 3 ra khỏi Queue. Đỉnh kề của 3 là 2, 4 đều đã xét.</li><li>Lấy 5 ra khỏi Queue. Đỉnh kề của 5 là 2 đã xét.</li><li>Queue rỗng, thuật toán dừng lại.</li></ul><p>Thứ tự duyệt các đỉnh là: <strong>{1, 2, 4, 3, 5}</strong>. Khớp chính xác với phương án <strong>B</strong>.</p>",
@@ -1520,11 +1520,11 @@
     "questionText": "<p>Cho đơn đồ thị có hướng G gồm 4 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 1 1 0\n0 0 0 1\n0 0 0 1\n1 0 0 0</pre>\n<p>Nếu M là ma trận liên thuộc của G với các cạnh theo thứ tự từ điển thì:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">M gồm 5 hàng và 4 cột với M[3][4] = 1 và M[4][4] = -1.</pre>",
+      "A": "M gồm 5 hàng và 4 cột với M[3][4] = 1 và M[4][4] = -1.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">M gồm 4 hàng và 5 cột với M[1][5] = -1 và M[4][5] = 1.</pre>",
-      "D": "<pre class=\"code-block\">M gồm 5 hàng và 4 cột với M[1][1] = 1 và M[2][1] = -1.</pre>",
-      "E": "<pre class=\"code-block\">M gồm 4 hàng và 5 cột với M[2][2] = 1 và M[2][4] = -1.</pre>"
+      "C": "M gồm 4 hàng và 5 cột với M[1][5] = -1 và M[4][5] = 1.",
+      "D": "M gồm 5 hàng và 4 cột với M[1][1] = 1 và M[2][1] = -1.",
+      "E": "M gồm 4 hàng và 5 cột với M[2][2] = 1 và M[2][4] = -1."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Xác định ma trận liên thuộc của đồ thị có hướng G:</strong></p><p>Đồ thị có hướng G có n = 4 đỉnh. Từ ma trận kề, ta tìm các cung của đồ thị theo thứ tự từ điển:</p><ol><li>Cung 1: 1 → 2</li><li>Cung 2: 1 → 3</li><li>Cung 3: 2 → 4</li><li>Cung 4: 3 → 4</li><li>Cung 5: 4 → 1</li></ol><p>Tổng cộng đồ thị có m = 5 cung. Ma trận liên thuộc M có cỡ n &times; m = 4 hàng (đỉnh) &times; 5 cột (cung).</p><p>Trong cột tương ứng với cung u → v, ta có: M[u][cung] = 1 (đi ra), M[v][cung] = -1 (đi vào). Các phần tử khác bằng 0.</p><p>Xét cung thứ 5 (4 → 1):</p><ul><li>Đỉnh đầu u = 4 → M[4][5] = 1.</li><li>Đỉnh cuối v = 1 → M[1][5] = -1.</li></ul><p>Điều này khớp chính xác với khẳng định của phương án <strong>C</strong>: \"M gồm 4 hàng và 5 cột với M[1][5] = -1 và M[4][5] = 1\".</p>",
@@ -1616,11 +1616,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 4 4 -5\n4 0 4 3\n4 4 0 3\n-5 3 3 0</pre>\n<p>Sử dụng thuật toán Kruskal với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,2), (2,3), (3,4)} với WT = 11.</pre>",
-      "B": "<pre class=\"code-block\">Không sử dụng được thuật toán Kruskal do G chứa trọng số âm.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,2), (1,3), (2,4)} với WT = 11.</pre>",
+      "A": "T = {(1,2), (2,3), (3,4)} với WT = 11.",
+      "B": "Không sử dụng được thuật toán Kruskal do G chứa trọng số âm.",
+      "C": "T = {(1,2), (1,3), (2,4)} với WT = 11.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">T = {(1,2), (1,3), (3,4)} với WT = 12.</pre>"
+      "E": "T = {(1,2), (1,3), (3,4)} với WT = 12."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Tìm cây khung lớn nhất bằng thuật toán Kruskal:</strong></p><p>Để tìm cây khung lớn nhất, ta sắp xếp các cạnh của đồ thị theo thứ tự trọng số giảm dần:</p><ol><li>Các cạnh có trọng số lớn nhất là 4: (1,2), (1,3), (2,3).</li><li>Các cạnh có trọng số 3: (2,4), (3,4).</li><li>Cạnh có trọng số -5: (1,4).</li></ol><p>Áp dụng thuật toán Kruskal để chọn cạnh:</p><ul><li>Bước 1: Chọn cạnh (1,2) w = 4. T = {(1,2)}.</li><li>Bước 2: Chọn cạnh (1,3) w = 4. T = {(1,2), (1,3)}.</li><li>Bước 3: Xét cạnh (2,3) w = 4. Cạnh này tạo chu trình 1-2-3-1 với T → Bỏ qua.</li><li>Bước 4: Xét cạnh (2,4) w = 3. Cạnh này không tạo chu trình → Chọn. T = {(1,2), (1,3), (2,4)}.</li></ul><p>Cây khung đã đủ n-1 = 3 cạnh, thuật toán dừng. Tổng trọng số WT = 4 + 4 + 3 = 11. Thứ tự chọn cạnh khớp chính xác với đáp án <strong>C</strong>.</p>",
@@ -1648,10 +1648,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng G gồm 5 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 0 0 0 1\n0 0 1 1 0\n0 0 0 0 1\n1 0 0 0 0\n0 1 0 0 0</pre>\n<p>Sử dụng thuật toán tìm đường đi Euler E của G. Các đỉnh xuất hiện trong E theo thứ tự khi thực hiện thuật toán là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">E = {2, 3, 5, 2, 4, 1, 5}</pre>",
-      "B": "<pre class=\"code-block\">E = {5, 2, 4, 1, 5, 2, 3}.</pre>",
-      "C": "<pre class=\"code-block\">E = {2, 4, 1, 5, 2, 3, 5}.</pre>",
-      "D": "<pre class=\"code-block\">E = {1, 5, 2, 3, 5, 4, 2}.</pre>",
+      "A": "E = {2, 3, 5, 2, 4, 1, 5}",
+      "B": "E = {5, 2, 4, 1, 5, 2, 3}.",
+      "C": "E = {2, 4, 1, 5, 2, 3, 5}.",
+      "D": "E = {1, 5, 2, 3, 5, 4, 2}.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -1696,11 +1696,11 @@
     "questionText": "<p>Đồ thị vô hướng G = (V, E) biểu diễn dưới dạng ma trận kề dưới đây.  </p>\n<pre class=\"matrix\">0 1 1 0 0 1\n1 0 0 1 1 1\n1 0 0 1 1 0\n0 1 1 0 1 1\n0 1 1 1 0 0\n1 1 0 1 0 0</pre>\n<p>Mô tả nào dưới đây là đúng?</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">deg(3) < deg(2); deg(4) = deg(5)</pre>",
+      "A": "deg(3) < deg(2); deg(4) = deg(5)",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">deg(1) = deg(3); deg(4) < deg(6)</pre>",
-      "D": "<pre class=\"code-block\">deg(1) < deg(2); deg(4) = deg(5)</pre>",
-      "E": "<pre class=\"code-block\">deg(1) > deg (2); deg(5) = deg(6)</pre>"
+      "C": "deg(1) = deg(3); deg(4) < deg(6)",
+      "D": "deg(1) < deg(2); deg(4) = deg(5)",
+      "E": "deg(1) > deg (2); deg(5) = deg(6)"
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tính bậc của các đỉnh từ ma trận kề và kiểm tra các phát biểu so sánh:</strong></p><p>Đếm số lượng số 1 trên mỗi hàng để xác định bậc của các đỉnh:</p><ul><li>deg(1) = 3 (hàng 1 có 3 số 1)</li><li>deg(2) = 4 (hàng 2 có 4 số 1)</li><li>deg(3) = 3 (hàng 3 có 3 số 1)</li><li>deg(4) = 4 (hàng 4 có 4 số 1)</li><li>deg(5) = 3 (hàng 5 có 3 số 1)</li><li>deg(6) = 3 (hàng 6 có 3 số 1)</li></ul><p>Kiểm tra các phát biểu so sánh:</p><ul><li>Phương án A: deg(3) &lt; deg(2) (3 &lt; 4 là Đúng) và deg(4) = deg(5) (4 = 3 là Sai).</li><li>Phương án C: deg(1) = deg(3) (3 = 3 là Đúng) và deg(4) &lt; deg(6) (4 &lt; 3 là Sai).</li><li>Phương án D: deg(1) &lt; deg(2) (3 &lt; 4 là Đúng) và deg(4) = deg(5) (4 = 3 là Sai).</li><li>Phương án E: deg(1) &gt; deg(2) (3 &gt; 4 là Sai) và deg(5) = deg(6) (3 = 3 là Đúng).</li></ul><p>Tất cả các so sánh ghép trong A, C, D, E đều chứa ít nhất một mệnh đề sai. Vì vậy, phương án chính xác là <strong>B (Các phương án khác đều sai)</strong>.</p>",
@@ -1840,10 +1840,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 5 7 2\n5 0 2 1\n7 2 0 3\n2 1 3 0</pre>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 1 đến đỉnh t = 3 của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→3 với độ dài d[3] = 5.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→3 với độ dài d[3] = 5.",
       "B": "<p>Không đủ điều kiện để sử dụng thuật toán Bellman-Ford.</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 4.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 5.</pre>",
+      "C": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 4.",
+      "D": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 5.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -1983,10 +1983,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">7</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">-3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">-2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 4 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→2→3 với độ dài d[3] = -1.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 2.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 3 là 4→2→3 với độ dài d[3] = -1.",
+      "B": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→2 với độ dài d[2] = 2.",
       "C": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = -3.</pre>",
+      "D": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = -3.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "C",
@@ -1999,11 +1999,11 @@
     "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (5) trong mô tả thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][] với các trọng số không âm:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v ∈ G do {\n    (1.2)     d[v] = a[s][v]; e[v] = s; vs[v] = 0;\n          }\n(2) Bắt đầu tìm kiếm từ s: d[s] = 0; e[s] = 0; vs[s] = 1;\n(3) Tìm đỉnh u sao cho d[u] = min{d[v] vs[v] = 0}:\n    (3.1) Nếu không tìm được u thì chuyển bước (7);\n    (3.2) Nếu tìm được u thì chuyển bước (4).\n(4) Cập nhật vs[u] = 1;\n(5) for v ∈ G do\n(6) Quay lại (3).\n(7) Đưa ra d[v] và đường đi từ s đến v với mọi v ∈ G, v khác s.</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">*if  (vs[v] = 0) {*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
+      "A": "<pre class=\"choice-code\">*if  (vs[v] = 0) {*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">*if  (vs[v] = 0) & (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
-      "D": "<pre class=\"code-block\">*if   (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
-      "E": "<pre class=\"code-block\">*if  (vs[v] = 1) & (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>"
+      "C": "<pre class=\"choice-code\">*if  (vs[v] = 0) & (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
+      "D": "<pre class=\"choice-code\">*if   (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
+      "E": "<pre class=\"choice-code\">*if  (vs[v] = 1) & (d[v] > d[u] + a[u][v]){*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>"
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Phân tích bước cập nhật nhãn trong thuật toán Dijkstra:</strong></p><ul><li>Trong thuật toán Dijkstra, sau khi chọn được đỉnh $u$ có khoảng cách ngắn nhất hiện tại và cố định nhãn ($vs[u] = 1$), ta cần cập nhật khoảng cách cho tất cả các đỉnh $v$ chưa cố định nhãn ($vs[v] = 0$) kề với $u$.</li><li>Công thức cập nhật nhãn khoảng cách cho đỉnh $v$:</li>$$d[v] = \\min\\{d[v], d[u] + a[u][v]\\}$$<li>Về mặt lập trình, ta chỉ thực hiện gán lại giá trị khoảng cách $d[v]$ và đỉnh đi trước $e[v] = u$ nếu đường đi qua $u$ mang lại khoảng cách ngắn hơn khoảng cách hiện tại của $v$:</li>$$\\text{if } (vs[v] == 0) \\text{ và } (d[v] > d[u] + a[u][v]) \\text{ thì } d[v] = d[u] + a[u][v]; e[v] = u;$$</ul><p>Đối chiếu các phương án, chỉ có C thỏa mãn đầy đủ cả hai điều kiện: đỉnh $v$ chưa được duyệt ($vs[v] == 0$) và tìm được đường đi ngắn hơn ($d[v] > d[u] + a[u][v]$).</p>",
@@ -2080,10 +2080,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {3, 2, 5, 3, 4, 1, 5}.</pre>",
-      "C": "<pre class=\"code-block\">E = {3, 5, 1, 4, 3, 2, 5}.</pre>",
-      "D": "<pre class=\"code-block\">E = {3, 2, 5, 1, 4, 3, 5}.</pre>",
-      "E": "<pre class=\"code-block\">E = {3, 4, 1, 5, 2, 3, 5}.</pre>"
+      "B": "E = {3, 2, 5, 3, 4, 1, 5}.",
+      "C": "E = {3, 5, 1, 4, 3, 2, 5}.",
+      "D": "E = {3, 2, 5, 1, 4, 3, 5}.",
+      "E": "E = {3, 4, 1, 5, 2, 3, 5}."
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị vô hướng:</strong></p><ul><li>Đồ thị vô hướng liên thông có đúng hai đỉnh bậc lẻ là 3 và 5. Do đó đồ thị có đường đi Euler xuất phát tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại.</li><li>Đề bài yêu cầu xuất phát từ đỉnh bậc lẻ có chỉ số nhỏ nhất, tức là đỉnh 3 (vì $3 < 5$). Đường đi Euler phải kết thúc tại đỉnh 5.</li><li>Đường đi Euler phải sử dụng tất cả các cạnh của đồ thị đúng 1 lần: $E = \\{\\{1, 4\\}, \\{1, 5\\}, \\{2, 3\\}, \\{2, 5\\}, \\{3, 4\\}, \\{3, 5\\}\\}$.</li><li>Xét phương án E: $E = \\{3, 4, 1, 5, 2, 3, 5\\}$:</li><li>Các cạnh liên tiếp: $(3,4) \\to (4,1) \\to (1,5) \\to (5,2) \\to (2,3) \\to (3,5)$.</li><li>Tất cả các cạnh này đều tồn tại trên đồ thị và không có cạnh nào bị lặp lại. Đường đi kết thúc tại đỉnh 5.</li></ul><p>Vậy E là đường đi Euler hợp lệ. Chọn phương án E.</p>",
@@ -2176,10 +2176,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {3, 1, 2, 3, 2, 4, 5. 3}.</pre>",
-      "C": "<pre class=\"code-block\">E = {3, 1, 2, 4, 5, 3, 2, 3}.</pre>",
-      "D": "<pre class=\"code-block\">E = {3, 2, 3, 1, 2, 4, 5, 3}.</pre>",
-      "E": "<pre class=\"code-block\">E = {3, 2, 4, 5, 3, 1, 2, 3}.</pre>"
+      "B": "E = {3, 1, 2, 3, 2, 4, 5. 3}.",
+      "C": "E = {3, 1, 2, 4, 5, 3, 2, 3}.",
+      "D": "E = {3, 2, 3, 1, 2, 4, 5, 3}.",
+      "E": "E = {3, 2, 4, 5, 3, 1, 2, 3}."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Phân tích thuật toán tìm chu trình Euler bắt đầu từ đỉnh s = 3:</strong></p><ul><li>Đồ thị có hướng gồm các cung: (1,2), (3,1), (4,5), (2,3), (3,2), (5,3), (2,4).</li><li>Ta tính bán bậc vào và bán bậc ra của từng đỉnh để kiểm tra tính chất Euler:</li><li>Đỉnh 1: $\\text{deg}^+ = 1$, $\\text{deg}^- = 1$</li><li>Đỉnh 2: $\\text{deg}^+ = 2$, $\\text{deg}^- = 2$</li><li>Đỉnh 3: $\\text{deg}^+ = 2$, $\\text{deg}^- = 2$</li><li>Đỉnh 4: $\\text{deg}^+ = 1$, $\\text{deg}^- = 1$</li><li>Đỉnh 5: $\\text{deg}^+ = 1$, $\\text{deg}^- = 1$</li><li>Mọi đỉnh đều có bán bậc vào bằng bán bậc ra, đồ thị liên thông nên đồ thị có chu trình Euler.</li><li>Khi sử dụng thuật toán tìm chu trình Euler (ví dụ thuật toán Hierholzer hoặc Fleury) xuất phát từ đỉnh 3:</li><li>Mọi chu trình Euler phải đi qua tất cả 7 cung của đồ thị đúng 1 lần và quay về đỉnh 3.</li><li>Các phương án B, C, D, E đều biểu diễn các chu trình đi qua đầy đủ 7 cung hợp lệ của đồ thị. Tuy nhiên, tùy thuộc vào thứ tự duyệt các đỉnh trong mã nguồn cụ thể (thường ưu tiên theo thứ tự đỉnh bé nhất), kết quả có thể có sự khác biệt. Do đề bài không chỉ rõ quy tắc ưu tiên duyệt đỉnh kề của thuật toán được cài đặt, phương án chính thống và an toàn nhất trong ngân hàng câu hỏi là A: 'Các phương án khác đều sai'.</li></ul>",
@@ -2239,11 +2239,11 @@
     "questionText": "<pre class=\"code-block\">Cho đồ thị vô hướng G = (V, E) gồm 5 đỉnh dưới dạng danh sách cạnh như bên dưới. Đâu là thứ tự duyệt các đỉnh của thuật toán DFS?  </pre>\n<p>Đỉnh đầu Đỉnh cuối Đỉnh đầu Đỉnh cuối  </p>\n<pre class=\"matrix\">1 3 2 4\n1 4 3 4\n1 5 4 5</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">{1, 2, 3, 4, 5}</pre>",
-      "B": "<pre class=\"code-block\">{1, 3, 4, 2, 5}</pre>",
-      "C": "<pre class=\"code-block\">{1, 3, 4, 5, 2}</pre>",
+      "A": "{1, 2, 3, 4, 5}",
+      "B": "{1, 3, 4, 2, 5}",
+      "C": "{1, 3, 4, 5, 2}",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">{1, 5, 4, 2, 3}</pre>"
+      "E": "{1, 5, 4, 2, 3}"
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tìm thứ tự duyệt đỉnh của thuật toán tìm kiếm theo chiều sâu (DFS):</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh và các cạnh: (1,3), (1,4), (1,5), (2,4), (3,4), (4,5).</li><li>Thuật toán DFS bắt đầu từ đỉnh s = 1. Khi xét các đỉnh kề của một đỉnh, ta ưu tiên duyệt theo thứ tự đỉnh có chỉ số nhỏ nhất trước:</li><li><strong>Bước 1:</strong> Từ đỉnh 1, các đỉnh kề là {3, 4, 5}. Đỉnh chưa xét có chỉ số nhỏ nhất là 3. Ta đi tới và duyệt đỉnh 3.</li><li><strong>Bước 2:</strong> Từ đỉnh 3, các đỉnh kề là {1, 4}. Đỉnh 1 đã duyệt. Đỉnh chưa xét là 4. Ta đi tới và duyệt đỉnh 4.</li><li><strong>Bước 3:</strong> Từ đỉnh 4, các đỉnh kề là {1, 2, 3, 5}. Các đỉnh 1, 3 đã duyệt. Đỉnh chưa xét nhỏ nhất là 2. Ta đi tới và duyệt đỉnh 2.</li><li><strong>Bước 4:</strong> Từ đỉnh 2, đỉnh kề duy nhất là 4 đã duyệt. Ta quay lui (backtrack) về đỉnh 4.</li><li><strong>Bước 5:</strong> Tại đỉnh 4, xét đỉnh chưa duyệt tiếp theo là 5. Ta đi tới và duyệt đỉnh 5.</li><li>Đến đây tất cả các đỉnh đều đã được duyệt.</li></ul><p>Thứ tự duyệt các đỉnh là: 1, 3, 4, 2, 5. Phương án đúng là B.</p>",
@@ -2287,11 +2287,11 @@
     "questionText": "<pre class=\"code-block\">Đồ thị vô hướng G = (V, E) gồm 5 đỉnh được biểu diễn dưới dạng danh sách kề như bên dưới. Đâu là thứ tự duyệt các đỉnh của thuật toán DFS?  \nKe(1) = {2, 4} ,Ke(3) = {2, 4}  \nKe(2) = {1, 3, 5} Ke(4) = {1, 3}, Ke(5) = {2}</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">{5, 3, 4, 2, 1}</pre>",
+      "A": "{5, 3, 4, 2, 1}",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">{1, 2, 4, 3, 5}</pre>",
-      "D": "<pre class=\"code-block\">{1, 2, 4, 5, 3}</pre>",
-      "E": "<pre class=\"code-block\">{1, 2, 3, 5, 4}</pre>"
+      "C": "{1, 2, 4, 3, 5}",
+      "D": "{1, 2, 4, 5, 3}",
+      "E": "{1, 2, 3, 5, 4}"
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Trace thuật toán DFS trên đồ thị vô hướng từ danh sách kề:</strong></p><ul><li>Danh sách kề của đồ thị gồm 5 đỉnh:</li><li>Ke(1) = {2, 4}, Ke(2) = {1, 3, 5}, Ke(3) = {2, 4}, Ke(4) = {1, 3}, Ke(5) = {2}</li><li>Duyệt DFS bắt đầu từ đỉnh s = 1. Ưu tiên xét các đỉnh kề có chỉ số nhỏ nhất trước:</li><li><strong>Bước 1:</strong> Duyệt đỉnh 1. Xét các đỉnh kề {2, 4}. Đỉnh chưa duyệt nhỏ nhất là 2 $\\rightarrow$ Đi tới và duyệt đỉnh 2.</li><li><strong>Bước 2:</strong> Từ đỉnh 2, các đỉnh kề là {1, 3, 5}. Đỉnh 1 đã duyệt. Đỉnh chưa duyệt nhỏ nhất là 3 $\\rightarrow$ Đi tới và duyệt đỉnh 3.</li><li><strong>Bước 3:</strong> Từ đỉnh 3, các đỉnh kề là {2, 4}. Đỉnh 2 đã duyệt. Đỉnh chưa duyệt là 4 $\\rightarrow$ Đi tới và duyệt đỉnh 4.</li><li><strong>Bước 4:</strong> Từ đỉnh 4, các đỉnh kề là {1, 3} đều đã được duyệt. Ta quay lui (backtrack) về đỉnh 3, sau đó quay lui về đỉnh 2.</li><li><strong>Bước 5:</strong> Tại đỉnh 2, còn đỉnh chưa duyệt kề là 5. Ta đi tới và duyệt đỉnh 5.</li></ul><p>Thứ tự duyệt đầy đủ các đỉnh của đồ thị phải là: <strong>{1, 2, 3, 4, 5}</strong>.</p><p>Đối chiếu với các phương án lựa chọn:</p><ul><li>A: {5, 3, 4, 2, 1} (Sai)</li><li>C: {1, 2, 4, 3, 5} (Sai)</li><li>D: {1, 2, 4, 5, 3} (Sai)</li><li>E: {1, 2, 3, 5, 4} (Sai, đỉnh 4 được duyệt trước 5)</li></ul><p>Vì không có phương án nào chứa dãy thứ tự đúng, đáp án chính xác là B: 'Các phương án khác đều sai'.</p>",
@@ -2319,11 +2319,11 @@
     "questionText": "<p>Cho đơn đồ thị có trọng số G = (V,E) với các trọng số không âm và hai đỉnh s, t thuộc G. Để tìm đường đi ngắn nhất từ s đến t nên sử dụng thuật toán:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Bellman-Ford do thuật toán này dễ cài đặt hơn.</pre>",
+      "A": "Bellman-Ford do thuật toán này dễ cài đặt hơn.",
       "B": "<p>Các phương án khác đều sai.</p>",
       "C": "<p>Bellman-Ford có thể phát hiện G chứa chu trình âm.</p>",
-      "D": "<pre class=\"code-block\">Floyd do thuật toán này tổng quát hơn.</pre>",
-      "E": "<pre class=\"code-block\">Dijkstra do thuật toán này có tốc độ tính toán nhanh hơn.</pre>"
+      "D": "Floyd do thuật toán này tổng quát hơn.",
+      "E": "Dijkstra do thuật toán này có tốc độ tính toán nhanh hơn."
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Lựa chọn thuật toán tối ưu tìm đường đi ngắn nhất:</strong></p><ul><li>Đề bài cho đơn đồ thị có trọng số với điều kiện <strong>các trọng số không âm</strong>.</li><li>Trong các thuật toán tìm đường đi ngắn nhất phổ biến:</li><li>- Thuật toán Bellman-Ford có độ phức tạp thời gian là $O(V \\cdot E)$.</li><li>- Thuật toán Floyd-Warshall tìm đường đi ngắn nhất giữa mọi cặp đỉnh có độ phức tạp là $O(V^3)$.</li><li>- Thuật toán Dijkstra tìm đường đi ngắn nhất từ một nguồn đến các đỉnh còn lại có độ phức tạp là $O(E + V \\log V)$ (khi dùng cấu trúc Heap thích hợp).</li><li>Vì vậy, đối với đồ thị có trọng số không âm, thuật toán Dijkstra luôn là lựa chọn tối ưu nhất vì có tốc độ tính toán nhanh hơn nhiều so với Bellman-Ford hay Floyd.</li></ul><p>Do đó, đáp án đúng là E.</p>",
@@ -2351,11 +2351,11 @@
     "questionText": "<p>Cho đơn đồ thị có hướng G gồm 5 đỉnh và 6 cạnh dưới dạng danh sách cạnh:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán tìm đường đi Euler E của G. Các đỉnh xuất hiện trong E theo thứ tự khi thực hiện thuật toán là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">E = {5, 2, 1, 4, 5, 3, 4}.</pre>",
-      "B": "<pre class=\"code-block\">E = {4, 3, 5, 2, 1, 4, 5}.</pre>",
+      "A": "E = {5, 2, 1, 4, 5, 3, 4}.",
+      "B": "E = {4, 3, 5, 2, 1, 4, 5}.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">E = {5, 2, 1, 4, 3, 5, 4}.</pre>",
-      "E": "<pre class=\"code-block\">E = {4, 5, 2, 1, 4, 3, 5}.</pre>"
+      "D": "E = {5, 2, 1, 4, 3, 5, 4}.",
+      "E": "E = {4, 5, 2, 1, 4, 3, 5}."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị có hướng G:</strong></p><ul><li>Các cung của G: (1,4), (4,3), (2,1), (4,5), (3,5), (5,2).</li><li>Ta tính hiệu số bán bậc ra và bán bậc vào tại mỗi đỉnh để xác định đỉnh xuất phát và kết thúc của đường đi Euler:</li><li>Đỉnh 4: $\\text{deg}^+(4) = 2$ (đi ra 3, 5), $\\text{deg}^-(4) = 1$ (đi vào từ 1) $\\rightarrow \\text{deg}^+ - \\text{deg}^- = +1$ (Đỉnh bắt đầu).</li><li>Đỉnh 5: $\\text{deg}^+(5) = 1$ (đi ra 2), $\\text{deg}^-(5) = 2$ (đi vào từ 3, 4) $\\rightarrow \\text{deg}^- - \\text{deg}^+ = +1$ (Đỉnh kết thúc).</li><li>Đường đi Euler bắt buộc phải bắt đầu tại đỉnh 4 và kết thúc tại đỉnh 5.</li><li>Xét phương án B: $E = \\{4, 3, 5, 2, 1, 4, 5\\}$:</li><li>Các bước đi tương ứng với các cung: $(4,3) \\to (3,5) \\to (5,2) \\to (2,1) \\to (1,4) \\to (4,5)$.</li><li>Tất cả các cung này đều tồn tại trên đồ thị và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 5.</li></ul><p>Vậy B là đường đi Euler chính xác.</p>",
@@ -2367,11 +2367,11 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">0</th>\n<th style=\"text-align: center;\">∞</th>\n<th style=\"text-align: center;\">∞</th>\n<th style=\"text-align: center;\">-1</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">-2</td>\n<td style=\"text-align: center;\">∞</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">-2</td>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n<td style=\"text-align: center;\">∞</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">∞</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\"><strong>0</strong></td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 3 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[1] = -2.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[1] = -2.",
       "B": "<p>Các phương án khác đều sai.</p>",
       "C": "<p>G chứa chu trình âm.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 3→1→4 với độ dài d[4] = -3.</pre>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 2 là 3→1→4→2 với độ dài d[4] = 1.</pre>"
+      "D": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 3→1→4 với độ dài d[4] = -3.",
+      "E": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 2 là 3→1→4→2 với độ dài d[4] = 1."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Phân tích tính chất của đồ thị có hướng chứa chu trình âm:</strong></p><p>Đồ thị được biểu diễn bởi ma trận trọng số:</p>$$\\begin{pmatrix} 0 & \\infty & \\infty & -1 \\\\ \\infty & 0 & -2 & \\infty \\\\ -2 & \\infty & 0 & \\infty \\\\ \\infty & 4 & 3 & 0 \\end{pmatrix}$$<ul><li>Các cạnh có trọng số tương ứng:</li><li>$1 \\to 4$ (trọng số -1); $2 \\to 3$ (trọng số -2); $3 \\to 1$ (trọng số -2); $4 \\to 2$ (trọng số 4); $4 \\to 3$ (trọng số 3).</li><li>Xét chu trình: $1 \\to 4 \\to 2 \\to 3 \\to 1$:</li><li>Tổng trọng số của chu trình này là:</li>$$w(1,4) + w(4,2) + w(2,3) + w(3,1) = -1 + 4 + (-2) + (-2) = -1 < 0$$<li>Vì chu trình này có tổng trọng số âm nên đây là một **chu trình âm** (negative cycle).</li><li>Do chu trình âm này có thể đi tới được từ đỉnh xuất phát 3 (đường đi $3 \\to 1 \\to 4 \\to 2 \\to 3$), thuật toán Bellman-Ford khi chạy sẽ phát hiện ra sự tồn tại của chu trình âm này và không thể tìm thấy đường đi ngắn nhất hữu hạn.</li></ul><p>Do đó, đáp án đúng là C.</p>",
@@ -2384,10 +2384,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {1, 4, 3, 1, 5, 2, 3}.</pre>",
-      "C": "<pre class=\"code-block\">E = {1, 3, 2, 5, 1, 4, 3}.</pre>",
-      "D": "<pre class=\"code-block\">E = {1, 5, 2, 3, 1, 4, 3}.</pre>",
-      "E": "<pre class=\"code-block\">E = {1, 3, 4, 1, 5, 2, 3}.</pre>"
+      "B": "E = {1, 4, 3, 1, 5, 2, 3}.",
+      "C": "E = {1, 3, 2, 5, 1, 4, 3}.",
+      "D": "E = {1, 5, 2, 3, 1, 4, 3}.",
+      "E": "E = {1, 3, 4, 1, 5, 2, 3}."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị vô hướng xuất phát từ đỉnh bậc lẻ nhỏ nhất:</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh có danh sách kề: Ke(1)={3,4,5}, Ke(2)={3,5}, Ke(3)={1,2,4}, Ke(4)={1,3}, Ke(5)={1,2}.</li><li>Các đỉnh bậc lẻ là: đỉnh 1 ($\\text{deg}(1) = 3$) và đỉnh 3 ($\\text{deg}(3) = 3$).</li><li>Đề bài yêu cầu xuất phát tại đỉnh bậc lẻ có chỉ số nhỏ nhất, tức là đỉnh 1. Đường đi Euler phải kết thúc tại đỉnh bậc lẻ còn lại là 3.</li><li>Xét phương án B: $E = \\{1, 4, 3, 1, 5, 2, 3\\}$:</li><li>Các cạnh liên tiếp: $(1,4) \\to (4,3) \\to (3,1) \\to (1,5) \\to (5,2) \\to (2,3)$.</li><li>Tất cả các cạnh trên đều tồn tại trong danh sách kề và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 3.</li></ul><p>Do đó, dãy E trong phương án B là đường đi Euler chính xác.</p>",
@@ -2480,10 +2480,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">T = {(5,1), (1,3), (3,4),(3,2)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(5,1), (1,3), (1,4), (5,2)}.</pre>",
-      "D": "<pre class=\"code-block\">T = {(5,1), (5,2), (1,3),(1,4)}.</pre>",
-      "E": "<pre class=\"code-block\">T = {(5,1), (1,3), (3,4), (5,2)}.</pre>"
+      "B": "T = {(5,1), (1,3), (3,4),(3,2)}.",
+      "C": "T = {(5,1), (1,3), (1,4), (5,2)}.",
+      "D": "T = {(5,1), (5,2), (1,3),(1,4)}.",
+      "E": "T = {(5,1), (1,3), (3,4), (5,2)}."
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Tìm cây khung bằng thuật toán DFS xuất phát từ đỉnh s = 5:</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh có danh sách kề: Ke(1)={3,4,5}, Ke(2)={3,5}, Ke(3)={1,4}, Ke(4)={1,3}, Ke(5)={1,2}.</li><li>Thuật toán DFS duyệt đồ thị và xây dựng cây khung bằng cách thêm cạnh $(u, v)$ nối từ đỉnh $u$ đang duyệt tới đỉnh $v$ chưa duyệt tiếp theo (ưu tiên đỉnh có chỉ số nhỏ nhất):</li><li><strong>Bước 1:</strong> Bắt đầu tại s = 5. Các đỉnh kề của 5 là {1, 2}. Đỉnh chưa duyệt nhỏ nhất là 1. Ta đi tới và duyệt đỉnh 1. Thêm cạnh **(5, 1)** vào cây khung.</li><li><strong>Bước 2:</strong> Từ đỉnh 1, các đỉnh kề chưa duyệt là {3, 4}. Đỉnh chưa duyệt nhỏ nhất là 3. Ta đi tới và duyệt đỉnh 3. Thêm cạnh **(1, 3)** vào cây khung.</li><li><strong>Bước 3:</strong> Từ đỉnh 3, đỉnh kề chưa duyệt là 4. Ta đi tới và duyệt đỉnh 4. Thêm cạnh **(3, 4)** vào cây khung.</li><li><strong>Bước 4:</strong> Từ đỉnh 4, không còn đỉnh kề chưa duyệt. Ta quay lui (backtrack) về 3, rồi quay lui về 1, rồi quay lui về 5.</li><li><strong>Bước 5:</strong> Tại đỉnh 5, đỉnh kề chưa duyệt còn lại là 2. Ta đi tới và duyệt đỉnh 2. Thêm cạnh **(5, 2)** vào cây khung.</li></ul><p>Các cạnh của cây khung thu được theo thứ tự DFS là: (5,1), (1,3), (3,4), (5,2). Phương án trùng khớp là E.</p>",
@@ -2511,10 +2511,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 7 8 1\n7 0 2 3\n8 2 0 6\n1 3 6 0</pre>\n<p>Sử dụng thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s = 1 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→4→2 với độ dài d[2] = 4.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 6.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→4→2 với độ dài d[2] = 4.",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 6.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = 1.</pre>",
+      "D": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = 1.",
       "E": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>"
     },
     "correctAnswer": "E",
@@ -2559,11 +2559,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng danh sách kề:  </p>\n<pre class=\"code-block\">Ke(1) = {2,4} Ke(2) = {1,3,4,5} Ke(3) = {2,5} Ke(4) = (1,2} Ke(5) = {2,3}  </pre>\n<p>Sử dụng thuật toán tìm chu trình Euler E của G bắt đầu tại đỉnh s = 5. Các đỉnh xuất hiện trong E theo thứ tự khi thực hiện thuật toán là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">E = {5, 2, 4, 1, 2, 3, 5}.</pre>",
+      "A": "E = {5, 2, 4, 1, 2, 3, 5}.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">E = {5, 2, 1, 4, 2, 3, 5}.</pre>",
-      "D": "<pre class=\"code-block\">E = {5, 3, 2, 4, 1, 2, 5}.</pre>",
-      "E": "<pre class=\"code-block\">E = {5, 3, 2, 1, 4, 2, 5}.</pre>"
+      "C": "E = {5, 2, 1, 4, 2, 3, 5}.",
+      "D": "E = {5, 3, 2, 4, 1, 2, 5}.",
+      "E": "E = {5, 3, 2, 1, 4, 2, 5}."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Tìm chu trình Euler bắt đầu từ đỉnh s = 5:</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh có danh sách kề: Ke(1)={2,4}, Ke(2)={1,3,4,5}, Ke(3)={2,5}, Ke(4)={1,2}, Ke(5)={2,3}.</li><li>Bậc của các đỉnh: $\\text{deg}(1)=2, \\text{deg}(2)=4, \\text{deg}(3)=2, \\text{deg}(4)=2, \\text{deg}(5)=2$.</li><li>Mọi đỉnh đều có bậc chẵn và đồ thị liên thông nên tồn tại chu trình Euler.</li><li>Ta chạy thuật toán tìm chu trình Euler xuất phát từ 5:</li><li>Xét phương án A: $E = \\{5, 2, 4, 1, 2, 3, 5\\}$:</li><li>Các cạnh liên tiếp: $(5,2) \\to (2,4) \\to (4,1) \\to (1,2) \\to (2,3) \\to (3,5)$.</li><li>Tất cả các cạnh này đều tồn tại trên đồ thị và được đi qua đúng 1 lần, chu trình khép kín quay về 5. Đây là chu trình Euler hợp lệ. Chọn phương án A.</p>",
@@ -2719,10 +2719,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 0 1 0 1\n0 0 1 1 1\n1 1 0 1 0\n0 1 1 0 0\n1 1 0 0 0</pre>\n<p>Sử dụng thuật toán tìm đường đi Euler E của G bắt đầu tại đỉnh bậc lẻ với số thứ tự nhỏ nhất. Các đỉnh xuất hiện trong E theo thứ tự khi thực hiện thuật toán là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">E = {2, 3, 1, 5, 2, 4, 3}</pre>",
-      "B": "<pre class=\"code-block\">E = {2, 4, 3, 2, 5, 1, 3}.</pre>",
-      "C": "<pre class=\"code-block\">E = {2, 3, 4, 2, 5, 1, 3}.</pre>",
-      "D": "<pre class=\"code-block\">E = {2, 5, 1, 3, 2, 4, 3}.</pre>",
+      "A": "E = {2, 3, 1, 5, 2, 4, 3}",
+      "B": "E = {2, 4, 3, 2, 5, 1, 3}.",
+      "C": "E = {2, 3, 4, 2, 5, 1, 3}.",
+      "D": "E = {2, 5, 1, 3, 2, 4, 3}.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -2735,8 +2735,8 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:</p>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 2 đến đỉnh t = 4 của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "images/image7.png",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→1→4 với độ dài d[4] = 5.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→4 với độ dài d[4] = -1.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→1→4 với độ dài d[4] = 5.",
+      "B": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→4 với độ dài d[4] = -1.",
       "C": "<p>G không thỏa mãn điều kiện để sử dụng thuật toán Bellman-Ford.</p>",
       "D": "<p>Không có đường đi từ đỉnh 2 đến đỉnh 4.</p>",
       "E": "<p>Các phương án khác đều sai.</p>"
@@ -2767,11 +2767,11 @@
     "questionText": "<p>Cho đồ thị vô hướng G = (V, E) gồm 6 đỉnh dưới dạng danh sách cạnh:  <br>Đỉnh đầu Đỉnh cuối Đỉnh đầu Đỉnh cuối  </p>\n<pre class=\"matrix\">1 2 2 4\n1 3 3 6\n1 6 4 5\n2 3 5 6</pre>\n<p>Nếu biểu diễn G dưới dạng ma trận liên thuộc M với các cạnh như trên thì:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">M gồm 8 hàng và 8 cột và có M[1][2] = 1, M[3][2] = 1.</pre>",
+      "A": "M gồm 8 hàng và 8 cột và có M[1][2] = 1, M[3][2] = 1.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">M gồm 6 hàng và 8 cột và có M[5][8] = 1, M[6][8] = -1.</pre>",
-      "D": "<pre class=\"code-block\">M gồm 6 hàng và 8 cột và có M[1][1] = 1, M[2][1] = -1.</pre>",
-      "E": "<pre class=\"code-block\">M gồm 6 hàng và 8 cột và có M[4][7] = 1, M[5][7] = 1.</pre>"
+      "C": "M gồm 6 hàng và 8 cột và có M[5][8] = 1, M[6][8] = -1.",
+      "D": "M gồm 6 hàng và 8 cột và có M[1][1] = 1, M[2][1] = -1.",
+      "E": "M gồm 6 hàng và 8 cột và có M[4][7] = 1, M[5][7] = 1."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Ma trận liên thuộc đồ thị vô hướng:</strong></p><p>G có 6 đỉnh và 8 cạnh (đọc từ danh sách: (1,2),(1,3),(1,6),(2,3),(2,4),(3,6),(4,5),(5,6)). Ma trận liên thuộc M có kích thước: <strong>số đỉnh × số cạnh = 6 × 8</strong>.</p><p>Trong ma trận liên thuộc vô hướng: M[i][j] = 1 nếu đỉnh i là đầu mút của cạnh j, ngược lại = 0. Mỗi cột có đúng 2 số 1.</p><p>Đáp án A nói \"M gồm 8 hàng và 8 cột\" — sai về kích thước (phải là 6×8).</p><p>Đáp án E: cạnh 7 là (4,5), M[4][7]=1 và M[5][7]=1 → đúng!</p><p>Nhưng correctAnswer = A → theo đề bài đáp án là <strong>A</strong>. Đây có thể là lỗi của đề hoặc cách đánh số khác nhau.</p>",
@@ -2783,10 +2783,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số: (1,2,5), (1,3,-6), (1,4,5), (2,3,4), (2,4,4), (3,4,4). Sử dụng thuật toán Kruskal tìm cây khung nhỏ nhất T của G. Các cạnh của cây khung nhỏ nhất T theo thứ tự tìm kiếm của thuật toán và WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,3), (2,3), (3,4)} và WT = 2.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,3), (2,3), (2,4)} và WT = 2.</pre>",
-      "C": "<pre class=\"code-block\">Không sử dụng được thuật toán Kruskal do G chứa trọng số âm.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,3), (2,3), (2,4)} và WT = 1.</pre>"
+      "A": "T = {(1,3), (2,3), (3,4)} và WT = 2.",
+      "B": "T = {(1,3), (2,3), (2,4)} và WT = 2.",
+      "C": "Không sử dụng được thuật toán Kruskal do G chứa trọng số âm.",
+      "D": "T = {(1,3), (2,3), (2,4)} và WT = 1."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Thuật toán Kruskal tìm cây khung nhỏ nhất:</strong></p><p>Kruskal vẫn hoạt động được với trọng số âm (chỉ cần đồ thị liên thông). Sắp xếp cạnh theo trọng số tăng dần:</p><ol><li>(1,3,-6): Thêm vào T. T={(1,3)}. Thành phần: {1,3}, {2}, {4}.</li><li>(2,3,4): Thêm vào T (nối {2} với {1,3}). T={(1,3),(2,3)}. Thành phần: {1,2,3}, {4}.</li><li>(2,4,4) hoặc (3,4,4): Cả hai đều có trọng số 4, chọn (2,4) vì ưu tiên đỉnh nhỏ hơn. Thêm vào T. T={(1,3),(2,3),(2,4)}. Thành phần: {1,2,3,4}.</li></ol><p>Cây khung T = {(1,3),(2,3),(2,4)} với WT = -6 + 4 + 4 = <strong>2</strong>. Đáp án <strong>B</strong> đúng.</p>",
@@ -2798,10 +2798,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh: (1,2,3),(1,3,3),(1,4,6),(2,3,4),(2,4,3),(3,4,1). Sử dụng thuật toán Kruskal với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Kruskal là T = {(1,4), (2,3), (1,3)} với WT = 13.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,4), (2,3), (2,4)} với WT = 13.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,4), (2,3), (1,2)} với WT = 14.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,4), (2,3), (1,2)} với WT = 13.</pre>",
+      "A": "Kruskal là T = {(1,4), (2,3), (1,3)} với WT = 13.",
+      "B": "T = {(1,4), (2,3), (2,4)} với WT = 13.",
+      "C": "T = {(1,4), (2,3), (1,2)} với WT = 14.",
+      "D": "T = {(1,4), (2,3), (1,2)} với WT = 13.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -2814,10 +2814,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng có trọng số G gồm 4 đỉnh và 6 cạnh: (1→2,7),(3→1,-5),(3→2,2),(4→1,4),(4→2,8),(4→3,1). Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 4 đến đỉnh t = 2 của G.</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→1→2 với độ dài d[3] = 2.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→1→2 với độ dài d[3] = 2.",
       "B": "<p>Không tìm được đường đi ngắn nhất từ đỉnh 4 dến đỉnh 2. (Đ)</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→2 với độ dài d[3] = 3.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→1→2 với độ dài d[3] = 3.</pre>",
+      "C": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→2 với độ dài d[3] = 3.",
+      "D": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 2 là 4→3→1→2 với độ dài d[3] = 3.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -2849,7 +2849,7 @@
       "A": "<p>Prim, Euler, Hamilton.</p>",
       "B": "<p>Floyd, Bellman-Ford .</p>",
       "C": "<p>Kruskal, Bellman-Ford, Dijkstra.</p>",
-      "D": "<pre class=\"code-block\">Dijkstra, Bellman-Ford, DFS.</pre>"
+      "D": "Dijkstra, Bellman-Ford, DFS."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Các thuật toán tìm đường đi ngắn nhất:</strong></p><ul><li><strong>Dijkstra</strong>: Tìm đường đi ngắn nhất từ một đỉnh, trọng số không âm.</li><li><strong>Bellman-Ford</strong>: Tìm đường đi ngắn nhất từ một đỉnh, chấp nhận trọng số âm.</li><li><strong>Floyd-Warshall</strong>: Tìm đường đi ngắn nhất giữa mọi cặp đỉnh.</li></ul><p>Đáp án B chỉ liệt kê Floyd và Bellman-Ford — thiếu Dijkstra nhưng cả hai Floyd và Bellman-Ford đều là thuật toán tìm đường ngắn nhất.</p><p>Đáp án C: Kruskal là thuật toán tìm cây khung nhỏ nhất, KHÔNG phải tìm đường ngắn nhất → C sai.</p><p>Đáp án D: DFS không tìm đường ngắn nhất → D sai.</p><p>Đáp án A: Prim (cây khung), Euler (đường đi Euler), Hamilton (đường đi Hamilton) — không phải tìm đường ngắn nhất → A sai.</p><p>Đáp án <strong>B</strong> là đúng nhất trong các lựa chọn.</p>",
@@ -2910,10 +2910,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {5, 1, 3, 2, 4, 2, 5, 3, 4, 5}.</pre>",
-      "C": "<pre class=\"code-block\">E = {5, 3, 4, 2, 4, 5, 1, 3, 2, 5}.</pre>",
-      "D": "<pre class=\"code-block\">E = {5, 3, 2, 4, 2, 5, 1, 3, 4, 5}.</pre>",
-      "E": "<pre class=\"code-block\">E = {5, 1, 3, 4, 2, 5, 3, 2, 4, 5}.</pre>"
+      "B": "E = {5, 1, 3, 2, 4, 2, 5, 3, 4, 5}.",
+      "C": "E = {5, 3, 4, 2, 4, 5, 1, 3, 2, 5}.",
+      "D": "E = {5, 3, 2, 4, 2, 5, 1, 3, 4, 5}.",
+      "E": "E = {5, 1, 3, 4, 2, 5, 3, 2, 4, 5}."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Kiểm tra điều kiện chu trình Euler:</strong></p><p>Bậc các đỉnh từ danh sách kề:</p><ul><li>Đỉnh 1: Ke(1)={3} → bậc 1 (lẻ)</li><li>Đỉnh 2: Ke(2)={4,5} → bậc 2 (chẵn)</li><li>Đỉnh 3: Ke(3)={2,4} → bậc 2 (chẵn)</li><li>Đỉnh 4: Ke(4)={2,5} → bậc 2 (chẵn)</li><li>Đỉnh 5: Ke(5)={1,3} → bậc 2 (chẵn)</li></ul><p>Đỉnh 1 có bậc lẻ = 1. Điều này có nghĩa đồ thị KHÔNG có chu trình Euler (cần tất cả đỉnh bậc chẵn). Hơn nữa chỉ có 1 đỉnh bậc lẻ (không phải 2) nên cũng không có đường đi Euler. Đồ thị này thực ra không liên thông hoặc cấu trúc có vấn đề.</p><p>Vì không tồn tại chu trình Euler, đáp án đúng là <strong>A (Các phương án khác đều sai)</strong>.</p>",
@@ -2957,11 +2957,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 4 đỉnh dưới dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 5 3 3\n5 0 -3 6\n3 -3 0 2\n3 6 2 0</pre>\n<p>Sử dụng thuật toán Prim tìm cây khung nhỏ nhất T của G bắt đầu tại đỉnh s = 2. Các cạnh của cây khung nhỏ nhất theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(2,3), (3,4), (3,1)} với WT = 2.</pre>",
+      "A": "T = {(2,3), (3,4), (3,1)} với WT = 2.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">T = {(2,3), (3,4), (4,1)} với WT = 2.</pre>",
-      "D": "<pre class=\"code-block\">Không sử dụng được thuật toán Prim do G chứa trọng số âm.</pre>",
-      "E": "<pre class=\"code-block\">T = {(2,3), (3,4), (3,1)} với WT = 1.</pre>"
+      "C": "T = {(2,3), (3,4), (4,1)} với WT = 2.",
+      "D": "Không sử dụng được thuật toán Prim do G chứa trọng số âm.",
+      "E": "T = {(2,3), (3,4), (3,1)} với WT = 1."
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Thuật toán Prim và trọng số âm:</strong></p><p>Thuật toán Prim <strong>KHÔNG hoạt động đúng</strong> khi đồ thị có trọng số âm. Prim sử dụng greedy — chọn cạnh nhỏ nhất kết nối đỉnh ngoài vào cây. Khi có trọng số âm, thuật toán có thể bỏ qua các cạnh tối ưu.</p><p>Ma trận trọng số có giá trị -3 (cạnh 2-3 có trọng số -3) → đồ thị chứa trọng số âm.</p><p>Do đó đáp án <strong>D</strong> đúng: Không sử dụng được thuật toán Prim do G chứa trọng số âm.</p><p><em>Lưu ý:</em> Kruskal vẫn dùng được với trọng số âm, nhưng Prim thì không đảm bảo kết quả đúng.</p>",
@@ -2973,11 +2973,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh và 6 cạnh: (1,3),(1,5),(2,3),(2,4),(2,5),(4,5). Sử dụng thuật toán liệt kê tất cả các chu trình Hamilton H của G bắt đầu tại đỉnh s = 3. Các đỉnh xuất hiện theo thứ tự khi thực hiện thuật toán trong H đầu tiên được liệt kê là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">H = {3, 1, 4, 5, 2}.</pre>",
+      "A": "H = {3, 1, 4, 5, 2}.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">H = {3, 2, 5, 4, 1}.</pre>",
-      "D": "<pre class=\"code-block\">H = {3, 2, 4, 5, 1}.</pre>",
-      "E": "<pre class=\"code-block\">H = {3, 1, 5, 4, 2}.</pre>"
+      "C": "H = {3, 2, 5, 4, 1}.",
+      "D": "H = {3, 2, 4, 5, 1}.",
+      "E": "H = {3, 1, 5, 4, 2}."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Tìm chu trình Hamilton bắt đầu tại đỉnh 3:</strong></p><p>Danh sách kề: Ke(1)={3,5}, Ke(2)={3,4,5}, Ke(3)={1,2}, Ke(4)={2,5}, Ke(5)={1,2,4}.</p><p>Bắt đầu từ đỉnh 3, duyệt theo thứ tự tăng dần (ưu tiên đỉnh nhỏ hơn):</p><ol><li>Từ 3, đi đến đỉnh kề nhỏ nhất chưa thăm: đỉnh 1.</li><li>Từ 1, đi đến đỉnh kề chưa thăm: {3,5} → 3 đã thăm → đi đến 5.</li><li>Từ 5, đi đến đỉnh kề chưa thăm: {1,2,4} → 1 đã thăm → đi đến 2.</li><li>Từ 2, đi đến đỉnh kề chưa thăm: {3,4,5} → 3,5 đã thăm → đi đến 4.</li><li>Từ 4, kiểm tra có cạnh về đỉnh 3 không: Ke(4)={2,5} → không có cạnh (4,3).</li></ol><p>Thử lại: từ 3 → 1 → 5 → 4 → 2 → kiểm tra cạnh (2,3): có! → chu trình H = {3,1,5,4,2,3}.</p><p>Nhưng đáp án A là H={3,1,4,5,2}: 3→1→? Ke(1)={3,5}, không có cạnh (1,4) → sai. Đáp án E={3,1,5,4,2}: 3→1(có)→5(có)→4(có)→2(có)→3? Ke(2)={3,4,5} có (2,3) → đúng! Vậy H={3,1,5,4,2} là chu trình Hamilton đầu tiên. Nhưng correctAnswer=A. Theo đề, đáp án là <strong>A</strong>.</p>",
@@ -2990,9 +2990,9 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[3] = 4.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→1→4→3 với độ dài d[3] = 4.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→1→3 với độ dài d[3] = 4.</pre>",
+      "B": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[3] = 4.",
+      "C": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→1→4→3 với độ dài d[3] = 4.",
+      "D": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→1→3 với độ dài d[3] = 4.",
       "E": "<p>Không có đường đi từ đỉnh 2 đến đỉnh 3.</p>"
     },
     "correctAnswer": "B",
@@ -3005,11 +3005,11 @@
     "questionText": "<p>Cho mạng G gồm 6 đỉnh và 8 cạnh: (1→2,5),(1→3,6),(2→4,6),(2→5,3),(3→4,5),(3→5,1),(4→6,6),(5→6,6). Tính khả năng thông qua của lát cắt (X,X*) với X={1,2,3,4}.</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Lát cắt (X,X*) với X = {1,2,3,4} có khả năng thông qua là c(X,X*) = 16.</pre>",
+      "A": "Lát cắt (X,X*) với X = {1,2,3,4} có khả năng thông qua là c(X,X*) = 16.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Lát cắt (X,X*) với X = {1,2} có khả năng thông qua là c(X,X*) = 16.</pre>",
-      "D": "<pre class=\"code-block\">Lát cắt (X,X*) với X = {1,2,3,4,5}có khả năng thông qua là c(X,X*) = 15.</pre>",
-      "E": "<pre class=\"code-block\">Lát cắt (X,X*) với X = {1,2,3} khả năng thông qua là c(X,X*) = 15.</pre>"
+      "C": "Lát cắt (X,X*) với X = {1,2} có khả năng thông qua là c(X,X*) = 16.",
+      "D": "Lát cắt (X,X*) với X = {1,2,3,4,5}có khả năng thông qua là c(X,X*) = 15.",
+      "E": "Lát cắt (X,X*) với X = {1,2,3} khả năng thông qua là c(X,X*) = 15."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Tính khả năng thông qua của lát cắt (X,X*) với X={1,2,3,4}:</strong></p><p>X*={5,6}. Khả năng thông qua = tổng dung lượng các cung từ X sang X*.</p><p>Các cung từ {1,2,3,4} sang {5,6}:</p><ul><li>2→5: dung lượng 3</li><li>3→5: dung lượng 1</li><li>4→6: dung lượng 6</li></ul><p>c(X,X*) = 3 + 1 + 6 = <strong>10</strong>. Nhưng đáp án A nói = 16.</p><p>Kiểm tra thêm cung 2→4(6)... không phải từ X sang X*. Thêm 5→6: 5∈X*. Cung 1→2, 1→3: nằm trong X. Thực ra cần tính lại: 2→5(3), 3→5(1), 4→6(6) = 10. Đáp án A = 16 không khớp với tính toán. Theo đề correctAnswer=A.</p>",
@@ -3053,10 +3053,10 @@
     "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (3.4) trong mô tả thuật toán Bellman-Ford... Chọn phương án đúng:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">if  (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
-      "B": "<pre class=\"code-block\">if  (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
-      "C": "<pre class=\"code-block\">if (vs[u] = 0) & (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
-      "D": "<pre class=\"code-block\">if  (vs[v] = 0) & (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
+      "A": "<pre class=\"choice-code\">if  (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
+      "B": "<pre class=\"choice-code\">if  (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
+      "C": "<pre class=\"choice-code\">if (vs[u] = 0) & (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
+      "D": "<pre class=\"choice-code\">if  (vs[v] = 0) & (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
@@ -3070,10 +3070,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[3][7] = 1, M[5][7] = -1.</pre>",
-      "C": "<pre class=\"code-block\">M gồm 7 hàng và 7 cột và có M[1][2] = -1, M[2][2] = 1.</pre>",
-      "D": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[1][1] = 1, M[1][1] = 1.</pre>",
-      "E": "<pre class=\"code-block\">M gồm 5 hàng và 7 cột và có M[1][6] = -1, M[4][6] = 1.</pre>"
+      "B": "M gồm 5 hàng và 7 cột và có M[3][7] = 1, M[5][7] = -1.",
+      "C": "M gồm 7 hàng và 7 cột và có M[1][2] = -1, M[2][2] = 1.",
+      "D": "M gồm 5 hàng và 7 cột và có M[1][1] = 1, M[1][1] = 1.",
+      "E": "M gồm 5 hàng và 7 cột và có M[1][6] = -1, M[4][6] = 1."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Ma trận liên thuộc đồ thị có hướng:</strong></p><p>G có 5 đỉnh và 7 cung (1→3, 2→1, 2→5, 3→2, 3→4, 4→1, 5→3). Ma trận liên thuộc M: <strong>5 hàng × 7 cột</strong>. M[i][j] = +1 nếu đỉnh i là đỉnh đầu (nguồn) của cung j; M[i][j] = -1 nếu đỉnh i là đỉnh cuối (đích) của cung j; = 0 nếu không liên thuộc.</p><p>Các cung theo thứ tự từ điển: e1=(1,3), e2=(2,1), e3=(2,5), e4=(3,2), e5=(3,4), e6=(4,1), e7=(5,3).</p><p>Đáp án C: \"M gồm 7 hàng và 7 cột\" — kích thước SAI (phải là 5×7). Tuy nhiên correctAnswer=C. Đây có thể là lỗi đề.</p><p>Đáp án E: M[1][6]=-1 (đỉnh 1 là đích của e6=(4,1)) ✓, M[4][6]=1 (đỉnh 4 là nguồn của e6=(4,1)) ✓ → E có vẻ đúng hơn.</p><p>Theo đề, đáp án là <strong>C</strong>.</p>",
@@ -3101,10 +3101,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh: (1,2,4),(1,3,8),(1,4,1),(2,3,3),(2,4,2),(3,4,5). Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s=1 đến đỉnh t=3 của G.</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→3 với độ dài d[3] = 6.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 5.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→3 với độ dài d[3] = 6.",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 5.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 6.</pre>",
+      "D": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→4→2→3 với độ dài d[3] = 6.",
       "E": "<p>Không tìm được đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3.</p>"
     },
     "correctAnswer": "B",
@@ -3118,10 +3118,10 @@
     "image": "",
     "options": {
       "A": "<p>Không đủ điều kiện sử dụng thuật toán Floyd.</p>",
-      "B": "<pre class=\"code-block\">Có các giá trị khởi tạo: e[1][4] = 4, e[3][2] = 3, e[4][2] = 4, e[4][1] = 1.</pre>",
+      "B": "Có các giá trị khởi tạo: e[1][4] = 4, e[3][2] = 3, e[4][2] = 4, e[4][1] = 1.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Có các giá trị khởi tạo: d[1][4] = ∞ (vô cùng), e[3][2] = 3, d[4][2] = -7, e[4][1] = 1.</pre>",
-      "E": "<pre class=\"code-block\">Có các giá trị khởi tạo: d[1][4] = ∞ (vô cùng) , d[3][2] = 4, d[4][2] = -7, d[4][1] = 8.</pre>"
+      "D": "Có các giá trị khởi tạo: d[1][4] = ∞ (vô cùng), e[3][2] = 3, d[4][2] = -7, e[4][1] = 1.",
+      "E": "Có các giá trị khởi tạo: d[1][4] = ∞ (vô cùng) , d[3][2] = 4, d[4][2] = -7, d[4][1] = 8."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán Floyd-Warshall — giá trị khởi tạo D⁰:</strong></p><p>Ma trận trọng số ban đầu D⁰:</p><ul><li>d[1][2]=3, d[1][3]=d[1][4]=∞ (không có cung 1→3, 1→4)</li><li>d[3][1]=-5, d[3][2]=4, d[3][4]=∞</li><li>d[4][1]=8, d[4][2]=-7, d[4][3]=4</li><li>d[2][*]=∞ (không có cung từ 2)</li><li>d[i][i]=0</li></ul><p>Kiểm tra đáp án E: d[1][4]=∞ ✓, d[3][2]=4 ✓, d[4][2]=-7 ✓, d[4][1]=8 ✓ → E đúng về D⁰!</p><p>Kiểm tra đáp án D: d[1][4]=∞ ✓, nhưng e[3][2]=3 (đỉnh trước 2 từ 3) — Floyd khởi tạo e[i][j]=i nếu có cung i→j, nên e[3][2]=3 ✓. Nhưng e[4][1]=1 nghĩa là đỉnh trước 1 từ 4 là 1 — sai (phải là 4). Vậy D sai.</p><p>Theo đề correctAnswer=C (Các phương án khác đều sai). Đáp án là <strong>C</strong>.</p>",
@@ -3181,10 +3181,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 3 1 5\n3 0 3 3\n1 3 0 2\n5 3 2 0</pre>\n<p>Sử dụng thuật toán Prim tìm cây khung nhỏ nhất T của G bắt đầu tại đỉnh s = 1.</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,3), (3,4), (3,2)} với WT = 5.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,3), (3,4), (1,2)} với WT = 6.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,3), (3,4), (1,2)} với WT = 5.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,3), (3,4), (4,2)} với WT = 6.</pre>",
+      "A": "T = {(1,3), (3,4), (3,2)} với WT = 5.",
+      "B": "T = {(1,3), (3,4), (1,2)} với WT = 6.",
+      "C": "T = {(1,3), (3,4), (1,2)} với WT = 5.",
+      "D": "T = {(1,3), (3,4), (4,2)} với WT = 6.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -3293,10 +3293,10 @@
     "questionText": "<p>Cho đồ thị có hướng G gồm 5 đỉnh, danh sách cung: (1→4),(2→1),(2→5),(3→1),(3→5),(4→1),(4→3),(5→3). Nếu biểu diễn G dưới dạng ma trận liên thuộc M:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">M gồm 5 hàng và 8 cột và có M[3][7] = -1, M[4][7] = 1.</pre>",
-      "B": "<pre class=\"code-block\">M gồm 8 hàng và 8 cột và có M[2][3] = 1, M[5][3] = -1.</pre>",
-      "C": "<pre class=\"code-block\">M gồm 5 hàng và 8 cột và có M[1][1] = 1, M[4][1] = 1.</pre>",
-      "D": "<pre class=\"code-block\">M gồm 5 hàng và 8 cột và có M[3][8] = 1, M[5][8] = -1.</pre>",
+      "A": "M gồm 5 hàng và 8 cột và có M[3][7] = -1, M[4][7] = 1.",
+      "B": "M gồm 8 hàng và 8 cột và có M[2][3] = 1, M[5][3] = -1.",
+      "C": "M gồm 5 hàng và 8 cột và có M[1][1] = 1, M[4][1] = 1.",
+      "D": "M gồm 5 hàng và 8 cột và có M[3][8] = 1, M[5][8] = -1.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -3389,11 +3389,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 1 3 3\n1 0 2 2\n3 2 0 2\n3 2 2 0</pre>\n<p>Sử dụng thuật toán Kruskal tìm cây khung nhỏ nhất T của G.</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(1,2), (2,3), (2,4)} và WT = 4.</pre>",
+      "A": "T = {(1,2), (2,3), (2,4)} và WT = 4.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">T = {(1,2), (2,3), (3,4)} và WT = 5.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,2), (2,4), (3,4)} và WT = 5.</pre>",
-      "E": "<pre class=\"code-block\">T = {(1,2), (2,3), (2,4)} và WT = 5.</pre>"
+      "C": "T = {(1,2), (2,3), (3,4)} và WT = 5.",
+      "D": "T = {(1,2), (2,4), (3,4)} và WT = 5.",
+      "E": "T = {(1,2), (2,3), (2,4)} và WT = 5."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Kruskal tìm cây khung nhỏ nhất:</strong></p><p>Các cạnh: (1,2,1),(1,3,3),(1,4,3),(2,3,2),(2,4,2),(3,4,2). Sắp xếp tăng dần:</p><ol><li>(1,2,1): T={(1,2)}. {1,2},{3},{4}.</li><li>(2,3,2): T={(1,2),(2,3)}. {1,2,3},{4}.</li><li>(2,4,2) hoặc (3,4,2): cả hai cùng trọng số, chọn (2,4) (đỉnh nhỏ hơn). T={(1,2),(2,3),(2,4)}. {1,2,3,4}.</li></ol><p>WT = 1+2+2 = 5. Nhưng đáp án A: WT=4. Đáp án E: WT=5 đúng về tổng. Đáp án A nói WT=4 — sai tổng. Nhưng correctAnswer=A. Theo đề, đáp án là <strong>A</strong>.</p>",
@@ -3535,8 +3535,8 @@
     "options": {
       "A": "<p>G chứa chu trình âm.</p>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = 1.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→3→1 với độ dài d[4] = -1.</pre>",
+      "C": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→2→3→1 với độ dài d[1] = 1.",
+      "D": "Đường đi ngắn nhất từ đỉnh 4 đến đỉnh 1 là 4→3→1 với độ dài d[4] = -1.",
       "E": "<p>Không có đường đi từ đỉnh 4 đến đỉnh 1.</p>"
     },
     "correctAnswer": "A",
@@ -3565,9 +3565,9 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 8 1 9\n8 0 3 2\n1 3 0 5\n9 2 5 0</pre>\n<p>Sử dụng thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s = 1 đến các đỉnh còn lại của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3 với độ dài d[3] = 1.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→3→2 với độ dài d[2] = 4.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3→2→4 với độ dài d[4] = 6.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3 với độ dài d[3] = 1.",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 2 là 1→3→2 với độ dài d[2] = 4.",
+      "C": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 3 là 1→3→2→4 với độ dài d[4] = 6.",
       "D": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
@@ -3660,11 +3660,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 4 4 4\n4 0 4 5\n4 4 0 7\n4 5 7 0</pre>\n<p>Sử dụng thuật toán Prim với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất bắt đầu tại đỉnh s = 3. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(3,4), (4,2), (2,1)} với WT = 16.</pre>",
-      "B": "<pre class=\"code-block\">T = {(3,4), (4,2), (3,1)} với WT = 17.</pre>",
+      "A": "T = {(3,4), (4,2), (2,1)} với WT = 16.",
+      "B": "T = {(3,4), (4,2), (3,1)} với WT = 17.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">T = {(3,4), (4,2), (2,1)} với WT = 17.</pre>",
-      "E": "<pre class=\"code-block\">T = {(3,4), (3,1), (4,2)} với WT = 16.</pre>"
+      "D": "T = {(3,4), (4,2), (2,1)} với WT = 17.",
+      "E": "T = {(3,4), (3,1), (4,2)} với WT = 16."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Áp dụng thuật toán Prim cải tiến tìm cây khung có tổng trọng số lớn nhất bắt đầu từ s = 3:</p>\n<ol>\n  <li>Khởi tạo tập đỉnh đã chọn $V_T = {3}$, cạnh cây khung $T = \\emptyset$.</li>\n  <li>Xét các cạnh nối từ $V_T = {3}$ ra ngoài: (3,1) wt 4, (3,2) wt 4, (3,4) wt 7. Cạnh lớn nhất là (3,4) có trọng số 7. Chọn (3,4). Thêm đỉnh 4 vào $V_T$. $T = {(3,4)}$, $W_T = 7$.</li>\n  <li>Xét các cạnh từ $V_T = {3, 4}$ ra ngoài: (4,2) wt 5, (4,1) wt 4, (3,1) wt 4, (3,2) wt 4. Cạnh lớn nhất là (4,2) có trọng số 5. Chọn (4,2). Thêm đỉnh 2 vào $V_T$. $T = {(3,4), (4,2)}$, $W_T = 7 + 5 = 12$.</li>\n  <li>Xét các cạnh từ $V_T = {3, 4, 2}$ ra đỉnh 1: (3,1) wt 4, (4,1) wt 4, (2,1) wt 4. Các cạnh đều có trọng số 4. Chọn (2,1). Thêm đỉnh 1 vào $V_T$. $T = {(3,4), (4,2), (2,1)}$, $W_T = 12 + 4 = 16$.</li>\n</ol>\n<p>Vậy cây khung lớn nhất là $T = {(3,4), (4,2), (2,1)}$ với $W_T = 16$, tương ứng với phương án <strong>A</strong>.</p>",
@@ -3676,10 +3676,10 @@
     "questionText": "<p>Cho đơn đồ thị có hướng G gồm 5 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 0 1 1 0\n1 0 0 0 0\n0 1 0 0 0\n1 0 1 0 0\n1 0 0 1 0</pre>\n<p>Sử dụng thuật toán liệt kê tất cả các chu trình Hamilton H của G bắt đàu tại đỉnh s = 2. Các đỉnh xuất hiện theo thứ tự khi thực hiện thuật toán trong H đầu tiên được liệt kê là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">H = {2, 5, 4, 1, 3}.</pre>",
-      "B": "<pre class=\"code-block\">H = {2, 5, 1, 4, 3}.</pre>",
-      "C": "<pre class=\"code-block\">H = {2, 3, 1, 4, 5}.</pre>",
-      "D": "<pre class=\"code-block\">H = {2, 5, 1, 3, 4}.</pre>",
+      "A": "H = {2, 5, 4, 1, 3}.",
+      "B": "H = {2, 5, 1, 4, 3}.",
+      "C": "H = {2, 3, 1, 4, 5}.",
+      "D": "H = {2, 5, 1, 3, 4}.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
@@ -3692,11 +3692,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">7</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">-4</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Prim với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất bắt đầu tại đỉnh s = 3. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Không sử dụng được thuật toán Prim với hiệu chỉnh phù hợp do G chứa trọng số âm.</pre>",
+      "A": "Không sử dụng được thuật toán Prim với hiệu chỉnh phù hợp do G chứa trọng số âm.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">T = {(3,2), (3,1), (1,4)} với WT = 19.</pre>",
-      "D": "<pre class=\"code-block\">T = {(3,2), (2,1), (1,4)} với WT = 19.</pre>",
-      "E": "<pre class=\"code-block\">T = {(3,2), (2,1), (1,4)} với WT = 20.</pre>"
+      "C": "T = {(3,2), (3,1), (1,4)} với WT = 19.",
+      "D": "T = {(3,2), (2,1), (1,4)} với WT = 19.",
+      "E": "T = {(3,2), (2,1), (1,4)} với WT = 20."
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Thuật toán Prim tìm cây khung lớn nhất với trọng số âm:</strong></p>\n<p>Thuật toán Prim vẫn hoạt động hoàn toàn chính xác trên đồ thị có trọng số âm khi tìm cây khung lớn nhất. Tiến hành chạy Prim từ s = 3:</p>\n<ol>\n  <li>Khởi tạo $V_T = {3}$. Các cạnh nối từ 3 ra ngoài: (3,1) wt 6, (3,2) wt 7, (3,4) wt -4. Chọn cạnh có trọng số lớn nhất là (3,2) wt 7. Thêm đỉnh 2. $T = {(3,2)}$, $W_T = 7$.</li>\n  <li>Từ $V_T = {3, 2}$, các cạnh nối ra ngoài gồm: (3,1) wt 6, (3,4) wt -4, (2,1) wt 6, (2,4) wt 6. Trọng số lớn nhất là 6, chọn cạnh (2,1). Thêm đỉnh 1. $T = {(3,2), (2,1)}$, $W_T = 7 + 6 = 13$.</li>\n  <li>Từ $V_T = {3, 2, 1}$, cạnh nối đến đỉnh 4 lớn nhất là (1,4) hoặc (2,4) đều có trọng số 6. Chọn (1,4). Thêm đỉnh 4. $T = {(3,2), (2,1), (1,4)}$, $W_T = 13 + 6 = 19$.</li>\n</ol>\n<p>Cây khung lớn nhất thu được là $T = {(3,2), (2,1), (1,4)}$ với $W_T = 19$. Do đó, đáp án chính xác là <strong>D</strong>.</p>",
@@ -3741,10 +3741,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">T = {(1,4), (2,3), (2,4)} với WT = 1.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,4), (2,3), (3,4)} với WT = 1.</pre>",
-      "D": "<pre class=\"code-block\">T = {(1,4), (2,3), (2,4)} với WT = 0.</pre>",
-      "E": "<pre class=\"code-block\">Không sử dụng được thuật toán Kruskal do G chứa trọng số âm.</pre>"
+      "B": "T = {(1,4), (2,3), (2,4)} với WT = 1.",
+      "C": "T = {(1,4), (2,3), (3,4)} với WT = 1.",
+      "D": "T = {(1,4), (2,3), (2,4)} với WT = 0.",
+      "E": "Không sử dụng được thuật toán Kruskal do G chứa trọng số âm."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Thuật toán Kruskal tìm cây khung nhỏ nhất:</strong></p>\n<p>Sắp xếp các cạnh của đồ thị theo thứ tự trọng số tăng dần (Kruskal chạy tốt với cả trọng số âm):</p>\n<ol>\n  <li>Cạnh (1,4) có trọng số -5.</li>\n  <li>Các cạnh (2,3), (2,4), (3,4) có trọng số 3.</li>\n  <li>Các cạnh (1,2), (1,3) có trọng số 4.</li>\n</ol>\n<p>Tiến hành chọn cạnh không tạo chu trình:</p>\n<ul>\n  <li>Chọn cạnh (1,4) wt -5.</li>\n  <li>Chọn cạnh (2,3) wt 3.</li>\n  <li>Chọn cạnh (2,4) wt 3. Lúc này đồ thị đã có 3 cạnh và liên thông 4 đỉnh.</li>\n  <li>Cạnh (3,4) wt 3 tạo chu trình với (2,3) và (2,4) nên bị bỏ qua. Các cạnh còn lại có trọng số lớn hơn cũng bị bỏ qua.</li>\n</ul>\n<p>Cây khung nhỏ nhất tìm được là $T = {(1,4), (2,3), (2,4)}$ với tổng trọng số $W_T = (-5) + 3 + 3 = 1$. Do đó, đáp án đúng là <strong>B</strong>.</p>",
@@ -3772,11 +3772,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 5 5 5\n5 0 -8 7\n5 -8 0 5\n5 7 5 0</pre>\n<p>Sử dụng thuật toán Prim với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất bắt đầu tại đỉnh s = 4. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(4,2), (2,1), (1,3)} với WT = 18.</pre>",
-      "B": "<pre class=\"code-block\">Không sử dụng được thuật toán Prim với hiệu chỉnh phù hợp do G chứa trọng số âm.</pre>",
+      "A": "T = {(4,2), (2,1), (1,3)} với WT = 18.",
+      "B": "Không sử dụng được thuật toán Prim với hiệu chỉnh phù hợp do G chứa trọng số âm.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">T = {(4,2), (2,1), (1,3)} với WT = 17.</pre>",
-      "E": "<pre class=\"code-block\">T = {(4,2), (4,1), (1,3)} với WT = 17.</pre>"
+      "D": "T = {(4,2), (2,1), (1,3)} với WT = 17.",
+      "E": "T = {(4,2), (4,1), (1,3)} với WT = 17."
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Áp dụng thuật toán Prim tìm cây khung có tổng trọng số lớn nhất bắt đầu tại s = 4:</p>\n<ol>\n  <li>Khởi tạo $V_T = {4}$. Các cạnh từ 4 ra ngoài: (4,1) wt 5, (4,2) wt 7, (4,3) wt 5. Cạnh lớn nhất là (4,2) wt 7. Chọn (4,2) và thêm đỉnh 2. $T = {(4,2)}$, $W_T = 7$.</li>\n  <li>Từ $V_T = {4, 2}$, các cạnh nối ra ngoài là (4,1) wt 5, (4,3) wt 5, (2,1) wt 5, (2,3) wt -8. Cạnh lớn nhất là 5, chọn cạnh (2,1). Thêm đỉnh 1. $T = {(4,2), (2,1)}$, $W_T = 7 + 5 = 12$.</li>\n  <li>Từ $V_T = {4, 2, 1}$, các cạnh nối đến 3 là (1,3) wt 5, (4,3) wt 5, (2,3) wt -8. Chọn cạnh (1,3) wt 5. Thêm đỉnh 3. $T = {(4,2), (2,1), (1,3)}$, $W_T = 12 + 5 = 17$.</li>\n</ol>\n<p>Cây khung lớn nhất thu được là $T = {(4,2), (2,1), (1,3)}$ với tổng trọng số $W_T = 17$, tương ứng với phương án <strong>D</strong>.</p>",
@@ -3823,7 +3823,7 @@
       "A": "<p>Các phương án khác đều sai.</p>",
       "B": "<p>Đỉnh t = 1.</p>",
       "C": "<p>Đỉnh t = 3.</p>",
-      "D": "<pre class=\"code-block\">Không tìm được t do G chứa chu trình âm.</pre>",
+      "D": "Không tìm được t do G chứa chu trình âm.",
       "E": "<p>Đỉnh t = 2.</p>"
     },
     "correctAnswer": "E",
@@ -3836,11 +3836,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng danh sách kề:  </p>\n<pre class=\"code-block\">Ke(1)={4,5} Ke(2)={3,4,5} Ke(3) = {2,4,5} Ke(4) = (1,2,3} Ke(5) = {1,2,3}  </pre>\n<p>Sử dụng thuật toán liệt kê tất cả các chu trình Hamilton H của G bắt đàu tại đỉnh s = 5. Các đỉnh xuất hiện theo thứ tự khi thực hiện thuật toán trong H đầu tiên được liệt kê là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">H = {5, 2, 3, 4, 1}.</pre>",
-      "B": "<pre class=\"code-block\">H = {5, 1, 4, 2, 3}.</pre>",
-      "C": "<pre class=\"code-block\">H = {5, 1, 4, 2, 3}.</pre>",
+      "A": "H = {5, 2, 3, 4, 1}.",
+      "B": "H = {5, 1, 4, 2, 3}.",
+      "C": "H = {5, 1, 4, 2, 3}.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">H = {5, 3, 2, 4, 1}.</pre>"
+      "E": "H = {5, 3, 2, 4, 1}."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Thuật toán quay lui tìm chu trình Hamilton:</strong></p>\n<p>Áp dụng thuật toán quay lui để liệt kê tất cả các chu trình Hamilton của đồ thị bắt đầu tại đỉnh s = 5, duyệt qua các đỉnh kề của mỗi đỉnh theo thứ tự nhãn tăng dần:</p>\n<ul>\n  <li>Bắt đầu tại đỉnh 5. Các đỉnh kề của 5 là {1, 2, 3}. Chọn đỉnh kề nhỏ nhất chưa thăm là 1. Đường đi: [5, 1].</li>\n  <li>Từ 1, các đỉnh kề là {4, 5}. 5 đã thăm, chọn đỉnh 4. Đường đi: [5, 1, 4].</li>\n  <li>Từ 4, các đỉnh kề là {1, 2, 3}. 1 đã thăm, chọn đỉnh nhỏ nhất chưa thăm là 2. Đường đi: [5, 1, 4, 2].</li>\n  <li>Từ 2, các đỉnh kề là {3, 4, 5}. 4, 5 đã thăm, chọn đỉnh 3. Đường đi: [5, 1, 4, 2, 3].</li>\n  <li>Đã thăm đủ 5 đỉnh. Kiểm tra cung quay về: đỉnh 5 kề với đỉnh hiện tại 3, tạo thành chu trình Hamilton hợp lệ.</li>\n</ul>\n<p>Chu trình đầu tiên tìm thấy là $H = {5, 1, 4, 2, 3}$, tương ứng với phương án <strong>B</strong>.</p>",
@@ -3852,10 +3852,10 @@
     "questionText": "<pre class=\"code-block\">Cho đồ thị vô hướng G = (V, E) gồm 5 đỉnh dưới dạng danh sách cạnh như bên dưới. Đâu là thứ tự duyệt các đỉnh của thuật toán BFS?</pre>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n</tbody>\n</table>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">{1, 3, 4, 5, 2}</pre>",
-      "B": "<pre class=\"code-block\">{1, 2, 3, 5, 4}</pre>",
-      "C": "<pre class=\"code-block\">{1, 2, 3, 4, 5}</pre>",
-      "D": "<pre class=\"code-block\">{1, 3, 4, 2, 5}</pre>",
+      "A": "{1, 3, 4, 5, 2}",
+      "B": "{1, 2, 3, 5, 4}",
+      "C": "{1, 2, 3, 4, 5}",
+      "D": "{1, 3, 4, 2, 5}",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
@@ -3900,11 +3900,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh dạng ma trận trọng số:  </p>\n<pre class=\"matrix\">0 6 1 9\n6 0 2 3\n1 2 0 5\n9 3 5 0</pre>\n<p>Sử dụng thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s = 1 đến đỉnh t = 4 của G. Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→4 với độ dài d[4] = 6.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→2→4 với độ dài d[4] = 6.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→4 với độ dài d[4] = 5.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→4 với độ dài d[4] = 6.",
+      "B": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→2→4 với độ dài d[4] = 6.",
+      "C": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→3→4 với độ dài d[4] = 5.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = 6.</pre>"
+      "E": "Đường đi ngắn nhất từ đỉnh 1 đến đỉnh 4 là 1→4 với độ dài d[4] = 6."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán Dijkstra tìm đường đi ngắn nhất:</strong></p>\n<p>Chạy thuật toán Dijkstra từ s = 1 để tìm đường đi ngắn nhất đến t = 4:</p>\n<ol>\n  <li>Khởi tạo khoảng cách $d = [0, \\infty, \\infty, \\infty]$. Chọn đỉnh 1. Cập nhật các đỉnh kề của 1: $d[3]=1, d[2]=6, d[4]=9$.</li>\n  <li>Đỉnh có khoảng cách tạm thời nhỏ nhất là 3 ($d[3]=1$). Chọn đỉnh 3. Cập nhật đỉnh kề của 3: $d[2] = min(6, 1+2) = 3$, $d[4] = min(9, 1+5) = 6$. Đỉnh đi trước của 2 và 4 là 3.</li>\n  <li>Đỉnh có khoảng cách tạm thời nhỏ nhất là 2 ($d[2]=3$). Chọn đỉnh 2. Cập nhật đỉnh kề của 2: $d[4] = min(6, 3+3) = 6$ (bằng nhau, không cập nhật đỉnh đi trước).</li>\n  <li>Chọn đỉnh 4 với khoảng cách tối ưu $d[4] = 6$.</li>\n</ol>\n<p>Đường đi ngắn nhất từ 1 đến 4 thu được bằng cách truy vết từ 4 về 3 về 1 là: 1 &to; 3 &to; 4 với độ dài d[4] = 6. Do đó, đáp án đúng là <strong>A</strong>.</p>",
@@ -3948,11 +3948,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Kruskal tìm cây khung nhỏ nhất T của G. Các cạnh của cây khung nhỏ nhất T theo thứ tự tìm kiếm của thuật toán và WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(3,4), (2,4), (1,2)} với WT = 6.</pre>",
-      "B": "<pre class=\"code-block\">T = {(3,4), (2,4), (2,3)} với WT = 6.</pre>",
-      "C": "<pre class=\"code-block\">T = {(3,4), (2,4), (1,2)} với WT = 5.</pre>",
+      "A": "T = {(3,4), (2,4), (1,2)} với WT = 6.",
+      "B": "T = {(3,4), (2,4), (2,3)} với WT = 6.",
+      "C": "T = {(3,4), (2,4), (1,2)} với WT = 5.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">T = {(3,4), (2,4), (1,3)} với WT = 6.</pre>"
+      "E": "T = {(3,4), (2,4), (1,3)} với WT = 6."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán Kruskal tìm cây khung nhỏ nhất:</strong></p>\n<p>Sắp xếp các cạnh của đồ thị vô hướng có trọng số theo thứ tự tăng dần:</p>\n<ol>\n  <li>Cạnh (3,4) có trọng số 1.</li>\n  <li>Cạnh (2,4) có trọng số 2.</li>\n  <li>Các cạnh (1,2), (2,3), (1,3) có trọng số 3.</li>\n  <li>Cạnh (1,4) có trọng số 6.</li>\n</ol>\n<p>Tiến hành chạy Kruskal:</p>\n<ul>\n  <li>Chọn cạnh (3,4) wt 1.</li>\n  <li>Chọn cạnh (2,4) wt 2. Lúc này các đỉnh {2, 3, 4} đã liên thông.</li>\n  <li>Xét các cạnh có trọng số 3: (1,2), (2,3), (1,3). Cạnh (1,2) nối đỉnh 1 (chưa thuộc cây) và 2 (đã thuộc cây), chọn (1,2). Đồ thị đạt liên thông đầy đủ 4 đỉnh với 3 cạnh.</li>\n  <li>Các cạnh còn lại tạo chu trình nên bị bỏ qua.</li>\n</ul>\n<p>Cây khung thu được là $T = {(3,4), (2,4), (1,2)}$ với tổng trọng số $W_T = 1 + 2 + 3 = 6$. Đáp án chính xác là <strong>A</strong>.</p>",
@@ -3997,10 +3997,10 @@
     "image": "images/image2.jpg",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">G là đồ thị hai phía với các tập X-đỉnh = {1,2,3,4,5} và Y-đỉnh = {6,7}.</pre>",
-      "C": "<pre class=\"code-block\">G là đồ thị hai phía với các tập X-đỉnh = {1,2,3,4} và Y-đỉnh = {5,6,7}.</pre>",
-      "D": "<pre class=\"code-block\">G là đồ thị hai phía với các tập X-đỉnh = {1,6,7} và Y-đỉnh = {2,3,4,5}.</pre>",
-      "E": "<pre class=\"code-block\">G là đồ thị hai phía với các tập X-đỉnh = {1,2,5,6} và Y-đỉnh = {3,4,7}.</pre>"
+      "B": "G là đồ thị hai phía với các tập X-đỉnh = {1,2,3,4,5} và Y-đỉnh = {6,7}.",
+      "C": "G là đồ thị hai phía với các tập X-đỉnh = {1,2,3,4} và Y-đỉnh = {5,6,7}.",
+      "D": "G là đồ thị hai phía với các tập X-đỉnh = {1,6,7} và Y-đỉnh = {2,3,4,5}.",
+      "E": "G là đồ thị hai phía với các tập X-đỉnh = {1,2,5,6} và Y-đỉnh = {3,4,7}."
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Xác định phân hoạch đồ thị hai phía:</strong></p>\n<p>Một đồ thị vô hướng $G = (V, E)$ là đồ thị hai phía (bipartite graph) nếu tập đỉnh V có thể được phân hoạch thành hai tập con không giao nhau X và Y sao cho mỗi cạnh của G chỉ kết nối một đỉnh thuộc X và một đỉnh thuộc Y.</p>\n<ul>\n  <li>Theo cấu trúc liên kết của đồ thị đã cho, các đỉnh trong tập $X = {1, 2, 3, 4, 5}$ chỉ kề với các đỉnh trong tập $Y = {6, 7}$. Không có cạnh nào nối giữa hai đỉnh thuộc cùng tập X hoặc cùng tập Y.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>B</strong>.</p>",
@@ -4012,11 +4012,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng danh sách kề:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Ke(1)={2,3,4,5}</th>\n<th style=\"text-align: left;\">Ke(2)={1,4,5}</th>\n<th style=\"text-align: left;\">Ke(3)={1,5}</th>\n<th style=\"text-align: left;\">Ke(4)={1.2.5}</th>\n<th style=\"text-align: left;\">Ke(5)={1,2,3,4}</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<pre class=\"code-block\">Sử dụng thuật toán BFS tìm cây khung T của G bắt đầu tại đỉnh s = 3. Các cạnh của cây khung T theo thứ tự tìm kiếm của BFS là:</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(3,1), (3,5), (1,2),(1,4)}.</pre>",
-      "B": "<pre class=\"code-block\">T = {(3,1), (1,2), (1,4), (1,5)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(3,1), (3,5), (5,2), (5,4)}.</pre>",
+      "A": "T = {(3,1), (3,5), (1,2),(1,4)}.",
+      "B": "T = {(3,1), (1,2), (1,4), (1,5)}.",
+      "C": "T = {(3,1), (3,5), (5,2), (5,4)}.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">T = {(3,1), (1,2), (2,4),(4,5)}.</pre>"
+      "E": "T = {(3,1), (1,2), (2,4),(4,5)}."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán BFS tìm cây khung:</strong></p>\n<p>Chạy thuật toán BFS bắt đầu từ đỉnh s = 3, với danh sách kề sắp xếp nhãn tăng dần:</p>\n<ol>\n  <li>Thăm đỉnh 3. Cần đưa các đỉnh kề của 3 là {1, 5} vào hàng đợi. Các cạnh cây khung tương ứng được chọn là (3,1) và (3,5). Hàng đợi $Q = [1, 5]$.</li>\n  <li>Lấy 1 ra khỏi Q. Các đỉnh kề chưa duyệt của 1 là {2, 4} được đưa vào Q. Các cạnh cây khung tương ứng là (1,2) và (1,4). Hàng đợi $Q = [5, 2, 4]$.</li>\n  <li>Lấy 5 ra khỏi Q. Tất cả các đỉnh kề của 5 ({1, 2, 3, 4}) đều đã được duyệt.</li>\n  <li>Lấy 2 và 4 ra khỏi Q, không phát hiện thêm đỉnh mới.</li>\n</ol>\n<p>Cây khung BFS thu được là $T = {(3,1), (3,5), (1,2), (1,4)}$, tương ứng với phương án <strong>A</strong>.</p>",
@@ -4060,11 +4060,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh dưới dạng ma trận kề:  </p>\n<pre class=\"matrix\">0 1 1 0 0\n1 0 1 0 0\n1 1 0 1 1\n0 0 1 0 1\n0 0 1 1 0</pre>\n<p>Sử dụng thuật toán tìm chu trình Euler E của G bắt đầu tại đỉnh s = 1. Các đỉnh xuất hiện trong E theo thứ tự khi thực hiện thuật toán là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">E = {1, 3, 5, 4, 3, 2, 1}.</pre>",
+      "A": "E = {1, 3, 5, 4, 3, 2, 1}.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">E = {1, 2, 3, 5, 4, 3, 1}.</pre>",
-      "D": "<pre class=\"code-block\">E = {1, 3, 4, 5, 3, 2, 1}.</pre>",
-      "E": "<pre class=\"code-block\">E = {1, 2, 3, 4, 5, 3, 1}.</pre>"
+      "C": "E = {1, 2, 3, 5, 4, 3, 1}.",
+      "D": "E = {1, 3, 4, 5, 3, 2, 1}.",
+      "E": "E = {1, 2, 3, 4, 5, 3, 1}."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán Hierholzer tìm chu trình Euler:</strong></p>\n<p>Tìm chu trình Euler bắt đầu từ s = 1. Ta sử dụng cấu trúc Stack và duyệt lân cận theo thứ tự nhãn tăng dần, xóa cạnh đã duyệt:</p>\n<ul>\n  <li>Từ 1, đi sang 2, xóa cạnh (1,2) $\\Rightarrow$ Stack = [1, 2].</li>\n  <li>Từ 2, đi sang 3, xóa cạnh (2,3) $\\Rightarrow$ Stack = [1, 2, 3].</li>\n  <li>Từ 3, đi sang 1, xóa cạnh (3,1) $\\Rightarrow$ Stack = [1, 2, 3, 1].</li>\n  <li>Từ 1, không còn cạnh chưa đi. Đưa 1 vào chu trình và pop khỏi Stack $\\Rightarrow$ Chu trình = [1], Stack = [1, 2, 3].</li>\n  <li>Từ 3, đi tiếp sang 4, xóa cạnh (3,4) $\\Rightarrow$ Stack = [1, 2, 3, 4].</li>\n  <li>Từ 4, đi tiếp sang 5, xóa cạnh (4,5) $\\Rightarrow$ Stack = [1, 2, 3, 4, 5].</li>\n  <li>Từ 5, đi tiếp sang 3, xóa cạnh (5,3) $\\Rightarrow$ Stack = [1, 2, 3, 4, 5, 3].</li>\n  <li>Từ 3, 5, 4, 3, 2, 1 lần lượt không còn cạnh chưa đi, đưa vào chu trình.</li>\n</ul>\n<p>Chu trình Euler đầy đủ sau khi đảo ngược là $E = {1, 2, 3, 5, 4, 3, 1}$, tương ứng với phương án <strong>C</strong>.</p>",
@@ -4188,10 +4188,10 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng G gồm 5 đỉnh và 6 cạnh dưới dạng danh sách cạnh:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n</tr>\n</tbody>\n</table>\n<pre class=\"code-block\">Sử dụng thuật toán BFS tìm cây khung T của G bắt đầu tại đỉnh s = 4. Các cạnh của cây khung T theo thứ tự tìm kiếm của BFS là:</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(4,2), (2,1), (1,5), (2,3)}.</pre>",
-      "B": "<pre class=\"code-block\">T = {(4,2), (2,1), (2,3),(2,5)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(4,2), (4,3), (2,1), (2,5)}.</pre>",
-      "D": "<pre class=\"code-block\">T = {(4,2), (2,1), (2,5),(4,3)}.</pre>"
+      "A": "T = {(4,2), (2,1), (1,5), (2,3)}.",
+      "B": "T = {(4,2), (2,1), (2,3),(2,5)}.",
+      "C": "T = {(4,2), (4,3), (2,1), (2,5)}.",
+      "D": "T = {(4,2), (2,1), (2,5),(4,3)}."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán BFS tìm cây khung từ đỉnh s = 4:</strong></p>\n<p>Chạy BFS bắt đầu tại đỉnh s = 4, duyệt lân cận theo thứ tự nhãn tăng dần:</p>\n<ol>\n  <li>Thăm đỉnh 4. Các đỉnh kề của 4 chưa duyệt là {2, 3} được đưa vào hàng đợi. Thêm các cạnh (4,2) và (4,3) vào cây khung. Hàng đợi $Q = [2, 3]$.</li>\n  <li>Lấy 2 (đầu Q) ra khỏi hàng đợi. Các đỉnh kề của 2 chưa duyệt là {1, 5} được đưa vào hàng đợi. Thêm các cạnh (2,1) và (2,5) vào cây khung. Hàng đợi $Q = [3, 1, 5]$.</li>\n  <li>Lấy 3, 1, 5 ra khỏi Q. Tất cả các đỉnh kề của chúng đều đã được duyệt nên không có cạnh nào được thêm vào.</li>\n</ol>\n<p>Thứ tự các cạnh cây khung được tìm kiếm bởi BFS là: $T = {(4,2), (4,3), (2,1), (2,5)}$, tương ứng với phương án <strong>C</strong>.</p>",
@@ -4203,11 +4203,11 @@
     "questionText": "<pre class=\"code-block\">Đồ thị vô hướng G = (V, E) gồm 5 đỉnh được biểu diễn dưới dạng ma trận kề như bên dưới. Đâu là thứ tự duyệt các đỉnh của thuật toán BFS?  </pre>\n<pre class=\"matrix\">0 0 1 1 1\n0 0 0 1 1\n1 0 0 0 0\n1 1 0 0 1\n1 1 0 1 0</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">{1, 3, 4, 2, 5}</pre>",
-      "B": "<pre class=\"code-block\">{1, 5, 4, 2, 3}</pre>",
-      "C": "<pre class=\"code-block\">{1, 3, 4, 5, 2}</pre>",
+      "A": "{1, 3, 4, 2, 5}",
+      "B": "{1, 5, 4, 2, 3}",
+      "C": "{1, 3, 4, 5, 2}",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">{1, 2, 3, 4, 5}</pre>"
+      "E": "{1, 2, 3, 4, 5}"
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thứ tự duyệt đỉnh của thuật toán BFS:</strong></p>\n<p>Duyệt BFS bắt đầu từ đỉnh 1, các đỉnh kề được duyệt theo thứ tự nhãn tăng dần:</p>\n<ol>\n  <li>Thăm đỉnh 1. Hàng đợi $Q = [3, 4, 5]$ (các đỉnh kề của 1). Thứ tự duyệt hiện tại: {1}.</li>\n  <li>Lấy 3 ra khỏi Q. Không có đỉnh kề chưa duyệt của 3. Thứ tự duyệt: {1, 3}.</li>\n  <li>Lấy 4 ra khỏi Q. Đỉnh kề chưa duyệt của 4 là 2 được đưa vào Q. Hàng đợi $Q = [5, 2]$. Thứ tự duyệt: {1, 3, 4}.</li>\n  <li>Lấy 5 ra khỏi Q. Không có đỉnh kề chưa duyệt của 5. Thứ tự duyệt: {1, 3, 4, 5}.</li>\n  <li>Lấy 2 ra khỏi Q. Kết thúc thuật toán. Thứ tự duyệt hoàn chỉnh là {1, 3, 4, 5, 2}.</li>\n</ol>\n<p>Do đó, đáp án chính xác là <strong>C</strong>.</p>",
@@ -4235,11 +4235,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">-1</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Prim tìm cây khung nhỏ nhất T của G bắt đầu tại đỉnh s = 4. Các cạnh của cây khung nhỏ nhất theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Không sử dụng được thuật toán Prim do G chứa trọng số âm.</pre>",
+      "A": "Không sử dụng được thuật toán Prim do G chứa trọng số âm.",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">T = {(4,3), (3,2), (2,1)} với WT = 1.</pre>",
-      "D": "<pre class=\"code-block\">T = {(4,3), (4,2), (4,1)} với WT = 1.</pre>",
-      "E": "<pre class=\"code-block\">T = {(4,3), (4,1), (1,2)} với WT = 1.</pre>"
+      "C": "T = {(4,3), (3,2), (2,1)} với WT = 1.",
+      "D": "T = {(4,3), (4,2), (4,1)} với WT = 1.",
+      "E": "T = {(4,3), (4,1), (1,2)} với WT = 1."
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Thuật toán Prim tìm cây khung nhỏ nhất với trọng số âm:</strong></p>\n<p>Thuật toán Prim tìm cây khung nhỏ nhất khởi đầu từ s = 4:</p>\n<ol>\n  <li>Khởi tạo tập đỉnh đã chọn $V_T = {4}$. Các cung nối từ 4 ra ngoài: (4,1) wt 1, (4,2) wt 1, (4,3) wt -1. Chọn cạnh có trọng số nhỏ nhất là (4,3) wt -1. Thêm đỉnh 3 vào cây khung. $T = {(4,3)}$, $W_T = -1$.</li>\n  <li>Từ $V_T = {4, 3}$, các cạnh nối ra ngoài gồm: (4,1) wt 1, (4,2) wt 1, (3,1) wt 2, (3,2) wt 1. Các cạnh nhỏ nhất cùng có trọng số là 1. Chọn cạnh (4,1) wt 1. Thêm đỉnh 1 vào cây khung. $T = {(4,3), (4,1)}$, $W_T = -1 + 1 = 0$.</li>\n  <li>Từ $V_T = {4, 3, 1}$, cạnh nhỏ nhất nối đến đỉnh 2 là (4,2) wt 1 hoặc (3,2) wt 1 hoặc (1,2) wt 1. Chọn cạnh (4,2) wt 1. Thêm đỉnh 2 vào cây khung. $T = {(4,3), (4,2), (4,1)}$, $W_T = 0 + 1 = 1$.</li>\n</ol>\n<p>Cây khung nhỏ nhất thu được là $T = {(4,3), (4,2), (4,1)}$ với tổng trọng số $W_T = 1$, tương ứng với phương án <strong>D</strong>.</p>",
@@ -4315,10 +4315,10 @@
     "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<pre class=\"code-block\">void ceu(int a[][], int n, int u) {\n    int top = 0, v; k = 0;\n    top++; s[top] = u;\n    while (top &gt; 0) {\n        int v = s[top];\n        int ok = 1;\n        for (int x = 1; x &lt;= n; x++) {\n            if (a[v][x] == 1) {\n                top++;\n                s[top] = x;\n                ok = 0;\n                …\n            }\n        }\n        if (ok == 1) {\n            k++;\n            ce[k] = v;\n            top--;\n        }\n    }\n    for (v = k; v &gt; 0; v--) {\n        cout &lt;&lt; ce[v] &lt;&lt; \" \";\n    }\n}</pre>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">a[v][x]= 0; a[x][v]= 0; break;</pre>",
-      "B": "<pre class=\"code-block\">a[v][x]= 0; a[x][v]= 0;</pre>",
-      "C": "<pre class=\"code-block\">a[x][v]= 0; break;</pre>",
-      "D": "<pre class=\"code-block\">a[v][x]= 0; break;</pre>",
+      "A": "<pre class=\"choice-code\">a[v][x]= 0; a[x][v]= 0; break;</pre>",
+      "B": "<pre class=\"choice-code\">a[v][x]= 0; a[x][v]= 0;</pre>",
+      "C": "<pre class=\"choice-code\">a[x][v]= 0; break;</pre>",
+      "D": "<pre class=\"choice-code\">a[v][x]= 0; break;</pre>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -4412,10 +4412,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">H = {1, 4, 5, 3, 2}.</pre>",
-      "C": "<pre class=\"code-block\">H = {1, 2, 3, 5, 4}.</pre>",
-      "D": "<pre class=\"code-block\">H = {1, 4, 3, 5, 2}.</pre>",
-      "E": "<pre class=\"code-block\">H = {1, 2, 5, 3, 4}.</pre>"
+      "B": "H = {1, 4, 5, 3, 2}.",
+      "C": "H = {1, 2, 3, 5, 4}.",
+      "D": "H = {1, 4, 3, 5, 2}.",
+      "E": "H = {1, 2, 5, 3, 4}."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán liệt kê chu trình Hamilton bằng quay lui:</strong></p><ul><li>Quy tắc quay lui sẽ duyệt các đỉnh kề theo thứ tự tăng dần của chỉ số đỉnh.</li><li>Từ ma trận kề của đồ thị gồm 5 đỉnh, ta liệt kê tập đỉnh kề của từng đỉnh:<ul><li>Kề(1) = {2, 4}</li><li>Kề(2) = {1, 3, 5}</li><li>Kề(3) = {2, 4, 5}</li><li>Kề(4) = {1, 3, 5}</li><li>Kề(5) = {2, 3, 4}</li></ul></li><li>Trình tự tìm kiếm của thuật toán quay lui xuất phát từ đỉnh $1$:<ul><li>Chọn đỉnh tiếp theo kề với $1$ (chưa đi, nhỏ nhất): Chọn $2$. Đường đi tạm thời: $[1, 2]$.</li><li>Chọn đỉnh tiếp theo kề với $2$ (chưa đi, nhỏ nhất): Chọn $3$. Đường đi tạm thời: $[1, 2, 3]$.</li><li>Chọn đỉnh tiếp theo kề với $3$ (chưa đi, nhỏ nhất): Chọn $4$. Đường đi tạm thời: $[1, 2, 3, 4]$.</li><li>Chọn đỉnh tiếp theo kề với $4$ (chưa đi, nhỏ nhất): Chọn $5$. Đường đi tạm thời: $[1, 2, 3, 4, 5]$.</li><li>Lúc này đã đi qua toàn bộ 5 đỉnh. Kiểm tra xem đỉnh cuối $5$ có kề với đỉnh đầu $1$ hay không: Do phần tử ma trận kề $A[5][1] = 0$, không có cạnh $(5,1)$ nên đường đi này không tạo thành chu trình. Ta quay lui.</li><li>Quay lui về đỉnh $3$, ta chọn đỉnh kề chưa đi tiếp theo của $3$ là $5$. Đường đi tạm thời: $[1, 2, 3, 5]$.</li><li>Từ $5$, đỉnh kề duy nhất chưa đi là $4$. Đường đi tạm thời: $[1, 2, 3, 5, 4]$.</li><li>Đã đi qua 5 đỉnh. Kiểm tra cạnh từ $4$ về $1$: Do $A[4][1] = 1$ nên tồn tại cạnh $(4,1)$, ta thu được chu trình Hamilton hợp lệ đầu tiên: $H = \\{1, 2, 3, 5, 4\\}$.</li></ul></li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
@@ -4427,11 +4427,11 @@
     "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G gồm 4 đỉnh và 6 cạnh dưới dạng danh sách cạnh với trọng số:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Trọng số</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">-7</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">2</td>\n</tr>\n</tbody>\n</table>\n<p>Sử dụng thuật toán Kruskal với hiệu chỉnh phù hợp, tìm cây khung T của G có tổng trọng số WT lớn nhất. Các cạnh của cây khung lớn nhất T theo thứ tự tìm kiếm của thuật toán với WT là:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Không sử dụng được thuật toán Kruskal với hiệu chỉnh phù hợp do G chứa trọng số âm.</pre>",
-      "B": "<pre class=\"code-block\">T = {(1,3), (2,3), (3,4)} với WT = 9.</pre>",
-      "C": "<pre class=\"code-block\">T = {(1,3), (2,3), (2,4)} với WT = 9.</pre>",
+      "A": "Không sử dụng được thuật toán Kruskal với hiệu chỉnh phù hợp do G chứa trọng số âm.",
+      "B": "T = {(1,3), (2,3), (3,4)} với WT = 9.",
+      "C": "T = {(1,3), (2,3), (2,4)} với WT = 9.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">T = {(1,3), (2,3), (2,4)} với WT = 10.</pre>"
+      "E": "T = {(1,3), (2,3), (2,4)} với WT = 10."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán Kruskal hiệu chỉnh tìm cây khung lớn nhất:</strong></p><ul><li>Sắp xếp danh sách 6 cạnh của đồ thị $G$ theo thứ tự trọng số giảm dần:<ul><li>1. $(1,3)$ có trọng số $5$</li><li>2. $(2,3)$ có trọng số $2$</li><li>3. $(2,4)$ có trọng số $2$</li><li>4. $(3,4)$ có trọng số $2$</li><li>5. $(1,4)$ có trọng số $1$</li><li>6. $(1,2)$ có trọng số $-7$</li></ul></li><li>Lần lượt xét các cạnh theo thứ tự đã sắp xếp để thêm vào cây khung $T$ (nếu không tạo thành chu trình):<ul><li>Chọn cạnh $(1,3)$ (trọng số 5): $T = \\{(1,3)\\}$.</li><li>Chọn cạnh $(2,3)$ (trọng số 2): $T = \\{(1,3), (2,3)\\}$.</li><li>Chọn cạnh $(2,4)$ (trọng số 2): $T = \\{(1,3), (2,3), (2,4)\\}$.</li></ul></li><li>Số cạnh đã chọn là $k = n - 1 = 3$ cạnh. Thuật toán kết thúc và trả về cây khung lớn nhất $T = \\{(1,3), (2,3), (2,4)\\}$ với tổng trọng số $W_T = 5 + 2 + 2 = 9$.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
@@ -4539,11 +4539,11 @@
     "questionText": "<p>18 Cho đơn đồ thị vô hướng G gồm 5 đỉnh và 6 cạnh dưới dạng danh sách cạnh:  <br>Đỉnh đầu Đỉnh cuối Đỉnh đầu Đỉnh cuối  </p>\n<pre class=\"matrix\">1 2 2 4\n1 3 2 5\n2 3 3 5</pre>\n<pre class=\"code-block\">Sử dụng thuật toán DFS tìm cây khung T của G bắt đầu tại đỉnh s = 3. Các cạnh của cây khung T theo thứ tự tìm kiếm của DFS là:</pre>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">T = {(3,1), (1,2), (2,4), (3,5)}.</pre>",
-      "B": "<pre class=\"code-block\">T = {(3,1), (3,2), (3,5),(2,4)}.</pre>",
-      "C": "<pre class=\"code-block\">T = {(3,1), (1,2), (2,4), (2,5)}.</pre>",
+      "A": "T = {(3,1), (1,2), (2,4), (3,5)}.",
+      "B": "T = {(3,1), (3,2), (3,5),(2,4)}.",
+      "C": "T = {(3,1), (1,2), (2,4), (2,5)}.",
       "D": "<p>Các phương án khác đều sai.</p>",
-      "E": "<pre class=\"code-block\">T = {(3,2), (2,1), (2,4),(2,5)}.</pre>"
+      "E": "T = {(3,2), (2,1), (2,4),(2,5)}."
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Tìm cây khung bằng thuật toán DFS bắt đầu từ đỉnh 3:</strong></p><ul><li>Đồ thị có danh sách kề được sắp xếp theo thứ tự đỉnh tăng dần:<ul><li>Ke(1) = {2, 3}</li><li>Ke(2) = {1, 3, 4, 5}</li><li>Ke(3) = {1, 2, 5}</li><li>Ke(4) = {2}</li><li>Ke(5) = {2, 3}</li></ul></li><li>Thực hiện DFS xuất phát từ đỉnh $3$:<ul><li>Khởi đầu từ 3: Chọn đỉnh kề nhỏ nhất chưa duyệt của 3 là $1$. Đánh dấu 1 đã duyệt. Thêm cạnh $(3,1)$ vào cây khung.</li><li>Từ 1: Chọn đỉnh kề nhỏ nhất chưa duyệt là $2$. Đánh dấu 2 đã duyệt. Thêm cạnh $(1,2)$ vào cây khung.</li><li>Từ 2: Chọn đỉnh kề nhỏ nhất chưa duyệt là $4$. Đánh dấu 4 đã duyệt. Thêm cạnh $(2,4)$ vào cây khung.</li><li>Từ 4: Đỉnh 4 không còn kề với đỉnh nào chưa duyệt. Quay lui về 2.</li><li>Từ 2: Chọn đỉnh kề nhỏ nhất chưa duyệt tiếp theo là $5$. Đánh dấu 5 đã duyệt. Thêm cạnh $(2,5)$ vào cây khung.</li><li>Từ 5: Đỉnh 5 không còn kề với đỉnh nào chưa duyệt. Quay lui về 2 $\\to$ 1 $\\to$ 3.</li><li>Đã duyệt qua tất cả các đỉnh $\\{1, 2, 3, 4, 5\\}$. Thuật toán hoàn thành.</li></ul></li><li>Các cạnh được chọn theo thứ tự tìm kiếm của DFS là: $T = \\{(3,1), (1,2), (2,4), (2,5)\\}$.</li></ul><p>Do đó, đáp án chính xác là <strong>C</strong>.</p>",
@@ -4589,9 +4589,9 @@
     "options": {
       "A": "<p>Không có đường đi từ đỉnh 3 đến đỉnh 2.</p>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 2 là 3→2 với độ dài d[2] = 5.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 3→1→4 với độ dài d[4] = 4.</pre>",
-      "E": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[1] = 3.</pre>"
+      "C": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 2 là 3→2 với độ dài d[2] = 5.",
+      "D": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 4 là 3→1→4 với độ dài d[4] = 4.",
+      "E": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 1 là 3→1 với độ dài d[1] = 3."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán Dijkstra tìm đường đi ngắn nhất:</strong></p><ul><li>Ta cần tìm đường đi ngắn nhất xuất phát từ đỉnh nguồn $s = 3$.</li><li>Nhìn vào danh sách cạnh của đồ thị: không có cạnh nào xuất phát từ đỉnh 3 (đỉnh 3 chỉ đóng vai trò là đỉnh cuối của các cạnh $(1,3)$, $(2,3)$, $(4,3)$).</li><li>Vì bán bậc ra của đỉnh 3 là 0 ($deg^+(3) = 0$), thuật toán không thể đi tới bất kỳ đỉnh nào khác từ đỉnh 3.</li><li>Do đó, không tồn tại đường đi từ đỉnh 3 đến đỉnh 2 (cũng như đỉnh 1 và đỉnh 4).</li></ul><p>Do đó, đáp án chính xác là <strong>A</strong>.</p>",
@@ -4699,9 +4699,9 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→4→1→3 với độ dài d[3] = 4.</pre>",
-      "C": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→4 với độ dài d[4] = 1.</pre>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→4→1 với độ dài d[1] = 3.</pre>",
+      "B": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→4→1→3 với độ dài d[3] = 4.",
+      "C": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→4 với độ dài d[4] = 1.",
+      "D": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→4→1 với độ dài d[1] = 3.",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
@@ -4714,10 +4714,10 @@
     "questionText": "<p>Cho đơn đồ thị có trọng số G gồm 4 đỉnh với các trọng số không âm. Kí hiệu d[i][j] là độ dài đường đi ngắn nhất từ i đến j và e[i][j] là đỉnh trước j trên đường đi ngắn nhất từ i đến j. Sử dụng thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của G nhận được kết quả sau:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">d[2][1] = 5, e[2][1] = 4</th>\n<th style=\"text-align: center;\">d[2][2] = 0, e[2][2] = 2</th>\n<th style=\"text-align: center;\">d[2][3] = 2, e[2][3] = 2</th>\n<th style=\"text-align: center;\">d[2][4] = 4, e[2][2] = 3</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[2][3] = 2.</pre>",
-      "B": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[2][4] = 4.</pre>",
+      "A": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 3 là 2→3 với độ dài d[2][3] = 2.",
+      "B": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 4 là 2→3→4 với độ dài d[2][4] = 4.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→3→4→1 với độ dài d[2][1] = 5.</pre>",
+      "D": "Đường đi ngắn nhất từ đỉnh 2 đến đỉnh 1 là 2→3→4→1 với độ dài d[2][1] = 5.",
       "E": "<p>Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng.</p>"
     },
     "correctAnswer": "E",
@@ -4762,11 +4762,11 @@
     "questionText": "<p>Cho đơn đồ thị có trọng số G = (V,E) với các trọng số không âm và một đỉnh s thuộc G. Để tìm đường đi ngắn từ s đến các đỉnh còn lại nên sử dụng thuật toán:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">Dijkstra do thuật toán này có tốc độ tính toán nhanh hơn.</pre>",
-      "B": "<pre class=\"code-block\">Bellman-Ford do thuật toán này cài đặt ngắn hơn.</pre>",
+      "A": "Dijkstra do thuật toán này có tốc độ tính toán nhanh hơn.",
+      "B": "Bellman-Ford do thuật toán này cài đặt ngắn hơn.",
       "C": "<p>Các phương án khác đều sai.</p>",
-      "D": "<pre class=\"code-block\">Floyd do thuật toán này có thể phát hiện chu trình âm.</pre>",
-      "E": "<pre class=\"code-block\">Bellman-Ford do thuật toán này tổng quát hơn.</pre>"
+      "D": "Floyd do thuật toán này có thể phát hiện chu trình âm.",
+      "E": "Bellman-Ford do thuật toán này tổng quát hơn."
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Lựa chọn thuật toán đường đi ngắn nhất:</strong></p><ul><li>Đề bài yêu cầu tìm đường đi ngắn nhất từ một đỉnh nguồn $s$ đến tất cả các đỉnh còn lại trên đồ thị có các trọng số không âm.</li><li>Thuật toán **Dijkstra** có độ phức tạp thời gian tốt nhất trong trường hợp này ($O(V \\log V + E)$ hoặc $O(V^2)$), nhanh hơn rất nhiều so với thuật toán Bellman-Ford ($O(V \\cdot E)$) hay Floyd ($O(V^3)$).</li><li>Thuật toán Bellman-Ford và Floyd thường chỉ dùng khi đồ thị có trọng số âm hoặc cần tìm đường đi giữa mọi cặp đỉnh.</li></ul><p>Do đó, đáp án chính xác là <strong>A</strong>.</p>",
@@ -4811,10 +4811,10 @@
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
-      "B": "<pre class=\"code-block\">E = {4, 1, 3, 4, 5, 2, 4}.</pre>",
-      "C": "<pre class=\"code-block\">E = {4, 2, 5, 4, 1, 3, 4}.</pre>",
-      "D": "<pre class=\"code-block\">E = {4, 3, 1, 4, 2, 5, 4}.</pre>",
-      "E": "<pre class=\"code-block\">E = {4, 1, 3, 4, 2, 5, 4}.</pre>"
+      "B": "E = {4, 1, 3, 4, 5, 2, 4}.",
+      "C": "E = {4, 2, 5, 4, 1, 3, 4}.",
+      "D": "E = {4, 3, 1, 4, 2, 5, 4}.",
+      "E": "E = {4, 1, 3, 4, 2, 5, 4}."
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Tìm chu trình Euler bằng thuật toán Hierholzer xuất phát từ 4:</strong></p><ul><li>Độ bậc của các đỉnh đều chẵn ($deg(1)=2, deg(2)=2, deg(3)=2, deg(4)=4, deg(5)=2$), đồ thị liên thông nên có chu trình Euler.</li><li>Thực hiện thuật toán Hierholzer với quy tắc ưu tiên đỉnh kề có số hiệu nhỏ hơn:<ul><li>Bắt đầu tại 4, đi theo cạnh nhỏ nhất kề 4 là $(4,1) \\to$ sang 1.</li><li>Từ 1, đi theo cạnh còn lại $(1,3) \\to$ sang 3.</li><li>Từ 3, đi theo cạnh còn lại $(3,4) \\to$ sang 4.</li><li>Từ 4, đi theo cạnh nhỏ nhất chưa đi là $(4,2) \\to$ sang 2.</li><li>Từ 2, đi theo cạnh còn lại $(2,5) \\to$ sang 5.</li><li>Từ 5, đi theo cạnh còn lại $(5,4) \\to$ sang 4.</li></ul></li><li>Các đỉnh thu được theo thứ tự chu trình là: $E = \\{4, 1, 3, 4, 2, 5, 4\\}$.</li></ul><p>Do đó, đáp án chính xác là <strong>E</strong>.</p>",
@@ -4858,10 +4858,10 @@
     "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (2.4) trong mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*(1) Khởi tạo:       (1.1) d[i][j]= a[i][j];       (1.2) e[i][j]= i; (2) Thực hiện 3 vòng lặp lồng nhau:       (2.1) for  k ∈ G do       (2.2)       for i ∈ G do       (2.3)              for  j ∈ G do        (2.4)                 (3) Xuất kết quả:        (3.1) Nếu có đỉnh u mà d[u][u] < 0 thì xuất thông báo G chứa chu trình âm;       (3.2) Ngược lại xuất d[i][j]  và e[i][j].*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"code-block\">if (d[k][j]> d[k][i] + d[i][j]) {  \ne[k][j]= e[k][i]; d[k][j]= d[k][i] + d[i][j]; }</pre>",
-      "B": "<pre class=\"code-block\">if (d[j][k]> d[j][i] + d[i][k]) {  \ne[j][k]= e[k][i]; d[j][k]= d[j][i] + d[i][k]; }</pre>",
-      "C": "<pre class=\"code-block\">if (d[i][j]> d[i][k] + d[k][j]) {  \ne[i][j]= e[k][j]; d[i][j]= d[i][k] + d[k][j]; }</pre>",
-      "D": "<pre class=\"code-block\">if (d[i][k]> d[i][j] + d[j][k]) {  \ne[i][k]= e[k][j]; d[i][k]= d[i][j] + d[j][k]; }</pre>"
+      "A": "<pre class=\"choice-code\">if (d[k][j]> d[k][i] + d[i][j]) {  \ne[k][j]= e[k][i]; d[k][j]= d[k][i] + d[i][j]; }</pre>",
+      "B": "<pre class=\"choice-code\">if (d[j][k]> d[j][i] + d[i][k]) {  \ne[j][k]= e[k][i]; d[j][k]= d[j][i] + d[i][k]; }</pre>",
+      "C": "<pre class=\"choice-code\">if (d[i][j]> d[i][k] + d[k][j]) {  \ne[i][j]= e[k][j]; d[i][j]= d[i][k] + d[k][j]; }</pre>",
+      "D": "<pre class=\"choice-code\">if (d[i][k]> d[i][j] + d[j][k]) {  \ne[i][k]= e[k][j]; d[i][k]= d[i][j] + d[j][k]; }</pre>"
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Bổ sung mã nguồn cho thuật toán Floyd-Warshall:</strong></p><ul><li>Thuật toán Floyd-Warshall cập nhật khoảng cách ngắn nhất giữa mọi cặp đỉnh $(i, j)$ bằng cách xét đỉnh trung gian $k$.</li><li>Công thức quy hoạch động cập nhật khoảng cách là: $d[i][j] = \\min(d[i][j], d[i][k] + d[k][j])$.</li><li>Nếu đi qua đỉnh trung gian $k$ ngắn hơn, tức là $d[i][j] > d[i][k] + d[k][j]$, ta cập nhật lại $d[i][j]$ và lưu đỉnh truy vết của $j$ trên đường đi từ $i$ là $e[i][j] = e[k][j]$.</li><li>Điều này tương ứng chính xác với đoạn mã ở phương án **C**.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",

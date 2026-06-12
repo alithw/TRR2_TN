@@ -718,6 +718,18 @@ html.dark .question-image {
     flex: 1;
 }
 
+.choice-code {
+    background: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    white-space: pre-wrap !important;
+    color: inherit !important;
+}
+
 /* Choice States styling */
 .choice-btn.selected {
     background-color: var(--accent-blue-light);
