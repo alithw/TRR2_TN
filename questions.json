@@ -433,7 +433,7 @@
   {
     "id": 28,
     "category_name": "Thuật toán DFS",
-    "questionText": "<pre class=\"code-block\">Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng DFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</pre>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Dfs(s){\n     VS[s] = 1;\nFor v Î Ke(s)\n          if (VS[v] = 0) {\n                T = T È (s, v);\n                  Dfs(v);\n          } }</th>\n<th style=\"text-align: left;\">Tree_Dfs(s){\n      For  v Î V\n                 VS[v] = 0;\n      T = Æ;\n      Dfs(s);\nFor v Î V\n         if (VS[v] = 0) Return(< Không có cây khung>);\nReturn (T); }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng DFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Dfs(s){\n    VS[s] = 1;\n    For v Î Ke(s)\n        if (VS[v] = 0) {\n            T = T È (s, v);\n            Dfs(v);\n        }\n}\n\nTree_Dfs(s){\n    For v Î V\n        VS[v] = 0;\n    T = Æ;\n    Dfs(s);\n    For v Î V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>T là cây khung của G vì T có n cạnh.</p>",
@@ -607,7 +607,7 @@
   {
     "id": 39,
     "category_name": "Thuật toán BFS",
-    "questionText": "<p>Xét thuật toán tìm luồng cực đại trên mang G = (V, E) sau đây:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*Thuật toán Max_Flow {\n(1)\n    for u ÎV do\n               for v  ÎV do f(u, v) = 0;\n(2)\n   Stop = 0;\n(3)\n   while (Stop = 0) do {\n   (4)\n       <Xác định đồ thị tăng luồng Gf >;\n(5)\n        if (Tìm được đường tăng luồng P bằng Bfs(s)) { (6)\n                  <Tìm d là  trọng số nhỏ nhất trên P>; <Tăng luồng f theo P>; (7)\n                 } else Stop = 1;\n            }\n(8)\n   Return (f, val(f));  }*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Các thao tác trong bước (6) là:</p>",
+    "questionText": "<p>Xét thuật toán tìm luồng cực đại trên mang G = (V, E) sau đây:</p>\n<pre class=\"code-block\">Thuật toán Max_Flow {\n    (1) for u Î V do\n            for v Î V do f(u, v) = 0;\n    (2) Stop = 0;\n    (3) while (Stop = 0) do {\n    (4)     &lt;Xác định đồ thị tăng luồng Gf &gt;;\n    (5)     if (Tìm được đường tăng luồng P bằng Bfs(s)) {\n    (6)         &lt;Tìm d là trọng số nhỏ nhất trên P&gt;;\n                &lt;Tăng luồng f theo P&gt;;\n    (7)     } else Stop = 1;\n        }\n    (8) Return (f, val(f));\n}</pre>\n<p>Các thao tác trong bước (6) là:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">d là trọng số nhỏ nhất trên P>; ;</pre>",
@@ -623,7 +623,7 @@
   {
     "id": 40,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">void ceu(int a[][], int n, int u) {\n    int top =0, v; k= 0;\n    top++; s[top]= u;\nwhile (top > 0)  {\n        int v= s[top];  int ok= 1;\nfor (int x= 1; x<= n; x++)\n         if (a[v][x] ==1){\n                  …\n                  break;\n                     }</th>\n<th style=\"text-align: left;\">if (ok == 1) {\n                     k++; ce[k]= v;\n                     top--;\n                   }\n           }\n      for (v = k; v> 0; v--)\n                   cout << ce[v] << “ “; }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
+    "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<pre class=\"code-block\">void ceu(int a[][], int n, int u) {\n    int top = 0, v; k = 0;\n    top++; s[top] = u;\n    while (top &gt; 0) {\n        int v = s[top];\n        int ok = 1;\n        for (int x = 1; x &lt;= n; x++) {\n            if (a[v][x] == 1) {\n                …\n                break;\n            }\n        }\n        if (ok == 1) {\n            k++;\n            ce[k] = v;\n            top--;\n        }\n    }\n    for (v = k; v &gt; 0; v--) {\n        cout &lt;&lt; ce[v] &lt;&lt; \" \";\n    }\n}</pre>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">s[top]= x; ok= 0;</pre>",
@@ -815,7 +815,7 @@
   {
     "id": 52,
     "category_name": "Thuật toán Kruskal",
-    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal tìm cây khung nhỏ nhất T và WT của G như sau:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">(1)\n(2) T= Æ;  WT= 0; k = 0;\n(3)  For  (ei Î E){\n           if ( T È {ei} không chứa chu trình){\n               T = T È {ei};\n                 WT= WT + <Trọng số của ei>;</th>\n<th style=\"text-align: left;\">k++;\nif  (k = n-1)\n                       Return (T và WT);\n                  }\n         }\n(4) Return (<G không có cây khung>);</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal tìm cây khung nhỏ nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = Æ; WT = 0; k = 0;\n(3) For (ei Î E) {\n        if (T È {ei} không chứa chu trình) {\n            T = T È {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Đánh dấu tất cả các đỉnh v V chưa được chọn (VS(v) = 0).</p>",
@@ -863,7 +863,7 @@
   {
     "id": 55,
     "category_name": "Thuật toán Floyd",
-    "questionText": "<p>Xét một cách mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*\n(1) Khởi tạo:\n(1.1) d[i][j]= a[i][j];\n(1.2) e[i][j]= i;\n(2) Thực hiện 3 vòng lặp lồng nhau:\n(2.1) for  k Î G do\n(2.2)\n       for i Î G do\n(2.3)\n              for  j Î G do\n(2.4)\n                if (d[k][j]> d[k][i] + d[i][j]) {\n                                        e[k][j]= i;\nd[k][j]= d[k][i] + d[i][j]; }\n(3) Xuất kết quả:\n(3.1) Nếu có đỉnh u mà d[u][u] < 0 thì xuất thông báo G chứa chu trình âm;\n(3.2) Ngược lại xuất d[i][j]  và e[i][j].*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Xét một cách mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) d[i][j] = a[i][j];\n    (1.2) e[i][j] = i;\n(2) Thực hiện 3 vòng lặp lồng nhau:\n    (2.1) for k Î G do\n    (2.2)     for i Î G do\n    (2.3)         for j Î G do\n    (2.4)             if (d[k][j] &gt; d[k][i] + d[i][j]) {\n                          e[k][j] = i;\n                          d[k][j] = d[k][i] + d[i][j];\n                      }\n(3) Xuất kết quả:\n    (3.1) Nếu có đỉnh u mà d[u][u] &lt; 0 thì xuất thông báo G chứa chu trình âm;\n    (3.2) Ngược lại xuất d[i][j] và e[i][j].</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<p>Bước (1.2) bị sai.</p>",
@@ -1038,7 +1038,7 @@
   {
     "id": 66,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Euler(s){\n      Stack = Æ;\nQueue = Æ;\n      <Đưa đỉnh s vào Stack>;\nWhile (Stack ¹ Æ){\n         <Lấy x là đỉnh đầu của Stack>;\nif (Ke(x) ¹ Æ){\n             <Lấy y là đỉnh đầu tiên của Ke(x)>;\n               <Đưa đỉnh y vào Stack>;</th>\n<th style=\"text-align: left;\">Ke(x) = Ke(x)\\{y};\n                  } else{\n                  <Loại bỏ đỉnh x khỏi Stack>;\n                 <Đưa đỉnh y vào Queue>;\n             }\n      }\n      Return (<Các đỉnh của Queue theo thứ tự ngược lại>);  }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = Æ; Queue = Æ;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ¹ Æ) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ¹ Æ) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán có thể tìm được chu trình/đường đi Euler bắt đầu tại đỉnh s.</p>",
@@ -1341,7 +1341,7 @@
   {
     "id": 85,
     "category_name": "Khái niệm đồ thị cơ bản",
-    "questionText": "<p>Xét một cách mô tả thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*\n(1) Khởi tạo:\n(1.1) for vÎ G do {\n(1.2)\n                           d[v]= a[s][v];\ne[v]= s; }\n(2) Bắt đầu tìm kiếm từ s:\n(2.1) d[s] = 0;\ne[s] = 0;\n(2.2) ok = 0;\n(3) Thực hiện n-1 lần lặp:\n(3.1)  ok= 1;\n(3.2) for v Î G do\n(3.3)\n        for u Î G do\n(3.4)\n               if  (d[u] > d[v] + a[v][u]) {\n                                     e[u] = v;\nd[u] = d[v] + a[v][u];\nok = 0; }\n(3.5) Nếu (ok = 1) thì chuyển bước (4);\n(4) Nếu (ok = 1) thì đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s;\n(5) Nếu (ok = 0) thì đưa ra thông báo G chứa chu trình âm;*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Xét một cách mô tả thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v Î G do {\n              d[v] = a[s][v];\n              e[v] = s;\n          }\n(2) Bắt đầu tìm kiếm từ s:\n    (2.1) d[s] = 0;\n    (2.2) e[s] = 0;\n    (2.3) ok = 0;\n(3) Thực hiện n-1 lần lặp:\n    (3.1) ok = 1;\n    (3.2) for v Î G do\n    (3.3)     for u Î G do\n    (3.4)         if (d[u] &gt; d[v] + a[v][u]) {\n                      e[u] = v;\n                      d[u] = d[v] + a[v][u];\n                      ok = 0;\n                  }\n    (3.5) Nếu (ok = 1) thì chuyển bước (4);\n(4) Nếu (ok = 1) thì đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s;\n(5) Nếu (ok = 0) thì đưa ra thông báo G chứa chu trình âm;</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<p>Bước (3.4) bị sai.</p>",
@@ -1629,7 +1629,7 @@
   {
     "id": 103,
     "category_name": "Thuật toán BFS",
-    "questionText": "<pre class=\"code-block\">Sắp xếp theo thứ tự để thu được đoạn giả mã của thuật toán BFS </pre>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Begin\n(Khởi tạo):\n   Queue = ∅;\nPush(Queue, u);\nchuaxet[u] = False;\n(Lặp):\n1. EndIf;\n2. EndFor;\n3. EndWhile;</th>\n<th style=\"text-align: left;\">\n4. s = Pop(Queue);\n5. Push(Queue, t);\nchuaxet[t] = False;\n6. if (chuaxet[t]) then\n7. for each t ∈ Ke(s) do\n8. while (Queue ≠ ∅) do\n(Trả kết quả):  Return(<Tập đỉnh được duyệt>); End.</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p>Sắp xếp theo thứ tự để thu được đoạn giả mã của thuật toán BFS:</p>\n<pre class=\"code-block\">Begin\n(Khởi tạo):\n    Queue = ∅;\n    Push(Queue, u);\n    chuaxet[u] = False;\n(Lặp):\n    1. EndIf;\n    2. EndFor;\n    3. EndWhile;\n    4. s = Pop(Queue);\n    5. Push(Queue, t); chuaxet[t] = False;\n    6. if (chuaxet[t]) then\n    7. for each t ∈ Ke(s) do\n    8. while (Queue ≠ ∅) do\n(Trả kết quả):\n    Return(&lt;Tập đỉnh được duyệt&gt;);\nEnd.</pre>",
     "image": "",
     "options": {
       "A": "<p>C. 4 -> 8 -> 7 -> 6 -> 5 -> 1 -> 2 -> 3</p>",
@@ -1677,7 +1677,7 @@
   {
     "id": 106,
     "category_name": "Thuật toán DFS",
-    "questionText": "<pre class=\"code-block\">Sắp xếp theo thứ tự để thu được đoạn giả mã của thuật toán DFS:</pre>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Begin\n1. EndIf;\n2. EndFor;\n3. DFS(v); 4. <Thăm đỉnh u>; // Duyệt đỉnh u</th>\n<th style=\"text-align: left;\">\n5. chuaxet[u]:= FALSE;\n6. if (chuaxet[v]) then\n7. for each v ∈ ke(u) do End.</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p>Sắp xếp theo thứ tự để thu được đoạn giả mã của thuật toán DFS:</p>\n<pre class=\"code-block\">Begin\n    1. EndIf;\n    2. EndFor;\n    3. DFS(v);\n    4. &lt;Thăm đỉnh u&gt;; // Duyệt đỉnh u\n    5. chuaxet[u] := FALSE;\n    6. if (chuaxet[v]) then\n    7. for each v ∈ ke(u) do\nEnd.</pre>",
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
@@ -1741,7 +1741,7 @@
   {
     "id": 110,
     "category_name": "Thuật toán BFS",
-    "questionText": "<p><strong>Đoạn giả mã của thuật toán Breadth First Search</strong> <strong>được mô tả dưới đây.</strong></p>\n<p><strong>Cần sửa lại dòng mã nào để thu được giả mã chính xác?</strong></p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Begin\n(Khởi tạo):\n1. Queue = ∅;\n2. Push(Queue, u);\n3. chuaxet[u] = False;\n(Lặp):\n4. while (Queue ≠ ∅) do\n5.\n    s = Push(Queue);\n6.\n   for each t ∈ Ke(s) do</th>\n<th style=\"text-align: left;\">\n7.  if (chuaxet[t]) then\n8.\n   Pop(Queue, t);\nchuaxet[t] = False;\nEndIf;\nEndFor;\nEndWhile;\n(Trả kết quả):\n      Return(<Tập đỉnh được duyệt>); End.</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p><strong>Đoạn giả mã của thuật toán Breadth First Search</strong> <strong>được mô tả dưới đây.</strong></p>\n<p><strong>Cần sửa lại dòng mã nào để thu được giả mã chính xác?</strong></p>\n<pre class=\"code-block\">Begin\n(Khởi tạo):\n    1. Queue = ∅;\n    2. Push(Queue, u);\n    3. chuaxet[u] = False;\n(Lặp):\n    4. while (Queue ≠ ∅) do\n    5.    s = Push(Queue);\n    6.    for each t ∈ Ke(s) do\n    7.        if (chuaxet[t]) then\n    8.            Pop(Queue, t); chuaxet[t] = False;\n                  EndIf;\n              EndFor;\n          EndWhile;\n(Trả kết quả):\n    Return(&lt;Tập đỉnh được duyệt&gt;);\nEnd.</pre>",
     "image": "",
     "options": {
       "A": "<p>5, 8</p>",
@@ -1933,7 +1933,7 @@
   {
     "id": 122,
     "category_name": "Luồng trong mạng",
-    "questionText": "<p>Đoạn mã dưới đây mô tả một thuật toán đồ thị, đó là thuật toán nào?</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*\nBƯỚC KHỞI TẠO: s là đỉnh xuất phát\n       for v ∈ V do {\n          d[v] = A[s,v]; truoc[v]=s; }\nBƯỚC LẶP:\n   While(V≠ø){\n     <Chọn u là đỉnh có d[u] nhỏ nhất>;\n    <Cố định nhãn của đỉnh u>; V=V\\{u};*</th>\n<th style=\"text-align: left;\">*for v ∈ V do { if (d[v]>d[u] + A[u,v]){\n     d[v]=d[u]+A[u,v];\n     truoc[v]=u; }\n    }\n      }\nBƯỚC TRẢ LẠI KẾT QUẢ: Return(d(s,t));*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p>Đoạn mã dưới đây mô tả một thuật toán đồ thị, đó là thuật toán nào?</p>\n<pre class=\"code-block\">BƯỚC KHỞI TẠO: s là đỉnh xuất phát\n    for v ∈ V do {\n        d[v] = A[s,v];\n        truoc[v] = s;\n    }\nBƯỚC LẶP:\n    While(V ≠ ø) {\n        &lt;Chọn u là đỉnh có d[u] nhỏ nhất&gt;;\n        &lt;Cố định nhãn của đỉnh u&gt;;\n        V = V \\ {u};\n        for v ∈ V do {\n            if (d[v] &gt; d[u] + A[u,v]) {\n                d[v] = d[u] + A[u,v];\n                truoc[v] = u;\n            }\n        }\n    }\nBƯỚC TRẢ LẠI KẾT QUẢ:\n    Return(d(s,t));</pre>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán Bellman-Ford.</p>",
@@ -1996,7 +1996,7 @@
   {
     "id": 126,
     "category_name": "Thuật toán Dijkstra",
-    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (5) trong mô tả thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][] với các trọng số không âm:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">(*1) Khởi tạo:\n(1.1) for vÎ G do {\n(1.2)\n                           d[v]= a[s][v];\ne[v]= s;\nvs[v]= 0; }\n(2) Bắt đầu tìm kiếm từ s: d[s]= 0;\ne[s]= 0;\nvs[s]= 1;\n(3) Tìm đỉnh u sao cho d[u]= min{d[v]</th>\n<th style=\"text-align: left;\">vs[v] = 0}:\n(3.1) Nếu không tìm được u thì chuyển bước (7);\n(3.2) Nếu tìm được u thì chuyển bước (4).\n(4) Cập nhật vs[u] = 1;\n(5)  for v Î G do\n(6) Quay lại (3).\n(7) Đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s.*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (5) trong mô tả thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][] với các trọng số không âm:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v Î G do {\n    (1.2)     d[v] = a[s][v]; e[v] = s; vs[v] = 0;\n          }\n(2) Bắt đầu tìm kiếm từ s: d[s] = 0; e[s] = 0; vs[s] = 1;\n(3) Tìm đỉnh u sao cho d[u] = min{d[v] vs[v] = 0}:\n    (3.1) Nếu không tìm được u thì chuyển bước (7);\n    (3.2) Nếu tìm được u thì chuyển bước (4).\n(4) Cập nhật vs[u] = 1;\n(5) for v Î G do\n(6) Quay lại (3).\n(7) Đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s.</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">*if  (vs[v] = 0) {*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
@@ -2012,7 +2012,7 @@
   {
     "id": 127,
     "category_name": "Thuật toán Dijkstra",
-    "questionText": "<p>Đoạn mã trình bày thuật toán Dijkstra dưới đây có một vài dòng chưa chính xác, đó là (các) dòng nào?</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*\n1.\nBƯỚC KHỞI TẠO: s là đỉnh xuất phát\n2. for v ∈ V do {\n3.\n    truoc[v]=s;\nd[v] = A[s,v] 4. }\n5.\nBƯỚC LẶP:\n6.  While(V≠ø){ 7.\n    <Chọn u là đỉnh có d[u] lớn nhất>; 8.\n   <Cố định nhãn của u>; V=V\\{u};*</th>\n<th style=\"text-align: left;\">*\n9.  for v ∉ V do {\n10. if (d[v]>d[u] + A[u,v]){\n11.\n    d[u]=d[v]+A[u,v];\n12.\n   truoc[v]=u; 13. } 14.\n    } 15. }\n16.\nBƯỚC TRẢ LẠI KẾT QUẢ:\n17.\n                     Return(d(s,t));*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p>Đoạn mã trình bày thuật toán Dijkstra dưới đây có một vài dòng chưa chính xác, đó là (các) dòng nào?</p>\n<pre class=\"code-block\">1. BƯỚC KHỞI TẠO: s là đỉnh xuất phát\n2. for v ∈ V do {\n3.    truoc[v] = s; d[v] = A[s,v];\n4. }\n5. BƯỚC LẶP:\n6. While(V ≠ ø) {\n7.    &lt;Chọn u là đỉnh có d[u] lớn nhất&gt;;\n8.    &lt;Cố định nhãn của u&gt;; V = V \\ {u};\n9.    for v ∉ V do {\n10.      if (d[v] &gt; d[u] + A[u,v]) {\n11.         d[u] = d[v] + A[u,v];\n12.         truoc[v] = u;\n13.      }\n14.   }\n15. }\n16. BƯỚC TRẢ LẠI KẾT QUẢ:\n17. Return(d(s,t));</pre>",
     "image": "",
     "options": {
       "A": "<p>7, 9.</p>",
@@ -2252,7 +2252,7 @@
   {
     "id": 142,
     "category_name": "Thuật toán DFS",
-    "questionText": "<p><strong>Sắp xếp theo thứ tự để thu được đoạn giả mã mô tả thuật toán duyệt các cạnh cầu của đồ thị:</strong></p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">// Duyet_Cau G=<V, E>  ReInit(); //∀u ∈ V:\n           chuaxet[u] = True;\nfor each e ∈ E do\n1. E = E ∪{e};</th>\n<th style=\"text-align: left;\">\n2. ReInit();\n3. endif;\n            4. <e là cầu>;\n5. E = E\\{e};\n6. if(DFS(1) ≠ V) then\n   endfor</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>",
+    "questionText": "<p><strong>Sắp xếp theo thứ tự để thu được đoạn giả mã mô tả thuật toán duyệt các cạnh cầu của đồ thị:</strong></p>\n<pre class=\"code-block\">// Duyet_Cau G=&lt;V, E&gt;\nReInit(); // ∀u ∈ V: chuaxet[u] = True;\nfor each e ∈ E do\n    1. E = E ∪ {e};\n    2. ReInit();\n    3. endif;\n    4. &lt;e là cầu&gt;;\n    5. E = E \\ {e};\n    6. if(DFS(1) ≠ V) then\nendfor</pre>",
     "image": "",
     "options": {
       "A": "<p>5 -> 6 -> 4 -> 3 -> 1 -> 2</p>",
@@ -2572,7 +2572,7 @@
   {
     "id": 162,
     "category_name": "Đồ thị Hamilton",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Hamilton(k){\n     for vÎ Ke(x[k-1]){\n       if (k= n+1) {\n            if (v= x[1]) GhiNhan(x[1], …, x[n]);\n          } else\n              if  (vs[v]= 0) {\n                 x[k]= v;\nvs[v]= 1;\nHamilton(k+1);\nvs[v]= 0; }\n                }\n        }</th>\n<th style=\"text-align: left;\">LietKeHamilton(s){\n          for (v Î G)\n                      vs[v]= 0;\n           x[1]= s;\nvs[s]= 1;\nHamilton(2);\n    }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Hamilton(k) {\n    for v Î Ke(x[k-1]) {\n        if (k == n + 1) {\n            if (v == x[1]) GhiNhan(x[1], …, x[n]);\n        } else {\n            if (vs[v] == 0) {\n                x[k] = v; vs[v] = 1;\n                Hamilton(k+1);\n                vs[v] = 0;\n            }\n        }\n    }\n}\n\nLietKeHamilton(s) {\n    for (v Î G)\n        vs[v] = 0;\n    x[1] = s;\n    vs[s] = 1;\n    Hamilton(2);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán chỉ có thể tìm được đường đi Hamilton bắt đầu tại đỉnh s của đồ thị vô hướng.</p>",
@@ -3929,7 +3929,7 @@
   {
     "id": 247,
     "category_name": "Thuật toán Prim",
-    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Prim có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT bắt đầu tại đỉnh s của G như sau:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">\n(1) T= Æ; VT = {s}; WT= 0;\n(2) while (V\\VT ≠ Æ) {\n         (2.1)\n(2.2) if  (Tìm được e) {\n                    T = T È {e};  WT= WT + <trọng số của e>; VT = VT È {v};\n                           }\n(2.3)\n    else  Return (<G không có cây khung>);\n            }\n(3) Return (T và WT);</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Thao tác cần thực hiện trong bước (2.1) là:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Prim có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT bắt đầu tại đỉnh s của G như sau:</p>\n<pre class=\"code-block\">(1) T = Æ; VT = {s}; WT = 0;\n(2) while (V \\ VT ≠ Æ) {\n        (2.1)\n        (2.2) if (Tìm được e) {\n                  T = T È {e};\n                  WT = WT + &lt;trọng số của e&gt;;\n                  VT = VT È {v};\n              }\n        (2.3) else Return (&lt;G không có cây khung&gt;);\n    }\n(3) Return (T và WT);</pre>\n<p>Thao tác cần thực hiện trong bước (2.1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
@@ -4312,7 +4312,7 @@
   {
     "id": 271,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">void ceu(int a[][], int n, int u) {\n    int top =0, v; k= 0;\n    top++; s[top]= u;\nwhile (top > 0)  {\n        int v= s[top];  int ok= 1;\nfor (int x= 1; x<= n; x++)\n         if (a[v][x] ==1){\n                  top++; s[top]= x;\nok= 0;\n                          …\n                     }</th>\n<th style=\"text-align: left;\">if (ok == 1) {\n                     k++; ce[k]= v;\n                     top--;\n                   }\n           }\n      for (v = k; v> 0; v--)\n                   cout << ce[v] << “ “; }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
+    "questionText": "<p>Xét hàm trên C/C++ biểu diễn thuật toán tìm chu trình/đường đi Euler:</p>\n<pre class=\"code-block\">void ceu(int a[][], int n, int u) {\n    int top = 0, v; k = 0;\n    top++; s[top] = u;\n    while (top &gt; 0) {\n        int v = s[top];\n        int ok = 1;\n        for (int x = 1; x &lt;= n; x++) {\n            if (a[v][x] == 1) {\n                top++;\n                s[top] = x;\n                ok = 0;\n                …\n            }\n        }\n        if (ok == 1) {\n            k++;\n            ce[k] = v;\n            top--;\n        }\n    }\n    for (v = k; v &gt; 0; v--) {\n        cout &lt;&lt; ce[v] &lt;&lt; \" \";\n    }\n}</pre>\n<p>Các câu lệnh còn thiếu ở vị trí dấu ba chấm là:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">a[v][x]= 0; a[x][v]= 0; break;</pre>",
@@ -4568,7 +4568,7 @@
   {
     "id": 287,
     "category_name": "Thuật toán Kruskal",
-    "questionText": "<p>29 Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT của G như sau:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">(1)\n(2) T= Æ;  WT= 0; k = 0;\n(3)  For  (ei Î E){\n           if ( T È {ei} không chứa chu trình){\n               T = T È {ei};\n                 WT= WT + <Trọng số của ei>;</th>\n<th style=\"text-align: left;\">k++;\nif  (k = n-1)\n                       Return (T và WT);\n                  }\n         }\n(4) Return (<G không có cây khung>);</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
+    "questionText": "<p>29 Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = Æ; WT = 0; k = 0;\n(3) For (ei Î E) {\n        if (T È {ei} không chứa chu trình) {\n            T = T È {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Sắp xếp m cạnh của G theo thứ tự từ điển e1, …, em.</p>",
@@ -4664,7 +4664,7 @@
   {
     "id": 293,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Euler(s){\n      Stack = Æ;\nQueue = Æ;\n      <Đưa đỉnh s vào Stack>;\nWhile (Stack ¹ Æ){\n         <Lấy x là đỉnh đầu của Stack>;\nif (Ke(x) ¹ Æ){\n             <Lấy y là đỉnh đầu tiên của Ke(x)>;\n               <Đưa đỉnh y vào Stack>;\n             Ke(x) = Ke(x)\\{y};</th>\n<th style=\"text-align: left;\">Ke(y) = Ke(y)\\{x};\n           } else{\n                  <Loại bỏ đỉnh x khỏi Stack>;\n                 <Đưa đỉnh y vào Queue>;\n             }\n      }\n      Return (<Các đỉnh của Queue theo thứ tự ngược lại>);  }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = Æ; Queue = Æ;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ¹ Æ) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ¹ Æ) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n            Ke(y) = Ke(y) \\ {x};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán có thể tìm được chu trình/đường đi Euler bắt đầu tại đỉnh s.</p>",
@@ -4680,7 +4680,7 @@
   {
     "id": 294,
     "category_name": "Thuật toán BFS",
-    "questionText": "<pre class=\"code-block\">Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng BFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</pre>\n<table class=\"quiz-table code-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">Bfs(s){\n     Queue = Æ;\nQueue Ü s;\nVS[s] = 1;\nWhile (Queue ¹ Æ) {\n           u Ü Queue;\nFor v Î Ke(u)\n          if (VS[v] = 0) {\n                Queue Ü v;\nVS(v) = 1;\n                 T = T È (u, v);\n          } }</th>\n<th style=\"text-align: left;\">Tree_Bfs(s){\n      For  v Î V\n                 VS[v] = 0;\n      T = Æ;\n      Bfs(s);\nFor v Î V\n         if (VS[v] = 0)\n             Return(< Không có cây khung>);\nReturn (T); }</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng BFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Bfs(s){\n    Queue = Æ;\n    Queue Ü s;\n    VS[s] = 1;\n    While (Queue ¹ Æ) {\n        u Ü Queue;\n        For v Î Ke(u)\n            if (VS[v] = 0) {\n                Queue Ü v;\n                VS(v) = 1;\n                T = T È (u, v);\n            }\n    }\n}\n\nTree_Bfs(s){\n    For v Î V\n        VS[v] = 0;\n    T = Æ;\n    Bfs(s);\n    For v Î V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>T là cây khung của G vì T chứa ít cạnh nhất của G.</p>",
