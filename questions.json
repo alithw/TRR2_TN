@@ -28,7 +28,7 @@
       "E": "<p>Ma trận A gồm 4 hàng, 6 cột và có hàng 4 là (8, , , 0, 2, 5).</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Để xây dựng ma trận trọng số A cỡ 4 &times; 4 cho đồ thị vô hướng có trọng số G gồm 4 đỉnh:</p><ul><li>Đường chéo chính chứa các phần tử A[i][i] = 0 (khoảng cách từ đỉnh đến chính nó).</li><li>Với mỗi cạnh (u, v) có trọng số w, ta đặt A[u][v] = A[v][u] = w. Nếu không có cạnh trực tiếp, đặt A[u][v] = &infin;.</li><li>Cạnh nối với đỉnh 4 bao gồm: (1, 4) trọng số 8; (2, 4) trọng số 2; (3, 4) trọng số 5.</li><li>Do đó, hàng 4 của ma trận A tương ứng với các giá trị (A[4][1], A[4][2], A[4][3], A[4][4]) = (8, 2, 5, 0).</li></ul><p>Vậy đáp án đúng là B.</p>",
+    "explanation": "<p>Để xây dựng ma trận trọng số A cỡ 4 &times; 4 cho đồ thị vô hướng có trọng số G gồm 4 đỉnh:</p><ul><li>Đường chéo chính chứa các phần tử A[i][i] = 0 (khoảng cách từ đỉnh đến chính nó).</li><li>Với mỗi cạnh (u, v) có trọng số w, ta đặt A[u][v] = A[v][u] = w. Nếu không có cạnh trực tiếp, đặt A[u][v] = &infin;.</li><li>Cạnh nối với đỉnh 4 bao gồm: (1, 4) trọng số 8; (2, 4) trọng số 2; (3, 4) trọng số 5.</li><li>Do đó, hàng 4 của ma trận A tương ứng với các giá trị (A[4][1], A[4][2], A[4][3], A[4][4]) = (8, 2, 5, 0).</li></ul><p>Vậy đáp án đúng là <strong>B</strong>.</p>",
     "tip": "<p>Hàng thứ i trong ma trận trọng số biểu diễn trọng số của các cạnh nối từ đỉnh i đến các đỉnh khác trong đồ thị. Chỉ cần liệt kê các cạnh kề với đỉnh 4: cạnh (4,1) trọng số 8, cạnh (4,2) trọng số 2, cạnh (4,3) trọng số 5, và đường chéo chính A[4][4] = 0 để tìm được ngay hàng 4 là (8, 2, 5, 0).</p>"
   },
   {
@@ -44,7 +44,7 @@
       "E": "<p>O(n3)</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Khi đồ thị được biểu diễn dưới dạng danh sách cạnh gồm n đỉnh và m cạnh:</p><ul><li>Để duyệt đồ thị bằng thuật toán tìm kiếm theo chiều rộng (BFS), tại mỗi bước lấy đỉnh u từ hàng đợi, ta phải duyệt qua toàn bộ danh sách cạnh để tìm các đỉnh v kề với u.</li><li>Mỗi lần duyệt danh sách cạnh mất độ phức tạp O(m).</li><li>Trong trường hợp xấu nhất, ta phải thực hiện tìm kiếm lân cận cho tối đa n đỉnh. Do đó tổng độ phức tạp thuật toán là O(n &times; m).</li><li>Vì O(n &times; m) không khớp với các lựa chọn O(n^2.m), O(max(n,m)), O(n^2), hay O(n^3), nên phương án chính xác là C (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Khi đồ thị được biểu diễn dưới dạng danh sách cạnh gồm n đỉnh và m cạnh:</p><ul><li>Để duyệt đồ thị bằng thuật toán tìm kiếm theo chiều rộng (BFS), tại mỗi bước lấy đỉnh u từ hàng đợi, ta phải duyệt qua toàn bộ danh sách cạnh để tìm các đỉnh v kề với u.</li><li>Mỗi lần duyệt danh sách cạnh mất độ phức tạp O(m).</li><li>Trong trường hợp xấu nhất, ta phải thực hiện tìm kiếm lân cận cho tối đa n đỉnh. Do đó tổng độ phức tạp thuật toán là O(n &times; m).</li><li>Vì O(n &times; m) không khớp với các lựa chọn O(n^2.m), O(max(n,m)), O(n^2), hay O(n^3), nên phương án chính xác là C (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p>Nếu đồ thị dùng ma trận kề, BFS có độ phức tạp O(n^2). Nếu dùng danh sách kề, độ phức tạp là O(n + m). Nhưng nếu dùng danh sách cạnh một cách thô sơ, việc tìm đỉnh kề của mỗi đỉnh yêu cầu duyệt qua toàn bộ danh sách cạnh, dẫn đến độ phức tạp O(n &times; m).</p>"
   },
   {
@@ -171,7 +171,7 @@
       "E": "<p>Tổng tất cả bán bậc ra = Tổng tất cả bán bậc vào của các đỉnh trong đồ thị.</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Xét các phát biểu về đồ thị có hướng G = (V, E):</p><ul><li>Phát biểu C: 'Tổng tất cả bán bậc ra của các đỉnh trong đồ thị luôn là số chẵn' là sai, vì tổng bán bậc ra bằng số cạnh m. Số cạnh m của đồ thị có hướng có thể là số lẻ (ví dụ đồ thị chỉ có 1 cạnh thì tổng bán bậc ra bằng 1).</li><li>Các phát biểu A, D, E đều là các tính chất đúng của đồ thị có hướng.</li></ul><p>Do đó mô tả sai là <strong>C</strong>. Chọn <strong>C</strong>.</p>",
+    "explanation": "<p>Xét các phát biểu về đồ thị có hướng G = (V, E):</p><ul><li>Phát biểu C: 'Tổng tất cả bán bậc ra của các đỉnh trong đồ thị luôn là số chẵn' là sai, vì tổng bán bậc ra bằng số cạnh m. Số cạnh m của đồ thị có hướng có thể là số lẻ (ví dụ đồ thị chỉ có 1 cạnh thì tổng bán bậc ra bằng 1).</li><li><strong>C</strong>ác phát biểu A, D, E đều là các tính chất đúng của đồ thị có hướng.</li></ul><p>Do đó mô tả sai là <strong>C</strong>. Chọn <strong>C</strong>.</p>",
     "tip": "<p>Tổng các bán bậc ra bằng số cạnh m, không có ràng buộc m phải chẵn trong đồ thị có hướng. Chỉ có trong đồ thị vô hướng thì tổng bậc mới luôn là số chẵn.</p>"
   },
   {
@@ -203,7 +203,7 @@
       "E": "<p>1</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Bán bậc vào deg-(6) của đỉnh 6 bằng số cạnh đi vào đỉnh 6 (tức là đỉnh cuối là 6). Từ danh sách cạnh, các cạnh có đỉnh cuối là 6 gồm: (3, 6), (4, 6), (5, 6). Có tất cả 3 cạnh. Vậy deg-(6) = 3. Chọn B.</p>",
+    "explanation": "<p>Bán bậc vào deg-(6) của đỉnh 6 bằng số cạnh đi vào đỉnh 6 (tức là đỉnh cuối là 6). Từ danh sách cạnh, các cạnh có đỉnh cuối là 6 gồm: (3, 6), (4, 6), (5, 6). <strong>C</strong>ó tất cả 3 cạnh. Vậy deg-(6) = 3. Chọn B.</p>",
     "tip": "<p>Đếm số lần số 6 xuất hiện ở cột 'Đỉnh cuối' trong bảng danh sách cạnh. Kết quả xuất hiện 3 lần, suy ra deg-(6) = 3.</p>"
   },
   {
@@ -315,7 +315,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Tìm các thành phần liên thông của G bằng thuật toán loang (BFS/DFS) từ đỉnh 1:</p><ul><li>Từ 1 kề {2, 3}, từ 2 kề {1, 3, 4, 5}, từ 3 kề {1, 2, 4}, từ 4 kề {2, 3, 5, 6}, từ 5 kề {2, 4, 6}, từ 6 kề {4, 5}.</li><li>Tất cả các đỉnh {1, 2, 3, 4, 5, 6} đều thuộc cùng một thành phần liên thông. Đồ thị liên thông (có 1 thành phần liên thông).</li><li>Vì số thành phần liên thông là 1, không nằm trong các phương án A(5), B(2), C(3), D(4) nên chọn E (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Tìm các thành phần liên thông của G bằng thuật toán loang (BFS/DFS) từ đỉnh 1:</p><ul><li>Từ 1 kề {2, 3}, từ 2 kề {1, 3, 4, 5}, từ 3 kề {1, 2, 4}, từ 4 kề {2, 3, 5, 6}, từ 5 kề {2, 4, 6}, từ 6 kề {4, 5}.</li><li>Tất cả các đỉnh {1, 2, 3, 4, 5, 6} đều thuộc cùng một thành phần liên thông. Đồ thị liên thông (có 1 thành phần liên thông).</li><li>Vì số thành phần liên thông là 1, không nằm trong các phương án A(5), B(2), C(3), D(4) nên chọn E (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p>Đồ thị liên thông hoàn toàn vì từ đỉnh 1 ta có thể đi đến tất cả các đỉnh khác. Số thành phần liên thông là 1, do đó ta chọn đáp án 'Các phương án khác đều sai'.</p>"
   },
   {
@@ -395,7 +395,7 @@
       "E": "<p>Cạnh (2, 4)</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Cạnh cầu là cạnh mà khi loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị. Xét đồ thị kề:</p><ul><li>Đỉnh 2 chỉ nối duy nhất với đỉnh 4 (deg(2) = 1).</li><li>Nếu ta loại bỏ cạnh (2, 4), đỉnh 2 sẽ bị cô lập, làm đồ thị tăng từ 1 thành phần liên thông lên thành 2 thành phần liên thông.</li><li>Do đó, cạnh (2, 4) là cạnh cầu duy nhất của đồ thị. Chọn E.</p>",
+    "explanation": "<p><strong>C</strong>ạnh cầu là cạnh mà khi loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị. Xét đồ thị kề:</p><ul><li>Đỉnh 2 chỉ nối duy nhất với đỉnh 4 (deg(2) = 1).</li><li>Nếu ta loại bỏ cạnh (2, 4), đỉnh 2 sẽ bị cô lập, làm đồ thị tăng từ 1 thành phần liên thông lên thành 2 thành phần liên thông.</li><li>Do đó, cạnh (2, 4) là cạnh cầu duy nhất của đồ thị. Chọn E.</p>",
     "tip": "<p>Tìm đỉnh có bậc 1 trong đồ thị. Đỉnh 2 chỉ nối với đỉnh 4, do đó cạnh nối duy nhất (2, 4) chắc chắn là cạnh cầu.</p>"
   },
   {
@@ -553,7 +553,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Đỉnh cô lập là đỉnh có bậc bằng 0 (không nối với đỉnh nào khác). Bậc của đỉnh i bằng tổng các phần tử trên hàng i của ma trận kề A. Cộng hàng 6 của ma trận ta được tổng bằng 0, nghĩa là đỉnh 6 là đỉnh cô lập duy nhất. Vì đỉnh 6 không nằm trong các đáp án A, B, C, D nên chọn E (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Đỉnh cô lập là đỉnh có bậc bằng 0 (không nối với đỉnh nào khác). Bậc của đỉnh i bằng tổng các phần tử trên hàng i của ma trận kề A. Cộng hàng 6 của ma trận ta được tổng bằng 0, nghĩa là đỉnh 6 là đỉnh cô lập duy nhất. Vì đỉnh 6 không nằm trong các đáp án <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong> nên chọn E (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p>Dòng nào trong ma trận kề toàn số 0 thì đỉnh đó có bậc bằng 0 và là đỉnh cô lập. Hàng 6 toàn số 0, suy ra đỉnh 6 là đỉnh cô lập.</p>"
   },
   {
@@ -633,7 +633,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p>Trong thuật toán Fleury tìm chu trình/đường đi Euler sử dụng ngăn xếp Stack:</p><ul><li>Khi tìm thấy một đỉnh x kề với v (tức a[v][x] == 1), ta cần đẩy x vào ngăn xếp: `top++; s[top] = x;`.</li><li>Để tiếp tục duyệt từ đỉnh mới x mà không quay lui ngay lập tức, ta đánh dấu biến trạng thái `ok = 0;`.</li><li>Đồng thời, ta xóa cạnh đã đi qua bằng cách đặt `a[v][x] = 0;` (và xóa cạnh đối xứng nếu vô hướng).</li></ul><p>Các lệnh này tương ứng với phương án D. Chọn D.</p>",
+    "explanation": "<p>Trong thuật toán Fleury tìm chu trình/đường đi Euler sử dụng ngăn xếp Stack:</p><ul><li>Khi tìm thấy một đỉnh x kề với v (tức a[v][x] == 1), ta cần đẩy x vào ngăn xếp: `top++; s[top] = x;`.</li><li>Để tiếp tục duyệt từ đỉnh mới x mà không quay lui ngay lập tức, ta đánh dấu biến trạng thái `ok = 0;`.</li><li>Đồng thời, ta xóa cạnh đã đi qua bằng cách đặt `a[v][x] = 0;` (và xóa cạnh đối xứng nếu vô hướng).</li></ul><p><strong>C</strong>ác lệnh này tương ứng với phương án D. Chọn D.</p>",
     "tip": "<p>Cần thực hiện 3 việc khi đi qua một cạnh: 1. Đẩy đỉnh mới vào stack (`top++; s[top]=x`), 2. Đánh dấu đã di chuyển (`ok=0`), 3. Xóa cạnh đã đi qua (`a[v][x]=0`).</p>"
   },
   {
@@ -697,7 +697,7 @@
       "E": "<p>1</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p>Tính bán bậc ra deg+(i) của mỗi đỉnh bằng cách cộng các phần tử trên hàng i của ma trận kề:</p><ul><li>deg+(1)=3, deg+(2)=4, deg+(3)=2, deg+(4)=4, deg+(5)=2, deg+(6)=2.</li><li>Bán bậc ra của đỉnh 6 là deg+(6) = 2.</li><li>Không có đỉnh nào có bán bậc ra nhỏ hơn 2 (nhỏ nhất là 2 ở các đỉnh 3, 5, 6).</li><li>Do đó, deg+(6) không lớn hơn bán bậc ra của bất kỳ đỉnh nào. Chọn D (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Tính bán bậc ra deg+(i) của mỗi đỉnh bằng cách cộng các phần tử trên hàng i của ma trận kề:</p><ul><li>deg+(1)=3, deg+(2)=4, deg+(3)=2, deg+(4)=4, deg+(5)=2, deg+(6)=2.</li><li>Bán bậc ra của đỉnh 6 là deg+(6) = 2.</li><li>Không có đỉnh nào có bán bậc ra nhỏ hơn 2 (nhỏ nhất là 2 ở các đỉnh 3, 5, 6).</li><li>Do đó, deg+(6) không lớn hơn bán bậc ra của bất kỳ đỉnh nào. Chọn D (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p>Tính tổng dòng của đỉnh 6 trong ma trận ta được deg+(6) = 2. Vì không có đỉnh nào có tổng dòng nhỏ hơn 2, nên deg+(6) không thể lớn hơn bán bậc ra của đỉnh nào khác.</p>"
   },
   {
@@ -762,7 +762,7 @@
     },
     "correctAnswer": "E",
     "explanation": "<p>Theo định lý Robbins, một đồ thị vô hướng liên thông có thể định chiều để trở thành đồ thị liên thông mạnh khi và chỉ khi đồ thị đó không chứa cạnh cầu (liên thông 2 cạnh). Đồ thị hiện tại có cạnh (4, 5) là cạnh cầu vì đỉnh 5 chỉ có bậc 1 nối với 4. Để khử cạnh cầu này, ta cần bổ sung cạnh nối đỉnh 5 với một đỉnh khác trong chu trình chính của đồ thị, ví dụ cạnh (3, 5). Khi đó đồ thị không còn cạnh cầu và định chiều được. Chọn E.</p>",
-    "tip": "<p>Cạnh cầu là nguyên nhân làm đồ thị không định chiều được. Đỉnh 5 có bậc 1 nên cạnh (4,5) là cầu. Cần thêm cạnh nối với 5 để tạo chu trình chứa 5, phương án duy nhất nối với 5 là (3, 5).</p>"
+    "tip": "<p>Cạnh cầu là nguyên nhân làm đồ thị không định chiều được. Đỉnh 5 có bậc 1 nên cạnh (4,5) là cầu. <strong>C</strong>ần thêm cạnh nối với 5 để tạo chu trình chứa 5, phương án duy nhất nối với 5 là (3, 5).</p>"
   },
   {
     "id": 49,
@@ -793,7 +793,7 @@
       "E": "<p>4</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Trong ma trận liên thuộc của đồ thị có hướng, giá trị 1 biểu diễn đỉnh xuất phát (đầu cung) và giá trị -1 biểu diễn đỉnh kết thúc (cuối cung). Dòng d của ma trận liên thuộc là (0, 0, -1, 0, -1, -1), không chứa bất kỳ giá trị 1 nào. Điều này nghĩa là đỉnh d không có cung đi ra (bán bậc ra deg+(d) = 0). Vì deg+(d) = 0 không khớp với các lựa chọn A(1), B(3), D(2), E(4) nên chọn C (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Trong ma trận liên thuộc của đồ thị có hướng, giá trị 1 biểu diễn đỉnh xuất phát (đầu cung) và giá trị -1 biểu diễn đỉnh kết thúc (cuối cung). Dòng d của ma trận liên thuộc là (0, 0, -1, 0, -1, -1), không chứa bất kỳ giá trị 1 nào. Điều này nghĩa là đỉnh d không có cung đi ra (bán bậc ra deg+(d) = 0). Vì deg+(d) = 0 không khớp với các lựa chọn A(1), B(3), D(2), E(4) nên chọn C (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p>Bán bậc ra deg+(d) bằng số lượng phần tử 1 trên dòng d. Dòng d toàn số 0 và -1, không có số 1 nào nên deg+(d) = 0.</p>"
   },
   {
@@ -1080,7 +1080,7 @@
       "E": "Cặp tập (X, X*), trong đó X = {s, t} và X* = V\\X."
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Định nghĩa lát cắt trong mạng luồng:</strong></p><p>Trong mạng G = (V, E) có đỉnh phát s và đỉnh thu t:</p><ul><li>Một <strong>lát cắt (Cut)</strong> phân tách s và t là một cách phân hoạch tập đỉnh V thành hai tập con không giao nhau X và X* sao cho X ∪ X* = V (tức là X* = V \\ X).</li><li>Đồng thời, tập X phải chứa đỉnh phát s (s ∈ X) và tập X* phải chứa đỉnh thu t (t ∈ X*).</li></ul><p>Đối chiếu với các phương án:</p><ul><li>Đáp án D phát biểu chính xác: \"Cặp tập (X, X*), trong đó X là tập các đỉnh, X* = V\\X với s ∈ X và t ∈ X*\".</li></ul>",
+    "explanation": "<p><strong>Định nghĩa lát cắt trong mạng luồng:</strong></p><p>Trong mạng G = (V, E) có đỉnh phát s và đỉnh thu t:</p><ul><li>Một <strong>lát cắt (Cut)</strong> phân tách s và t là một cách phân hoạch tập đỉnh V thành hai tập con không giao nhau X và X* sao cho X ∪ X* = V (tức là X* = V \\ X).</li><li>Đồng thời, tập X phải chứa đỉnh phát s (s ∈ X) và tập X* phải chứa đỉnh thu t (t ∈ X*).</li></ul><p>Đối chiếu với các phương án:</p><ul><li>Đáp án <strong>D</strong> phát biểu chính xác: \"Cặp tập (X, X*), trong đó X là tập các đỉnh, X* = V\\X với s ∈ X và t ∈ X*\".</li></ul>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Lát cắt chia tập đỉnh V làm 2 phần: tập chứa đỉnh phát s và tập chứa đỉnh thu t.</li><li>Hai tập này phải bổ bù của nhau, tức là X* = V \\ X.</li><li>Loại ngay các phương án có X* = V (vì X và X* không thể giao nhau) hoặc X chứa cả s và t (ví dụ tập {s, t}).</li></ul>"
   },
   {
@@ -1161,7 +1161,7 @@
     },
     "correctAnswer": "E",
     "explanation": "<p><strong>Tìm cây khung lớn nhất bằng thuật toán Prim sửa đổi:</strong></p><p>Để tìm cây khung có tổng trọng số <strong>lớn nhất</strong>, tại mỗi bước của thuật toán Prim, ta chọn cạnh có trọng số <strong>lớn nhất</strong> nối từ một đỉnh đã có trong cây đến một đỉnh chưa có trong cây.</p><ul><li>Bắt đầu với V_T = {1}, T = {}</li><li>Bước 1: Các cạnh nối từ đỉnh 1 là (1,2) w=6, (1,3) w=6, (1,4) w=8. Trọng số lớn nhất là 8 (cạnh (1,4)). Thêm đỉnh 4 và cạnh (1,4). V_T = {1, 4}, T = {(1,4)}.</li><li>Bước 2: Các cạnh nối từ {1, 4} đến các đỉnh ngoài {2, 3} là: (1,2) w=6, (1,3) w=6, (4,2) w=7, (4,3) w=6. Trọng số lớn nhất là 7 (cạnh (4,2)). Thêm đỉnh 2 và cạnh (4,2). V_T = {1, 4, 2}, T = {(1,4), (4,2)}.</li><li>Bước 3: Các cạnh nối từ {1, 4, 2} đến đỉnh ngoài {3} là: (1,3) w=6, (2,3) w=6, (4,3) w=6. Vì tất cả đều có trọng số là 6, ta có thể chọn bất kỳ cạnh nào, ở đây chọn cạnh (1,3). Thêm đỉnh 3 và cạnh (1,3). V_T = {1, 4, 2, 3}, T = {(1,4), (4,2), (1,3)}.</li></ul><p>Tổng trọng số cây khung lớn nhất WT = 8 + 7 + 6 = 21. Kết quả này khớp với phương án <strong>E</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây khung lớn nhất: Tại mỗi bước chọn cạnh nối ra ngoài có trọng số <strong>lớn nhất</strong>.</li><li>Tổng trọng số WT phải bằng tổng trọng số của các cạnh trong cây khung. 8 + 7 + 6 = 21. Chỉ có đáp án E là có WT = 21, các đáp án khác ghi WT = 20 là sai về mặt tính toán.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li><strong>C</strong>ây khung lớn nhất: Tại mỗi bước chọn cạnh nối ra ngoài có trọng số <strong>lớn nhất</strong>.</li><li>Tổng trọng số WT phải bằng tổng trọng số của các cạnh trong cây khung. 8 + 7 + 6 = 21. Chỉ có đáp án <strong>E</strong> là có WT = 21, các đáp án khác ghi WT = 20 là sai về mặt tính toán.</li></ul>"
   },
   {
     "id": 74,
@@ -1177,7 +1177,7 @@
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Tìm cây khung nhỏ nhất bắt đầu từ s = 2:</strong></p><ul><li>Khởi tạo V_T = {2}, T = {}</li><li>Bước 1: Các cạnh từ 2 là (2,1) w=1, (2,3) w=3, (2,4) w=2. Cạnh nhỏ nhất là (2,1) w=1. Thêm đỉnh 1 và cạnh (2,1). V_T = {2, 1}, T = {(2,1)}.</li><li>Bước 2: Các cạnh nối {2, 1} đến đỉnh ngoài {3, 4} là: (1,3) w=3, (1,4) w=2, (2,3) w=3, (2,4) w=2. Nhỏ nhất là w=2 (cạnh (2,4) hoặc (1,4)). Chọn cạnh (2,4) nối đỉnh 4. V_T = {2, 1, 4}, T = {(2,1), (2,4)}.</li><li>Bước 3: Các cạnh nối {2, 1, 4} đến đỉnh ngoài {3} là: (1,3) w=3, (2,3) w=3, (4,3) w=2. Nhỏ nhất là w=2 (cạnh (4,3) hay (3,4)). Thêm đỉnh 3 và cạnh (3,4). V_T = {2, 1, 4, 3}, T = {(2,1), (2,4), (3,4)}.</li></ul><p>Tổng trọng số cây khung WT = 1 + 2 + 2 = 5. Khớp với phương án <strong>B</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bắt đầu tại 2, chọn cạnh kề nhỏ nhất: (2,1) với trọng số 1.</li><li>Kế tiếp, từ tập {1, 2}, các cạnh đi ra là (1,4) w=2 và (2,4) w=2. Ta chọn (2,4).</li><li>Từ tập {1, 2, 4}, chọn cạnh nối tới đỉnh 3 nhỏ nhất là (4,3) với trọng số 2.</li><li>Tổng trọng số WT = 1 + 2 + 2 = 5.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li><strong>B</strong>ắt đầu tại 2, chọn cạnh kề nhỏ nhất: (2,1) với trọng số 1.</li><li>Kế tiếp, từ tập {1, 2}, các cạnh đi ra là (1,4) w=2 và (2,4) w=2. Ta chọn (2,4).</li><li>Từ tập {1, 2, 4}, chọn cạnh nối tới đỉnh 3 nhỏ nhất là (4,3) với trọng số 2.</li><li>Tổng trọng số WT = 1 + 2 + 2 = 5.</li></ul>"
   },
   {
     "id": 75,
@@ -1256,7 +1256,7 @@
       "E": "<p>deg-(1) = 8, deg+(2) = 7, deg+(3) = 9 và deg-(4) = 9.</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Tính bán bậc vào và bán bậc ra của các đỉnh từ ma trận trọng số:</strong></p><p>Trong ma trận kề/trọng số của đồ thị có hướng:</p><ul><li><strong>Bán bậc ra deg⁺(u)</strong> bằng tổng các phần tử trên hàng u (số cung đi ra).</li><li><strong>Bán bậc vào deg⁻(u)</strong> bằng tổng các phần tử trên cột u (số cung đi vào).</li></ul><p>Thực hiện tính toán cho từng đỉnh:</p><ul><li><strong>Đỉnh 1:</strong> Hàng 1 = [0, 1, 2, 3] → deg⁺(1) = 6. Cột 1 = [0, 3, 1, 4] → deg⁻(1) = 8.</li><li><strong>Đỉnh 2:</strong> Hàng 2 = [3, 0, 3, 1] → deg⁺(2) = 7. Cột 2 = [1, 0, 4, 3] → deg⁻(2) = 8.</li><li><strong>Đỉnh 3:</strong> Hàng 3 = [1, 4, 0, 5] → deg⁺(3) = 10. Cột 3 = [2, 3, 0, 1] → deg⁻(3) = 6.</li><li><strong>Đỉnh 4:</strong> Hàng 4 = [4, 3, 1, 0] → deg⁺(4) = 8. Cột 4 = [3, 1, 5, 0] → deg⁻(4) = 9.</li></ul><p>Đối chiếu với các lựa chọn:</p><ul><li>Đáp án A ghi deg⁺(1) = 8 (sai, thực tế deg⁺(1) = 6).</li><li>Đáp án B ghi deg⁺(2) = 8 (sai, thực tế deg⁺(2) = 7).</li><li>Đáp án D ghi deg⁺(1) = 8 (sai).</li><li>Đáp án E ghi deg⁺(3) = 9 (sai, thực tế deg⁺(3) = 10).</li></ul><p>Vì vậy, tất cả các phương án A, B, D, E đều sai. Đáp án đúng là <strong>C</strong> (Các phương án khác đều sai).</p>",
+    "explanation": "<p><strong>Tính bán bậc vào và bán bậc ra của các đỉnh từ ma trận trọng số:</strong></p><p>Trong ma trận kề/trọng số của đồ thị có hướng:</p><ul><li><strong>Bán bậc ra deg⁺(u)</strong> bằng tổng các phần tử trên hàng u (số cung đi ra).</li><li><strong>Bán bậc vào deg⁻(u)</strong> bằng tổng các phần tử trên cột u (số cung đi vào).</li></ul><p>Thực hiện tính toán cho từng đỉnh:</p><ul><li><strong>Đỉnh 1:</strong> Hàng 1 = [0, 1, 2, 3] → deg⁺(1) = 6. Cột 1 = [0, 3, 1, 4] → deg⁻(1) = 8.</li><li><strong>Đỉnh 2:</strong> Hàng 2 = [3, 0, 3, 1] → deg⁺(2) = 7. Cột 2 = [1, 0, 4, 3] → deg⁻(2) = 8.</li><li><strong>Đỉnh 3:</strong> Hàng 3 = [1, 4, 0, 5] → deg⁺(3) = 10. Cột 3 = [2, 3, 0, 1] → deg⁻(3) = 6.</li><li><strong>Đỉnh 4:</strong> Hàng 4 = [4, 3, 1, 0] → deg⁺(4) = 8. Cột 4 = [3, 1, 5, 0] → deg⁻(4) = 9.</li></ul><p>Đối chiếu với các lựa chọn:</p><ul><li>Đáp án <strong>A</strong> ghi deg⁺(1) = 8 (sai, thực tế deg⁺(1) = 6).</li><li>Đáp án <strong>B</strong> ghi deg⁺(2) = 8 (sai, thực tế deg⁺(2) = 7).</li><li>Đáp án <strong>D</strong> ghi deg⁺(1) = 8 (sai).</li><li>Đáp án <strong>E</strong> ghi deg⁺(3) = 9 (sai, thực tế deg⁺(3) = 10).</li></ul><p>Vì vậy, tất cả các phương án A, B, D, E đều sai. Đáp án đúng là <strong>C</strong> (Các phương án khác đều sai).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bán bậc ra = Tổng hàng. Bán bậc vào = Tổng cột.</li><li>Tính tổng hàng 1: 0 + 1 + 2 + 3 = 6 → deg⁺(1) = 6. Quét nhanh thấy không có phương án nào ghi deg⁺(1) = 6 hoặc chứa thông tin chính xác tương ứng. Kết luận ngay phương án C.</li></ul>"
   },
   {
@@ -1367,8 +1367,8 @@
       "E": "<p>T không phải là cây vì có cạnh (1,2) không phải là cạnh cầu.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p><strong>Kiểm tra đồ thị có phải là cây (Tree) hay không:</strong></p><p>Đồ thị vô hướng T gồm 4 đỉnh. Hãy đếm số cạnh của T bằng cách đếm số số 1 phía trên đường chéo chính của ma trận kề:</p><ul><li>Cạnh kề: (1,2), (1,3), (2,3), (2,4) → Đồ thị có 4 cạnh.</li></ul><p>Một đồ thị liên thông gồm n đỉnh là một cây khi và chỉ khi nó có đúng <strong>n - 1 cạnh</strong>. Đồ thị T có 4 đỉnh nhưng có tới 4 cạnh (nhiều hơn n-1), nên T không thể là cây. Hơn nữa, đồ thị chứa chu trình 1-2-3-1.</p><p>Xét phương án E: \"T không phải là cây vì có cạnh (1,2) không phải là cạnh cầu\".</p><ul><li>Cạnh (1,2) thuộc chu trình 1-2-3-1. Nếu loại bỏ cạnh (1,2), đồ thị vẫn liên thông. Vậy (1,2) không phải là cạnh cầu (bridge).</li><li>Một đồ thị liên thông là cây khi và chỉ khi mọi cạnh của nó đều là cạnh cầu. Vì có cạnh (1,2) không phải cạnh cầu nên đồ thị không phải là cây. Đây là một lập luận hoàn toàn chính xác.</li></ul>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây n đỉnh luôn có n-1 cạnh và không chứa chu trình. Đồ thị 4 đỉnh này có 4 cạnh và chứa chu trình 1-2-3-1 nên không phải là cây.</li><li>Cạnh nằm trong chu trình thì không phải là cầu. Đồ thị liên thông là cây <=> mọi cạnh đều là cầu.</li></ul>"
+    "explanation": "<p><strong>Kiểm tra đồ thị có phải là cây (Tree) hay không:</strong></p><p>Đồ thị vô hướng T gồm 4 đỉnh. Hãy đếm số cạnh của T bằng cách đếm số số 1 phía trên đường chéo chính của ma trận kề:</p><ul><li>Cạnh kề: (1,2), (1,3), (2,3), (2,4) → Đồ thị có 4 cạnh.</li></ul><p>Một đồ thị liên thông gồm n đỉnh là một cây khi và chỉ khi nó có đúng <strong>n - 1 cạnh</strong>. Đồ thị T có 4 đỉnh nhưng có tới 4 cạnh (nhiều hơn n-1), nên T không thể là cây. Hơn nữa, đồ thị chứa chu trình 1-2-3-1.</p><p>Xét phương án E: \"T không phải là cây vì có cạnh (1,2) không phải là cạnh cầu\".</p><ul><li><strong>C</strong>ạnh (1,2) thuộc chu trình 1-2-3-1. Nếu loại bỏ cạnh (1,2), đồ thị vẫn liên thông. Vậy (1,2) không phải là cạnh cầu (bridge).</li><li>Một đồ thị liên thông là cây khi và chỉ khi mọi cạnh của nó đều là cạnh cầu. Vì có cạnh (1,2) không phải cạnh cầu nên đồ thị không phải là cây. Đây là một lập luận hoàn toàn chính xác.</li></ul>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây n đỉnh luôn có n-1 cạnh và không chứa chu trình. Đồ thị 4 đỉnh này có 4 cạnh và chứa chu trình 1-2-3-1 nên không phải là cây.</li><li><strong>C</strong>ạnh nằm trong chu trình thì không phải là cầu. Đồ thị liên thông là cây <=> mọi cạnh đều là cầu.</li></ul>"
   },
   {
     "id": 87,
@@ -1464,7 +1464,7 @@
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Kiểm tra tính chất Euler của đơn đồ thị vô hướng G:</strong></p><p>Một đồ thị vô hướng liên thông là đồ thị Euler (có chu trình Euler) khi và chỉ khi mọi đỉnh của nó đều có bậc chẵn.</p><p>Từ danh sách kề, ta tính bậc của từng đỉnh (bằng số phần tử kề tương ứng):</p><ul><li>deg(1) = |{2, 4}| = 2 (bậc chẵn)</li><li>deg(2) = |{1, 3, 4, 5}| = 4 (bậc chẵn)</li><li>deg(3) = |{2, 5}| = 2 (bậc chẵn)</li><li>deg(4) = |{1, 2}| = 2 (bậc chẵn)</li><li>deg(5) = |{2, 3}| = 2 (bậc chẵn)</li></ul><p>Đồ thị liên thông và tất cả các đỉnh {1, 2, 3, 4, 5} đều có bậc chẵn (2 hoặc 4). Theo định lý Euler, đồ thị G là **đồ thị Euler**. Phương án đúng là <strong>D</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đếm số đỉnh kề trong từng danh sách Ke(i).</li><li>Bậc các đỉnh lần lượt là: 2, 4, 2, 2, 2. Tất cả đều là số chẵn → Đồ thị chắc chắn là đồ thị Euler. Chọn ngay đáp án D.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đếm số đỉnh kề trong từng danh sách Ke(i).</li><li>Bậc các đỉnh lần lượt là: 2, 4, 2, 2, 2. Tất cả đều là số chẵn → Đồ thị chắc chắn là đồ thị Euler. Chọn ngay đáp án <strong>D</strong>.</li></ul>"
   },
   {
     "id": 93,
@@ -1496,7 +1496,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Định nghĩa và tính chất cơ bản của cây (Tree):</strong></p><p>Một đồ thị vô hướng T = (V, E) có n đỉnh là một cây khi và chỉ khi nó thỏa mãn một trong các điều kiện tương đương sau:</p><ol><li>T liên thông và không chứa chu trình.</li><li>T không chứa chu trình và có đúng <strong>m = n - 1</strong> cạnh.</li><li>T liên thông và có đúng <strong>m = n - 1</strong> cạnh.</li></ol><p>Phương án <strong>C</strong> phát biểu chính xác tính chất: \"T là đồ thị vô hướng liên thông và có m = n-1 cạnh\". Các phương án khác đưa ra khái niệm bán bậc (chỉ dùng cho đồ thị có hướng) là sai hoàn toàn.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây luôn có số cạnh bằng số đỉnh trừ 1: <strong>m = n - 1</strong> và đồ thị phải vô hướng liên thông. Chọn ngay đáp án C.</li><li>Bán bậc vào/ra chỉ dành cho đồ thị có hướng, cây thông thường là đồ thị vô hướng nên các phương án nói về bán bậc đều loại.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây luôn có số cạnh bằng số đỉnh trừ 1: <strong>m = n - 1</strong> và đồ thị phải vô hướng liên thông. Chọn ngay đáp án <strong>C</strong>.</li><li><strong>B</strong>án bậc vào/ra chỉ dành cho đồ thị có hướng, cây thông thường là đồ thị vô hướng nên các phương án nói về bán bậc đều loại.</li></ul>"
   },
   {
     "id": 95,
@@ -1512,7 +1512,7 @@
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Duyệt BFS đồ thị bắt đầu tại đỉnh 1:</strong></p><ul><li>Khởi tạo: Hàng đợi Queue = [1], chuaxet[1] = False. Thứ tự duyệt bắt đầu: 1.</li><li>Lấy 1 ra khỏi Queue. Các đỉnh kề chưa xét của 1 là: 2, 4. Đưa 2, 4 vào Queue. Queue = [2, 4], đánh dấu đã xét 2, 4. Thứ tự duyệt lúc này: 1, 2, 4.</li><li>Lấy 2 ra khỏi Queue. Các đỉnh kề chưa xét của 2 là: 3, 5. Đưa 3, 5 vào Queue. Queue = [4, 3, 5], đánh dấu đã xét 3, 5. Thứ tự duyệt lúc này: 1, 2, 4, 3, 5.</li><li>Lấy 4 ra khỏi Queue. Đỉnh kề của 4 là 1, 3 đều đã xét.</li><li>Lấy 3 ra khỏi Queue. Đỉnh kề của 3 là 2, 4 đều đã xét.</li><li>Lấy 5 ra khỏi Queue. Đỉnh kề của 5 là 2 đã xét.</li><li>Queue rỗng, thuật toán dừng lại.</li></ul><p>Thứ tự duyệt các đỉnh là: <strong>{1, 2, 4, 3, 5}</strong>. Khớp chính xác với phương án <strong>B</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>BFS đi theo tầng: Đỉnh 1 kề với {2, 4} nên sau 1 phải duyệt ngay 2 và 4 → {1, 2, 4...}.</li><li>Tiếp theo, đỉnh kề chưa xét của 2 (ở đầu queue) là 3 và 5 nên 3 và 5 sẽ được duyệt tiếp theo → {1, 2, 4, 3, 5}. Chọn ngay đáp án B.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>BFS đi theo tầng: Đỉnh 1 kề với {2, 4} nên sau 1 phải duyệt ngay 2 và 4 → {1, 2, 4...}.</li><li>Tiếp theo, đỉnh kề chưa xét của 2 (ở đầu queue) là 3 và 5 nên 3 và 5 sẽ được duyệt tiếp theo → {1, 2, 4, 3, 5}. Chọn ngay đáp án <strong>B</strong>.</li></ul>"
   },
   {
     "id": 96,
@@ -1528,7 +1528,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Xác định ma trận liên thuộc của đồ thị có hướng G:</strong></p><p>Đồ thị có hướng G có n = 4 đỉnh. Từ ma trận kề, ta tìm các cung của đồ thị theo thứ tự từ điển:</p><ol><li>Cung 1: 1 → 2</li><li>Cung 2: 1 → 3</li><li>Cung 3: 2 → 4</li><li>Cung 4: 3 → 4</li><li>Cung 5: 4 → 1</li></ol><p>Tổng cộng đồ thị có m = 5 cung. Ma trận liên thuộc M có cỡ n &times; m = 4 hàng (đỉnh) &times; 5 cột (cung).</p><p>Trong cột tương ứng với cung u → v, ta có: M[u][cung] = 1 (đi ra), M[v][cung] = -1 (đi vào). Các phần tử khác bằng 0.</p><p>Xét cung thứ 5 (4 → 1):</p><ul><li>Đỉnh đầu u = 4 → M[4][5] = 1.</li><li>Đỉnh cuối v = 1 → M[1][5] = -1.</li></ul><p>Điều này khớp chính xác với khẳng định của phương án <strong>C</strong>: \"M gồm 4 hàng và 5 cột với M[1][5] = -1 và M[4][5] = 1\".</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đồ thị có n=4 đỉnh, m=5 cung thì ma trận liên thuộc phải có 4 hàng (đỉnh) và 5 cột (cung). Loại ngay A và D (ghi 5 hàng 4 cột).</li><li>Cung thứ 5 là 4 → 1, vì vậy ở cột 5: hàng 4 bằng 1, hàng 1 bằng -1. Khớp chính xác với đáp án C.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đồ thị có n=4 đỉnh, m=5 cung thì ma trận liên thuộc phải có 4 hàng (đỉnh) và 5 cột (cung). Loại ngay A và D (ghi 5 hàng 4 cột).</li><li>Cung thứ 5 là 4 → 1, vì vậy ở cột 5: hàng 4 bằng 1, hàng 1 bằng -1. Khớp chính xác với đáp án <strong>C</strong>.</li></ul>"
   },
   {
     "id": 97,
@@ -1543,8 +1543,8 @@
       "E": "<p>Giá trị của luồng f bằng độ dài đường đi có ngắn nhất từ đỉnh s đến đỉnh t.</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Điều kiện tối ưu của luồng cực đại (Max-Flow Optimality):</strong></p><p>Theo định lý tối ưu luồng của Ford-Fulkerson, một luồng f trong mạng G là luồng cực đại khi và chỉ khi trên đồ thị tăng luồng (đồ thị số dư) G_f **không còn tồn tại bất kỳ đường tăng luồng nào** từ đỉnh phát s đến đỉnh thu t.</p><p>Các lựa chọn khác:</p><ul><li>Lựa chọn B: Không bắt buộc mọi cung đều phải đầy (f = c), chỉ cần các cung thuộc lát cắt hẹp nhất bị đầy là đủ.</li></ul><p>Do đó, phương án đúng là <strong>A</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Ford-Fulkerson dừng lại khi không còn tìm được đường tăng luồng từ s đến t trên đồ thị số dư G_f. Khi đó luồng đạt cực đại. Chọn ngay đáp án A.</li></ul>"
+    "explanation": "<p><strong>Điều kiện tối ưu của luồng cực đại (Max-Flow Optimality):</strong></p><p>Theo định lý tối ưu luồng của Ford-Fulkerson, một luồng f trong mạng G là luồng cực đại khi và chỉ khi trên đồ thị tăng luồng (đồ thị số dư) G_f **không còn tồn tại bất kỳ đường tăng luồng nào** từ đỉnh phát s đến đỉnh thu t.</p><p><strong>C</strong>ác lựa chọn khác:</p><ul><li>Lựa chọn B: Không bắt buộc mọi cung đều phải đầy (f = c), chỉ cần các cung thuộc lát cắt hẹp nhất bị đầy là đủ.</li></ul><p>Do đó, phương án đúng là <strong>A</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Ford-Fulkerson dừng lại khi không còn tìm được đường tăng luồng từ s đến t trên đồ thị số dư G_f. Khi đó luồng đạt cực đại. Chọn ngay đáp án <strong>A</strong>.</li></ul>"
   },
   {
     "id": 98,
@@ -1607,8 +1607,8 @@
       "E": "<p>6</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Đếm số cạnh cầu (Bridges) của đồ thị:</strong></p><p>Cạnh cầu là cạnh mà khi xóa nó đi, số thành phần liên thông của đồ thị sẽ tăng lên. Trên hình vẽ, đồ thị gồm 2 thành phần liên thông lớn:</p><ol><li><strong>Thành phần liên thông 1 (phía bên trái):</strong> gồm các đỉnh {1, 2, 3, 4, 6, 7, 11, 12, 13}.</li>  <ul>    <li>Cạnh (6, 7) nối đến đỉnh treo 7 → là 1 cạnh cầu.</li>    <li>Cạnh (1, 11) nối cụm chu trình phía trên với cụm đỉnh phía dưới → là 1 cạnh cầu.</li>    <li>Cạnh (11, 12) và (11, 13) nối đến các đỉnh treo 12, 13 → là 2 cạnh cầu.</li>    <li>Các cạnh nằm trong chu trình 1-3-4-6-2-1 và 2-4-6-2 không phải là cầu.</li>  </ul>  <li><strong>Thành phần liên thông 2 (phía bên phải):</strong> gồm cụm đỉnh {9, 5, 10, 8} tạo thành một đường đi không có chu trình. Tất cả các cạnh trên đường đi này đều là cạnh cầu:</li>  <ul>    <li>Cạnh (9, 5) → là 1 cạnh cầu.</li>    <li>Cạnh (5, 10) → là 1 cạnh cầu.</li>    <li>Cạnh (10, 8) → là 1 cạnh cầu.</li>  </ul></ol><p>Tổng số cạnh cầu trên toàn bộ đồ thị G là: 4 + 3 = <strong>7 cạnh cầu</strong>. Vì kết quả 7 không xuất hiện trong các phương án A, B, D, E nên đáp án chính xác là <strong>C</strong> (Các phương án khác đều sai).</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cạnh cầu là cạnh mà nếu xóa nó đi, đồ thị bị đứt làm đôi.</li><li>Các cạnh nối trực tiếp với các đỉnh bậc 1 (đỉnh treo) luôn là cạnh cầu: ở đây có các đỉnh 7, 12, 13, 9, 8 là các đỉnh treo → tương ứng có 5 cạnh cầu.</li><li>Cạnh (1, 11) và (5, 10) cũng là cạnh cầu vì xóa chúng đi sẽ làm đồ thị mất liên thông.</li><li>Tổng số cạnh cầu là 7 → Chọn C.</li></ul>"
+    "explanation": "<p><strong>Đếm số cạnh cầu (Bridges) của đồ thị:</strong></p><p><strong>C</strong>ạnh cầu là cạnh mà khi xóa nó đi, số thành phần liên thông của đồ thị sẽ tăng lên. Trên hình vẽ, đồ thị gồm 2 thành phần liên thông lớn:</p><ol><li><strong>Thành phần liên thông 1 (phía bên trái):</strong> gồm các đỉnh {1, 2, 3, 4, 6, 7, 11, 12, 13}.</li>  <ul>    <li>Cạnh (6, 7) nối đến đỉnh treo 7 → là 1 cạnh cầu.</li>    <li>Cạnh (1, 11) nối cụm chu trình phía trên với cụm đỉnh phía dưới → là 1 cạnh cầu.</li>    <li>Cạnh (11, 12) và (11, 13) nối đến các đỉnh treo 12, 13 → là 2 cạnh cầu.</li>    <li>Các cạnh nằm trong chu trình 1-3-4-6-2-1 và 2-4-6-2 không phải là cầu.</li>  </ul>  <li><strong>Thành phần liên thông 2 (phía bên phải):</strong> gồm cụm đỉnh {9, 5, 10, 8} tạo thành một đường đi không có chu trình. Tất cả các cạnh trên đường đi này đều là cạnh cầu:</li>  <ul>    <li><strong>C</strong>ạnh (9, 5) → là 1 cạnh cầu.</li>    <li>Cạnh (5, 10) → là 1 cạnh cầu.</li>    <li>Cạnh (10, 8) → là 1 cạnh cầu.</li>  </ul></ol><p>Tổng số cạnh cầu trên toàn bộ đồ thị G là: 4 + 3 = <strong>7 cạnh cầu</strong>. Vì kết quả 7 không xuất hiện trong các phương án A, B, D, E nên đáp án chính xác là <strong>C</strong> (Các phương án khác đều sai).</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li><strong>C</strong>ạnh cầu là cạnh mà nếu xóa nó đi, đồ thị bị đứt làm đôi.</li><li>Các cạnh nối trực tiếp với các đỉnh bậc 1 (đỉnh treo) luôn là cạnh cầu: ở đây có các đỉnh 7, 12, 13, 9, 8 là các đỉnh treo → tương ứng có 5 cạnh cầu.</li><li><strong>C</strong>ạnh (1, 11) và (5, 10) cũng là cạnh cầu vì xóa chúng đi sẽ làm đồ thị mất liên thông.</li><li>Tổng số cạnh cầu là 7 → Chọn C.</li></ul>"
   },
   {
     "id": 102,
@@ -1623,8 +1623,8 @@
       "E": "T = {(1,2), (1,3), (3,4)} với WT = 12."
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Tìm cây khung lớn nhất bằng thuật toán Kruskal:</strong></p><p>Để tìm cây khung lớn nhất, ta sắp xếp các cạnh của đồ thị theo thứ tự trọng số giảm dần:</p><ol><li>Các cạnh có trọng số lớn nhất là 4: (1,2), (1,3), (2,3).</li><li>Các cạnh có trọng số 3: (2,4), (3,4).</li><li>Cạnh có trọng số -5: (1,4).</li></ol><p>Áp dụng thuật toán Kruskal để chọn cạnh:</p><ul><li>Bước 1: Chọn cạnh (1,2) w = 4. T = {(1,2)}.</li><li>Bước 2: Chọn cạnh (1,3) w = 4. T = {(1,2), (1,3)}.</li><li>Bước 3: Xét cạnh (2,3) w = 4. Cạnh này tạo chu trình 1-2-3-1 với T → Bỏ qua.</li><li>Bước 4: Xét cạnh (2,4) w = 3. Cạnh này không tạo chu trình → Chọn. T = {(1,2), (1,3), (2,4)}.</li></ul><p>Cây khung đã đủ n-1 = 3 cạnh, thuật toán dừng. Tổng trọng số WT = 4 + 4 + 3 = 11. Thứ tự chọn cạnh khớp chính xác với đáp án <strong>C</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Thuật toán Kruskal hoàn toàn sử dụng được khi đồ thị có trọng số âm (chỉ cần đổi chiều sắp xếp để tìm cây khung lớn nhất). Loại ngay phương án B.</li><li>Tính tổng trọng số: 4 + 4 + 3 = 11. Đối chiếu thấy đáp án C có WT = 11 và các cạnh không tạo thành chu trình.</li></ul>"
+    "explanation": "<p><strong>Tìm cây khung lớn nhất bằng thuật toán Kruskal:</strong></p><p>Để tìm cây khung lớn nhất, ta sắp xếp các cạnh của đồ thị theo thứ tự trọng số giảm dần:</p><ol><li>Các cạnh có trọng số lớn nhất là 4: (1,2), (1,3), (2,3).</li><li>Các cạnh có trọng số 3: (2,4), (3,4).</li><li>Cạnh có trọng số -5: (1,4).</li></ol><p>Áp dụng thuật toán Kruskal để chọn cạnh:</p><ul><li><strong>B</strong>ước 1: Chọn cạnh (1,2) w = 4. T = {(1,2)}.</li><li><strong>B</strong>ước 2: Chọn cạnh (1,3) w = 4. T = {(1,2), (1,3)}.</li><li>Bước 3: Xét cạnh (2,3) w = 4. Cạnh này tạo chu trình 1-2-3-1 với T → Bỏ qua.</li><li>Bước 4: Xét cạnh (2,4) w = 3. Cạnh này không tạo chu trình → Chọn. T = {(1,2), (1,3), (2,4)}.</li></ul><p>Cây khung đã đủ n-1 = 3 cạnh, thuật toán dừng. Tổng trọng số WT = 4 + 4 + 3 = 11. Thứ tự chọn cạnh khớp chính xác với đáp án <strong>C</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Thuật toán Kruskal hoàn toàn sử dụng được khi đồ thị có trọng số âm (chỉ cần đổi chiều sắp xếp để tìm cây khung lớn nhất). Loại ngay phương án B.</li><li>Tính tổng trọng số: 4 + 4 + 3 = 11. Đối chiếu thấy đáp án <strong>C</strong> có WT = 11 và các cạnh không tạo thành chu trình.</li></ul>"
   },
   {
     "id": 103,
@@ -1640,7 +1640,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Sắp xếp các dòng mã để được thuật toán BFS hoàn chỉnh:</strong></p><p>Sau phần Khởi tạo (Push đỉnh nguồn u vào Queue, đánh dấu chuaxet[u] = False):</p><ul><li>Bắt đầu vòng lặp while kiểm tra hàng đợi: <strong>8. while (Queue ≠ ∅) do</strong></li><li>Lấy đỉnh đầu s ra khỏi hàng đợi: <strong>4. s = Pop(Queue)</strong></li><li>Duyệt qua các đỉnh kề t của s: <strong>7. for each t ∈ Ke(s) do</strong></li><li>Kiểm tra trạng thái của t: <strong>6. if (chuaxet[t]) then</strong></li><li>Đưa t vào Queue và đánh dấu đã xét: <strong>5. Push(Queue, t); chuaxet[t] = False;</strong></li><li>Đóng các khối lặp và rẽ nhánh tương ứng: <strong>1. EndIf;</strong> → <strong>2. EndFor;</strong> → <strong>3. EndWhile;</strong></li></ul><p>Thứ tự đúng là: <strong>8 → 4 → 7 → 6 → 5 → 1 → 2 → 3</strong>. Khớp với phương án <strong>C</strong> (được ký hiệu là *A trong đề).</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Vòng lặp <code>while (Queue ≠ ∅)</code> (dòng 8) phải đứng trước việc lấy phần tử ra khỏi Queue bằng <code>s = Pop(Queue)</code> (dòng 4). Do đó, trình tự phải bắt đầu bằng 8 → 4. Điều này chỉ có ở đáp án C và D.</li><li>Tiếp theo phải duyệt đỉnh kề <code>for each t ∈ Ke(s)</code> (dòng 7) trước khi kiểm tra <code>if (chuaxet[t])</code> (dòng 6). Vậy thứ tự là 7 → 6. Chỉ có đáp án C thỏa mãn.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Vòng lặp <code>while (Queue ≠ ∅)</code> (dòng 8) phải đứng trước việc lấy phần tử ra khỏi Queue bằng <code>s = Pop(Queue)</code> (dòng 4). Do đó, trình tự phải bắt đầu bằng 8 → 4. Điều này chỉ có ở đáp án <strong>C</strong> và <strong>D</strong>.</li><li>Tiếp theo phải duyệt đỉnh kề <code>for each t ∈ Ke(s)</code> (dòng 7) trước khi kiểm tra <code>if (chuaxet[t])</code> (dòng 6). Vậy thứ tự là 7 → 6. Chỉ có đáp án <strong>C</strong> thỏa mãn.</li></ul>"
   },
   {
     "id": 104,
@@ -1672,7 +1672,7 @@
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Kiểm tra tính chất Euler của đồ thị vô hướng G:</strong></p><p>Tính bậc của từng đỉnh từ ma trận kề (bằng cách đếm số số 1 trên mỗi hàng):</p><ul><li>deg(1) = 2 (cạnh (1,2), (1,3))</li><li>deg(2) = 2 (cạnh (2,1), (2,3))</li><li>deg(3) = 4 (cạnh (3,1), (3,2), (3,4), (3,5))</li><li>deg(4) = 2 (cạnh (4,3), (4,5))</li><li>deg(5) = 2 (cạnh (5,3), (5,4))</li></ul><p>Đồ thị liên thông và tất cả các đỉnh {1, 2, 3, 4, 5} đều có bậc chẵn (2 hoặc 4). Theo định lý Euler, đồ thị G là **đồ thị Euler** (chứa chu trình Euler). Phương án chính xác là <strong>A</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đếm nhanh số số 1 trên từng hàng ma trận: hàng 1 có 2 số 1, hàng 2 có 2, hàng 3 có 4, hàng 4 có 2, hàng 5 có 2. Tất cả bậc đều chẵn → Đây là đồ thị Euler. Chọn ngay đáp án A.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đếm nhanh số số 1 trên từng hàng ma trận: hàng 1 có 2 số 1, hàng 2 có 2, hàng 3 có 4, hàng 4 có 2, hàng 5 có 2. Tất cả bậc đều chẵn → Đây là đồ thị Euler. Chọn ngay đáp án <strong>A</strong>.</li></ul>"
   },
   {
     "id": 106,
@@ -1688,7 +1688,7 @@
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Sắp xếp cấu trúc giải thuật DFS đệ quy:</strong></p><p>Khi gọi hàm DFS(u) để duyệt từ đỉnh u:</p><ul><li>Đầu tiên, ta thực hiện thăm đỉnh u: <strong>4. &lt;Thăm đỉnh u&gt;</strong></li><li>Đánh dấu đỉnh u đã được duyệt: <strong>5. chuaxet[u]:= FALSE;</strong></li><li>Duyệt qua tất cả các đỉnh v kề với u: <strong>7. for each v ∈ ke(u) do</strong></li><li>Kiểm tra nếu v chưa được duyệt: <strong>6. if (chuaxet[v]) then</strong></li><li>Gọi đệ quy DFS cho đỉnh v: <strong>3. DFS(v);</strong></li><li>Đóng các khối lệnh: <strong>1. EndIf;</strong> → <strong>2. EndFor;</strong></li></ul><p>Trật tự logic của các dòng mã là: <strong>4 → 5 → 7 → 6 → 3 → 1 → 2</strong>. Đáp án đúng là <strong>D</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bước đầu tiên của DFS đệ quy là thăm đỉnh và đánh dấu đã duyệt: 4 → 5. Chỉ có đáp án D là bắt đầu bằng 4 → 5. Kết luận ngay D là đáp án đúng.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bước đầu tiên của DFS đệ quy là thăm đỉnh và đánh dấu đã duyệt: 4 → 5. Chỉ có đáp án <strong>D</strong> là bắt đầu bằng 4 → 5. Kết luận ngay D là đáp án đúng.</li></ul>"
   },
   {
     "id": 107,
@@ -1735,8 +1735,8 @@
       "E": "<p>Cạnh (3, 4)</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p><strong>Xác định cạnh không phải là cạnh cầu (Bridge):</strong></p><p>Cạnh cầu là cạnh mà việc loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị. Ngược lại, cạnh nằm trong ít nhất một chu trình thì <strong>không phải là cạnh cầu</strong> (vì xóa đi vẫn còn các đường đi vòng khác kết nối hai đầu mút).</p><p>Hãy kiểm tra chu trình trong danh sách kề:</p><ul><li>Đỉnh 1 kề với 3.</li><li>Đỉnh 3 kề với 4.</li><li>Đỉnh 4 kề với 2.</li><li>Đỉnh 2 kề với 1.</li></ul><p>Tạo thành chu trình: 1 → 3 → 4 → 2 → 1. Cạnh (3, 4) nằm trên chu trình này, do đó khi xóa cạnh (3, 4), đồ thị vẫn liên thông thông qua đường đi 3 → 1 → 2 → 4. Vậy cạnh (3, 4) không phải là cạnh cầu.</p><p>Các cạnh khác như (11,12), (6,7) nối tới các đỉnh bậc 1 (đỉnh treo) nên bắt buộc là cạnh cầu. Cạnh (5,10) nối giữa 5 và 10 trong thành phần liên thông dạng cây {9, 5, 10, 8} nên cũng là cạnh cầu.</p><p>Đáp án đúng là <strong>E</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cạnh nằm trong chu trình thì KHÔNG bao giờ là cạnh cầu.</li><li>Dễ dàng tìm thấy chu trình 1-3-4-2-1 trong danh sách kề. Cạnh (3, 4) nằm trong chu trình này nên (3, 4) không phải cạnh cầu. Chọn ngay đáp án E.</li></ul>"
+    "explanation": "<p><strong>Xác định cạnh không phải là cạnh cầu (Bridge):</strong></p><p><strong>C</strong>ạnh cầu là cạnh mà việc loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị. Ngược lại, cạnh nằm trong ít nhất một chu trình thì <strong>không phải là cạnh cầu</strong> (vì xóa đi vẫn còn các đường đi vòng khác kết nối hai đầu mút).</p><p>Hãy kiểm tra chu trình trong danh sách kề:</p><ul><li>Đỉnh 1 kề với 3.</li><li>Đỉnh 3 kề với 4.</li><li>Đỉnh 4 kề với 2.</li><li>Đỉnh 2 kề với 1.</li></ul><p>Tạo thành chu trình: 1 → 3 → 4 → 2 → 1. Cạnh (3, 4) nằm trên chu trình này, do đó khi xóa cạnh (3, 4), đồ thị vẫn liên thông thông qua đường đi 3 → 1 → 2 → 4. Vậy cạnh (3, 4) không phải là cạnh cầu.</p><p><strong>C</strong>ác cạnh khác như (11,12), (6,7) nối tới các đỉnh bậc 1 (đỉnh treo) nên bắt buộc là cạnh cầu. <strong>C</strong>ạnh (5,10) nối giữa 5 và 10 trong thành phần liên thông dạng cây {9, 5, 10, 8} nên cũng là cạnh cầu.</p><p>Đáp án đúng là <strong>E</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cạnh nằm trong chu trình thì KHÔNG bao giờ là cạnh cầu.</li><li><strong>D</strong>ễ dàng tìm thấy chu trình 1-3-4-2-1 trong danh sách kề. Cạnh (3, 4) nằm trong chu trình này nên (3, 4) không phải cạnh cầu. Chọn ngay đáp án <strong>E</strong>.</li></ul>"
   },
   {
     "id": 110,
@@ -1752,7 +1752,7 @@
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Sửa lỗi giả mã thuật toán BFS:</strong></p><p>Trong thuật toán BFS chuẩn sử dụng hàng đợi (Queue):</p><ol><li>Tại dòng 5: <code>s = Push(Queue);</code> là sai. Để lấy một phần tử ra khỏi hàng đợi ta phải dùng hàm <strong>Pop</strong> hoặc <strong>Dequeue</strong>, tức là: <code>s = Pop(Queue);</code>.</li><li>Tại dòng 8: <code>Pop(Queue, t);</code> là sai. Khi phát hiện đỉnh t chưa xét, ta cần đưa t vào cuối hàng đợi bằng hàm <strong>Push</strong> hoặc <strong>Enqueue</strong>, tức là: <code>Push(Queue, t);</code>.</li></ol><p>Do đó, hai dòng cần chỉnh sửa là <strong>5</strong> và <strong>8</strong>. Phương án đúng là <strong>A</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Hàng đợi: Lấy ra ở đầu (Pop) và đưa vào ở cuối (Push).</li><li>Dòng 5: lấy ra để duyệt phải dùng Pop (đang dùng Push → sai).</li><li>Dòng 8: đưa đỉnh chưa xét vào hàng đợi phải dùng Push (đang dùng Pop → sai).</li><li>Vậy dòng 5 và 8 bị ngược nhau. Chọn đáp án A.</li></ul>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Hàng đợi: Lấy ra ở đầu (Pop) và đưa vào ở cuối (Push).</li><li>Dòng 5: lấy ra để duyệt phải dùng Pop (đang dùng Push → sai).</li><li>Dòng 8: đưa đỉnh chưa xét vào hàng đợi phải dùng Push (đang dùng Pop → sai).</li><li>Vậy dòng 5 và 8 bị ngược nhau. Chọn đáp án <strong>A</strong>.</li></ul>"
   },
   {
     "id": 111,
@@ -1815,7 +1815,7 @@
       "E": "<p>G liên thông và có hai đỉnh 2 và 3 với bậc lẻ nên là đồ thị nửa Euler.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Phân tích tính chất Euler của đồ thị vô hướng:</strong></p><ul><li>Một đồ thị vô hướng liên thông có đường đi Euler (nửa Euler) khi và chỉ khi nó có **đúng 2 đỉnh bậc lẻ**. Đường đi Euler sẽ bắt đầu tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại.</li><li>Đồ thị có chu trình Euler (đồ thị Euler) khi và chỉ khi **tất cả các đỉnh đều có bậc chẵn**.</li></ul><p><strong>Xác định bậc của các đỉnh từ danh sách cạnh của G:</strong></p><ul><li>Cạnh: (1,4), (1,5), (2,3), (2,5), (3,4), (3,5)</li><li>Bậc của đỉnh 1: Nối với 4, 5 $\\rightarrow \\text{deg}(1) = 2$ (chẵn)</li><li>Bậc của đỉnh 2: Nối với 3, 5 $\\rightarrow \\text{deg}(2) = 2$ (chẵn)</li><li>Bậc của đỉnh 3: Nối với 2, 4, 5 $\\rightarrow \\text{deg}(3) = 3$ (lẻ)</li><li>Bậc của đỉnh 4: Nối với 1, 3 $\\rightarrow \\text{deg}(4) = 2$ (chẵn)</li><li>Bậc của đỉnh 5: Nối với 1, 2, 3 $\\rightarrow \\text{deg}(5) = 3$ (lẻ)</li></ul><p>Đồ thị liên thông và có đúng 2 đỉnh bậc lẻ là 3 và 5. Do đó, G là đồ thị nửa Euler. Đáp án đúng là B.</p>",
+    "explanation": "<p><strong>Phân tích tính chất Euler của đồ thị vô hướng:</strong></p><ul><li>Một đồ thị vô hướng liên thông có đường đi Euler (nửa Euler) khi và chỉ khi nó có **đúng 2 đỉnh bậc lẻ**. Đường đi Euler sẽ bắt đầu tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại.</li><li>Đồ thị có chu trình Euler (đồ thị Euler) khi và chỉ khi **tất cả các đỉnh đều có bậc chẵn**.</li></ul><p><strong>Xác định bậc của các đỉnh từ danh sách cạnh của G:</strong></p><ul><li>Cạnh: (1,4), (1,5), (2,3), (2,5), (3,4), (3,5)</li><li>Bậc của đỉnh 1: Nối với 4, 5 $\\rightarrow \\text{deg}(1) = 2$ (chẵn)</li><li>Bậc của đỉnh 2: Nối với 3, 5 $\\rightarrow \\text{deg}(2) = 2$ (chẵn)</li><li>Bậc của đỉnh 3: Nối với 2, 4, 5 $\\rightarrow \\text{deg}(3) = 3$ (lẻ)</li><li>Bậc của đỉnh 4: Nối với 1, 3 $\\rightarrow \\text{deg}(4) = 2$ (chẵn)</li><li>Bậc của đỉnh 5: Nối với 1, 2, 3 $\\rightarrow \\text{deg}(5) = 3$ (lẻ)</li></ul><p>Đồ thị liên thông và có đúng 2 đỉnh bậc lẻ là 3 và 5. Do đó, G là đồ thị nửa Euler. Đáp án đúng là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Đếm số lần xuất hiện của mỗi đỉnh trong danh sách cạnh: Đỉnh 1 xuất hiện 2 lần, đỉnh 2 xuất hiện 2 lần, đỉnh 3 xuất hiện 3 lần (lẻ), đỉnh 4 xuất hiện 2 lần, đỉnh 5 xuất hiện 3 lần (lẻ). Có đúng 2 đỉnh lẻ là 3 và 5, chọn ngay <strong>B</strong>.</p>"
   },
   {
@@ -1879,7 +1879,7 @@
       "E": "<p>G là đồ thị vô hướng.</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Phân tích điều kiện áp dụng thuật toán Dijkstra:</strong></p><ul><li>Thuật toán Dijkstra được sử dụng để tìm đường đi ngắn nhất từ một đỉnh xuất phát $s$ đến các đỉnh còn lại trên đơn đồ thị có trọng số.</li><li>Điều kiện áp dụng bắt buộc của thuật toán Dijkstra là <strong>đồ thị chỉ chứa các trọng số không âm</strong> ($w(e) \\ge 0$ với mọi cạnh $e \\in E$).</li><li>Nếu đồ thị có cạnh mang trọng số âm, Dijkstra có thể cho kết quả sai do nguyên lý tham lam chọn đỉnh có nhãn khoảng cách nhỏ nhất ở mỗi bước không còn đảm bảo tính tối ưu toàn cục. Trong trường hợp có cạnh trọng số âm, ta phải dùng thuật toán Bellman-Ford.</li></ul><p>Vì vậy, đáp án chính xác là C.</p>",
+    "explanation": "<p><strong>Phân tích điều kiện áp dụng thuật toán Dijkstra:</strong></p><ul><li>Thuật toán Dijkstra được sử dụng để tìm đường đi ngắn nhất từ một đỉnh xuất phát $s$ đến các đỉnh còn lại trên đơn đồ thị có trọng số.</li><li>Điều kiện áp dụng bắt buộc của thuật toán Dijkstra là <strong>đồ thị chỉ chứa các trọng số không âm</strong> ($w(e) \\ge 0$ với mọi cạnh $e \\in E$).</li><li>Nếu đồ thị có cạnh mang trọng số âm, Dijkstra có thể cho kết quả sai do nguyên lý tham lam chọn đỉnh có nhãn khoảng cách nhỏ nhất ở mỗi bước không còn đảm bảo tính tối ưu toàn cục. Trong trường hợp có cạnh trọng số âm, ta phải dùng thuật toán Bellman-Ford.</li></ul><p>Vì vậy, đáp án chính xác là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ từ khóa của Dijkstra là **trọng số không âm** (non-negative weights). Cứ gặp câu hỏi về điều kiện áp dụng Dijkstra, tìm phương án có chứa từ khóa này để chọn (Phương án C).</p>"
   },
   {
@@ -1927,7 +1927,7 @@
       "E": "<p>Đường đi trong G đi qua mỗi đỉnh của nó không quá 1 lần gọi là đường đi Hamilton.</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Phân tích định nghĩa đường đi Hamilton trong lý thuyết đồ thị:</strong></p><ul><li><strong>Đường đi Hamilton:</strong> Là đường đi đi qua tất cả các đỉnh của đồ thị, mỗi đỉnh đúng một lần. Nếu đồ thị có $n$ đỉnh, đường đi Hamilton sẽ đi qua đúng $n$ đỉnh khác nhau.</li><li><strong>Chu trình Hamilton:</strong> Là chu trình đi qua tất cả các đỉnh của đồ thị, mỗi đỉnh đúng một lần (trừ đỉnh xuất phát và đỉnh kết thúc trùng nhau).</li></ul><p>Xét các phương án:</p><ul><li>Phương án <strong>A</strong>: Phát biểu hoàn toàn chính xác theo định nghĩa của đường đi Hamilton.</li><li>Phương án <strong>B</strong>: Đường đi đơn chỉ yêu cầu không đi qua cạnh nào quá 1 lần, không nhất thiết phải qua mọi đỉnh.</li><li>Phương án <strong>C</strong>: Đường đi đi qua mọi cạnh đúng 1 lần là định nghĩa của đường đi Euler, không phải Hamilton.</li><li>Phương án <strong>E</strong>: Đường đi đi qua mỗi đỉnh không quá 1 lần là định nghĩa của đường đi đơn giản (simple path), chưa chắc đã là Hamilton vì có thể không đi qua hết $n$ đỉnh.</li></ul><p>Do đó, đáp án đúng là A.</p>",
+    "explanation": "<p><strong>Phân tích định nghĩa đường đi Hamilton trong lý thuyết đồ thị:</strong></p><ul><li><strong>Đường đi Hamilton:</strong> Là đường đi đi qua tất cả các đỉnh của đồ thị, mỗi đỉnh đúng một lần. Nếu đồ thị có $n$ đỉnh, đường đi Hamilton sẽ đi qua đúng $n$ đỉnh khác nhau.</li><li><strong>Chu trình Hamilton:</strong> Là chu trình đi qua tất cả các đỉnh của đồ thị, mỗi đỉnh đúng một lần (trừ đỉnh xuất phát và đỉnh kết thúc trùng nhau).</li></ul><p>Xét các phương án:</p><ul><li>Phương án <strong>A</strong>: Phát biểu hoàn toàn chính xác theo định nghĩa của đường đi Hamilton.</li><li>Phương án <strong>B</strong>: Đường đi đơn chỉ yêu cầu không đi qua cạnh nào quá 1 lần, không nhất thiết phải qua mọi đỉnh.</li><li>Phương án <strong>C</strong>: Đường đi đi qua mọi cạnh đúng 1 lần là định nghĩa của đường đi Euler, không phải Hamilton.</li><li>Phương án <strong>E</strong>: Đường đi đi qua mỗi đỉnh không quá 1 lần là định nghĩa của đường đi đơn giản (simple path), chưa chắc đã là Hamilton vì có thể không đi qua hết $n$ đỉnh.</li></ul><p>Do đó, đáp án đúng là <strong>A</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ định nghĩa cốt lõi: **Hamilton gắn liền với Đỉnh, Euler gắn liền với Cạnh**. Đường đi Hamilton phải đi qua tất cả các đỉnh, mỗi đỉnh đúng 1 lần. Chọn ngay <strong>A</strong>.</p>"
   },
   {
@@ -2022,7 +2022,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Phân tích lỗi sai trong mã giả thuật toán Dijkstra:</strong></p><ul><li><strong>Dòng 7:</strong> <code>&lt;Chọn u là đỉnh có d[u] lớn nhất&gt;;</code> $\\rightarrow$ **Sai**. Nguyên lý tham lam của Dijkstra yêu cầu chọn đỉnh $u$ có $d[u]$ <strong>nhỏ nhất</strong> (khoảng cách ngắn nhất hiện tại).</li><li><strong>Dòng 9:</strong> <code>for v &notin; V do {</code> $\\rightarrow$ **Sai**. Ta chỉ cập nhật nhãn cho các đỉnh $v$ còn lại chưa cố định nhãn, tức là $v \\in V$ (với $V$ là tập các đỉnh chưa duyệt), chứ không phải $v \\notin V$.</li><li><strong>Dòng 11:</strong> <code>d[u]=d[v]+A[u,v];</code> $\\rightarrow$ **Sai**. Công thức cập nhật khoảng cách cho đỉnh kề phải là cập nhật $d[v]$ dựa trên $d[u]$: <code>d[v] = d[u] + A[u,v];</code>.</li></ul><p>Vậy các dòng chưa chính xác là 7, 9 và 11. Đáp án đúng là D.</p>",
+    "explanation": "<p><strong>Phân tích lỗi sai trong mã giả thuật toán Dijkstra:</strong></p><ul><li><strong>Dòng 7:</strong> <code>&lt;Chọn u là đỉnh có d[u] lớn nhất&gt;;</code> $\\rightarrow$ **Sai**. Nguyên lý tham lam của Dijkstra yêu cầu chọn đỉnh $u$ có $d[u]$ <strong>nhỏ nhất</strong> (khoảng cách ngắn nhất hiện tại).</li><li><strong>Dòng 9:</strong> <code>for v &notin; V do {</code> $\\rightarrow$ **Sai**. Ta chỉ cập nhật nhãn cho các đỉnh $v$ còn lại chưa cố định nhãn, tức là $v \\in V$ (với $V$ là tập các đỉnh chưa duyệt), chứ không phải $v \\notin V$.</li><li><strong>Dòng 11:</strong> <code>d[u]=d[v]+A[u,v];</code> $\\rightarrow$ **Sai**. Công thức cập nhật khoảng cách cho đỉnh kề phải là cập nhật $d[v]$ dựa trên $d[u]$: <code>d[v] = d[u] + A[u,v];</code>.</li></ul><p>Vậy các dòng chưa chính xác là 7, 9 và 11. Đáp án đúng là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn nhanh vào mã giả:<br>- Dòng 7 chọn 'lớn nhất' là sai (phải là nhỏ nhất).<br>- Dòng 9 lặp qua 'v &notin; V' là sai (phải là v &in; V).<br>- Dòng 11 gán nhầm cho 'd[u]' thay vì 'd[v]'.<br>Tổ hợp lỗi là 7, 9, 11 $\\rightarrow$ Chọn D.</p>"
   },
   {
@@ -2038,7 +2038,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Tìm các cạnh trùng lặp trong biểu diễn đồ thị vô hướng:</strong></p><ul><li>Trong đồ thị vô hướng, cạnh giữa hai đỉnh $u$ và $v$ không phân biệt hướng nên $\\{u, v\\}$ và $\\{v, u\\}$ là như nhau.</li><li>Để danh sách cạnh của đồ thị vô hướng không có các cạnh trùng lặp (chỉ giữ lại 1 đại diện duy nhất cho mỗi cạnh), ta cần loại bỏ các bản sao ngược chiều.</li><li>Các ô trong bảng được đánh số thứ tự từ 1 đến 8 tuần tự theo cột trái trước, cột phải sau:</li><li>1: (1, 2) | 2: (1, 3) | 3: (2, 1) | 4: (2, 3) (cột trái)</li><li>5: (2, 4) | 6: (3, 1) | 7: (3, 2) | 8: (4, 2) (cột phải)</li><li>Các cặp trùng lặp:</li><li>(2, 1) ở vị trí 3 trùng với (1, 2) ở vị trí 1 $\\rightarrow$ Loại 3.</li><li>(3, 1) ở vị trí 6 trùng với (1, 3) ở vị trí 2 $\\rightarrow$ Loại 6.</li><li>(3, 2) ở vị trí 7 trùng với (2, 3) ở vị trí 4 $\\rightarrow$ Loại 7.</li><li>(4, 2) ở vị trí 8 trùng với (2, 4) ở vị trí 5 $\\rightarrow$ Loại 8.</li></ul><p>Do đó, cần loại bỏ các phần tử thứ 3, 6, 7, 8. Đáp án đúng là A.</p>",
+    "explanation": "<p><strong>Tìm các cạnh trùng lặp trong biểu diễn đồ thị vô hướng:</strong></p><ul><li>Trong đồ thị vô hướng, cạnh giữa hai đỉnh $u$ và $v$ không phân biệt hướng nên $\\{u, v\\}$ và $\\{v, u\\}$ là như nhau.</li><li>Để danh sách cạnh của đồ thị vô hướng không có các cạnh trùng lặp (chỉ giữ lại 1 đại diện duy nhất cho mỗi cạnh), ta cần loại bỏ các bản sao ngược chiều.</li><li>Các ô trong bảng được đánh số thứ tự từ 1 đến 8 tuần tự theo cột trái trước, cột phải sau:</li><li>1: (1, 2) | 2: (1, 3) | 3: (2, 1) | 4: (2, 3) (cột trái)</li><li>5: (2, 4) | 6: (3, 1) | 7: (3, 2) | 8: (4, 2) (cột phải)</li><li>Các cặp trùng lặp:</li><li>(2, 1) ở vị trí 3 trùng với (1, 2) ở vị trí 1 $\\rightarrow$ Loại 3.</li><li>(3, 1) ở vị trí 6 trùng với (1, 3) ở vị trí 2 $\\rightarrow$ Loại 6.</li><li>(3, 2) ở vị trí 7 trùng với (2, 3) ở vị trí 4 $\\rightarrow$ Loại 7.</li><li>(4, 2) ở vị trí 8 trùng với (2, 4) ở vị trí 5 $\\rightarrow$ Loại 8.</li></ul><p>Do đó, cần loại bỏ các phần tử thứ 3, 6, 7, 8. Đáp án đúng là <strong>A</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Liệt kê tất cả các cạnh vô hướng độc nhất: {1,2}, {1,3}, {2,3}, {2,4}. Các cạnh còn lại là đối xứng đảo ngược của chúng. Đánh số thứ tự các ô từ trên xuống dưới, trái qua phải để tìm nhanh các số chỉ vị trí trùng lặp (3, 6, 7, 8). Chọn A.</p>"
   },
   {
@@ -2070,7 +2070,7 @@
       "E": "<p>Cạnh (5, 2)</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Phân tích tính liên thông mạnh và xác định cạnh cần bổ sung:</strong></p><ul><li>Đồ thị có hướng được gọi là liên thông mạnh nếu giữa hai đỉnh bất kỳ $u$ và $v$ luôn có đường đi có hướng từ $u$ đến $v$ và ngược lại.</li><li>Đồ thị hiện tại gồm 5 đỉnh và các cung: $1 \\to 2$, $2 \\to 4$, $1 \\to 4$, $3 \\to 4$, $2 \\to 3$, $5 \\to 1$.</li><li>Ta thấy đỉnh 4 có bán bậc ra $\\text{deg}^+(4) = 0$ (không có cung nào đi ra từ 4). Vì vậy, từ đỉnh 4 ta không thể đi đến bất kỳ đỉnh nào khác trong đồ thị.</li><li>Để đồ thị có cơ hội liên thông mạnh, bắt buộc phải có ít nhất một cung đi ra từ đỉnh 4, tức là cung có dạng $(4, x)$ với $x \\in \\{1, 2, 3, 5\\}$.</li><li>Xét các phương án bổ sung cạnh được đưa ra:</li><li>A: Cạnh (5, 4) - đỉnh đầu là 5, không phải 4.</li><li>B: Cạnh (1, 3) - đỉnh đầu là 1, không phải 4.</li><li>E: Cạnh (5, 2) - đỉnh đầu là 5, không phải 4.</li></ul><p>Không có cạnh nào có đỉnh đầu là 4 trong các phương án A, B, E. Do đó, các phương án này đều không thể làm đồ thị liên thông mạnh. Vậy đáp án đúng là D: 'Các phương án khác đều sai'.</p>",
+    "explanation": "<p><strong>Phân tích tính liên thông mạnh và xác định cạnh cần bổ sung:</strong></p><ul><li>Đồ thị có hướng được gọi là liên thông mạnh nếu giữa hai đỉnh bất kỳ $u$ và $v$ luôn có đường đi có hướng từ $u$ đến $v$ và ngược lại.</li><li>Đồ thị hiện tại gồm 5 đỉnh và các cung: $1 \\to 2$, $2 \\to 4$, $1 \\to 4$, $3 \\to 4$, $2 \\to 3$, $5 \\to 1$.</li><li>Ta thấy đỉnh 4 có bán bậc ra $\\text{deg}^+(4) = 0$ (không có cung nào đi ra từ 4). Vì vậy, từ đỉnh 4 ta không thể đi đến bất kỳ đỉnh nào khác trong đồ thị.</li><li>Để đồ thị có cơ hội liên thông mạnh, bắt buộc phải có ít nhất một cung đi ra từ đỉnh 4, tức là cung có dạng $(4, x)$ với $x \\in \\{1, 2, 3, 5\\}$.</li><li>Xét các phương án bổ sung cạnh được đưa ra:</li><li>A: Cạnh (5, 4) - đỉnh đầu là 5, không phải 4.</li><li>B: Cạnh (1, 3) - đỉnh đầu là 1, không phải 4.</li><li>E: Cạnh (5, 2) - đỉnh đầu là 5, không phải 4.</li></ul><p>Không có cạnh nào có đỉnh đầu là 4 trong các phương án A, B, E. Do đó, các phương án này đều không thể làm đồ thị liên thông mạnh. Vậy đáp án đúng là <strong>D</strong>: '<strong>C</strong>ác phương án khác đều sai'.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tìm đỉnh có bậc ra bằng 0 (đỉnh 'hấp thụ' - chỉ có mũi tên đi vào, không có đi ra). Ở đây là đỉnh 4. Để đồ thị liên thông mạnh thì bắt buộc phải bổ sung cạnh đi ra từ đỉnh này, tức là phải có dạng (4, x). Không có phương án nào như vậy $\\rightarrow$ chọn D.</p>"
   },
   {
@@ -2086,7 +2086,7 @@
       "E": "E = {3, 4, 1, 5, 2, 3, 5}."
     },
     "correctAnswer": "D",
-    "explanation": "<p>Cả hai phương án D và E đều biểu diễn các đường đi Euler hợp lệ trên đồ thị. Tuy nhiên, khi áp dụng thuật toán tìm đường đi Euler với quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất (quy tắc nhất quán trong toàn bộ hệ thống):</p><ul><li>Xuất phát từ đỉnh bậc lẻ 3.</li><li>Đỉnh kề của 3 là 2, 4, 5. Chọn đỉnh nhỏ nhất là 2 $\\rightarrow$ đi theo cạnh $(3,2)$.</li><li>Từ 2 kề {1, 3, 4, 5}. Chọn đỉnh nhỏ nhất chưa đi là 5 (cạnh $(2,5)$).</li><li>Tiếp tục duyệt theo thứ tự kề nhỏ nhất sẽ sinh ra chính xác dãy đỉnh của phương án <strong>D</strong>: $E = \\{3, 2, 5, 1, 4, 3, 5\\}$.</li></ul><p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
+    "explanation": "<p><strong>C</strong>ả hai phương án D và E đều biểu diễn các đường đi Euler hợp lệ trên đồ thị. Tuy nhiên, khi áp dụng thuật toán tìm đường đi Euler với quy tắc ưu tiên duyệt đỉnh kề có chỉ số nhỏ nhất (quy tắc nhất quán trong toàn bộ hệ thống):</p><ul><li>Xuất phát từ đỉnh bậc lẻ 3.</li><li>Đỉnh kề của 3 là 2, 4, 5. Chọn đỉnh nhỏ nhất là 2 $\\rightarrow$ đi theo cạnh $(3,2)$.</li><li>Từ 2 kề {1, 3, 4, 5}. Chọn đỉnh nhỏ nhất chưa đi là 5 (cạnh $(2,5)$).</li><li>Tiếp tục duyệt theo thứ tự kề nhỏ nhất sẽ sinh ra chính xác dãy đỉnh của phương án <strong>D</strong>: $E = \\{3, 2, 5, 1, 4, 3, 5\\}$.</li></ul><p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Đường đi Euler phải bắt đầu tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại. Đồ thị có hai đỉnh bậc lẻ là 3 và 5. Dãy đỉnh phải bắt đầu bằng 3 và kết thúc bằng 5. Xét quy tắc ưu tiên đỉnh kề có chỉ số nhỏ nhất, từ 3 ta phải đi sang 2 trước. Do đó loại phương án E (đi sang 4 trước) và chọn phương án <strong>D</strong>.</p>"
   },
   {
@@ -2150,7 +2150,7 @@
       "E": "<p>(1,2), (1,4), (2,3), (3,1) và (4,2).</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p><strong>Chuyển đổi ma trận kề của đơn đồ thị có hướng G sang danh sách cung:</strong></p><p>Ma trận kề của G gồm 4 đỉnh:</p>$$\\begin{pmatrix} 0 & 1 & 0 & 1 \\\\ 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 \\end{pmatrix}$$<ul><li>Ta duyệt qua từng hàng $i$ của ma trận để tìm các phần tử có giá trị bằng 1 ở cột $j$. Khi đó tồn tại cung có hướng $(i, j)$ từ đỉnh $i$ đến đỉnh $j$:</li><li>Hàng 1: Có số 1 ở cột 2 và cột 4 $\\rightarrow$ Cung (1, 2) và (1, 4).</li><li>Hàng 2: Có số 1 ở cột 3 $\\rightarrow$ Cung (2, 3).</li><li>Hàng 3: Có số 1 ở cột 1 $\\rightarrow$ Cung (3, 1).</li><li>Hàng 4: Có số 1 ở cột 2 $\\rightarrow$ Cung (4, 2).</li></ul><p>Gộp các cung theo thứ tự tìm kiếm, ta được danh sách cung: (1,2), (1,4), (2,3), (3,1) và (4,2). Đối chiếu các lựa chọn, danh sách này tương ứng chính xác với phương án E.</p>",
+    "explanation": "<p><strong>Chuyển đổi ma trận kề của đơn đồ thị có hướng G sang danh sách cung:</strong></p><p>Ma trận kề của G gồm 4 đỉnh:</p>$$\\begin{pmatrix} 0 & 1 & 0 & 1 \\\\ 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 \\end{pmatrix}$$<ul><li>Ta duyệt qua từng hàng $i$ của ma trận để tìm các phần tử có giá trị bằng 1 ở cột $j$. Khi đó tồn tại cung có hướng $(i, j)$ từ đỉnh $i$ đến đỉnh $j$:</li><li>Hàng 1: <strong>C</strong>ó số 1 ở cột 2 và cột 4 $\\rightarrow$ Cung (1, 2) và (1, 4).</li><li>Hàng 2: <strong>C</strong>ó số 1 ở cột 3 $\\rightarrow$ Cung (2, 3).</li><li>Hàng 3: <strong>C</strong>ó số 1 ở cột 1 $\\rightarrow$ Cung (3, 1).</li><li>Hàng 4: <strong>C</strong>ó số 1 ở cột 2 $\\rightarrow$ Cung (4, 2).</li></ul><p>Gộp các cung theo thứ tự tìm kiếm, ta được danh sách cung: (1,2), (1,4), (2,3), (3,1) và (4,2). Đối chiếu các lựa chọn, danh sách này tương ứng chính xác với phương án E.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Đọc nhanh các vị trí số 1 theo từng hàng để viết ra cung:<br>- Hàng 1: (1,2), (1,4)<br>- Hàng 2: (2,3)<br>- Hàng 3: (3,1)<br>- Hàng 4: (4,2)<br>So sánh dãy này với các phương án, chọn ngay <strong>E</strong>. Lưu ý phân biệt hướng cung (3,1) ở hàng 3 cột 1 (tránh nhầm với (1,3) ở phương án A).</p>"
   },
   {
@@ -2166,7 +2166,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Xác định số thành phần liên thông của đồ thị vô hướng từ danh sách cạnh:</strong></p><ul><li>Đồ thị vô hướng gồm 10 đỉnh (từ 1 đến 10) và 10 cạnh: (1,2), (6,7), (1,3), (7,8), (2,3), (7,9), (2,4), (8,10), (3,4), (9,10).</li><li>Ta gom các đỉnh liên thông với nhau thông qua các cạnh:</li><li>Cụm 1: Bắt đầu từ đỉnh 1 kề với 2, 3. Đỉnh 2 kề với 4. Đỉnh 3 kề với 4. Các đỉnh này nối với nhau tạo thành thành phần liên thông thứ nhất: $\\{1, 2, 3, 4\\}$.</li><li>Cụm 2: Đỉnh 6 kề với 7. Đỉnh 7 kề với 8, 9. Đỉnh 8 kề với 10. Đỉnh 9 kề với 10. Các đỉnh này nối với nhau tạo thành thành phần liên thông thứ hai: $\\{6, 7, 8, 9, 10\\}$.</li><li>Đỉnh còn lại: Đỉnh 5 không xuất hiện trong bất kỳ cạnh nào của đồ thị, do đó nó là đỉnh cô lập và tự tạo thành một thành phần liên thông độc lập thứ ba: $\\{5\\}$.</li></ul><p>Tổng số thành phần liên thông của đồ thị là 3. Đáp án đúng là B.</p>",
+    "explanation": "<p><strong>Xác định số thành phần liên thông của đồ thị vô hướng từ danh sách cạnh:</strong></p><ul><li>Đồ thị vô hướng gồm 10 đỉnh (từ 1 đến 10) và 10 cạnh: (1,2), (6,7), (1,3), (7,8), (2,3), (7,9), (2,4), (8,10), (3,4), (9,10).</li><li>Ta gom các đỉnh liên thông với nhau thông qua các cạnh:</li><li>Cụm 1: Bắt đầu từ đỉnh 1 kề với 2, 3. Đỉnh 2 kề với 4. Đỉnh 3 kề với 4. Các đỉnh này nối với nhau tạo thành thành phần liên thông thứ nhất: $\\{1, 2, 3, 4\\}$.</li><li>Cụm 2: Đỉnh 6 kề với 7. Đỉnh 7 kề với 8, 9. Đỉnh 8 kề với 10. Đỉnh 9 kề với 10. Các đỉnh này nối với nhau tạo thành thành phần liên thông thứ hai: $\\{6, 7, 8, 9, 10\\}$.</li><li>Đỉnh còn lại: Đỉnh 5 không xuất hiện trong bất kỳ cạnh nào của đồ thị, do đó nó là đỉnh cô lập và tự tạo thành một thành phần liên thông độc lập thứ ba: $\\{5\\}$.</li></ul><p>Tổng số thành phần liên thông của đồ thị là 3. Đáp án đúng là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tách đồ thị thành các nhóm đỉnh độc lập: Nhóm {1,2,3,4} liên thông với nhau. Nhóm {6,7,8,9,10} liên thông với nhau. Đỉnh 5 không nối với ai nên đứng một mình. Tổng cộng có 3 nhóm độc lập, chọn B.</p>"
   },
   {
@@ -2262,7 +2262,7 @@
       "E": "<p>5 -> 6 -> 2 -> 4 -> 3 -> 1</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Sắp xếp các bước trong thuật toán duyệt cạnh cầu của đồ thị:</strong></p><ul><li>Thuật toán tìm cạnh cầu đơn giản dựa trên định nghĩa: Cạnh $e$ là cạnh cầu của đồ thị liên thông $G = (V, E)$ nếu khi loại bỏ cạnh $e$ khỏi $G$ thì số thành phần liên thông của đồ thị tăng lên (đồ thị trở nên không liên thông).</li><li>Các bước thực hiện đối với mỗi cạnh $e \\in E$:</li><li>1. Loại bỏ cạnh $e$ khỏi tập cạnh $E$: <code>E = E \\ {e};</code> (tương ứng với đoạn mã số 5).</li><li>2. Khởi tạo lại trạng thái chưa duyệt cho tất cả các đỉnh: <code>ReInit();</code> (tương ứng với đoạn mã số 2). Nhưng vì trong câu lệnh điều kiện đã bao hàm việc gọi hàm DFS và kiểm tra liên thông nên thứ tự các dòng lệnh tuần tự là:</li><li>Loại bỏ cạnh $e$ (5) $\\to$ Gọi DFS kiểm tra tính liên thông, nếu đồ thị không còn liên thông (6) $\\to$ Kết luận $e$ là cầu (4) $\\to$ Kết thúc nhánh điều kiện (3) $\\to$ Thêm lại cạnh $e$ vào đồ thị để xét cạnh tiếp theo (1) $\\to$ Đánh dấu lại trạng thái ban đầu của đỉnh (2).</li></ul><p>Tổ hợp thứ tự đúng là: 5 -> 6 -> 4 -> 3 -> 1 -> 2. Chọn phương án A.</p>",
+    "explanation": "<p><strong>Sắp xếp các bước trong thuật toán duyệt cạnh cầu của đồ thị:</strong></p><ul><li>Thuật toán tìm cạnh cầu đơn giản dựa trên định nghĩa: <strong>C</strong>ạnh $e$ là cạnh cầu của đồ thị liên thông $G = (V, E)$ nếu khi loại bỏ cạnh $e$ khỏi $G$ thì số thành phần liên thông của đồ thị tăng lên (đồ thị trở nên không liên thông).</li><li>Các bước thực hiện đối với mỗi cạnh $e \\in E$:</li><li>1. Loại bỏ cạnh $e$ khỏi tập cạnh $E$: <code>E = E \\ {e};</code> (tương ứng với đoạn mã số 5).</li><li>2. Khởi tạo lại trạng thái chưa duyệt cho tất cả các đỉnh: <code>ReInit();</code> (tương ứng với đoạn mã số 2). Nhưng vì trong câu lệnh điều kiện đã bao hàm việc gọi hàm DFS và kiểm tra liên thông nên thứ tự các dòng lệnh tuần tự là:</li><li>Loại bỏ cạnh $e$ (5) $\\to$ Gọi DFS kiểm tra tính liên thông, nếu đồ thị không còn liên thông (6) $\\to$ Kết luận $e$ là cầu (4) $\\to$ Kết thúc nhánh điều kiện (3) $\\to$ Thêm lại cạnh $e$ vào đồ thị để xét cạnh tiếp theo (1) $\\to$ Đánh dấu lại trạng thái ban đầu của đỉnh (2).</li></ul><p>Tổ hợp thứ tự đúng là: 5 -> 6 -> 4 -> 3 -> 1 -> 2. Chọn phương án A.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Thao tác đầu tiên luôn là tạm thời xóa cạnh $e$ khỏi đồ thị để kiểm tra, tương ứng với lệnh 5 (E = E\\{e}). Thao tác áp chót luôn là khôi phục lại cạnh $e$ vừa xóa, tương ứng với lệnh 1 (E = E ∪ {e}). Nhìn các phương án, chỉ có A và E bắt đầu bằng 5 và kết thúc bằng 1, 2. Tiếp tục kiểm tra bước điều kiện if-endif (6 -> 4 -> 3) để chọn A.</p>"
   },
   {
@@ -2278,7 +2278,7 @@
       "E": "<p>Mọi cặp đỉnh u, v của G đều có độ dài đường đi ngắn nhất từ u đến v với giá trị âm.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Phân tích điều kiện phát hiện chu trình âm bằng thuật toán Floyd:</strong></p><ul><li>Thuật toán Floyd-Warshall dùng để tìm đường đi ngắn nhất giữa mọi cặp đỉnh trên đồ thị.</li><li>Khoảng cách từ một đỉnh $u$ đến chính nó ban đầu được khởi tạo là 0 ($D[u][u] = 0$).</li><li>Nếu đồ thị chứa chu trình âm (chu trình có tổng trọng số các cạnh là số âm), thuật toán sẽ liên tục tối ưu hóa đường đi đi qua chu trình này, khiến giá trị khoảng cách trên đường chéo chính $D[u][u]$ trở thành số âm sau khi kết thúc các bước lặp.</li><li>Do đó, điều kiện để đồ thị chứa chu trình âm sau khi chạy thuật toán Floyd là: <strong>tồn tại đỉnh $u$ sao cho độ dài đường đi ngắn nhất từ $u$ đến chính nó có giá trị âm</strong> ($D[u][u] < 0$).</li></ul><p>Vậy đáp án đúng là D.</p>",
+    "explanation": "<p><strong>Phân tích điều kiện phát hiện chu trình âm bằng thuật toán Floyd:</strong></p><ul><li>Thuật toán Floyd-Warshall dùng để tìm đường đi ngắn nhất giữa mọi cặp đỉnh trên đồ thị.</li><li>Khoảng cách từ một đỉnh $u$ đến chính nó ban đầu được khởi tạo là 0 ($D[u][u] = 0$).</li><li>Nếu đồ thị chứa chu trình âm (chu trình có tổng trọng số các cạnh là số âm), thuật toán sẽ liên tục tối ưu hóa đường đi đi qua chu trình này, khiến giá trị khoảng cách trên đường chéo chính $D[u][u]$ trở thành số âm sau khi kết thúc các bước lặp.</li><li>Do đó, điều kiện để đồ thị chứa chu trình âm sau khi chạy thuật toán Floyd là: <strong>tồn tại đỉnh $u$ sao cho độ dài đường đi ngắn nhất từ $u$ đến chính nó có giá trị âm</strong> ($D[u][u] < 0$).</li></ul><p>Vậy đáp án đúng là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ tính chất của ma trận khoảng cách trong Floyd: Bình thường đường đi từ $u$ về chính nó có độ dài bằng 0. Nếu sau khi chạy thuật toán mà xuất hiện $d(u, u) < 0$ (giá trị âm) thì chứng tỏ đồ thị có **chu trình âm** đi qua $u$. Chọn D.</p>"
   },
   {
@@ -2294,7 +2294,7 @@
       "E": "{1, 2, 3, 5, 4}"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Trace thuật toán DFS trên đồ thị vô hướng từ danh sách kề:</strong></p><ul><li>Danh sách kề của đồ thị gồm 5 đỉnh:</li><li>Ke(1) = {2, 4}, Ke(2) = {1, 3, 5}, Ke(3) = {2, 4}, Ke(4) = {1, 3}, Ke(5) = {2}</li><li>Duyệt DFS bắt đầu từ đỉnh s = 1. Ưu tiên xét các đỉnh kề có chỉ số nhỏ nhất trước:</li><li><strong>Bước 1:</strong> Duyệt đỉnh 1. Xét các đỉnh kề {2, 4}. Đỉnh chưa duyệt nhỏ nhất là 2 $\\rightarrow$ Đi tới và duyệt đỉnh 2.</li><li><strong>Bước 2:</strong> Từ đỉnh 2, các đỉnh kề là {1, 3, 5}. Đỉnh 1 đã duyệt. Đỉnh chưa duyệt nhỏ nhất là 3 $\\rightarrow$ Đi tới và duyệt đỉnh 3.</li><li><strong>Bước 3:</strong> Từ đỉnh 3, các đỉnh kề là {2, 4}. Đỉnh 2 đã duyệt. Đỉnh chưa duyệt là 4 $\\rightarrow$ Đi tới và duyệt đỉnh 4.</li><li><strong>Bước 4:</strong> Từ đỉnh 4, các đỉnh kề là {1, 3} đều đã được duyệt. Ta quay lui (backtrack) về đỉnh 3, sau đó quay lui về đỉnh 2.</li><li><strong>Bước 5:</strong> Tại đỉnh 2, còn đỉnh chưa duyệt kề là 5. Ta đi tới và duyệt đỉnh 5.</li></ul><p>Thứ tự duyệt đầy đủ các đỉnh của đồ thị phải là: <strong>{1, 2, 3, 4, 5}</strong>.</p><p>Đối chiếu với các phương án lựa chọn:</p><ul><li>A: {5, 3, 4, 2, 1} (Sai)</li><li>C: {1, 2, 4, 3, 5} (Sai)</li><li>D: {1, 2, 4, 5, 3} (Sai)</li><li>E: {1, 2, 3, 5, 4} (Sai, đỉnh 4 được duyệt trước 5)</li></ul><p>Vì không có phương án nào chứa dãy thứ tự đúng, đáp án chính xác là B: 'Các phương án khác đều sai'.</p>",
+    "explanation": "<p><strong>Trace thuật toán DFS trên đồ thị vô hướng từ danh sách kề:</strong></p><ul><li>Danh sách kề của đồ thị gồm 5 đỉnh:</li><li>Ke(1) = {2, 4}, Ke(2) = {1, 3, 5}, Ke(3) = {2, 4}, Ke(4) = {1, 3}, Ke(5) = {2}</li><li>Duyệt DFS bắt đầu từ đỉnh s = 1. Ưu tiên xét các đỉnh kề có chỉ số nhỏ nhất trước:</li><li><strong>Bước 1:</strong> Duyệt đỉnh 1. Xét các đỉnh kề {2, 4}. Đỉnh chưa duyệt nhỏ nhất là 2 $\\rightarrow$ Đi tới và duyệt đỉnh 2.</li><li><strong>Bước 2:</strong> Từ đỉnh 2, các đỉnh kề là {1, 3, 5}. Đỉnh 1 đã duyệt. Đỉnh chưa duyệt nhỏ nhất là 3 $\\rightarrow$ Đi tới và duyệt đỉnh 3.</li><li><strong>Bước 3:</strong> Từ đỉnh 3, các đỉnh kề là {2, 4}. Đỉnh 2 đã duyệt. Đỉnh chưa duyệt là 4 $\\rightarrow$ Đi tới và duyệt đỉnh 4.</li><li><strong>Bước 4:</strong> Từ đỉnh 4, các đỉnh kề là {1, 3} đều đã được duyệt. Ta quay lui (backtrack) về đỉnh 3, sau đó quay lui về đỉnh 2.</li><li><strong>Bước 5:</strong> Tại đỉnh 2, còn đỉnh chưa duyệt kề là 5. Ta đi tới và duyệt đỉnh 5.</li></ul><p>Thứ tự duyệt đầy đủ các đỉnh của đồ thị phải là: <strong>{1, 2, 3, 4, 5}</strong>.</p><p>Đối chiếu với các phương án lựa chọn:</p><ul><li>A: {5, 3, 4, 2, 1} (Sai)</li><li>C: {1, 2, 4, 3, 5} (Sai)</li><li>D: {1, 2, 4, 5, 3} (Sai)</li><li>E: {1, 2, 3, 5, 4} (Sai, đỉnh 4 được duyệt trước 5)</li></ul><p>Vì không có phương án nào chứa dãy thứ tự đúng, đáp án chính xác là <strong>B</strong>: '<strong>C</strong>ác phương án khác đều sai'.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tự thực hiện nhanh DFS trên giấy: xuất phát từ 1 sang 2, từ 2 sang 3, từ 3 sang 4. Sau đó hết đường đi tiếp nên quay lại 2 để đi sang 5. Thứ tự duyệt là 1 -> 2 -> 3 -> 4 -> 5. Dãy này không xuất hiện trong <strong>A</strong>, <strong>C</strong>, <strong>D</strong>, <strong>E</strong> $\\rightarrow$ Chọn ngay <strong>B</strong>.</p>"
   },
   {
@@ -2326,7 +2326,7 @@
       "E": "Dijkstra do thuật toán này có tốc độ tính toán nhanh hơn."
     },
     "correctAnswer": "E",
-    "explanation": "<p><strong>Lựa chọn thuật toán tối ưu tìm đường đi ngắn nhất:</strong></p><ul><li>Đề bài cho đơn đồ thị có trọng số với điều kiện <strong>các trọng số không âm</strong>.</li><li>Trong các thuật toán tìm đường đi ngắn nhất phổ biến:</li><li>- Thuật toán Bellman-Ford có độ phức tạp thời gian là $O(V \\cdot E)$.</li><li>- Thuật toán Floyd-Warshall tìm đường đi ngắn nhất giữa mọi cặp đỉnh có độ phức tạp là $O(V^3)$.</li><li>- Thuật toán Dijkstra tìm đường đi ngắn nhất từ một nguồn đến các đỉnh còn lại có độ phức tạp là $O(E + V \\log V)$ (khi dùng cấu trúc Heap thích hợp).</li><li>Vì vậy, đối với đồ thị có trọng số không âm, thuật toán Dijkstra luôn là lựa chọn tối ưu nhất vì có tốc độ tính toán nhanh hơn nhiều so với Bellman-Ford hay Floyd.</li></ul><p>Do đó, đáp án đúng là E.</p>",
+    "explanation": "<p><strong>Lựa chọn thuật toán tối ưu tìm đường đi ngắn nhất:</strong></p><ul><li>Đề bài cho đơn đồ thị có trọng số với điều kiện <strong>các trọng số không âm</strong>.</li><li>Trong các thuật toán tìm đường đi ngắn nhất phổ biến:</li><li>- Thuật toán Bellman-Ford có độ phức tạp thời gian là $O(V \\cdot E)$.</li><li>- Thuật toán Floyd-Warshall tìm đường đi ngắn nhất giữa mọi cặp đỉnh có độ phức tạp là $O(V^3)$.</li><li>- Thuật toán Dijkstra tìm đường đi ngắn nhất từ một nguồn đến các đỉnh còn lại có độ phức tạp là $O(E + V \\log V)$ (khi dùng cấu trúc Heap thích hợp).</li><li>Vì vậy, đối với đồ thị có trọng số không âm, thuật toán Dijkstra luôn là lựa chọn tối ưu nhất vì có tốc độ tính toán nhanh hơn nhiều so với Bellman-Ford hay Floyd.</li></ul><p>Do đó, đáp án đúng là <strong>E</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nếu đồ thị chỉ toàn **trọng số không âm**, thuật toán **Dijkstra** luôn là thuật toán chạy nhanh nhất và hiệu quả nhất để tìm đường đi ngắn nhất giữa hai đỉnh. Chọn ngay phương án E.</p>"
   },
   {
@@ -2358,7 +2358,7 @@
       "E": "E = {4, 5, 2, 1, 4, 3, 5}."
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị có hướng G:</strong></p><ul><li>Các cung của G: (1,4), (4,3), (2,1), (4,5), (3,5), (5,2).</li><li>Ta tính hiệu số bán bậc ra và bán bậc vào tại mỗi đỉnh để xác định đỉnh xuất phát và kết thúc của đường đi Euler:</li><li>Đỉnh 4: $\\text{deg}^+(4) = 2$ (đi ra 3, 5), $\\text{deg}^-(4) = 1$ (đi vào từ 1) $\\rightarrow \\text{deg}^+ - \\text{deg}^- = +1$ (Đỉnh bắt đầu).</li><li>Đỉnh 5: $\\text{deg}^+(5) = 1$ (đi ra 2), $\\text{deg}^-(5) = 2$ (đi vào từ 3, 4) $\\rightarrow \\text{deg}^- - \\text{deg}^+ = +1$ (Đỉnh kết thúc).</li><li>Đường đi Euler bắt buộc phải bắt đầu tại đỉnh 4 và kết thúc tại đỉnh 5.</li><li>Xét phương án B: $E = \\{4, 3, 5, 2, 1, 4, 5\\}$:</li><li>Các bước đi tương ứng với các cung: $(4,3) \\to (3,5) \\to (5,2) \\to (2,1) \\to (1,4) \\to (4,5)$.</li><li>Tất cả các cung này đều tồn tại trên đồ thị và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 5.</li></ul><p>Vậy B là đường đi Euler chính xác.</p>",
+    "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị có hướng G:</strong></p><ul><li>Các cung của G: (1,4), (4,3), (2,1), (4,5), (3,5), (5,2).</li><li>Ta tính hiệu số bán bậc ra và bán bậc vào tại mỗi đỉnh để xác định đỉnh xuất phát và kết thúc của đường đi Euler:</li><li>Đỉnh 4: $\\text{deg}^+(4) = 2$ (đi ra 3, 5), $\\text{deg}^-(4) = 1$ (đi vào từ 1) $\\rightarrow \\text{deg}^+ - \\text{deg}^- = +1$ (Đỉnh bắt đầu).</li><li>Đỉnh 5: $\\text{deg}^+(5) = 1$ (đi ra 2), $\\text{deg}^-(5) = 2$ (đi vào từ 3, 4) $\\rightarrow \\text{deg}^- - \\text{deg}^+ = +1$ (Đỉnh kết thúc).</li><li>Đường đi Euler bắt buộc phải bắt đầu tại đỉnh 4 và kết thúc tại đỉnh 5.</li><li>Xét phương án B: $<strong>E</strong> = \\{4, 3, 5, 2, 1, 4, 5\\}$:</li><li>Các bước đi tương ứng với các cung: $(4,3) \\to (3,5) \\to (5,2) \\to (2,1) \\to (1,4) \\to (4,5)$.</li><li>Tất cả các cung này đều tồn tại trên đồ thị và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 5.</li></ul><p>Vậy B là đường đi Euler chính xác.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Đường đi Euler có hướng bắt buộc phải xuất phát từ đỉnh có bán bậc ra lớn hơn bán bậc vào (đỉnh 4) và kết thúc ở đỉnh có bán bậc vào lớn hơn bán bậc ra (đỉnh 5). Nhìn nhanh các phương án, chỉ có B và E bắt đầu bằng 4 và kết thúc bằng 5. Kiểm tra tính liên tục của các cung trong B để chọn đáp án.</p>"
   },
   {
@@ -2374,7 +2374,7 @@
       "E": "Đường đi ngắn nhất từ đỉnh 3 đến đỉnh 2 là 3→1→4→2 với độ dài d[4] = 1."
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Phân tích tính chất của đồ thị có hướng chứa chu trình âm:</strong></p><p>Đồ thị được biểu diễn bởi ma trận trọng số:</p>$$\\begin{pmatrix} 0 & \\infty & \\infty & -1 \\\\ \\infty & 0 & -2 & \\infty \\\\ -2 & \\infty & 0 & \\infty \\\\ \\infty & 4 & 3 & 0 \\end{pmatrix}$$<ul><li>Các cạnh có trọng số tương ứng:</li><li>$1 \\to 4$ (trọng số -1); $2 \\to 3$ (trọng số -2); $3 \\to 1$ (trọng số -2); $4 \\to 2$ (trọng số 4); $4 \\to 3$ (trọng số 3).</li><li>Xét chu trình: $1 \\to 4 \\to 2 \\to 3 \\to 1$:</li><li>Tổng trọng số của chu trình này là:</li>$$w(1,4) + w(4,2) + w(2,3) + w(3,1) = -1 + 4 + (-2) + (-2) = -1 < 0$$<li>Vì chu trình này có tổng trọng số âm nên đây là một **chu trình âm** (negative cycle).</li><li>Do chu trình âm này có thể đi tới được từ đỉnh xuất phát 3 (đường đi $3 \\to 1 \\to 4 \\to 2 \\to 3$), thuật toán Bellman-Ford khi chạy sẽ phát hiện ra sự tồn tại của chu trình âm này và không thể tìm thấy đường đi ngắn nhất hữu hạn.</li></ul><p>Do đó, đáp án đúng là C.</p>",
+    "explanation": "<p><strong>Phân tích tính chất của đồ thị có hướng chứa chu trình âm:</strong></p><p>Đồ thị được biểu diễn bởi ma trận trọng số:</p>$$\\begin{pmatrix} 0 & \\infty & \\infty & -1 \\\\ \\infty & 0 & -2 & \\infty \\\\ -2 & \\infty & 0 & \\infty \\\\ \\infty & 4 & 3 & 0 \\end{pmatrix}$$<ul><li>Các cạnh có trọng số tương ứng:</li><li>$1 \\to 4$ (trọng số -1); $2 \\to 3$ (trọng số -2); $3 \\to 1$ (trọng số -2); $4 \\to 2$ (trọng số 4); $4 \\to 3$ (trọng số 3).</li><li>Xét chu trình: $1 \\to 4 \\to 2 \\to 3 \\to 1$:</li><li>Tổng trọng số của chu trình này là:</li>$$w(1,4) + w(4,2) + w(2,3) + w(3,1) = -1 + 4 + (-2) + (-2) = -1 < 0$$<li>Vì chu trình này có tổng trọng số âm nên đây là một **chu trình âm** (negative cycle).</li><li>Do chu trình âm này có thể đi tới được từ đỉnh xuất phát 3 (đường đi $3 \\to 1 \\to 4 \\to 2 \\to 3$), thuật toán Bellman-Ford khi chạy sẽ phát hiện ra sự tồn tại của chu trình âm này và không thể tìm thấy đường đi ngắn nhất hữu hạn.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tìm chu trình khép kín và cộng trọng số của nó. Thử chu trình $1 \\to 4 \\to 2 \\to 3 \\to 1$ có tổng là $-1 + 4 - 2 - 2 = -1 < 0$. Vì có chu trình âm nên khoảng cách có thể giảm xuống vô hạn, thuật toán sẽ báo đồ thị chứa chu trình âm. Chọn C.</p>"
   },
   {
@@ -2390,7 +2390,7 @@
       "E": "E = {1, 3, 4, 1, 5, 2, 3}."
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị vô hướng xuất phát từ đỉnh bậc lẻ nhỏ nhất:</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh có danh sách kề: Ke(1)={3,4,5}, Ke(2)={3,5}, Ke(3)={1,2,4}, Ke(4)={1,3}, Ke(5)={1,2}.</li><li>Các đỉnh bậc lẻ là: đỉnh 1 ($\\text{deg}(1) = 3$) và đỉnh 3 ($\\text{deg}(3) = 3$).</li><li>Đề bài yêu cầu xuất phát tại đỉnh bậc lẻ có chỉ số nhỏ nhất, tức là đỉnh 1. Đường đi Euler phải kết thúc tại đỉnh bậc lẻ còn lại là 3.</li><li>Xét phương án B: $E = \\{1, 4, 3, 1, 5, 2, 3\\}$:</li><li>Các cạnh liên tiếp: $(1,4) \\to (4,3) \\to (3,1) \\to (1,5) \\to (5,2) \\to (2,3)$.</li><li>Tất cả các cạnh trên đều tồn tại trong danh sách kề và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 3.</li></ul><p>Do đó, dãy E trong phương án B là đường đi Euler chính xác.</p>",
+    "explanation": "<p><strong>Tìm đường đi Euler trên đồ thị vô hướng xuất phát từ đỉnh bậc lẻ nhỏ nhất:</strong></p><ul><li>Đồ thị vô hướng liên thông gồm 5 đỉnh có danh sách kề: Ke(1)={3,4,5}, Ke(2)={3,5}, Ke(3)={1,2,4}, Ke(4)={1,3}, Ke(5)={1,2}.</li><li>Các đỉnh bậc lẻ là: đỉnh 1 ($\\text{deg}(1) = 3$) và đỉnh 3 ($\\text{deg}(3) = 3$).</li><li>Đề bài yêu cầu xuất phát tại đỉnh bậc lẻ có chỉ số nhỏ nhất, tức là đỉnh 1. Đường đi Euler phải kết thúc tại đỉnh bậc lẻ còn lại là 3.</li><li>Xét phương án B: $<strong>E</strong> = \\{1, 4, 3, 1, 5, 2, 3\\}$:</li><li>Các cạnh liên tiếp: $(1,4) \\to (4,3) \\to (3,1) \\to (1,5) \\to (5,2) \\to (2,3)$.</li><li>Tất cả các cạnh trên đều tồn tại trong danh sách kề và được đi qua đúng 1 lần. Đường đi kết thúc tại đỉnh 3.</li></ul><p>Do đó, dãy <strong>E</strong> trong phương án B là đường đi Euler chính xác.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Xác định điểm bắt đầu là đỉnh bậc lẻ nhỏ nhất (đỉnh 1) và điểm kết thúc là đỉnh bậc lẻ còn lại (đỉnh 3). Nhìn nhanh các phương án bắt đầu bằng 1 và kết thúc bằng 3 (gồm B, C, D, E). Kiểm tra tính liên kết của các cạnh, ví dụ ở phương án B: 1-4 kề, 4-3 kề, 3-1 kề, 1-5 kề, 5-2 kề, 2-3 kề, đều hợp lệ và đi qua đủ 6 cạnh. Chọn B.</p>"
   },
   {
@@ -2502,7 +2502,7 @@
       "E": "<p>Luồng cực đại f trên G có giá trị luồng val(f) = 3.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Tìm luồng cực đại trong mạng G bằng định lý Lát cắt hẹp nhất:</strong></p><ul><li>Mạng G gồm các cung với dung lượng:</li><li>$c(1,2) = 3$, $c(1,3) = 3$</li><li>$c(2,4) = 6$, $c(3,4) = 5$, $c(3,5) = 1$</li><li>$c(4,5) = 1$</li><li>Xét lát cắt $(S, T)$ phân hoạch tập đỉnh thành $S = \\{1, 2, 3, 4\\}$ và $T = \\{5\\}$ (tách biệt nguồn 1 và thu 5):</li><li>Các cung đi từ tập $S$ sang tập $T$ gồm: cung $(3,5)$ và cung $(4,5)$.</li><li>Dung lượng của lát cắt này là:</li>$$c(S, T) = c(3,5) + c(4,5) = 1 + 1 = 2$$<li>Theo định lý Max-Flow Min-Cut, giá trị của luồng cực đại không thể vượt quá dung lượng của bất kỳ lát cắt nào. Do đó, giá trị luồng cực đại tối đa chỉ có thể bằng 2: $\\text{val}(f) = 2$.</li></ul><p>Vậy đáp án đúng là B.</p>",
+    "explanation": "<p><strong>Tìm luồng cực đại trong mạng G bằng định lý Lát cắt hẹp nhất:</strong></p><ul><li>Mạng G gồm các cung với dung lượng:</li><li>$c(1,2) = 3$, $c(1,3) = 3$</li><li>$c(2,4) = 6$, $c(3,4) = 5$, $c(3,5) = 1$</li><li>$c(4,5) = 1$</li><li>Xét lát cắt $(S, T)$ phân hoạch tập đỉnh thành $S = \\{1, 2, 3, 4\\}$ và $T = \\{5\\}$ (tách biệt nguồn 1 và thu 5):</li><li>Các cung đi từ tập $S$ sang tập $T$ gồm: cung $(3,5)$ và cung $(4,5)$.</li><li>Dung lượng của lát cắt này là:</li>$$c(S, T) = c(3,5) + c(4,5) = 1 + 1 = 2$$<li>Theo định lý Max-Flow Min-Cut, giá trị của luồng cực đại không thể vượt quá dung lượng của bất kỳ lát cắt nào. Do đó, giá trị luồng cực đại tối đa chỉ có thể bằng 2: $\\text{val}(f) = 2$.</li></ul><p>Vậy đáp án đúng là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào đỉnh thu 5. Chỉ có 2 mũi tên đi vào đỉnh 5 là từ 3 (dung lượng 1) và từ 4 (dung lượng 1). Tổng dung lượng luồng có thể đổ vào đỉnh 5 tối đa là $1 + 1 = 2$. Do đó luồng cực đại chỉ có thể là 2. Chọn ngay <strong>B</strong>.</p>"
   },
   {
@@ -2550,7 +2550,7 @@
       "E": "<p>0</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Xác định số thành phần liên thông của đồ thị vô hướng từ ma trận kề:</strong></p><p>Ma trận kề của đồ thị G gồm 6 đỉnh:</p>$$\\begin{pmatrix} 0 & 0 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 0 \\end{pmatrix}$$<ul><li>Ta chuyển đổi ma trận kề sang danh sách các cạnh vô hướng:</li><li>Dòng 1 có số 1 ở cột 5 $\\rightarrow$ Cạnh {1, 5}</li><li>Dòng 2 có số 1 ở cột 3 $\\rightarrow$ Cạnh {2, 3}</li><li>Dòng 3 có số 1 ở cột 2, 6 $\\rightarrow$ Cạnh {3, 2}, {3, 6} (Đỉnh 2, 3, 6 liên thông)</li><li>Dòng 4 có số 1 ở cột 5, 6 $\\rightarrow$ Cạnh {4, 5}, {4, 6} (Đỉnh 4, 5, 6 liên thông)</li><li>Dòng 5 có số 1 ở cột 1, 4 $\\rightarrow$ Cạnh {5, 1}, {5, 4} (Đỉnh 1, 5, 4 liên thông)</li></ul><p>Liên kết các nhóm đỉnh liên thông:</p><ul><li>Đỉnh 1 nối với 5 $\\to$ 5 nối với 4 $\\to$ 4 nối với 6 $\\to$ 6 nối với 3 $\\to$ 3 nối với 2.</li><li>Như vậy tất cả 6 đỉnh của đồ thị đều liên thông với nhau thành một thành phần liên thông duy nhất.</li></ul><p>Số thành phần liên thông của đồ thị là 1. Chọn phương án D.</p>",
+    "explanation": "<p><strong>Xác định số thành phần liên thông của đồ thị vô hướng từ ma trận kề:</strong></p><p>Ma trận kề của đồ thị G gồm 6 đỉnh:</p>$$\\begin{pmatrix} 0 & 0 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 0 & 1 \\\\ 0 & 0 & 0 & 0 & 1 & 1 \\\\ 1 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 0 \\end{pmatrix}$$<ul><li>Ta chuyển đổi ma trận kề sang danh sách các cạnh vô hướng:</li><li><strong>D</strong>òng 1 có số 1 ở cột 5 $\\rightarrow$ <strong>C</strong>ạnh {1, 5}</li><li><strong>D</strong>òng 2 có số 1 ở cột 3 $\\rightarrow$ <strong>C</strong>ạnh {2, 3}</li><li><strong>D</strong>òng 3 có số 1 ở cột 2, 6 $\\rightarrow$ <strong>C</strong>ạnh {3, 2}, {3, 6} (Đỉnh 2, 3, 6 liên thông)</li><li><strong>D</strong>òng 4 có số 1 ở cột 5, 6 $\\rightarrow$ <strong>C</strong>ạnh {4, 5}, {4, 6} (Đỉnh 4, 5, 6 liên thông)</li><li><strong>D</strong>òng 5 có số 1 ở cột 1, 4 $\\rightarrow$ <strong>C</strong>ạnh {5, 1}, {5, 4} (Đỉnh 1, 5, 4 liên thông)</li></ul><p>Liên kết các nhóm đỉnh liên thông:</p><ul><li>Đỉnh 1 nối với 5 $\\to$ 5 nối với 4 $\\to$ 4 nối với 6 $\\to$ 6 nối với 3 $\\to$ 3 nối với 2.</li><li>Như vậy tất cả 6 đỉnh của đồ thị đều liên thông với nhau thành một thành phần liên thông duy nhất.</li></ul><p>Số thành phần liên thông của đồ thị là 1. Chọn phương án D.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Kiểm tra tính liên kết của các đỉnh qua ma trận kề: Đỉnh 1 thông với 5. 5 thông với 4. 4 thông với 6. 6 thông với 3. 3 thông với 2. Tất cả các đỉnh tạo thành một chuỗi liên thông duy nhất nối từ 1 đến 2. Do đó đồ thị liên thông, số thành phần liên thông bằng 1. Chọn D.</p>"
   },
   {
@@ -2566,7 +2566,7 @@
       "E": "E = {5, 3, 2, 1, 4, 2, 5}."
     },
     "correctAnswer": "C",
-    "explanation": "<p>Thuật toán Fleury/DFS-stack ưu tiên đỉnh có chỉ số nhỏ hơn. Từ đỉnh 2 kề {1, 3, 4}, thuật toán sẽ ưu tiên đi tới đỉnh 1, tạo ra chu trình 5, 2, 1, 4, 2, 3, 5 (đáp án C), không phải đáp án A.</p>",
+    "explanation": "<p>Thuật toán Fleury/DFS-stack ưu tiên đỉnh có chỉ số nhỏ hơn. Từ đỉnh 2 kề {1, 3, 4}, thuật toán sẽ ưu tiên đi tới đỉnh 1, tạo ra chu trình 5, 2, 1, 4, 2, 3, 5 (đáp án <strong>C</strong>), không phải đáp án <strong>A</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Áp dụng quy tắc ưu tiên đỉnh kề có chỉ số nhỏ nhất. Xuất phát từ 5, kề {2, 3} $\\rightarrow$ chọn 2. Từ 2 kề {1, 3, 4} $\\rightarrow$ chọn 1 (đỉnh nhỏ nhất). Đối chiếu các phương án bắt đầu bằng 5 -> 2 -> 1, chỉ có phương án C khớp. Chọn phương án <strong>C</strong>.</p>"
   },
   {
@@ -2598,7 +2598,7 @@
       "E": "<p>c(1,2) = 3, c(1,5) = 6, c(2,4) = 6, c(3,1) = 6, c(3,5) = 5, c(4,5) = 6..</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Xây dựng đồ thị số dư (Residual Graph) của luồng f:</strong></p><ul><li>Mạng G gồm các cung có dung lượng: $c(1,2)=3, c(1,3)=6, c(1,5)=6, c(2,4)=6, c(3,5)=5, c(4,5)=6$.</li><li>Luồng hiện tại là $f(1,5) = 6$, các cung khác có luồng bằng 0.</li><li>Quy tắc xây dựng đồ thị số dư $G_f$:</li><li>- Với mỗi cung thuận $(u, v)$ có dung lượng số dư: $r(u, v) = c(u, v) - f(u, v) > 0$.</li><li>- Với mỗi cung ngược $(v, u)$ có dung lượng số dư: $r(v, u) = f(u, v) > 0$.</li><li>Áp dụng vào đồ thị:</li><li>Đối với cung $(1, 5)$ có $f(1,5) = 6 = c(1,5)$: cung thuận có dung lượng dư là $6 - 6 = 0$ (loại bỏ cung thuận). Cung ngược $(5, 1)$ có dung lượng dư là $r(5,1) = 6$.</li><li>Đối với các cung còn lại có luồng bằng 0: cung thuận giữ nguyên dung lượng ban đầu, không có cung ngược.</li><li>Dung lượng số dư trên các cung của $G_f$ phải là:</li><li>$r(1,2) = 3$, $r(1,3) = 6$, $r(2,4) = 6$, $r(3,5) = 5$, $r(4,5) = 6$, $r(5,1) = 6$.</li><li>Xét các phương án lựa chọn:</li><li>- Phương án B và C đều ghi nhầm $c(1,3) = 5$.</li><li>- Phương án D ghi nhầm $c(1,5) = 6$.</li><li>- Phương án E ghi nhầm $c(3,1) = 6$.</li><li>Do không có phương án nào mô tả chính xác các dung lượng số dư thực tế, đáp án đúng là A: 'Các phương án khác đều sai'.</li></ul>",
+    "explanation": "<p><strong>Xây dựng đồ thị số dư (Residual Graph) của luồng f:</strong></p><ul><li>Mạng G gồm các cung có dung lượng: $c(1,2)=3, c(1,3)=6, c(1,5)=6, c(2,4)=6, c(3,5)=5, c(4,5)=6$.</li><li>Luồng hiện tại là $f(1,5) = 6$, các cung khác có luồng bằng 0.</li><li>Quy tắc xây dựng đồ thị số dư $G_f$:</li><li>- Với mỗi cung thuận $(u, v)$ có dung lượng số dư: $r(u, v) = c(u, v) - f(u, v) > 0$.</li><li>- Với mỗi cung ngược $(v, u)$ có dung lượng số dư: $r(v, u) = f(u, v) > 0$.</li><li>Áp dụng vào đồ thị:</li><li>Đối với cung $(1, 5)$ có $f(1,5) = 6 = c(1,5)$: cung thuận có dung lượng dư là $6 - 6 = 0$ (loại bỏ cung thuận). Cung ngược $(5, 1)$ có dung lượng dư là $r(5,1) = 6$.</li><li>Đối với các cung còn lại có luồng bằng 0: cung thuận giữ nguyên dung lượng ban đầu, không có cung ngược.</li><li>Dung lượng số dư trên các cung của $G_f$ phải là:</li><li>$r(1,2) = 3$, $r(1,3) = 6$, $r(2,4) = 6$, $r(3,5) = 5$, $r(4,5) = 6$, $r(5,1) = 6$.</li><li>Xét các phương án lựa chọn:</li><li>- Phương án B và C đều ghi nhầm $c(1,3) = 5$.</li><li>- Phương án D ghi nhầm $c(1,5) = 6$.</li><li>- Phương án E ghi nhầm $c(3,1) = 6$.</li><li>Do không có phương án nào mô tả chính xác các dung lượng số dư thực tế, đáp án đúng là <strong>A</strong>: '<strong>C</strong>ác phương án khác đều sai'.</li></ul>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tính nhanh dung lượng số dư của các cung. Vì cung $(1,5)$ bão hòa luồng ($f=6=c$), nên trên đồ thị số dư chỉ có cung ngược hướng $(5,1)$ với dung lượng 6, không còn cung xuôi $(1,5)$. Đồng thời các cung khác giữ nguyên dung lượng gốc (trong đó có $c(1,3)=6$). Đối chiếu thấy các phương án B, C, D, E đều có điểm sai số liệu, chọn ngay <strong>A</strong>.</p>"
   },
   {
@@ -2614,7 +2614,7 @@
       "E": "<p>4.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Tìm số thành phần liên thông mạnh của đồ thị có hướng G:</strong></p><ul><li>Các cung của đồ thị: (1,2), (3,1), (1,3), (3,2), (2,1), (4,5), (2,3), (5,4).</li><li>Ta gom các đỉnh liên thông mạnh (có đường đi có hướng qua lại giữa mọi cặp đỉnh trong tập):</li><li>- Cụm {1, 2, 3}: Ta có các cung hai chiều giữa tất cả các đỉnh: $1 \\leftrightarrow 2$, $2 \\leftrightarrow 3$, $1 \\leftrightarrow 3$. Do đó, 3 đỉnh này tạo thành thành phần liên thông mạnh thứ nhất: $\\{1, 2, 3\\}$.</li><li>- Cụm {4, 5}: Ta có các cung hai chiều $4 \\to 5$ và $5 \\to 4$. Do đó, 2 đỉnh này tạo thành thành phần liên thông mạnh thứ hai: $\\{4, 5\\}$.</li><li>Không có bất kỳ cung nào nối giữa cụm $\\{1, 2, 3\\}$ và cụm $\\{4, 5\\}$ theo cả hai chiều.</li></ul><p>Do đó, đồ thị được chia làm đúng 2 thành phần liên thông mạnh. Đáp án đúng là D.</p>",
+    "explanation": "<p><strong>Tìm số thành phần liên thông mạnh của đồ thị có hướng G:</strong></p><ul><li>Các cung của đồ thị: (1,2), (3,1), (1,3), (3,2), (2,1), (4,5), (2,3), (5,4).</li><li>Ta gom các đỉnh liên thông mạnh (có đường đi có hướng qua lại giữa mọi cặp đỉnh trong tập):</li><li>- Cụm {1, 2, 3}: Ta có các cung hai chiều giữa tất cả các đỉnh: $1 \\leftrightarrow 2$, $2 \\leftrightarrow 3$, $1 \\leftrightarrow 3$. Do đó, 3 đỉnh này tạo thành thành phần liên thông mạnh thứ nhất: $\\{1, 2, 3\\}$.</li><li>- Cụm {4, 5}: Ta có các cung hai chiều $4 \\to 5$ và $5 \\to 4$. Do đó, 2 đỉnh này tạo thành thành phần liên thông mạnh thứ hai: $\\{4, 5\\}$.</li><li>Không có bất kỳ cung nào nối giữa cụm $\\{1, 2, 3\\}$ và cụm $\\{4, 5\\}$ theo cả hai chiều.</li></ul><p>Do đó, đồ thị được chia làm đúng 2 thành phần liên thông mạnh. Đáp án đúng là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tách đồ thị thành các nhóm độc lập mà trong mỗi nhóm các đỉnh nối vòng khép kín với nhau: Nhóm 1 gồm {1, 2, 3} (liên kết hoàn toàn với nhau). Nhóm 2 gồm {4, 5} (nối hai chiều $4 \\leftrightarrow 5$). Không có đường nối giữa hai nhóm. Vậy có 2 thành phần liên thông mạnh, chọn D.</p>"
   },
   {
@@ -2678,7 +2678,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p>Đỉnh 1 có bậc là 4 (kề với 2, 3, 4, 5) nên không phải là đỉnh treo. Các đỉnh còn lại đều có bậc 1 là đỉnh treo. Câu hỏi hỏi đỉnh nào không phải đỉnh treo, đáp án A là 1 là hoàn toàn chính xác, không phải E.</p>",
+    "explanation": "<p>Đỉnh 1 có bậc là 4 (kề với 2, 3, 4, 5) nên không phải là đỉnh treo. Các đỉnh còn lại đều có bậc 1 là đỉnh treo. Câu hỏi hỏi đỉnh nào không phải đỉnh treo, đáp án <strong>A</strong> là 1 là hoàn toàn chính xác, không phải E.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đỉnh treo là đỉnh có bậc = 1 (chỉ nối với đúng 1 đỉnh khác).</li><li>Đỉnh cô lập có bậc = 0 (không nối với đỉnh nào).</li><li>Đọc từng hàng ma trận: số ô có giá trị ≠ ∞ (ngoài đường chéo) = bậc của đỉnh đó.</li></ul>"
   },
   {
@@ -2710,7 +2710,7 @@
       "E": "<p>G có tất cả các đỉnh v thỏa mãn deg-(v) = deg+(v).</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Định nghĩa mạng (Network/Flow Network):</strong></p><p>Một <strong>mạng</strong> G = (V, E) là đồ thị có hướng với trọng số không âm (dung lượng), thỏa mãn:</p><ul><li>Có đúng một <strong>đỉnh phát s</strong> (source): deg⁻(s) = 0 (không có cung vào).</li><li>Có đúng một <strong>đỉnh thu t</strong> (sink): deg⁺(t) = 0 (không có cung ra).</li><li>Đồ thị <strong>liên thông yếu</strong> (weakly connected): bỏ hướng các cạnh thì đồ thị liên thông.</li></ul><p>Đáp án D mô tả \"deg⁻(u) = 0 và deg⁺(v) = 0\", nghĩa là u là đỉnh phát (không có vào), v là đỉnh thu (không có ra) — đây cũng là một phần điều kiện của mạng. Nhưng điều kiện tổng quát nhất để G là mạng là G liên thông yếu (có đỉnh phát, đỉnh thu, và liên thông yếu).</p><p>Đáp án <strong>A</strong> (G liên thông yếu) là điều kiện cần thiết cho mạng.</p>",
+    "explanation": "<p><strong>Định nghĩa mạng (Network/Flow Network):</strong></p><p>Một <strong>mạng</strong> G = (V, E) là đồ thị có hướng với trọng số không âm (dung lượng), thỏa mãn:</p><ul><li>Có đúng một <strong>đỉnh phát s</strong> (source): deg⁻(s) = 0 (không có cung vào).</li><li>Có đúng một <strong>đỉnh thu t</strong> (sink): deg⁺(t) = 0 (không có cung ra).</li><li>Đồ thị <strong>liên thông yếu</strong> (weakly connected): bỏ hướng các cạnh thì đồ thị liên thông.</li></ul><p>Đáp án <strong>D</strong> mô tả \"deg⁻(u) = 0 và deg⁺(v) = 0\", nghĩa là u là đỉnh phát (không có vào), v là đỉnh thu (không có ra) — đây cũng là một phần điều kiện của mạng. Nhưng điều kiện tổng quát nhất để G là mạng là G liên thông yếu (có đỉnh phát, đỉnh thu, và liên thông yếu).</p><p>Đáp án <strong>A</strong> (G liên thông yếu) là điều kiện cần thiết cho mạng.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Mạng = đồ thị có hướng + trọng số không âm + 1 đỉnh phát + 1 đỉnh thu + liên thông yếu.</li><li>Liên thông yếu: bỏ hướng cung thì đồ thị vô hướng tương ứng liên thông.</li><li>Liên thông mạnh: từ mọi đỉnh đều có thể đi đến mọi đỉnh khác theo chiều cung — mạng không cần mạnh, chỉ cần yếu.</li></ul>"
   },
   {
@@ -2774,7 +2774,7 @@
       "E": "M gồm 6 hàng và 8 cột và có M[4][7] = 1, M[5][7] = 1."
     },
     "correctAnswer": "B",
-    "explanation": "<p>Ma trận liên thuộc của đồ thị vô hướng G có 6 đỉnh và 8 cạnh phải có kích thước 6 hàng và 8 cột, với các giá trị 0 và 1. Không có phương án nào mô tả đúng kích thước và giá trị này (phương án A mô tả 8 hàng là sai). Do đó đáp án đúng là B.</p>",
+    "explanation": "<p>Ma trận liên thuộc của đồ thị vô hướng G có 6 đỉnh và 8 cạnh phải có kích thước 6 hàng và 8 cột, với các giá trị 0 và 1. Không có phương án nào mô tả đúng kích thước và giá trị này (phương án A mô tả 8 hàng là sai). Do đó đáp án đúng là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Ma trận liên thuộc vô hướng: kích thước n×m (n đỉnh, m cạnh). Mỗi cột có đúng 2 số 1.</li><li>Ma trận liên thuộc có hướng: +1 tại đỉnh nguồn, -1 tại đỉnh đích.</li><li>Kiểm tra kích thước ma trận trước tiên để loại các đáp án sai.</li></ul>"
   },
   {
@@ -2805,7 +2805,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p>Sắp xếp các cạnh theo trọng số giảm dần: (1,4,6), (2,3,4), (1,2,3), (1,3,3), (2,4,3), (3,4,1). Thuật toán Kruskal sẽ duyệt và kết nạp (1,4), sau đó (2,3), và tiếp theo là (1,2) vì không tạo thành chu trình. Cây khung T = {(1,4), (2,3), (1,2)} với WT = 13 (đáp án D).</p>",
+    "explanation": "<p>Sắp xếp các cạnh theo trọng số giảm dần: (1,4,6), (2,3,4), (1,2,3), (1,3,3), (2,4,3), (3,4,1). Thuật toán Kruskal sẽ duyệt và kết nạp (1,4), sau đó (2,3), và tiếp theo là (1,2) vì không tạo thành chu trình. Cây khung T = {(1,4), (2,3), (1,2)} với WT = 13 (đáp án <strong>D</strong>).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Kruskal tìm cây khung LỚN NHẤT: sắp xếp cạnh theo trọng số <strong>giảm dần</strong>.</li><li>Quy tắc chọn cạnh giống hệt: chọn cạnh không tạo chu trình.</li><li>Tổng trọng số luôn cần tính lại để kiểm tra.</li></ul>"
   },
   {
@@ -2821,7 +2821,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Đường đi ngắn nhất từ 4 đến 2 có độ dài là 3 (qua 4->3->2 hoặc 4->3->1->2). Tuy nhiên các phương án đều ghi sai giá trị d[2] thành d[3], và phương án A có giá trị khoảng cách là 2 (sai). Do đó phương án E (Các phương án khác đều sai) là chính xác nhất.</p>",
+    "explanation": "<p>Đường đi ngắn nhất từ 4 đến 2 có độ dài là 3 (qua 4->3->2 hoặc 4->3->1->2). Tuy nhiên các phương án đều ghi sai giá trị d[2] thành d[3], và phương án A có giá trị khoảng cách là 2 (sai). Do đó phương án E (<strong>C</strong>ác phương án khác đều sai) là chính xác nhất.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bellman-Ford: lặp n-1 lần, mỗi lần relaxation tất cả các cung.</li><li>Truy vết đường đi: từ đỉnh t ngược lại theo mảng predecessor.</li><li>Nếu sau n-1 vòng vẫn còn cập nhật được → có chu trình âm.</li></ul>"
   },
   {
@@ -2852,7 +2852,7 @@
       "D": "Dijkstra, Bellman-Ford, DFS."
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Các thuật toán tìm đường đi ngắn nhất:</strong></p><ul><li><strong>Dijkstra</strong>: Tìm đường đi ngắn nhất từ một đỉnh, trọng số không âm.</li><li><strong>Bellman-Ford</strong>: Tìm đường đi ngắn nhất từ một đỉnh, chấp nhận trọng số âm.</li><li><strong>Floyd-Warshall</strong>: Tìm đường đi ngắn nhất giữa mọi cặp đỉnh.</li></ul><p>Đáp án B chỉ liệt kê Floyd và Bellman-Ford — thiếu Dijkstra nhưng cả hai Floyd và Bellman-Ford đều là thuật toán tìm đường ngắn nhất.</p><p>Đáp án C: Kruskal là thuật toán tìm cây khung nhỏ nhất, KHÔNG phải tìm đường ngắn nhất → <strong>C</strong> sai.</p><p>Đáp án D: DFS không tìm đường ngắn nhất → <strong>D</strong> sai.</p><p>Đáp án A: Prim (cây khung), Euler (đường đi Euler), Hamilton (đường đi Hamilton) — không phải tìm đường ngắn nhất → <strong>A</strong> sai.</p><p>Đáp án <strong>B</strong> là đúng nhất trong các lựa chọn.</p>",
+    "explanation": "<p><strong>Các thuật toán tìm đường đi ngắn nhất:</strong></p><ul><li><strong>Dijkstra</strong>: Tìm đường đi ngắn nhất từ một đỉnh, trọng số không âm.</li><li><strong>Bellman-Ford</strong>: Tìm đường đi ngắn nhất từ một đỉnh, chấp nhận trọng số âm.</li><li><strong>Floyd-Warshall</strong>: Tìm đường đi ngắn nhất giữa mọi cặp đỉnh.</li></ul><p>Đáp án <strong>B</strong> chỉ liệt kê Floyd và Bellman-Ford — thiếu Dijkstra nhưng cả hai Floyd và Bellman-Ford đều là thuật toán tìm đường ngắn nhất.</p><p>Đáp án <strong>C</strong>: Kruskal là thuật toán tìm cây khung nhỏ nhất, KHÔNG phải tìm đường ngắn nhất → <strong>C</strong> sai.</p><p>Đáp án <strong>D</strong>: DFS không tìm đường ngắn nhất → <strong>D</strong> sai.</p><p>Đáp án <strong>A</strong>: Prim (cây khung), Euler (đường đi Euler), Hamilton (đường đi Hamilton) — không phải tìm đường ngắn nhất → <strong>A</strong> sai.</p><p>Đáp án <strong>B</strong> là đúng nhất trong các lựa chọn.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Nhớ bộ 3 thuật toán đường ngắn nhất: Dijkstra, Bellman-Ford, Floyd-Warshall.</li><li>Kruskal và Prim → cây khung nhỏ nhất (MST).</li><li>DFS và BFS → duyệt đồ thị, không đảm bảo đường ngắn nhất (theo trọng số).</li></ul>"
   },
   {
@@ -2932,7 +2932,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Điều kiện cần và đủ cho đồ thị Euler (vô hướng):</strong></p><p>Đồ thị Euler là đồ thị có chu trình Euler — chu trình đi qua mỗi cạnh đúng một lần và quay về đỉnh xuất phát.</p><p><strong>Định lý Euler:</strong> Đồ thị vô hướng G có chu trình Euler khi và chỉ khi:</p><ol><li>G <strong>liên thông</strong> (connected), VÀ</li><li>Mọi đỉnh của G đều có <strong>bậc chẵn</strong>.</li></ol><p>Đáp án A thiếu điều kiện liên thông → không đủ. Đáp án C (m=n) không phải điều kiện Euler. Đáp án D mô tả đúng cho trường hợp nhiều thành phần nhưng không phải điều kiện chuẩn.</p><p>Đáp án <strong>B</strong> chính xác: G liên thông và mọi đỉnh có bậc chẵn.</p>",
+    "explanation": "<p><strong>Điều kiện cần và đủ cho đồ thị Euler (vô hướng):</strong></p><p>Đồ thị Euler là đồ thị có chu trình Euler — chu trình đi qua mỗi cạnh đúng một lần và quay về đỉnh xuất phát.</p><p><strong>Định lý Euler:</strong> Đồ thị vô hướng G có chu trình Euler khi và chỉ khi:</p><ol><li>G <strong>liên thông</strong> (connected), VÀ</li><li>Mọi đỉnh của G đều có <strong>bậc chẵn</strong>.</li></ol><p>Đáp án <strong>A</strong> thiếu điều kiện liên thông → không đủ. Đáp án <strong>C</strong> (m=n) không phải điều kiện Euler. Đáp án <strong>D</strong> mô tả đúng cho trường hợp nhiều thành phần nhưng không phải điều kiện chuẩn.</p><p>Đáp án <strong>B</strong> chính xác: G liên thông và mọi đỉnh có bậc chẵn.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Euler = Liên thông + Mọi đỉnh bậc chẵn (chu trình Euler).</li><li>Nửa Euler = Liên thông + Đúng 2 đỉnh bậc lẻ (đường đi Euler).</li><li>Học thuộc: Euler liên quan đến CẠNH (qua mỗi cạnh 1 lần), Hamilton liên quan đến ĐỈNH.</li></ul>"
   },
   {
@@ -2964,7 +2964,7 @@
       "E": "T = {(2,3), (3,4), (3,1)} với WT = 1."
     },
     "correctAnswer": "A",
-    "explanation": "<p>Mặc dù đồ thị có trọng số âm, thuật toán Prim vẫn tìm được cây khung nhỏ nhất một cách chính xác (vì việc tìm MST không bị ảnh hưởng bởi trọng số âm). Quá trình duyệt từ đỉnh 2 sẽ chọn (2,3), sau đó (3,4), và (1,3). Cây khung T = {(2,3), (3,4), (3,1)} với WT = 2 (đáp án A). Lời giải trong hệ thống cho rằng Prim không chạy được với trọng số âm là sai kiến thức nền tảng.</p>",
+    "explanation": "<p>Mặc dù đồ thị có trọng số âm, thuật toán Prim vẫn tìm được cây khung nhỏ nhất một cách chính xác (vì việc tìm MST không bị ảnh hưởng bởi trọng số âm). Quá trình duyệt từ đỉnh 2 sẽ chọn (2,3), sau đó (3,4), và (1,3). Cây khung T = {(2,3), (3,4), (3,1)} với WT = 2 (đáp án <strong>A</strong>). Lời giải trong hệ thống cho rằng Prim không chạy được với trọng số âm là sai kiến thức nền tảng.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Prim và Dijkstra: KHÔNG dùng được với trọng số âm.</li><li>Kruskal: vẫn dùng được với trọng số âm (chỉ cần sắp xếp đúng).</li><li>Khi thấy trọng số âm trong đề Prim → đáp án thường là \"Không áp dụng được\".</li></ul>"
   },
   {
@@ -2980,7 +2980,7 @@
       "E": "H = {3, 1, 5, 4, 2}."
     },
     "correctAnswer": "E",
-    "explanation": "<p>Phương án A (H={3,1,4,5,2}) không hợp lệ vì không có cạnh nối giữa 1 và 4. Chu trình Hamilton đầu tiên được tìm thấy là H={3,1,5,4,2} (đáp án E).</p>",
+    "explanation": "<p>Phương án A (H={3,1,4,5,2}) không hợp lệ vì không có cạnh nối giữa 1 và 4. Chu trình Hamilton đầu tiên được tìm thấy là H={3,1,5,4,2} (đáp án <strong>E</strong>).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Chu trình Hamilton: qua mỗi đỉnh đúng 1 lần, quay về đỉnh xuất phát.</li><li>Duyệt backtracking: từ đỉnh hiện tại, chọn đỉnh kề chưa thăm nhỏ nhất.</li><li>Kiểm tra chu trình: đỉnh cuối phải có cạnh về đỉnh xuất phát.</li></ul>"
   },
   {
@@ -3012,7 +3012,7 @@
       "E": "Lát cắt (X,X*) với X = {1,2,3} khả năng thông qua là c(X,X*) = 15."
     },
     "correctAnswer": "B",
-    "explanation": "<p>Khả năng thông qua của lát cắt (X, X*) với X={1,2,3,4} và X*={5,6} là tổng các cung 2->5 (3), 3->5 (1), và 4->6 (6). Tổng = 10. Phương án A ghi là 16 là sai. Đáp án đúng là B (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Khả năng thông qua của lát cắt (X, X*) với X={1,2,3,4} và X*={5,6} là tổng các cung 2->5 (3), 3->5 (1), và 4->6 (6). Tổng = 10. Phương án A ghi là 16 là sai. Đáp án đúng là <strong>B</strong> (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Lát cắt (X,X*): tính tổng dung lượng các cung đi từ X sang X* (không tính cung ngược).</li><li>Liệt kê tất cả cung có đỉnh đầu ∈ X và đỉnh cuối ∈ X* → cộng dung lượng.</li></ul>"
   },
   {
@@ -3028,7 +3028,7 @@
       "E": "<p>2</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p>Giả mã thuật toán DFS sử dụng mảng chuaxet khởi tạo bằng TRUE. Do đó khi duyệt đỉnh u, cần đánh dấu chuaxet[u] = FALSE (dòng 2 sai). Khi gọi đệ quy cần gọi DFS(v) thay vì DFS(u) (dòng 5 sai). Hai dòng sai là 2 và 5 (đáp án A).</p>",
+    "explanation": "<p>Giả mã thuật toán DFS sử dụng mảng chuaxet khởi tạo bằng TRUE. Do đó khi duyệt đỉnh u, cần đánh dấu chuaxet[u] = FALSE (dòng 2 sai). Khi gọi đệ quy cần gọi DFS(v) thay vì DFS(u) (dòng 5 sai). Hai dòng sai là 2 và 5 (đáp án <strong>A</strong>).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Lỗi thường gặp trong giả mã DFS: DFS(u) thay vì DFS(v), điều kiện đánh dấu sai.</li><li>Quy ước: chuaxet[u]=TRUE nghĩa là chưa xét, =FALSE là đã xét (hoặc ngược lại).</li><li>Đọc kỹ quy ước của đề trước khi phân tích.</li></ul>"
   },
   {
@@ -3044,7 +3044,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Tất cả 6 đỉnh của đồ thị đều có đường đi đến nhau (tạo thành một chu trình liên thông mạnh lớn). Do đó số thành phần liên thông mạnh của đồ thị là 1. Đáp án B là đúng.</p>",
+    "explanation": "<p>Tất cả 6 đỉnh của đồ thị đều có đường đi đến nhau (tạo thành một chu trình liên thông mạnh lớn). Do đó số thành phần liên thông mạnh của đồ thị là 1. Đáp án <strong>B</strong> là đúng.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>SCC: nhóm đỉnh mà từ bất kỳ đỉnh nào cũng đi được đến tất cả đỉnh còn lại trong nhóm.</li><li>Dùng thuật toán Kosaraju hoặc Tarjan để tìm SCC.</li><li>Nếu có chu trình lớn bao tất cả đỉnh → 1 SCC duy nhất.</li></ul>"
   },
   {
@@ -3092,7 +3092,7 @@
       "E": "<p>Đơn đồ thị vô hướng</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Định nghĩa mô tả một đồ thị có hướng (cặp có thứ tự) và có cung lặp (đa đồ thị). Vậy đây là Đa đồ thị có hướng. Không có phương án nào ghi Đa đồ thị có hướng (D là Đơn đồ thị có hướng), nên đáp án là C (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Định nghĩa mô tả một đồ thị có hướng (cặp có thứ tự) và có cung lặp (đa đồ thị). Vậy đây là Đa đồ thị có hướng. Không có phương án nào ghi Đa đồ thị có hướng (D là Đơn đồ thị có hướng), nên đáp án là <strong>C</strong> (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cặp có thứ tự (ordered pair) → đồ thị có hướng (digraph).</li><li>Cặp không có thứ tự (unordered pair) → đồ thị vô hướng.</li><li>Cạnh/cung lặp → đa đồ thị; Khuyên → giả đồ thị.</li></ul>"
   },
   {
@@ -3204,7 +3204,7 @@
       "E": "<p>O(n2)</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p>Độ phức tạp của thuật toán BFS sử dụng danh sách kề là O(n + m). Không có phương án nào là O(n + m), nên đáp án đúng phải là <strong>A</strong> (Các phương án khác đều sai). Phương án B (O(n^2.m)) là hoàn toàn sai.</p>",
+    "explanation": "<p>Độ phức tạp của thuật toán BFS sử dụng danh sách kề là O(n + m). Không có phương án nào là O(n + m), nên đáp án đúng phải là <strong>A</strong> (<strong>C</strong>ác phương án khác đều sai). Phương án B (O(n^2.m)) là hoàn toàn sai.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>BFS với danh sách kề: O(n+m).</li><li>BFS với ma trận kề: O(n²).</li><li>DFS: tương tự BFS — O(n+m) với danh sách kề, O(n²) với ma trận kề.</li></ul>"
   },
   {
@@ -3284,7 +3284,7 @@
       "E": "<p>.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p>Trong thuật toán Prim, bước (2.1) thao tác tìm một cạnh e=(u,v) có trọng số nhỏ nhất sao cho đỉnh u đã thuộc cây khung và v chưa thuộc cây khung. Không có phương án nào mô tả đúng thao tác này, do đó đáp án là D (Các phương án khác đều sai).</p>",
+    "explanation": "<p>Trong thuật toán Prim, bước (2.1) thao tác tìm một cạnh e=(u,v) có trọng số nhỏ nhất sao cho đỉnh u đã thuộc cây khung và v chưa thuộc cây khung. Không có phương án nào mô tả đúng thao tác này, do đó đáp án là <strong>D</strong> (<strong>C</strong>ác phương án khác đều sai).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Prim: tìm cạnh nhỏ nhất nối đỉnh đã chọn với đỉnh chưa chọn.</li><li>Mỗi bước thêm 1 đỉnh vào V_T và 1 cạnh vào T.</li></ul>"
   },
   {
@@ -3300,7 +3300,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Ma trận liên thuộc đồ thị có hướng (5 đỉnh, 8 cung):</strong></p><p>Các cung theo thứ tự từ điển: e1=(1,4), e2=(2,1), e3=(2,5), e4=(3,1), e5=(3,5), e6=(4,1), e7=(4,3), e8=(5,3).</p><p>Ma trận M: 5×8. M[i][j] = +1 nếu đỉnh i là nguồn của cung j; -1 nếu là đích; 0 ngược lại.</p><p>Cung e7=(4,3): M[4][7]=+1 (nguồn), M[3][7]=-1 (đích). Đáp án A: M[3][7]=-1 ✓, M[4][7]=1 ✓ → đúng!</p><p>Đáp án C: M[1][1]: cung e1=(1,4), M[1][1]=+1 ✓. M[4][1]=-1 (đích của e1) → đáp án C nói M[4][1]=1 → sai.</p><p>Đáp án <strong>A</strong> đúng.</p>",
+    "explanation": "<p><strong>Ma trận liên thuộc đồ thị có hướng (5 đỉnh, 8 cung):</strong></p><p>Các cung theo thứ tự từ điển: e1=(1,4), e2=(2,1), e3=(2,5), e4=(3,1), e5=(3,5), e6=(4,1), e7=(4,3), e8=(5,3).</p><p>Ma trận M: 5×8. M[i][j] = +1 nếu đỉnh i là nguồn của cung j; -1 nếu là đích; 0 ngược lại.</p><p>Cung e7=(4,3): M[4][7]=+1 (nguồn), M[3][7]=-1 (đích). Đáp án <strong>A</strong>: M[3][7]=-1 ✓, M[4][7]=1 ✓ → đúng!</p><p>Đáp án <strong>C</strong>: M[1][1]: cung e1=(1,4), M[1][1]=+1 ✓. M[4][1]=-1 (đích của e1) → đáp án <strong>C</strong> nói M[4][1]=1 → sai.</p><p>Đáp án <strong>A</strong> đúng.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Liệt kê cung theo thứ tự từ điển, đánh số e1, e2,...</li><li>Cung ej=(u,v): M[u][j]=+1 (nguồn), M[v][j]=-1 (đích).</li><li>Kiểm tra đáp án: tìm cung tương ứng với cột đề cập, xác định giá trị +1/-1.</li></ul>"
   },
   {
@@ -3332,7 +3332,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p>Bán bậc vào của đỉnh 5 (deg-(5)) là số lượng cung hướng vào đỉnh 5. Từ danh sách kề, ta thấy đỉnh 5 xuất hiện trong Ke(2) và Ke(3), tương ứng với 2 cung 2->5 và 3->5. Do đó deg-(5) = 2. Đáp án chính xác là D.</p>",
+    "explanation": "<p>Bán bậc vào của đỉnh 5 (deg-(5)) là số lượng cung hướng vào đỉnh 5. Từ danh sách kề, ta thấy đỉnh 5 xuất hiện trong Ke(2) và Ke(3), tương ứng với 2 cung 2->5 và 3->5. Do đó deg-(5) = 2. Đáp án chính xác là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>deg⁻(v) = số cung đi VÀO v = số đỉnh u có v ∈ Ke(u).</li><li>deg⁺(v) = số cung ra từ v = |Ke(v)|.</li></ul>"
   },
   {
@@ -3348,7 +3348,7 @@
       "E": "<p>T không phải là cây vì T không liên thông.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Đồ thị T không liên thông (vì {1,2,3} không có đường nối đến {4,5}) và có chứa chu trình (1-2-3-1). Cả 4 phương án A, C, D, E đều là những phát biểu đúng về lý do T không phải là cây. Do đó phương án B (Các phương án khác đều đúng) là lựa chọn chính xác nhất.</p>",
+    "explanation": "<p>Đồ thị T không liên thông (vì {1,2,3} không có đường nối đến {4,5}) và có chứa chu trình (1-2-3-1). <strong>C</strong>ả 4 phương án A, C, D, E đều là những phát biểu đúng về lý do T không phải là cây. Do đó phương án B (<strong>C</strong>ác phương án khác đều đúng) là lựa chọn chính xác nhất.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây: liên thông + không chu trình + n-1 cạnh. Nếu vi phạm một trong ba → không phải cây.</li><li>Cạnh cầu: cạnh mà xóa đi làm tăng số thành phần liên thông.</li><li>Trong chu trình: không cạnh nào là cầu.</li></ul>"
   },
   {
@@ -3364,7 +3364,7 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Tính bậc của các đỉnh: deg+(1)=deg-(1)=1; deg+(2)=deg-(2)=2; deg+(3)=deg-(3)=2; deg+(4)=deg-(4)=1; deg+(5)=deg-(5)=1. Vì tất cả các đỉnh đều có bán bậc ra bằng bán bậc vào và đồ thị liên thông yếu, nên đây là một <strong>đồ thị Euler</strong>. Đáp án chính xác là B.</p>",
+    "explanation": "<p>Tính bậc của các đỉnh: deg+(1)=deg-(1)=1; deg+(2)=deg-(2)=2; deg+(3)=deg-(3)=2; deg+(4)=deg-(4)=1; deg+(5)=deg-(5)=1. Vì tất cả các đỉnh đều có bán bậc ra bằng bán bậc vào và đồ thị liên thông yếu, nên đây là một <strong>đồ thị Euler</strong>. Đáp án chính xác là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đồ thị có hướng Euler: liên thông yếu + mọi đỉnh deg⁺=deg⁻.</li><li>Đồ thị có hướng nửa Euler: liên thông yếu + đúng 1 đỉnh deg⁺-deg⁻=1 (nguồn) + đúng 1 đỉnh deg⁻-deg⁺=1 (đích).</li></ul>"
   },
   {
@@ -3380,7 +3380,7 @@
       "E": "<p>Tổng giá trị luồng trên các cung đi ra từ s.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Giá trị của luồng trong mạng f được định nghĩa là tổng giá trị luồng trên các cung đi ra từ đỉnh phát s (tương đương với tổng luồng đi vào đỉnh thu t). Phương án E mô tả đúng định nghĩa này. Đáp án chính xác là E.</p>",
+    "explanation": "<p>Giá trị của luồng trong mạng f được định nghĩa là tổng giá trị luồng trên các cung đi ra từ đỉnh phát s (tương đương với tổng luồng đi vào đỉnh thu t). Phương án E mô tả đúng định nghĩa này. Đáp án chính xác là <strong>E</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Giá trị luồng f = tổng luồng ra từ s = tổng luồng vào t.</li><li>Luồng cực đại = dung lượng lát cắt hẹp nhất (Max-flow Min-cut).</li></ul>"
   },
   {
@@ -3428,7 +3428,7 @@
       "E": "<p>...</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Ma trận liên thuộc: ở hàng c có giá trị -1 tại cột thứ 4, nghĩa là có 1 cung đi vào đỉnh c. Do đó deg-(c) = 1. Phương án C là chính xác. Các phương án A, B đều sai.</p>",
+    "explanation": "<p>Ma trận liên thuộc: ở hàng c có giá trị -1 tại cột thứ 4, nghĩa là có 1 cung đi vào đỉnh c. Do đó deg-(c) = 1. Phương án C là chính xác. <strong>C</strong>ác phương án A, B đều sai.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Ma trận liên thuộc có hướng: deg⁺(v) = số +1 trong hàng v; deg⁻(v) = số -1 trong hàng v.</li><li>Tổng cột luôn = 0 (vì mỗi cung có 1 nguồn +1 và 1 đích -1).</li></ul>"
   },
   {
@@ -3476,7 +3476,7 @@
       "E": "<p>1, 3</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Ma trận kề của đồ thị vô hướng có tính chất đối xứng, do đó tổng các phần tử của hàng u bằng tổng các phần tử của cột u (mệnh đề 2 đúng). Mệnh đề 1 sai vì tổng bằng 2 lần số cạnh. Mệnh đề 3, 4 sai vì khái niệm bán bậc chỉ dành cho đồ thị có hướng. Không có phương án nào chỉ chọn mệnh đề 2, do đó đáp án là C.</p>",
+    "explanation": "<p>Ma trận kề của đồ thị vô hướng có tính chất đối xứng, do đó tổng các phần tử của hàng u bằng tổng các phần tử của cột u (mệnh đề 2 đúng). Mệnh đề 1 sai vì tổng bằng 2 lần số cạnh. Mệnh đề 3, 4 sai vì khái niệm bán bậc chỉ dành cho đồ thị có hướng. Không có phương án nào chỉ chọn mệnh đề 2, do đó đáp án là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Ma trận kề vô hướng: đối xứng → tổng hàng i = tổng cột i = bậc đỉnh i.</li><li>Tổng tất cả phần tử = 2m (gấp đôi số cạnh).</li><li>\"Bán bậc ra/vào\" chỉ dùng cho đồ thị có hướng.</li></ul>"
   },
   {
@@ -3492,7 +3492,7 @@
       "E": "<p>4</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p>Đồ thị có 3 cụm tam giác: {1,2,3}, {2,3,4}, {4,5,6}. Đỉnh 4 là đỉnh duy nhất nối cụm {1,2,3,4} với cụm {4,5,6}. Xóa đỉnh 4 làm mất liên thông, do đó 4 là đỉnh trụ duy nhất. Số đỉnh trụ là 1. Không có phương án nào là 1, đáp án chính xác là C.</p>",
+    "explanation": "<p>Đồ thị có 3 cụm tam giác: {1,2,3}, {2,3,4}, {4,5,6}. Đỉnh 4 là đỉnh duy nhất nối cụm {1,2,3,4} với cụm {4,5,6}. Xóa đỉnh 4 làm mất liên thông, do đó 4 là đỉnh trụ duy nhất. Số đỉnh trụ là 1. Không có phương án nào là 1, đáp án chính xác là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đỉnh trụ: xóa nó → đồ thị thêm thành phần liên thông.</li><li>Dùng DFS: đỉnh u là trụ nếu có con v trong cây DFS mà low[v] ≥ disc[u].</li><li>Đỉnh nối giữa các \"cụm\" thường là đỉnh trụ.</li></ul>"
   },
   {
@@ -3508,7 +3508,7 @@
       "E": "<p>(1), (2), (3) và (4).</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Đồ thị tăng luồng (Residual Graph):</strong></p><p>Đồ thị số dư Gf được xây dựng như sau:</p><ul><li>Với cung (u,v) có f(u,v)&lt;c(u,v): thêm cung tiến (u,v) vào Gf với khả năng còn lại c(u,v)-f(u,v).</li><li>Với cung (u,v) có f(u,v)&gt;0: thêm cung lùi (v,u) vào Gf với khả năng hoàn lại f(u,v).</li></ul><p>Phân tích các mệnh đề:</p><ul><li>(1): f=0 → cung tiến (u,v) tồn tại với c(u,v) — ĐÚNG.</li><li>(2): f&lt;c → cung tiến với c-f — ĐÚNG.</li><li>(3): f=c → cung lùi (v,u) với f(u,v) — ĐÚNG.</li><li>(4): 0&lt;f&lt;c → cung tiến (u,v) — ĐÚNG (trường hợp con của mệnh đề 2).</li><li>(5): 0&lt;f&lt;c → cung lùi (v,u) với f(u,v) — ĐÚNG.</li></ul><p>Đáp án A: (1),(2),(3),(5) — đây là mô tả đồ thị số dư chuẩn gồm: trường hợp f=0 (cung tiến), trường hợp f=c (cung lùi), trường hợp 0&lt;f&lt;c (cả cung tiến và lùi). Đáp án <strong>A</strong> đúng.</p>",
+    "explanation": "<p><strong>Đồ thị tăng luồng (Residual Graph):</strong></p><p>Đồ thị số dư Gf được xây dựng như sau:</p><ul><li>Với cung (u,v) có f(u,v)&lt;c(u,v): thêm cung tiến (u,v) vào Gf với khả năng còn lại c(u,v)-f(u,v).</li><li>Với cung (u,v) có f(u,v)&gt;0: thêm cung lùi (v,u) vào Gf với khả năng hoàn lại f(u,v).</li></ul><p>Phân tích các mệnh đề:</p><ul><li>(1): f=0 → cung tiến (u,v) tồn tại với c(u,v) — ĐÚNG.</li><li>(2): f&lt;c → cung tiến với c-f — ĐÚNG.</li><li>(3): f=c → cung lùi (v,u) với f(u,v) — ĐÚNG.</li><li>(4): 0&lt;f&lt;c → cung tiến (u,v) — ĐÚNG (trường hợp con của mệnh đề 2).</li><li>(5): 0&lt;f&lt;c → cung lùi (v,u) với f(u,v) — ĐÚNG.</li></ul><p>Đáp án <strong>A</strong>: (1),(2),(3),(5) — đây là mô tả đồ thị số dư chuẩn gồm: trường hợp f=0 (cung tiến), trường hợp f=c (cung lùi), trường hợp 0&lt;f&lt;c (cả cung tiến và lùi). Đáp án <strong>A</strong> đúng.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Đồ thị số dư: mỗi cung (u,v) sinh ra cung tiến (nếu chưa bão hòa) và cung lùi (nếu đang có luồng).</li><li>Ford-Fulkerson: tìm đường tăng luồng trên Gf, tăng luồng dọc đường đó.</li></ul>"
   },
   {
@@ -3748,7 +3748,7 @@
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Thuật toán Kruskal tìm cây khung nhỏ nhất:</strong></p>\n<p>Sắp xếp các cạnh của đồ thị theo thứ tự trọng số tăng dần (Kruskal chạy tốt với cả trọng số âm):</p>\n<ol>\n  <li>Cạnh (1,4) có trọng số -5.</li>\n  <li>Các cạnh (2,3), (2,4), (3,4) có trọng số 3.</li>\n  <li>Các cạnh (1,2), (1,3) có trọng số 4.</li>\n</ol>\n<p>Tiến hành chọn cạnh không tạo chu trình:</p>\n<ul>\n  <li>Chọn cạnh (1,4) wt -5.</li>\n  <li>Chọn cạnh (2,3) wt 3.</li>\n  <li>Chọn cạnh (2,4) wt 3. Lúc này đồ thị đã có 3 cạnh và liên thông 4 đỉnh.</li>\n  <li>Cạnh (3,4) wt 3 tạo chu trình với (2,3) và (2,4) nên bị bỏ qua. Các cạnh còn lại có trọng số lớn hơn cũng bị bỏ qua.</li>\n</ul>\n<p>Cây khung nhỏ nhất tìm được là $T = {(1,4), (2,3), (2,4)}$ với tổng trọng số $W_T = (-5) + 3 + 3 = 1$. Do đó, đáp án đúng là <strong>B</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Sắp xếp cạnh từ nhỏ đến lớn: cạnh đầu tiên chắc chắn là cạnh có trọng số nhỏ nhất (-5). Các cạnh tiếp theo được chọn nếu không tạo chu trình khép kín.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Sắp xếp cạnh từ nhỏ đến lớn: cạnh đầu tiên chắc chắn là cạnh có trọng số nhỏ nhất (-5). <strong>C</strong>ác cạnh tiếp theo được chọn nếu không tạo chu trình khép kín.</p>"
   },
   {
     "id": 236,
@@ -3779,7 +3779,7 @@
       "E": "T = {(4,2), (4,1), (1,3)} với WT = 17."
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Áp dụng thuật toán Prim tìm cây khung có tổng trọng số lớn nhất bắt đầu tại s = 4:</p>\n<ol>\n  <li>Khởi tạo $V_T = {4}$. Các cạnh từ 4 ra ngoài: (4,1) wt 5, (4,2) wt 7, (4,3) wt 5. Cạnh lớn nhất là (4,2) wt 7. Chọn (4,2) và thêm đỉnh 2. $T = {(4,2)}$, $W_T = 7$.</li>\n  <li>Từ $V_T = {4, 2}$, các cạnh nối ra ngoài là (4,1) wt 5, (4,3) wt 5, (2,1) wt 5, (2,3) wt -8. Cạnh lớn nhất là 5, chọn cạnh (2,1). Thêm đỉnh 1. $T = {(4,2), (2,1)}$, $W_T = 7 + 5 = 12$.</li>\n  <li>Từ $V_T = {4, 2, 1}$, các cạnh nối đến 3 là (1,3) wt 5, (4,3) wt 5, (2,3) wt -8. Chọn cạnh (1,3) wt 5. Thêm đỉnh 3. $T = {(4,2), (2,1), (1,3)}$, $W_T = 12 + 5 = 17$.</li>\n</ol>\n<p>Cây khung lớn nhất thu được là $T = {(4,2), (2,1), (1,3)}$ với tổng trọng số $W_T = 17$, tương ứng với phương án <strong>D</strong>.</p>",
+    "explanation": "<p><strong>Thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Áp dụng thuật toán Prim tìm cây khung có tổng trọng số lớn nhất bắt đầu tại s = 4:</p>\n<ol>\n  <li>Khởi tạo $V_T = {4}$. Các cạnh từ 4 ra ngoài: (4,1) wt 5, (4,2) wt 7, (4,3) wt 5. Cạnh lớn nhất là (4,2) wt 7. Chọn (4,2) và thêm đỉnh 2. $T = {(4,2)}$, $W_T = 7$.</li>\n  <li>Từ $V_T = {4, 2}$, các cạnh nối ra ngoài là (4,1) wt 5, (4,3) wt 5, (2,1) wt 5, (2,3) wt -8. <strong>C</strong>ạnh lớn nhất là 5, chọn cạnh (2,1). Thêm đỉnh 1. $T = {(4,2), (2,1)}$, $W_T = 7 + 5 = 12$.</li>\n  <li>Từ $V_T = {4, 2, 1}$, các cạnh nối đến 3 là (1,3) wt 5, (4,3) wt 5, (2,3) wt -8. Chọn cạnh (1,3) wt 5. Thêm đỉnh 3. $T = {(4,2), (2,1), (1,3)}$, $W_T = 12 + 5 = 17$.</li>\n</ol>\n<p>Cây khung lớn nhất thu được là $T = {(4,2), (2,1), (1,3)}$ với tổng trọng số $W_T = 17$, tương ứng với phương án <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Chạy Prim lớn nhất bắt đầu từ s = 4. Chọn cạnh lớn nhất ở mỗi bước và cộng tổng trọng số để đối chiếu nhanh với các phương án.</p>"
   },
   {
@@ -3795,7 +3795,7 @@
       "E": "<p>Số lần đỉnh u xuất hiện ở cột đỉnh đầu của danh sách cạnh</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Đếm bậc của đỉnh từ danh sách cạnh của đồ thị vô hướng:</strong></p>\n<p>Trong đồ thị vô hướng, mỗi cạnh nối hai đỉnh u và v được liệt kê dưới dạng một cặp (u, v) trong danh sách cạnh.</p>\n<ul>\n  <li>Cạnh vô hướng không có hướng, do đó đỉnh u có thể nằm ở cột đỉnh đầu hoặc cột đỉnh cuối.</li>\n  <li>Bậc của đỉnh u bằng tổng số lần xuất hiện của đỉnh u trên cả hai cột (đỉnh đầu và đỉnh cuối) trong danh sách cạnh.</li>\n  <li>Các phương án A, C, D, E chỉ đếm riêng ở một cột hoặc nhân đôi giá trị đếm của một cột là không chính xác.</li>\n</ul>\n<p>Do đó, đáp án đúng là <strong>B</strong> (Các phương án khác đều sai).</p>",
+    "explanation": "<p><strong>Đếm bậc của đỉnh từ danh sách cạnh của đồ thị vô hướng:</strong></p>\n<p>Trong đồ thị vô hướng, mỗi cạnh nối hai đỉnh u và v được liệt kê dưới dạng một cặp (u, v) trong danh sách cạnh.</p>\n<ul>\n  <li>Cạnh vô hướng không có hướng, do đó đỉnh u có thể nằm ở cột đỉnh đầu hoặc cột đỉnh cuối.</li>\n  <li>Bậc của đỉnh u bằng tổng số lần xuất hiện của đỉnh u trên cả hai cột (đỉnh đầu và đỉnh cuối) trong danh sách cạnh.</li>\n  <li><strong>C</strong>ác phương án A, C, D, E chỉ đếm riêng ở một cột hoặc nhân đôi giá trị đếm của một cột là không chính xác.</li>\n</ul>\n<p>Do đó, đáp án đúng là <strong>B</strong> (Các phương án khác đều sai).</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Với đồ thị vô hướng, bậc của đỉnh u bằng số lần nó xuất hiện trong toàn bộ danh sách cạnh (không phân biệt cột đầu hay cột cuối).</p>"
   },
   {
@@ -3811,7 +3811,7 @@
       "E": "<p>Chu trình đơn trong G chứa tất cả các cạnh của nó gọi là chu trình Euler.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Chu trình Euler là một chu trình đi qua tất cả các cạnh, mỗi cạnh đúng một lần. Nó <strong>không phải là chu trình đơn</strong> vì nó có thể đi qua một đỉnh nhiều lần. Vì các phương án A, C, D, E đều sử dụng thuật ngữ 'chu trình đơn' nên đều sai. Đáp án chính xác là B.</p>",
+    "explanation": "<p>Chu trình Euler là một chu trình đi qua tất cả các cạnh, mỗi cạnh đúng một lần. Nó <strong>không phải là chu trình đơn</strong> vì nó có thể đi qua một đỉnh nhiều lần. Vì các phương án A, C, D, E đều sử dụng thuật ngữ 'chu trình đơn' nên đều sai. Đáp án chính xác là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Chu trình Euler đi qua mỗi cạnh đúng 1 lần. Chu trình Hamilton đi qua mỗi đỉnh đúng 1 lần. Hãy phân biệt kỹ hai định nghĩa này.</p>"
   },
   {
@@ -3939,8 +3939,8 @@
       "E": "<p>Đánh dấu tất cả các đỉnh v V chưa được chọn (VS(v) = 0).</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Thao tác trong thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Thuật toán Prim xây dựng cây khung bằng cách phát triển tập đỉnh đã chọn $V_T$ bắt đầu từ đỉnh nguồn s:</p>\n<ul>\n  <li>Ở mỗi bước lặp trong khi tập đỉnh chưa chọn $V \\setminus V_T$ còn khác rỗng, ta cần tìm một cạnh $e = (u, v)$ có trọng số lớn nhất sao cho $u \\in V_T$ và $v \\in V \\setminus V_T$.</li>\n  <li>Các phương án B (sắp xếp m cạnh của G - đây là Kruskal), C (đánh dấu cạnh chưa chọn), E (đánh dấu đỉnh chưa chọn) đều không phải là thao tác được thực hiện tại bước (2.1) của Prim.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>A</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Bản chất của Prim là chọn cạnh tối ưu kết nối tập đã chọn với tập chưa chọn. Chọn ngay phương án \"Các phương án khác đều sai\" vì các mô tả kia là của Kruskal hoặc sai.</p>"
+    "explanation": "<p><strong>Thao tác trong thuật toán Prim tìm cây khung lớn nhất:</strong></p>\n<p>Thuật toán Prim xây dựng cây khung bằng cách phát triển tập đỉnh đã chọn $V_T$ bắt đầu từ đỉnh nguồn s:</p>\n<ul>\n  <li>Ở mỗi bước lặp trong khi tập đỉnh chưa chọn $V \\setminus V_T$ còn khác rỗng, ta cần tìm một cạnh $e = (u, v)$ có trọng số lớn nhất sao cho $u \\in V_T$ và $v \\in V \\setminus V_T$.</li>\n  <li><strong>C</strong>ác phương án B (sắp xếp m cạnh của G - đây là Kruskal), C (đánh dấu cạnh chưa chọn), E (đánh dấu đỉnh chưa chọn) đều không phải là thao tác được thực hiện tại bước (2.1) của Prim.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>A</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> <strong>B</strong>ản chất của Prim là chọn cạnh tối ưu kết nối tập đã chọn với tập chưa chọn. Chọn ngay phương án \"Các phương án khác đều sai\" vì các mô tả kia là của Kruskal hoặc sai.</p>"
   },
   {
     "id": 248,
@@ -4115,7 +4115,7 @@
       "E": "<p>4</p>"
     },
     "correctAnswer": "D",
-    "explanation": "<p><strong>Bậc của đỉnh trong đồ thị vô hướng biểu diễn bằng danh sách kề:</strong></p>\n<p>Bậc của đỉnh u trong đồ thị vô hướng bằng số lượng phần tử trong danh sách kề Ke(u) của nó:</p>\n<ul>\n  <li>Bậc của đỉnh 6 là: $deg(6) = |Ke(6)| = |{4, 5}| = 2$.</li>\n  <li>Kiểm tra bậc của các đỉnh khác:\n    <ul>\n      <li>$deg(1) = |{2, 3}| = 2$</li>\n      <li>$deg(2) = 4, deg(3) = 3, deg(4) = 4, deg(5) = 3$</li>\n    </ul>\n  </li>\n  <li>Như vậy, chỉ có đỉnh 1 có cùng bậc bằng 2 với đỉnh 6.</li>\n  <li>Vì đỉnh 1 không nằm trong các phương án <strong>A</strong> (đỉnh 2), <strong>B</strong> (đỉnh 3), <strong>C</strong> (đỉnh 5), <strong>E</strong> (đỉnh 4) nên đáp án là D.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
+    "explanation": "<p><strong>Bậc của đỉnh trong đồ thị vô hướng biểu diễn bằng danh sách kề:</strong></p>\n<p>Bậc của đỉnh u trong đồ thị vô hướng bằng số lượng phần tử trong danh sách kề Ke(u) của nó:</p>\n<ul>\n  <li>Bậc của đỉnh 6 là: $deg(6) = |Ke(6)| = |{4, 5}| = 2$.</li>\n  <li>Kiểm tra bậc của các đỉnh khác:\n    <ul>\n      <li>$deg(1) = |{2, 3}| = 2$</li>\n      <li>$deg(2) = 4, deg(3) = 3, deg(4) = 4, deg(5) = 3$</li>\n    </ul>\n  </li>\n  <li>Như vậy, chỉ có đỉnh 1 có cùng bậc bằng 2 với đỉnh 6.</li>\n  <li>Vì đỉnh 1 không nằm trong các phương án <strong>A</strong> (đỉnh 2), <strong>B</strong> (đỉnh 3), <strong>C</strong> (đỉnh 5), <strong>E</strong> (đỉnh 4) nên đáp án là <strong>D</strong>.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Đỉnh 6 kề 4 và 5 nên deg(6) = 2. Đỉnh 1 kề 2 và 3 nên deg(1) = 2. Đỉnh 1 không nằm trong các lựa chọn nên chọn phương án \"Các phương án khác đều sai\".</p>"
   },
   {
@@ -4163,8 +4163,8 @@
       "E": "<p>1, 3, 4</p>"
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Khái niệm cạnh bội trong đồ thị:</strong></p>\n<p>Cạnh bội (multiple edges) là các cạnh cùng nối một cặp đỉnh u, v của đồ thị:</p>\n<ul>\n  <li>Đơn đồ thị (cả vô hướng và có hướng) theo định nghĩa không chứa cạnh bội.</li>\n  <li>Đa đồ thị vô hướng (2), giả đồ thị vô hướng (3) và đa đồ thị có hướng (5) là các loại đồ thị cho phép chứa các cạnh bội nối giữa cùng một cặp đỉnh.</li>\n</ul>\n<p>Do đó, tập các đồ thị có cạnh bội là {2, 3, 5}, tương ứng với phương án <strong>C</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Cạnh bội chỉ xuất hiện ở các đồ thị cho phép nhiều liên kết giữa cùng một cặp đỉnh (đa đồ thị hoặc giả đồ thị).</p>"
+    "explanation": "<p><strong>Khái niệm cạnh bội trong đồ thị:</strong></p>\n<p><strong>C</strong>ạnh bội (multiple edges) là các cạnh cùng nối một cặp đỉnh u, v của đồ thị:</p>\n<ul>\n  <li>Đơn đồ thị (cả vô hướng và có hướng) theo định nghĩa không chứa cạnh bội.</li>\n  <li>Đa đồ thị vô hướng (2), giả đồ thị vô hướng (3) và đa đồ thị có hướng (5) là các loại đồ thị cho phép chứa các cạnh bội nối giữa cùng một cặp đỉnh.</li>\n</ul>\n<p>Do đó, tập các đồ thị có cạnh bội là {2, 3, 5}, tương ứng với phương án <strong>C</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> <strong>C</strong>ạnh bội chỉ xuất hiện ở các đồ thị cho phép nhiều liên kết giữa cùng một cặp đỉnh (đa đồ thị hoặc giả đồ thị).</p>"
   },
   {
     "id": 262,
@@ -4226,7 +4226,7 @@
       "E": "<p>Đỉnh t = 4.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Đáp án E đúng nhưng logic trong Explanation sai. Trọng số cạnh (2,3) là 1, nên d[3] = 1 (không phải 3). Từ đó, d[4] = min(6, 1+4) = 5 và d[1] = min(8, 1+1) = 2. Khoảng cách lớn nhất là 5 tại đỉnh 4, không phải 6 như Explanation tính.</p>",
+    "explanation": "<p>Đáp án <strong>E</strong> đúng nhưng logic trong Explanation sai. Trọng số cạnh (2,3) là 1, nên d[3] = 1 (không phải 3). Từ đó, d[4] = min(6, 1+4) = 5 và d[1] = min(8, 1+1) = 2. Khoảng cách lớn nhất là 5 tại đỉnh 4, không phải 6 như Explanation tính.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tính nhanh khoảng cách ngắn nhất từ s = 2 đến các đỉnh còn lại: d[3]=3, d[1]=4, d[4]=6. Đỉnh t = 4 có khoảng cách lớn nhất.</p>"
   },
   {
@@ -4258,7 +4258,7 @@
       "E": "<p>10</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p><strong>Tổng bậc đỉnh của đồ thị đầy đủ K5:</strong></p>\n<p>Trong đồ thị vô hướng đầy đủ $K_5$ có 5 đỉnh:</p>\n<ul>\n  <li>Mỗi đỉnh đều kề với 4 đỉnh còn lại, bậc của mỗi đỉnh là 4.</li>\n  <li>Tổng bậc của 5 đỉnh là: $5 \\times 4 = 20$.</li>\n  <li>Vì giá trị 20 không xuất hiện trong các phương án <strong>A</strong> (15), <strong>C</strong> (16), <strong>D</strong> (11), <strong>E</strong> (10) nên đáp án chính xác là B.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>B</strong>.</p>",
+    "explanation": "<p><strong>Tổng bậc đỉnh của đồ thị đầy đủ K5:</strong></p>\n<p>Trong đồ thị vô hướng đầy đủ $K_5$ có 5 đỉnh:</p>\n<ul>\n  <li>Mỗi đỉnh đều kề với 4 đỉnh còn lại, bậc của mỗi đỉnh là 4.</li>\n  <li>Tổng bậc của 5 đỉnh là: $5 \\times 4 = 20$.</li>\n  <li>Vì giá trị 20 không xuất hiện trong các phương án <strong>A</strong> (15), <strong>C</strong> (16), <strong>D</strong> (11), <strong>E</strong> (10) nên đáp án chính xác là <strong>B</strong>.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Tổng bậc của Kn bằng n(n-1). Với K5, tổng bậc là 5 * 4 = 20. Chọn phương án \"Các phương án khác đều sai\" vì 20 không có trong các lựa chọn.</p>"
   },
   {
@@ -4435,7 +4435,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Thuật toán Kruskal hiệu chỉnh tìm cây khung lớn nhất:</strong></p><ul><li>Sắp xếp danh sách 6 cạnh của đồ thị $G$ theo thứ tự trọng số giảm dần:<ul><li>1. $(1,3)$ có trọng số $5$</li><li>2. $(2,3)$ có trọng số $2$</li><li>3. $(2,4)$ có trọng số $2$</li><li>4. $(3,4)$ có trọng số $2$</li><li>5. $(1,4)$ có trọng số $1$</li><li>6. $(1,2)$ có trọng số $-7$</li></ul></li><li>Lần lượt xét các cạnh theo thứ tự đã sắp xếp để thêm vào cây khung $T$ (nếu không tạo thành chu trình):<ul><li>Chọn cạnh $(1,3)$ (trọng số 5): $T = \\{(1,3)\\}$.</li><li>Chọn cạnh $(2,3)$ (trọng số 2): $T = \\{(1,3), (2,3)\\}$.</li><li>Chọn cạnh $(2,4)$ (trọng số 2): $T = \\{(1,3), (2,3), (2,4)\\}$.</li></ul></li><li>Số cạnh đã chọn là $k = n - 1 = 3$ cạnh. Thuật toán kết thúc và trả về cây khung lớn nhất $T = \\{(1,3), (2,3), (2,4)\\}$ với tổng trọng số $W_T = 5 + 2 + 2 = 9$.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Để tìm cây khung lớn nhất bằng Kruskal, ta chỉ việc sắp xếp các cạnh giảm dần và chọn các cạnh có trọng số lớn nhất trước, bỏ qua các cạnh tạo chu trình. Cạnh 5 được chọn trước, sau đó là các cạnh có trọng số 2. Tổng trọng số cây khung lớn nhất là $5 + 2 + 2 = 9$. Đối chiếu phương án thấy chỉ có C thỏa mãn.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Để tìm cây khung lớn nhất bằng Kruskal, ta chỉ việc sắp xếp các cạnh giảm dần và chọn các cạnh có trọng số lớn nhất trước, bỏ qua các cạnh tạo chu trình. <strong>C</strong>ạnh 5 được chọn trước, sau đó là các cạnh có trọng số 2. Tổng trọng số cây khung lớn nhất là $5 + 2 + 2 = 9$. Đối chiếu phương án thấy chỉ có C thỏa mãn.</p>"
   },
   {
     "id": 279,
@@ -4579,7 +4579,7 @@
     },
     "correctAnswer": "B",
     "explanation": "<p><strong>Nguyên lý thuật toán Kruskal tìm cây khung lớn nhất:</strong></p><ul><li>Thuật toán Kruskal tìm cây khung nhỏ nhất hoạt động bằng cách chọn lần lượt các cạnh có trọng số nhỏ nhất.</li><li>Để tìm cây khung lớn nhất (Maximum Spanning Tree), ta thực hiện hiệu chỉnh ngược lại: ưu tiên chọn các cạnh có trọng số lớn nhất trước.</li><li>Vì vậy, bước đầu tiên (1) của thuật toán phải là sắp xếp danh sách các cạnh của đồ thị theo thứ tự **giảm dần của trọng số**.</li></ul><p>Do đó, đáp án đúng là <strong>B</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Cây khung nhỏ nhất (MST) cần xếp các cạnh tăng dần (chọn cạnh nhỏ trước). Cây khung lớn nhất (Max ST) thì ngược lại, cần xếp các cạnh giảm dần để chọn các cạnh lớn nhất trước. Chọn phương án B.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Cây khung nhỏ nhất (MST) cần xếp các cạnh tăng dần (chọn cạnh nhỏ trước). <strong>C</strong>ây khung lớn nhất (Max ST) thì ngược lại, cần xếp các cạnh giảm dần để chọn các cạnh lớn nhất trước. Chọn phương án B.</p>"
   },
   {
     "id": 288,
@@ -4611,7 +4611,7 @@
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Định nghĩa cây khung nhỏ nhất (MST):</strong></p><ul><li>Cho đơn đồ thị vô hướng liên thông có trọng số G. Một cây khung $T$ của G được gọi là cây khung nhỏ nhất nếu tổng trọng số $W(T)$ của tất cả các cạnh trên $T$ là nhỏ nhất trong số mọi cây khung có thể có của G.</li><li>Phương án B phát biểu sai vì $n-1$ cạnh có trọng số nhỏ nhất của G chưa chắc đã tạo thành một cây khung (chúng có thể tạo thành chu trình hoặc không liên thông).</li></ul><p>Do đó, đáp án đúng là <strong>D</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ định nghĩa cốt lõi của MST: Cây khung nhỏ nhất là cây khung có **tổng trọng số nhỏ nhất**. Chọn phương án D.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ định nghĩa cốt lõi của MST: <strong>C</strong>ây khung nhỏ nhất là cây khung có **tổng trọng số nhỏ nhất**. Chọn phương án D.</p>"
   },
   {
     "id": 290,
@@ -4643,7 +4643,7 @@
     },
     "correctAnswer": "C",
     "explanation": "<p><strong>Biểu diễn đồ thị bằng ma trận kề:</strong></p><ul><li>Trong ma trận kề $A$ của đồ thị có hướng, phần tử $A[i][j] = 1$ nếu có cung từ đỉnh $i$ đến đỉnh $j$, ngược lại bằng $0$.</li><li>Hàng $i$ biểu diễn các cung đi ra từ đỉnh $i$.</li><li>Xét đỉnh $2$ trong danh sách cạnh: có các cung đi ra là $2 \\to 1$ và $2 \\to 5$.</li><li>Do đó, hàng 2 của ma trận kề sẽ có giá trị $1$ ở cột 1 và cột 5, các vị trí khác bằng $0$. Dãy giá trị của hàng 2 là: $(1, 0, 0, 0, 1)$.</li><li>Mô tả này trùng khớp với phương án <strong>C</strong>.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào danh sách cạnh để tìm các cung bắt đầu bằng đỉnh 2. Ta thấy có $2 \\to 1$ và $2 \\to 5$. Điều này có nghĩa hàng 2 của ma trận kề phải có số 1 ở cột 1 và cột 5. Dạng của nó là (1, 0, 0, 0, 1). Đối chiếu chọn ngay <strong>C</strong>.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào danh sách cạnh để tìm các cung bắt đầu bằng đỉnh 2. Ta thấy có $2 \\to 1$ và $2 \\to 5$. Điều này có nghĩa hàng 2 của ma trận kề phải có số 1 ở cột 1 và cột 5. <strong>D</strong>ạng của nó là (1, 0, 0, 0, 1). Đối chiếu chọn ngay <strong>C</strong>.</p>"
   },
   {
     "id": 292,
@@ -4706,7 +4706,7 @@
     },
     "correctAnswer": "A",
     "explanation": "<p><strong>Thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh 2:</strong></p><ul><li>Đồ thị vô hướng nên các cạnh được xét hai chiều với trọng số:<ul><li>$d[2] = 0$.</li><li>Đường đi $2 \\to 4$ có độ dài $d[4] = 1$. (Phương án C đúng)</li><li>Đường đi $2 \\to 4 \\to 1$ có độ dài $d[1] = 1 + 2 = 3$. (Phương án D đúng)</li><li>Đường đi $2 \\to 4 \\to 1 \\to 3$ có độ dài $d[3] = 3 + 1 = 4$. (Phương án B đúng)</li></ul></li><li>Vì tất cả các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng ở <strong>B</strong>, <strong>C</strong>, <strong>D</strong> đều chính xác, ta chọn phương án <strong>A</strong> (Các phương án đưa ra đường đi ngắn nhất và độ dài tương ứng đều đúng).</li></ul>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Tính nhanh khoảng cách từ 2 bằng cách cộng dồn trọng số: $2 \\to 4$ dài 1; $2 \\to 4 \\to 1$ dài 3; $2 \\to 4 \\to 1 \\to 3$ dài 4. Cả ba phương án B, C, D đều khớp hoàn toàn, chọn ngay <strong>A</strong>.</p>"
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Tính nhanh khoảng cách từ 2 bằng cách cộng dồn trọng số: $2 \\to 4$ dài 1; $2 \\to 4 \\to 1$ dài 3; $2 \\to 4 \\to 1 \\to 3$ dài 4. <strong>C</strong>ả ba phương án B, C, D đều khớp hoàn toàn, chọn ngay <strong>A</strong>.</p>"
   },
   {
     "id": 296,
@@ -4737,7 +4737,7 @@
       "E": "<p>2</p>"
     },
     "correctAnswer": "A",
-    "explanation": "<p><strong>Xác định số cạnh cầu của đồ thị:</strong></p><ul><li>Cạnh cầu (bridge) là cạnh mà khi loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị.</li><li>Phân tích cấu trúc đồ thị:<ul><li>Các đỉnh $\\{1, 2, 3\\}$ tạo thành một tam giác liên kết đầy đủ $\\Rightarrow$ Loại bỏ bất kỳ cạnh nào trong tam giác này vẫn giữ nguyên tính liên thông của nhóm này.</li><li>Các đỉnh $\\{4, 5, 6\\}$ tạo thành một tam giác liên kết khác $\\Rightarrow$ Loại bỏ cạnh nào trong tam giác này vẫn liên thông.</li><li>Hai tam giác này nối với nhau bằng hai cạnh độc lập $(2,4)$ và $(3,4)$, tạo thành chu trình liên kết $2 - 4 - 3 - 2$.</li><li>Nếu ta loại bỏ cạnh $(2,4)$, đồ thị vẫn liên thông qua cạnh $(3,4)$ và ngược lại.</li></ul></li><li>Do không có cạnh nào khi loại bỏ làm mất tính liên thông của đồ thị, số cạnh cầu bằng $0$.</li><li>Vì $0$ không nằm trong các phương án B, C, D, E, đáp án đúng là <strong>A</strong> (Các phương án khác đều sai).</li></ul>",
+    "explanation": "<p><strong>Xác định số cạnh cầu của đồ thị:</strong></p><ul><li><strong>C</strong>ạnh cầu (bridge) là cạnh mà khi loại bỏ nó sẽ làm tăng số thành phần liên thông của đồ thị.</li><li>Phân tích cấu trúc đồ thị:<ul><li>Các đỉnh $\\{1, 2, 3\\}$ tạo thành một tam giác liên kết đầy đủ $\\Rightarrow$ Loại bỏ bất kỳ cạnh nào trong tam giác này vẫn giữ nguyên tính liên thông của nhóm này.</li><li>Các đỉnh $\\{4, 5, 6\\}$ tạo thành một tam giác liên kết khác $\\Rightarrow$ Loại bỏ cạnh nào trong tam giác này vẫn liên thông.</li><li>Hai tam giác này nối với nhau bằng hai cạnh độc lập $(2,4)$ và $(3,4)$, tạo thành chu trình liên kết $2 - 4 - 3 - 2$.</li><li>Nếu ta loại bỏ cạnh $(2,4)$, đồ thị vẫn liên thông qua cạnh $(3,4)$ và ngược lại.</li></ul></li><li>Do không có cạnh nào khi loại bỏ làm mất tính liên thông của đồ thị, số cạnh cầu bằng $0$.</li><li>Vì $0$ không nằm trong các phương án B, C, D, E, đáp án đúng là <strong>A</strong> (Các phương án khác đều sai).</li></ul>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Một cạnh là cầu nếu nó không nằm trên bất kỳ chu trình nào của đồ thị. Ở đồ thị này, mọi cạnh đều nằm trong ít nhất một chu trình (ví dụ 1-2-3-1, 4-5-6-4, 2-4-3-2). Do đó đồ thị không có cạnh cầu nào (số lượng cầu = 0). Chọn ngay <strong>A</strong>.</p>"
   },
   {
@@ -4753,8 +4753,8 @@
       "E": "<p>Ma trận A gồm 5 hàng, 5 cột và có hàng 2 là (1, 0, 0, 1, 1).</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p><strong>Xác định hàng ma trận kề từ danh sách kề:</strong></p><ul><li>Phần tử ở hàng $i$, cột $j$ của ma trận kề $A$ có giá trị bằng $1$ nếu đỉnh $j$ nằm trong danh sách kề $Ke(i)$ của đỉnh $i$, ngược lại bằng $0$.</li><li>Xét phương án E: kiểm tra hàng 2 của ma trận kề. Hàng 2 biểu diễn tập kề của đỉnh 2, tức là $Ke(2) = \\{1, 4, 5\\}$.</li><li>Do đó, hàng 2 của ma trận kề phải có số 1 ở cột 1, cột 4, cột 5 và số 0 ở cột 2, cột 3. Dạng hàng 2 là: $(1, 0, 0, 1, 1)$. Đây chính xác là nội dung của phương án **E**.</li><li>Kiểm tra các phương án khác để thấy chúng sai:<ul><li>Cột 4 phải biểu diễn các đỉnh đi tới 4. Dựa vào danh sách kề, chỉ có 2 và 5 đi tới 4 $\\Rightarrow$ cột 4 phải là $(0, 1, 0, 0, 1)^T$. Phương án A sai.</li><li>Hàng 5 là $Ke(5) = \\{1, 2, 3, 4\\} \\Rightarrow$ hàng 5 phải là $(1, 1, 1, 1, 0)$. Phương án B sai.</li><li>Cột 3 biểu diễn các đỉnh đi tới 3, gồm 1, 4, 5 $\\Rightarrow$ cột 3 phải là $(1, 0, 0, 1, 1)^T$. Phương án D sai.</li></ul></li></ul><p>Do đó, đáp án đúng là <strong>E</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào danh sách kề của đỉnh 2: $Ke(2) = \\{1, 4, 5\\}$. Điều này tương ứng hàng 2 của ma trận kề có giá trị 1 ở các cột 1, 4, 5 và 0 ở cột 2, 3. Dạng hàng 2 là (1, 0, 0, 1, 1). Khớp hoàn hảo với phương án E.</p>"
+    "explanation": "<p><strong>Xác định hàng ma trận kề từ danh sách kề:</strong></p><ul><li>Phần tử ở hàng $i$, cột $j$ của ma trận kề $A$ có giá trị bằng $1$ nếu đỉnh $j$ nằm trong danh sách kề $Ke(i)$ của đỉnh $i$, ngược lại bằng $0$.</li><li>Xét phương án E: kiểm tra hàng 2 của ma trận kề. Hàng 2 biểu diễn tập kề của đỉnh 2, tức là $Ke(2) = \\{1, 4, 5\\}$.</li><li>Do đó, hàng 2 của ma trận kề phải có số 1 ở cột 1, cột 4, cột 5 và số 0 ở cột 2, cột 3. <strong>D</strong>ạng hàng 2 là: $(1, 0, 0, 1, 1)$. Đây chính xác là nội dung của phương án **E**.</li><li>Kiểm tra các phương án khác để thấy chúng sai:<ul><li>Cột 4 phải biểu diễn các đỉnh đi tới 4. Dựa vào danh sách kề, chỉ có 2 và 5 đi tới 4 $\\Rightarrow$ cột 4 phải là $(0, 1, 0, 0, 1)^T$. Phương án A sai.</li><li>Hàng 5 là $Ke(5) = \\{1, 2, 3, 4\\} \\Rightarrow$ hàng 5 phải là $(1, 1, 1, 1, 0)$. Phương án B sai.</li><li><strong>C</strong>ột 3 biểu diễn các đỉnh đi tới 3, gồm 1, 4, 5 $\\Rightarrow$ cột 3 phải là $(1, 0, 0, 1, 1)^T$. Phương án D sai.</li></ul></li></ul><p>Do đó, đáp án đúng là <strong>E</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào danh sách kề của đỉnh 2: $Ke(2) = \\{1, 4, 5\\}$. Điều này tương ứng hàng 2 của ma trận kề có giá trị 1 ở các cột 1, 4, 5 và 0 ở cột 2, 3. <strong>D</strong>ạng hàng 2 là (1, 0, 0, 1, 1). Khớp hoàn hảo với phương án E.</p>"
   },
   {
     "id": 299,
