@@ -2437,9 +2437,9 @@
       "D": "<p>deg-(1) + deg-(2) + deg-(3) + deg-(4) + deg-(5) = 9</p>",
       "E": "<p>deg+(1) + deg+(2) + deg+(3) + deg+(4) + deg+(5) = 8</p>"
     },
-    "correctAnswer": "B",
-    "explanation": "<p><strong>Áp dụng hệ quả của định lý bắt tay trên đồ thị có hướng:</strong></p><ul><li>Trong một đồ thị có hướng $G = (V, E)$ gồm $m$ cung:</li><li>Mỗi cung $(u, v)$ đóng đóng góp đúng 1 vào bán bậc ra của đỉnh đầu $u$ và đúng 1 vào bán bậc vào của đỉnh cuối $v$.</li><li>Do đó, tổng bán bậc ra của tất cả các đỉnh bằng tổng bán bậc vào của tất cả các đỉnh và bằng số cung $m$ của đồ thị:</li>$$\\sum_{v \\in V} \\text{deg}^+(v) = \\sum_{v \\in V} \\text{deg}^-(v) = m$$<li>Đối chiếu với đồ thị có hướng trong hình vẽ (image5.png), ta đếm được đồ thị có đúng $m = 6$ cung: (1,2), (2,3), (3,4), (4,5), (5,1), (2,5) (hoặc tương tự).</li><li>Do đó, tổng bán bậc ra của tất cả các đỉnh phải bằng 6: $\\sum \\text{deg}^+(v) = 6$.</li></ul><p>Vậy phương án B là chính xác.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ công thức: **Tổng bán bậc ra = Tổng bán bậc vào = Số cung**. Chỉ cần đếm số lượng cung (mũi tên) trên hình vẽ, ta đếm được 6 mũi tên. Vậy tổng bậc ra hoặc bậc vào phải bằng 6. Chọn phương án B.</p>"
+    "correctAnswer": "A",
+    "explanation": "<p><strong>Áp dụng hệ quả của định lý bắt tay trên đồ thị có hướng:</strong></p><ul><li>Trong một đồ thị có hướng $G = (V, E)$ gồm $m$ cung:</li><li>Mỗi cung $(u, v)$ đóng đóng góp đúng 1 vào bán bậc ra của đỉnh đầu $u$ và đúng 1 vào bán bậc vào của đỉnh cuối $v$.</li><li>Do đó, tổng bán bậc ra của tất cả các đỉnh bằng tổng bán bậc vào của tất cả các đỉnh và bằng số cung $m$ của đồ thị:</li>$$\\sum_{v \\in V} \\text{deg}^+(v) = \\sum_{v \\in V} \\text{deg}^-(v) = m$$<li>Đối chiếu với đồ thị có hướng trong hình vẽ (image5.png), ta đếm được đồ thị có đúng $m = 7$ cung: (1,2), (1,4), (3,2), (4,3), (2,4), (4,5), (5,1).</li><li>Do đó, tổng bán bậc vào của tất cả các đỉnh phải bằng 7: $\\sum \\text{deg}^-(v) = 7$.</li></ul><p>Vậy phương án A là chính xác.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ công thức: **Tổng bán bậc ra = Tổng bán bậc vào = Số cung**. Chỉ cần đếm số lượng cung (mũi tên) trên hình vẽ, ta đếm được 7 mũi tên. Vậy tổng bán bậc vào phải bằng 7. Chọn phương án A.</p>"
   },
   {
     "id": 154,
