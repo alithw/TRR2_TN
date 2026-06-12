@@ -458,10 +458,16 @@ function renderActiveQuestion() {
     }
     
     // 7. Navigation Buttons disabled state
-    const filtered = getFilteredQuestions();
-    const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
-    prevBtn.disabled = currentFilteredIdx <= 0;
-    nextBtn.disabled = currentFilteredIdx === -1 || currentFilteredIdx === filtered.length - 1;
+    const query = searchInput.value.toLowerCase().trim();
+    if (activeFilter === 'all' && !query) {
+        prevBtn.disabled = currentIndex <= 0;
+        nextBtn.disabled = currentIndex === sessionQuestions.length - 1;
+    } else {
+        const filtered = getFilteredQuestions();
+        const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
+        prevBtn.disabled = currentFilteredIdx <= 0;
+        nextBtn.disabled = currentFilteredIdx === -1 || currentFilteredIdx === filtered.length - 1;
+    }
 }
 
 function updateStats() {
@@ -608,33 +614,51 @@ function setupEventListeners() {
     
     // Navigation Footer buttons
     prevBtn.addEventListener('click', () => {
-        const filtered = getFilteredQuestions();
-        const q = sessionQuestions[currentIndex];
-        const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
-        
-        if (currentFilteredIdx > 0) {
-            const prevQuestion = filtered[currentFilteredIdx - 1];
-            const prevSessionIdx = sessionQuestions.findIndex(sq => sq.id === prevQuestion.id);
-            if (prevSessionIdx !== -1) {
-                currentIndex = prevSessionIdx;
+        const query = searchInput.value.toLowerCase().trim();
+        if (activeFilter === 'all' && !query) {
+            if (currentIndex > 0) {
+                currentIndex--;
                 setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
                 renderActiveQuestion();
+            }
+        } else {
+            const filtered = getFilteredQuestions();
+            const q = sessionQuestions[currentIndex];
+            const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
+            
+            if (currentFilteredIdx > 0) {
+                const prevQuestion = filtered[currentFilteredIdx - 1];
+                const prevSessionIdx = sessionQuestions.findIndex(sq => sq.id === prevQuestion.id);
+                if (prevSessionIdx !== -1) {
+                    currentIndex = prevSessionIdx;
+                    setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
+                    renderActiveQuestion();
+                }
             }
         }
     });
     
     nextBtn.addEventListener('click', () => {
-        const filtered = getFilteredQuestions();
-        const q = sessionQuestions[currentIndex];
-        const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
-        
-        if (currentFilteredIdx !== -1 && currentFilteredIdx < filtered.length - 1) {
-            const nextQuestion = filtered[currentFilteredIdx + 1];
-            const nextSessionIdx = sessionQuestions.findIndex(sq => sq.id === nextQuestion.id);
-            if (nextSessionIdx !== -1) {
-                currentIndex = nextSessionIdx;
+        const query = searchInput.value.toLowerCase().trim();
+        if (activeFilter === 'all' && !query) {
+            if (currentIndex < sessionQuestions.length - 1) {
+                currentIndex++;
                 setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
                 renderActiveQuestion();
+            }
+        } else {
+            const filtered = getFilteredQuestions();
+            const q = sessionQuestions[currentIndex];
+            const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
+            
+            if (currentFilteredIdx !== -1 && currentFilteredIdx < filtered.length - 1) {
+                const nextQuestion = filtered[currentFilteredIdx + 1];
+                const nextSessionIdx = sessionQuestions.findIndex(sq => sq.id === nextQuestion.id);
+                if (nextSessionIdx !== -1) {
+                    currentIndex = nextSessionIdx;
+                    setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
+                    renderActiveQuestion();
+                }
             }
         }
     });

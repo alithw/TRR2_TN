@@ -433,7 +433,7 @@
   {
     "id": 28,
     "category_name": "Thuật toán DFS",
-    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng DFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Dfs(s){\n    VS[s] = 1;\n    For v Î Ke(s)\n        if (VS[v] = 0) {\n            T = T È (s, v);\n            Dfs(v);\n        }\n}\n\nTree_Dfs(s){\n    For v Î V\n        VS[v] = 0;\n    T = Æ;\n    Dfs(s);\n    For v Î V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng DFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Dfs(s){\n    VS[s] = 1;\n    For v ∈ Ke(s)\n        if (VS[v] = 0) {\n            T = T ∪ (s, v);\n            Dfs(v);\n        }\n}\n\nTree_Dfs(s){\n    For v ∈ V\n        VS[v] = 0;\n    T = ∅;\n    Dfs(s);\n    For v ∈ V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>T là cây khung của G vì T có n cạnh.</p>",
@@ -607,7 +607,7 @@
   {
     "id": 39,
     "category_name": "Thuật toán BFS",
-    "questionText": "<p>Xét thuật toán tìm luồng cực đại trên mang G = (V, E) sau đây:</p>\n<pre class=\"code-block\">Thuật toán Max_Flow {\n    (1) for u Î V do\n            for v Î V do f(u, v) = 0;\n    (2) Stop = 0;\n    (3) while (Stop = 0) do {\n    (4)     &lt;Xác định đồ thị tăng luồng Gf &gt;;\n    (5)     if (Tìm được đường tăng luồng P bằng Bfs(s)) {\n    (6)         &lt;Tìm d là trọng số nhỏ nhất trên P&gt;;\n                &lt;Tăng luồng f theo P&gt;;\n    (7)     } else Stop = 1;\n        }\n    (8) Return (f, val(f));\n}</pre>\n<p>Các thao tác trong bước (6) là:</p>",
+    "questionText": "<p>Xét thuật toán tìm luồng cực đại trên mang G = (V, E) sau đây:</p>\n<pre class=\"code-block\">Thuật toán Max_Flow {\n    (1) for u ∈ V do\n            for v ∈ V do f(u, v) = 0;\n    (2) Stop = 0;\n    (3) while (Stop = 0) do {\n    (4)     &lt;Xác định đồ thị tăng luồng Gf &gt;;\n    (5)     if (Tìm được đường tăng luồng P bằng Bfs(s)) {\n    (6)         &lt;Tìm d là trọng số nhỏ nhất trên P&gt;;\n                &lt;Tăng luồng f theo P&gt;;\n    (7)     } else Stop = 1;\n        }\n    (8) Return (f, val(f));\n}</pre>\n<p>Các thao tác trong bước (6) là:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">d là trọng số nhỏ nhất trên P>; ;</pre>",
@@ -815,7 +815,7 @@
   {
     "id": 52,
     "category_name": "Thuật toán Kruskal",
-    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal tìm cây khung nhỏ nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = Æ; WT = 0; k = 0;\n(3) For (ei Î E) {\n        if (T È {ei} không chứa chu trình) {\n            T = T È {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal tìm cây khung nhỏ nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = ∅; WT = 0; k = 0;\n(3) For (ei ∈ E) {\n        if (T ∪ {ei} không chứa chu trình) {\n            T = T ∪ {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Đánh dấu tất cả các đỉnh v V chưa được chọn (VS(v) = 0).</p>",
@@ -863,7 +863,7 @@
   {
     "id": 55,
     "category_name": "Thuật toán Floyd",
-    "questionText": "<p>Xét một cách mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) d[i][j] = a[i][j];\n    (1.2) e[i][j] = i;\n(2) Thực hiện 3 vòng lặp lồng nhau:\n    (2.1) for k Î G do\n    (2.2)     for i Î G do\n    (2.3)         for j Î G do\n    (2.4)             if (d[k][j] &gt; d[k][i] + d[i][j]) {\n                          e[k][j] = i;\n                          d[k][j] = d[k][i] + d[i][j];\n                      }\n(3) Xuất kết quả:\n    (3.1) Nếu có đỉnh u mà d[u][u] &lt; 0 thì xuất thông báo G chứa chu trình âm;\n    (3.2) Ngược lại xuất d[i][j] và e[i][j].</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Xét một cách mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) d[i][j] = a[i][j];\n    (1.2) e[i][j] = i;\n(2) Thực hiện 3 vòng lặp lồng nhau:\n    (2.1) for k ∈ G do\n    (2.2)     for i ∈ G do\n    (2.3)         for j ∈ G do\n    (2.4)             if (d[k][j] &gt; d[k][i] + d[i][j]) {\n                          e[k][j] = i;\n                          d[k][j] = d[k][i] + d[i][j];\n                      }\n(3) Xuất kết quả:\n    (3.1) Nếu có đỉnh u mà d[u][u] &lt; 0 thì xuất thông báo G chứa chu trình âm;\n    (3.2) Ngược lại xuất d[i][j] và e[i][j].</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<p>Bước (1.2) bị sai.</p>",
@@ -1038,7 +1038,7 @@
   {
     "id": 66,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = Æ; Queue = Æ;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ¹ Æ) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ¹ Æ) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = ∅; Queue = ∅;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ≠ ∅) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ≠ ∅) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán có thể tìm được chu trình/đường đi Euler bắt đầu tại đỉnh s.</p>",
@@ -1341,7 +1341,7 @@
   {
     "id": 85,
     "category_name": "Khái niệm đồ thị cơ bản",
-    "questionText": "<p>Xét một cách mô tả thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v Î G do {\n              d[v] = a[s][v];\n              e[v] = s;\n          }\n(2) Bắt đầu tìm kiếm từ s:\n    (2.1) d[s] = 0;\n    (2.2) e[s] = 0;\n    (2.3) ok = 0;\n(3) Thực hiện n-1 lần lặp:\n    (3.1) ok = 1;\n    (3.2) for v Î G do\n    (3.3)     for u Î G do\n    (3.4)         if (d[u] &gt; d[v] + a[v][u]) {\n                      e[u] = v;\n                      d[u] = d[v] + a[v][u];\n                      ok = 0;\n                  }\n    (3.5) Nếu (ok = 1) thì chuyển bước (4);\n(4) Nếu (ok = 1) thì đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s;\n(5) Nếu (ok = 0) thì đưa ra thông báo G chứa chu trình âm;</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Xét một cách mô tả thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v ∈ G do {\n              d[v] = a[s][v];\n              e[v] = s;\n          }\n(2) Bắt đầu tìm kiếm từ s:\n    (2.1) d[s] = 0;\n    (2.2) e[s] = 0;\n    (2.3) ok = 0;\n(3) Thực hiện n-1 lần lặp:\n    (3.1) ok = 1;\n    (3.2) for v ∈ G do\n    (3.3)     for u ∈ G do\n    (3.4)         if (d[u] &gt; d[v] + a[v][u]) {\n                      e[u] = v;\n                      d[u] = d[v] + a[v][u];\n                      ok = 0;\n                  }\n    (3.5) Nếu (ok = 1) thì chuyển bước (4);\n(4) Nếu (ok = 1) thì đưa ra d[v] và đường đi từ s đến v với mọi v ∈ G, v khác s;\n(5) Nếu (ok = 0) thì đưa ra thông báo G chứa chu trình âm;</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<p>Bước (3.4) bị sai.</p>",
@@ -1996,7 +1996,7 @@
   {
     "id": 126,
     "category_name": "Thuật toán Dijkstra",
-    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (5) trong mô tả thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][] với các trọng số không âm:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v Î G do {\n    (1.2)     d[v] = a[s][v]; e[v] = s; vs[v] = 0;\n          }\n(2) Bắt đầu tìm kiếm từ s: d[s] = 0; e[s] = 0; vs[s] = 1;\n(3) Tìm đỉnh u sao cho d[u] = min{d[v] vs[v] = 0}:\n    (3.1) Nếu không tìm được u thì chuyển bước (7);\n    (3.2) Nếu tìm được u thì chuyển bước (4).\n(4) Cập nhật vs[u] = 1;\n(5) for v Î G do\n(6) Quay lại (3).\n(7) Đưa ra d[v] và đường đi từ s đến v với mọi v Î G, v khác s.</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (5) trong mô tả thuật toán Dijkstra tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][] với các trọng số không âm:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v ∈ G do {\n    (1.2)     d[v] = a[s][v]; e[v] = s; vs[v] = 0;\n          }\n(2) Bắt đầu tìm kiếm từ s: d[s] = 0; e[s] = 0; vs[s] = 1;\n(3) Tìm đỉnh u sao cho d[u] = min{d[v] vs[v] = 0}:\n    (3.1) Nếu không tìm được u thì chuyển bước (7);\n    (3.2) Nếu tìm được u thì chuyển bước (4).\n(4) Cập nhật vs[u] = 1;\n(5) for v ∈ G do\n(6) Quay lại (3).\n(7) Đưa ra d[v] và đường đi từ s đến v với mọi v ∈ G, v khác s.</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">*if  (vs[v] = 0) {*\n\n                  *e[v]= u; d[v]= d[u] + a[u][v]; }*</pre>",
@@ -2572,7 +2572,7 @@
   {
     "id": 162,
     "category_name": "Đồ thị Hamilton",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Hamilton(k) {\n    for v Î Ke(x[k-1]) {\n        if (k == n + 1) {\n            if (v == x[1]) GhiNhan(x[1], …, x[n]);\n        } else {\n            if (vs[v] == 0) {\n                x[k] = v; vs[v] = 1;\n                Hamilton(k+1);\n                vs[v] = 0;\n            }\n        }\n    }\n}\n\nLietKeHamilton(s) {\n    for (v Î G)\n        vs[v] = 0;\n    x[1] = s;\n    vs[s] = 1;\n    Hamilton(2);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Hamilton(k) {\n    for v ∈ Ke(x[k-1]) {\n        if (k == n + 1) {\n            if (v == x[1]) GhiNhan(x[1], …, x[n]);\n        } else {\n            if (vs[v] == 0) {\n                x[k] = v; vs[v] = 1;\n                Hamilton(k+1);\n                vs[v] = 0;\n            }\n        }\n    }\n}\n\nLietKeHamilton(s) {\n    for (v ∈ G)\n        vs[v] = 0;\n    x[1] = s;\n    vs[s] = 1;\n    Hamilton(2);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán chỉ có thể tìm được đường đi Hamilton bắt đầu tại đỉnh s của đồ thị vô hướng.</p>",
@@ -3929,7 +3929,7 @@
   {
     "id": 247,
     "category_name": "Thuật toán Prim",
-    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Prim có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT bắt đầu tại đỉnh s của G như sau:</p>\n<pre class=\"code-block\">(1) T = Æ; VT = {s}; WT = 0;\n(2) while (V \\ VT ≠ Æ) {\n        (2.1)\n        (2.2) if (Tìm được e) {\n                  T = T È {e};\n                  WT = WT + &lt;trọng số của e&gt;;\n                  VT = VT È {v};\n              }\n        (2.3) else Return (&lt;G không có cây khung&gt;);\n    }\n(3) Return (T và WT);</pre>\n<p>Thao tác cần thực hiện trong bước (2.1) là:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Prim có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT bắt đầu tại đỉnh s của G như sau:</p>\n<pre class=\"code-block\">(1) T = ∅; VT = {s}; WT = 0;\n(2) while (V \\ VT ≠ ∅) {\n        (2.1)\n        (2.2) if (Tìm được e) {\n                  T = T ∪ {e};\n                  WT = WT + &lt;trọng số của e&gt;;\n                  VT = VT ∪ {v};\n              }\n        (2.3) else Return (&lt;G không có cây khung&gt;);\n    }\n(3) Return (T và WT);</pre>\n<p>Thao tác cần thực hiện trong bước (2.1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Các phương án khác đều sai.</p>",
@@ -4142,9 +4142,9 @@
     "options": {
       "A": "<p>Độ dài đường đi ngắn nhất từ s đến t.</p>",
       "B": "<p>Các phương án khác đều sai.</p>",
-      "C": "<p>Tổng của các khả năng thông qua c(s,v), với v Î X*.</p>",
-      "D": "<p>Tổng của các khả năng thông qua c(u,v) với u X và vÎ  X*.</p>",
-      "E": "<p>Tổng của các khả năng thông qua c(u,t), với uÎ  X.</p>"
+      "C": "<p>Tổng của các khả năng thông qua c(s,v), với v ∈ X*.</p>",
+      "D": "<p>Tổng của các khả năng thông qua c(u,v) với u X và v∈  X*.</p>",
+      "E": "<p>Tổng của các khả năng thông qua c(u,t), với u∈  X.</p>"
     },
     "correctAnswer": "D",
     "explanation": "<p><strong>Dung lượng của lát cắt trong mạng:</strong></p>\n<p>Khả năng thông qua (capacity) của lát cắt $(X, X^*)$ phân hoạch tập đỉnh thành hai phần X (chứa s) và $X^*$ (chứa t) được tính bằng tổng khả năng thông qua của tất cả các cung hướng đi từ các đỉnh thuộc X đến các đỉnh thuộc $X^*$:</p>\n<ul>\n  <li>$c(X, X^*) = \\sum_{u \\in X, v \\in X^*} c(u, v)$.</li>\n  <li>Các cung đi ngược lại từ $X^*$ về X không được tính vào dung lượng của lát cắt.</li>\n</ul>\n<p>Do đó, đáp án chính xác là <strong>D</strong>.</p>",
@@ -4568,7 +4568,7 @@
   {
     "id": 287,
     "category_name": "Thuật toán Kruskal",
-    "questionText": "<p>29 Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = Æ; WT = 0; k = 0;\n(3) For (ei Î E) {\n        if (T È {ei} không chứa chu trình) {\n            T = T È {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
+    "questionText": "<p>29 Cho đơn đồ thị vô hướng có trọng số G = (V, E) gồm n đỉnh và m cạnh. Xét mô tả thuật toán Kruskal có hiệu chỉnh tìm cây khung có tổng trọng số lớn nhất T và WT của G như sau:</p>\n<pre class=\"code-block\">(1)\n(2) T = ∅; WT = 0; k = 0;\n(3) For (ei ∈ E) {\n        if (T ∪ {ei} không chứa chu trình) {\n            T = T ∪ {ei};\n            WT = WT + &lt;Trọng số của ei&gt;;\n            k++;\n            if (k = n - 1) Return (T và WT);\n        }\n    }\n(4) Return (&lt;G không có cây khung&gt;);</pre>\n<p>Thao tác cần thực hiện trong bước (1) là:</p>",
     "image": "",
     "options": {
       "A": "<p>Sắp xếp m cạnh của G theo thứ tự từ điển e1, …, em.</p>",
@@ -4664,7 +4664,7 @@
   {
     "id": 293,
     "category_name": "Đồ thị Euler",
-    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = Æ; Queue = Æ;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ¹ Æ) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ¹ Æ) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n            Ke(y) = Ke(y) \\ {x};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Xét thuật toán được mô tả dưới đây:</p>\n<pre class=\"code-block\">Euler(s) {\n    Stack = ∅; Queue = ∅;\n    &lt;Đưa đỉnh s vào Stack&gt;;\n    While (Stack ≠ ∅) {\n        &lt;Lấy x là đỉnh đầu của Stack&gt;;\n        if (Ke(x) ≠ ∅) {\n            &lt;Lấy y là đỉnh đầu tiên của Ke(x)&gt;;\n            &lt;Đưa đỉnh y vào Stack&gt;;\n            Ke(x) = Ke(x) \\ {y};\n            Ke(y) = Ke(y) \\ {x};\n        } else {\n            &lt;Loại bỏ đỉnh x khỏi Stack&gt;;\n            &lt;Đưa đỉnh y vào Queue&gt;;\n        }\n    }\n    Return (&lt;Các đỉnh của Queue theo thứ tự ngược lại&gt;);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>Thuật toán có thể tìm được chu trình/đường đi Euler bắt đầu tại đỉnh s.</p>",
@@ -4680,7 +4680,7 @@
   {
     "id": 294,
     "category_name": "Thuật toán BFS",
-    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng BFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Bfs(s){\n    Queue = Æ;\n    Queue Ü s;\n    VS[s] = 1;\n    While (Queue ¹ Æ) {\n        u Ü Queue;\n        For v Î Ke(u)\n            if (VS[v] = 0) {\n                Queue Ü v;\n                VS(v) = 1;\n                T = T È (u, v);\n            }\n    }\n}\n\nTree_Bfs(s){\n    For v Î V\n        VS[v] = 0;\n    T = Æ;\n    Bfs(s);\n    For v Î V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
+    "questionText": "<p>Cho đơn đồ thị vô hướng G = (V, E) gồm n đỉnh. Xét mô tả thuật toán sử dụng BFS tìm cây khung T của G bắt đầu tại đỉnh s như sau:</p>\n<pre class=\"code-block\">Bfs(s){\n    Queue = ∅;\n    Queue ← s;\n    VS[s] = 1;\n    While (Queue ≠ ∅) {\n        u ← Queue;\n        For v ∈ Ke(u)\n            if (VS[v] = 0) {\n                Queue ← v;\n                VS(v) = 1;\n                T = T ∪ (u, v);\n            }\n    }\n}\n\nTree_Bfs(s){\n    For v ∈ V\n        VS[v] = 0;\n    T = ∅;\n    Bfs(s);\n    For v ∈ V\n        if (VS[v] = 0) Return(&lt;Không có cây khung&gt;);\n    Return (T);\n}</pre>\n<p>Hãy chọn phương án đúng trong các phương án sau:</p>",
     "image": "",
     "options": {
       "A": "<p>T là cây khung của G vì T chứa ít cạnh nhất của G.</p>",
@@ -4855,7 +4855,7 @@
   {
     "id": 305,
     "category_name": "Thuật toán Floyd",
-    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (2.4) trong mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*(1) Khởi tạo:       (1.1) d[i][j]= a[i][j];       (1.2) e[i][j]= i; (2) Thực hiện 3 vòng lặp lồng nhau:       (2.1) for  k Î G do       (2.2)       for i Î G do       (2.3)              for  j Î G do        (2.4)                 (3) Xuất kết quả:        (3.1) Nếu có đỉnh u mà d[u][u] < 0 thì xuất thông báo G chứa chu trình âm;       (3.2) Ngược lại xuất d[i][j]  và e[i][j].*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (2.4) trong mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*(1) Khởi tạo:       (1.1) d[i][j]= a[i][j];       (1.2) e[i][j]= i; (2) Thực hiện 3 vòng lặp lồng nhau:       (2.1) for  k ∈ G do       (2.2)       for i ∈ G do       (2.3)              for  j ∈ G do        (2.4)                 (3) Xuất kết quả:        (3.1) Nếu có đỉnh u mà d[u][u] < 0 thì xuất thông báo G chứa chu trình âm;       (3.2) Ngược lại xuất d[i][j]  và e[i][j].*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
       "A": "<pre class=\"code-block\">if (d[k][j]> d[k][i] + d[i][j]) {  \ne[k][j]= e[k][i]; d[k][j]= d[k][i] + d[i][j]; }</pre>",
