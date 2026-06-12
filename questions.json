@@ -1001,8 +1001,8 @@
       "E": "<p>1 -> 2 -> 3-> 4 -> 7 -> 5 -> 8</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>According to the standard deterministic BFS algorithm (visiting neighbors in numerical/lexicographical order), the search from vertex 1 processes neighbors in the order 2, 3, 4. This leads to vertex 3 pushing vertex 5 into the queue before vertex 4 pushes vertex 7. Ultimately, vertex 5 pushes vertex 8 into the queue, resulting in the traceback path 1 -> 3 -> 5 -> 8. The explanation incorrectly claims that this path is not among the options and arbitrarily chooses A (1 -> 4 -> 7 -> 8). However, option B is exactly \"1 -> 3 -> 5 -> 8\", which is the correct and standard BFS path. Therefore, B is the correct answer.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> BFS trên đồ thị không trọng số tìm đường đi có ít cạnh nhất. Đếm số cạnh của các phương án: A có 3 cạnh, B có 3 cạnh, C có 4 cạnh, E có 6 cạnh. Kiểm tra sự tồn tại của các cạnh trong phương án A bằng ma trận kề: dòng 1 cột 4 có giá trị 1 (có cạnh (1,4)), dòng 4 cột 7 có giá trị 1 (có cạnh (4,7)), dòng 7 cột 8 có giá trị 1 (có cạnh (7,8)). Tất cả các cạnh đều tồn tại nên phương án A đúng.</p>"
+    "explanation": "<p>Theo thuật toán BFS chuẩn duyệt các đỉnh kề theo thứ tự tăng dần (thứ tự từ điển), khi duyệt từ đỉnh 1 ta sẽ xét các đỉnh kề là 2, 3, 4. Quá trình này dẫn đến việc đỉnh 3 sẽ đẩy đỉnh 5 vào hàng đợi trước khi đỉnh 4 đẩy đỉnh 7 vào. Cuối cùng, đỉnh 5 sẽ đẩy đỉnh 8 vào hàng đợi, tạo ra đường đi ngược vết là 1 -> 3 -> 5 -> 8. Đây chính là đường đi BFS chuẩn xác và tương ứng với phương án <strong>B</strong>. Do đó, đáp án chính xác là <strong>B</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Thuật toán BFS tìm đường đi ngắn nhất (ít cạnh nhất). Cả hai phương án <strong>A</strong> và <strong>B</strong> đều có độ dài 3 cạnh. Tuy nhiên, do thuật toán BFS duyệt các đỉnh kề theo thứ tự chỉ số tăng dần, đỉnh 3 được xét trước đỉnh 4, dẫn đến đỉnh 5 được đưa vào hàng đợi trước đỉnh 7, và từ đó đỉnh 8 được tiếp cận đầu tiên qua đỉnh 5. Đường đi đúng theo BFS là 1 -> 3 -> 5 -> 8, chọn ngay phương án <strong>B</strong>.</p>"
   },
   {
     "id": 64,
@@ -1447,8 +1447,8 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>The graph matrix provided in the question only contains 4 rows for 5 vertices (`0 4 4 0 0`, `0 0 0 4 4`, `0 0 0 0 4`, `0 0 0 0 0`). The 4th row being all zeros indicates that vertex 4 has no outgoing edges, meaning c(4,5) = 0. However, the explanation assumes a missing row and hallucinated that c(4,5) = 4 to match option C. Based strictly on the given data, c(4,5) = 0, which makes all options A, B, C, and D incorrect. The truly correct answer is E (Các phương án khác đều sai).</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Những cung nào đã bị luồng lấp đầy (f = c) thì cung xuôi trên G_f biến mất (dung lượng dư = 0), đồng thời sinh ra cung ngược có trọng số đúng bằng giá trị luồng.</li><li>Cung (1,3) có f=4, c=4 → không còn cung 1→3, chỉ có cung ngược 3→1 với dung lượng 4.</li><li>Cung (3,5) có f=4, c=4 → không còn cung 3→5, chỉ có cung ngược 5→3 với dung lượng 4. Quét nhanh thấy chỉ có C thỏa mãn điều kiện này.</li></ul>"
+    "explanation": "<p>Ma trận kề của đồ thị được cung cấp trong câu hỏi chỉ chứa 4 hàng cho 5 đỉnh (`0 4 4 0 0`, `0 0 0 4 4`, `0 0 0 0 4`, `0 0 0 0 0`). Hàng thứ 4 toàn bộ là số 0 cho thấy đỉnh 4 không có cạnh đi ra, nghĩa là khả năng thông qua $c(4,5) = 0$. Các phương án <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong> đều giả định một hàng bị thiếu để chọn C, nhưng dựa trên dữ liệu thực tế được đưa ra, $c(4,5) = 0$. Do đó, tất cả các phương án đều sai. Đáp án chính xác phải là <strong>E</strong> (Các phương án khác đều sai).</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đối chiếu ma trận của đồ thị trong câu hỏi chỉ có 4 hàng cho 5 đỉnh, dẫn đến thông tin đỉnh 4 không có cung đi ra ($c(4,5) = 0$). Tuy nhiên các phương án <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong> đều liệt kê $c(4,5) = 4$. Do đó không có phương án nào đúng, chọn ngay phương án <strong>E</strong>.</p>"
   },
   {
     "id": 92,
