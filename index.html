@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Trắc Nghiệm Toán Rời Rạc 2</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-area">
+                    <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                    <div class="logo-text">
+                        <h1>Toán Rời Rạc 2</h1>
+                        <span class="subtitle">Hệ Thống Ôn Thi Trắc Nghiệm</span>
+                    </div>
+                    <!-- Mini current question indicator for collapsed sidebar -->
+                    <div class="mini-current-q-indicator" id="miniCurrentQ">
+                        <span class="label">CÂU</span>
+                        <span class="num" id="miniCurrentQNum">1</span>
+                    </div>
+                </div>
+                <button class="mobile-close-btn" id="mobileCloseBtn" title="Đóng/Mở menu">
+                    <i class="fa-solid fa-xmark mobile-icon"></i>
+                    <i class="fa-solid fa-chevron-left desktop-close-icon"></i>
+                    <i class="fa-solid fa-chevron-right desktop-expand-icon"></i>
+                </button>
+            </div>
+
+            <!-- Theme and Session Control -->
+            <div class="controls-section">
+                <div class="theme-toggle-container">
+                    <span>Chế độ:</span>
+                    <button id="themeToggleBtn" class="theme-btn" title="Chuyển chế độ sáng/tối">
+                        <i class="fa-solid fa-moon"></i>
+                        <span id="themeText">Tối</span>
+                    </button>
+                </div>
+                
+                <div class="session-actions">
+                    <button id="resetSessionBtn" class="action-btn danger" title="Tạo phiên ngẫu nhiên mới">
+                        <i class="fa-solid fa-rotate-right"></i> Đặt lại phiên
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-section">
+                <div class="progress-labels">
+                    <span>Tiến độ học tập:</span>
+                    <span id="progressText">0/305 (0%)</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item correct">
+                        <span class="stat-num" id="statCorrect">0</span>
+                        <span class="stat-label">Đúng</span>
+                    </div>
+                    <div class="stat-item incorrect">
+                        <span class="stat-num" id="statIncorrect">0</span>
+                        <span class="stat-label">Sai</span>
+                    </div>
+                    <div class="stat-item flagged">
+                        <span class="stat-num" id="statFlagged">0</span>
+                        <span class="stat-label">Xem lại</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters & Search -->
+            <div class="filter-section">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm câu hỏi (vd: 39, BFS, Dijkstra)...">
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">Tất cả</button>
+                    <button class="filter-tab" data-filter="correct"><span class="dot green"></span> Đúng</button>
+                    <button class="filter-tab" data-filter="incorrect"><span class="dot red"></span> Sai</button>
+                    <button class="filter-tab" data-filter="flagged"><span class="dot yellow"></span> Xem lại</button>
+                </div>
+            </div>
+
+            <!-- Question Grid List -->
+            <div class="question-list-container">
+                <div class="question-grid" id="questionGrid">
+                    <!-- Dynamic Question Buttons will be rendered here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+
+
+            <!-- Top Navbar for Mobile -->
+            <header class="mobile-navbar">
+                <button class="menu-toggle-btn" id="menuToggleBtn" title="Mở danh sách câu hỏi">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h2>Toán Rời Rạc 2</h2>
+                <button id="themeToggleMobileBtn" class="mobile-theme-btn" title="Đổi chế độ">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </header>
+
+            <section class="question-viewport">
+                <div class="workspace-container">
+                    <!-- Question Card -->
+                    <div class="question-card glass" id="questionCard">
+                        <div class="card-header">
+                            <div class="question-info">
+                                <span class="question-badge" id="questionBadge">Câu 1</span>
+                                <span class="category-badge" id="categoryBadge">Chủ đề: Đồ thị</span>
+                            </div>
+                            <button class="flag-btn" id="flagBtn" title="Đánh dấu xem lại">
+                                <i class="fa-regular fa-bookmark"></i>
+                                <span id="flagText">Đánh dấu xem lại</span>
+                            </button>
+                        </div>
+
+                        <!-- Question Visuals (Original Masked Screenshot) -->
+                        <div class="question-body">
+                            <div class="question-text" id="questionText"></div>
+                            <div class="image-wrapper" id="imageWrapper">
+                                <img id="questionImage" src="" alt="Nội dung câu hỏi" class="question-image">
+                                <div class="image-loader" id="imageLoader">
+                                    <i class="fa-solid fa-spinner fa-spin"></i> Đang tải hình ảnh...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Choices Buttons -->
+                        <div class="choices-container">
+                            <p class="choices-title">Chọn câu trả lời của bạn:</p>
+                            <div class="choices-grid">
+                                <button class="choice-btn" data-choice="A">
+                                    <span class="choice-letter">A</span>
+                                    <span class="choice-desc">Phương án A</span>
+                                </button>
+                                <button class="choice-btn" data-choice="B">
+                                    <span class="choice-letter">B</span>
+                                    <span class="choice-desc">Phương án B</span>
+                                </button>
+                                <button class="choice-btn" data-choice="C">
+                                    <span class="choice-letter">C</span>
+                                    <span class="choice-desc">Phương án C</span>
+                                </button>
+                                <button class="choice-btn" data-choice="D">
+                                    <span class="choice-letter">D</span>
+                                    <span class="choice-desc">Phương án D</span>
+                                </button>
+                                <button class="choice-btn" data-choice="E">
+                                    <span class="choice-letter">E</span>
+                                    <span class="choice-desc">Phương án E</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Area -->
+                        <div class="feedback-area hidden" id="feedbackArea">
+                            <div class="feedback-banner" id="feedbackBanner">
+                                <i class="fa-solid id-feedback-icon"></i>
+                                <span id="feedbackMessage">Chính xác!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Explanation Panel -->
+                    <div class="explanation-panel hidden" id="explanationPanel">
+                        <div class="panel-header">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <h3>Lời Giải Chi Tiết & Mẹo Giải Nhanh</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="solution-section">
+                                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Phương pháp giải chi tiết:</h4>
+                                <p id="solutionText">Đang tải lời giải...</p>
+                            </div>
+                            <div class="tip-section">
+                                <h4><i class="fa-solid fa-bolt"></i> Mẹo làm nhanh câu này / dạng này:</h4>
+                                <p id="tipText">Đang tải mẹo...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Footer -->
+                <div class="navigation-footer">
+                    <button class="nav-btn" id="prevBtn">
+                        <i class="fa-solid fa-chevron-left"></i> Câu trước
+                    </button>
+                    <button class="nav-btn" id="nextBtn">
+                        Câu tiếp theo <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- App Logic Script -->
+    <script src="app.js"></script>
+</body>
+</html>
