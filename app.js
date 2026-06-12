@@ -278,9 +278,8 @@ function startNewSession() {
     });
     setCookie(STORAGE_KEYS.OPTIONS_ORDER, shufflesList.join(','), 365);
     
-    // Find index of Question 1 to start from it
-    const q1Idx = sessionQuestions.findIndex(q => q.id === 1);
-    currentIndex = q1Idx !== -1 ? q1Idx : 0;
+    // Start session at index 0 (Câu 1)
+    currentIndex = 0;
     setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
     
     // Reset answers and flags
@@ -339,8 +338,8 @@ function renderQuestionGrid() {
         btn.dataset.id = q.id; // Store original question ID
         if (state.flagged) btn.classList.add('flagged');
         if (sIdx === currentIndex) btn.classList.add('active');
-        btn.textContent = q.id;
-        btn.title = `Câu hỏi gốc ${q.id} - ${q.category_name}`;
+        btn.textContent = sIdx + 1;
+        btn.title = `Câu ${sIdx + 1} (Gốc: ${q.id}) - ${q.category_name}`;
         
         btn.addEventListener('click', () => {
             currentIndex = sIdx;
@@ -375,11 +374,11 @@ function renderActiveQuestion() {
     });
 
     // 1. Header Badges
-    questionBadge.textContent = `Câu ${q.id}`;
-    categoryBadge.textContent = q.category_name;
+    questionBadge.textContent = `Câu ${currentIndex + 1}`;
+    categoryBadge.textContent = `${q.category_name} (ID gốc: ${q.id})`;
     const miniCurrentQNum = document.getElementById('miniCurrentQNum');
     if (miniCurrentQNum) {
-        miniCurrentQNum.textContent = q.id;
+        miniCurrentQNum.textContent = currentIndex + 1;
     }
     
     // 2. Flag Bookmark State
