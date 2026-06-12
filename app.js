@@ -393,7 +393,7 @@ function renderActiveQuestion() {
     }
     
     // 3. Render Question Text
-    questionText.innerHTML = q.questionText;
+    questionText.innerHTML = parseMarkdown(q.questionText);
     
     // 4. Question Image Wrapper with Loading state
     if (q.image && q.image.trim() !== '') {
@@ -431,7 +431,7 @@ function renderActiveQuestion() {
         
         if (optionHtml) {
             btn.style.display = 'flex';
-            btn.querySelector('.choice-desc').innerHTML = optionHtml;
+            btn.querySelector('.choice-desc').innerHTML = parseMarkdown(optionHtml);
             
             if (state.status === 'unanswered') {
                 btn.classList.remove('disabled');
@@ -478,8 +478,8 @@ function renderActiveQuestion() {
         }
         
         // Populate Solution & Tips
-        solutionText.innerHTML = q.explanation;
-        tipText.innerHTML = q.tip;
+        solutionText.innerHTML = parseMarkdown(remapOptionLetters(q.explanation, shufflePerm));
+        tipText.innerHTML = parseMarkdown(remapOptionLetters(q.tip, shufflePerm));
     }
     
     // 7. Navigation Buttons disabled state
@@ -493,6 +493,81 @@ function renderActiveQuestion() {
         prevBtn.disabled = currentFilteredIdx <= 0;
         nextBtn.disabled = currentFilteredIdx === -1 || currentFilteredIdx === filtered.length - 1;
     }
+    renderMath();
+}
+
+function renderMath() {
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError: false
+        });
+    }
+}
+
+function parseMarkdown(text) {
+    if (!text) return "";
+    let formatted = text;
+    // Replace **text** with <strong>text</strong>
+    formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Replace `text` with <code>text</code>
+    formatted = formatted.replace(/`([^`]+)`/g, '<code>$1</code>');
+    return formatted;
+}
+
+function remapOptionLetters(text, shufflePerm) {
+    if (!text) return "";
+    
+    // Map original option keys (A-E) to their new shuffled option keys
+    const originalToShuffled = {};
+    for (let i = 0; i < shufflePerm.length; i++) {
+        const originalKey = shufflePerm[i];
+        const shuffledLetter = String.fromCharCode(65 + i); // 'A', 'B', 'C', 'D', 'E'
+        originalToShuffled[originalKey] = shuffledLetter;
+    }
+    
+    let result = text;
+    
+    // 1. Remap letters wrapped in bold tags, e.g., <strong>A</strong> or <b>A</b>
+    result = result.replace(/(<strong>|<b>)([A-E])(<\/strong>|<\/b>)/g, (match, p1, letter, p2) => {
+        return p1 + (originalToShuffled[letter] || letter) + p2;
+    });
+
+    // Helper to replace isolated A-E letters inside a matched substring
+    const replaceInside = (match) => {
+        return match.replace(/\b([A-E])\b/g, (m, letter) => {
+            return originalToShuffled[letter] || letter;
+        });
+    };
+
+    // 2. Prefix match with possible words/phrases in-between, using lookaheads to avoid choice labels like A(1)
+    const patternPrefixList = /\b(phương án|đáp án|lựa chọn|chọn|khẳng định|phát biểu)\s+(?:đúng\s+|chính\s+xác\s+|sai\s+|đều\s+|là\s+|đều\s+là\s+|không\s+phải\s+là\s+)*([A-E])(?!\()(?:\s*,\s*[A-E](?!\())*(?:\s+(?:và|hoặc)\s*[A-E](?!\())?\b/gi;
+    result = result.replace(patternPrefixList, replaceInside);
+    
+    // 3. Isolated letter followed by "là đáp án" / "là phương án"
+    result = result.replace(/\b([A-E])\s*(là đáp án|là phương án|là lựa chọn)/gi, (match, letter, rest) => {
+        return (originalToShuffled[letter] || letter) + " " + rest;
+    });
+    
+    // 4. Multiple choices with index labels, e.g. "lựa chọn A(1), B(3)"
+    const patternChoicesNums = /\b(lựa chọn)\s+[A-E]\(\d+\)(?:\s*,\s*[A-E]\(\d+\))*/gi;
+    result = result.replace(patternChoicesNums, replaceInside);
+
+    // 5. Special lists format, e.g. "các phương án: A có 3 cạnh, B có 3..."
+    const patternSpecTip = /các phương án:\s*[A-E][^.]*/gi;
+    result = result.replace(patternSpecTip, replaceInside);
+
+    // 6. Parenthesis-wrapped letters, e.g., (A), (B)
+    result = result.replace(/\(([A-E])\)/g, (match, letter) => {
+        return '(' + (originalToShuffled[letter] || letter) + ')';
+    });
+
+    return result;
 }
 
 function updateStats() {

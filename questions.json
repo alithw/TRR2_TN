@@ -601,8 +601,8 @@
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "E",
-    "explanation": "<p>Vì đề bài không cung cấp đồ thị hoặc ma trận kề để mô tả các cạnh của đồ thị G, ta không có đủ cơ sở toán học để xác định đỉnh nào là đỉnh cô lập (bậc 0). Do đó, phương án an toàn và chính xác nhất là E (Các phương án khác đều sai).</p>",
-    "tip": "<p>Khi thiếu dữ liệu hình ảnh hoặc bảng số liệu của đồ thị trong câu hỏi, đáp án đúng sẽ là phương án phủ định 'Các phương án khác đều sai'.</p>"
+    "explanation": "<p><strong>Xác định đỉnh cô lập từ đồ thị:</strong></p><p>Một đỉnh được gọi là <strong>đỉnh cô lập</strong> nếu bậc của nó bằng 0 (không có cạnh nào nối với nó).</p><p>Dựa trên hình vẽ đồ thị (image6.jpg), ta xác định bậc của các đỉnh:</p><ul><li>deg(1) = 2, deg(2) = 2, deg(3) = 3, deg(4) = 2, deg(5) = 3, deg(6) = 2, deg(7) = 1, deg(8) = 2, deg(9) = 2, deg(10) = 1.</li></ul><p>Do tất cả các đỉnh đều có ít nhất một cạnh nối (bậc lớn hơn hoặc bằng 1), đồ thị không có đỉnh cô lập nào. Vì vậy, các phương án A, B, C, D đều sai.</p><p>Đáp án đúng là <strong>E. Các phương án khác đều sai.</strong></p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn lướt qua đồ thị xem có đỉnh nào đứng một mình không có vạch nối nào không. Trong hình vẽ, tất cả các đỉnh đều được kết nối vào các cạnh, không có đỉnh nào trơ trọi, do đó chọn ngay phương án E.</p>"
   },
   {
     "id": 39,
@@ -920,9 +920,9 @@
       "D": "<p>Cạnh (3,5) liên thuộc với các đỉnh 3 và 5.</p>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
-    "correctAnswer": "A",
-    "explanation": "<p><strong>Giải thích chi tiết:</strong></p><p>Định nghĩa: Một cạnh e = (u, v) trong đồ thị vô hướng được gọi là <strong>liên thuộc</strong> với hai đỉnh u và v (u, v là hai đầu mút của cạnh e).</p><p>Phân tích các phương án dựa trên cấu trúc đồ thị từ hình vẽ:</p><ul><li>Đỉnh 5 là đỉnh cô lập (bậc bằng 0), do đó không tồn tại bất kỳ cạnh nào nối với đỉnh 5. Điều này có nghĩa là các cạnh (4,5) ở phương án B và (3,5) ở phương án D không tồn tại.</li><li>Đỉnh 1 là đỉnh treo (bậc bằng 1) và kề với duy nhất đỉnh 6. Do đó, cạnh (1,6) là cạnh thực tế có trong đồ thị và liên thuộc với hai đỉnh 1 và 6. Đây là khẳng định đúng.</li><li>Đỉnh 3 là đỉnh treo và không có cạnh nối với đỉnh 7, do đó phương án C sai.</li></ul><p>Vậy đáp án đúng là <strong>A</strong>.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhớ định nghĩa quan hệ liên thuộc: Cạnh e = (u,v) liên thuộc với hai đỉnh u và v. Nếu u hoặc v là đỉnh cô lập (bậc 0), chắc chắn không thể có cạnh nào liên thuộc với nó. Đồng thời, cạnh được nhắc tới phải thực sự tồn tại trong đồ thị.</p>"
+    "correctAnswer": "D",
+    "explanation": "<p><strong>Xác định quan hệ liên thuộc trong đồ thị:</strong></p><p>Một cạnh $e = (u, v)$ trong đồ thị vô hướng được gọi là <strong>liên thuộc</strong> với hai đỉnh đầu mút $u$ và $v$.</p><p>Dựa trên hình vẽ đồ thị (image6.jpg), ta kiểm tra các phương án:</p><ul><li><strong>Phương án A:</strong> Cạnh (1,6) liên thuộc với 1 và 6. Sai vì trong đồ thị không có cạnh nối trực tiếp giữa đỉnh 1 và đỉnh 6.</li><li><strong>Phương án B:</strong> Cạnh (4,5) liên thuộc với 4 và 5. Sai vì không có cạnh nối trực tiếp giữa 4 và 5.</li><li><strong>Phương án C:</strong> Cạnh (3,7) liên thuộc với 3 và 7. Sai vì không có cạnh nối trực tiếp giữa 3 và 7.</li><li><strong>Phương án D:</strong> Cạnh (3,5) liên thuộc với 3 và 5. Đúng vì đồ thị có cạnh nối giữa đỉnh 3 và đỉnh 5.</li></ul><p>Đáp án đúng là <strong>D</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn vào hình vẽ để xem các cạnh được nêu ở các phương án có thực sự tồn tại hay không. Chỉ có cạnh (3,5) là thực tế xuất hiện trên hình vẽ đồ thị, chọn ngay D.</p>"
   },
   {
     "id": 59,
@@ -1782,9 +1782,9 @@
       "D": "<p>Đỉnh 1, đỉnh 3</p>",
       "E": "<p>Đỉnh 5, đỉnh 7</p>"
     },
-    "correctAnswer": "D",
-    "explanation": "<p><strong>Phân tích khái niệm bậc đỉnh và đỉnh treo:</strong></p><ul><li>Trong đồ thị vô hướng $G = (V, E)$, bậc của đỉnh $v$ (ký hiệu là $\\text{deg}(v)$) là số cạnh liên thuộc với đỉnh đó.</li><li>Một đỉnh có bậc bằng 1 được gọi là <strong>đỉnh treo</strong> (pendant vertex).</li><li>Một đỉnh có bậc bằng 0 được gọi là <strong>đỉnh cô lập</strong> (isolated vertex).</li></ul><p><strong>Đánh giá trên đồ thị hình vẽ (image6.jpg):</strong></p><ul><li>Đỉnh 1 chỉ có duy nhất 1 cạnh nối với đỉnh 2 $\\rightarrow \\text{deg}(1) = 1$ (Đỉnh treo).</li><li>Đỉnh 3 chỉ có duy nhất 1 cạnh nối với đỉnh 2 $\\rightarrow \\text{deg}(3) = 1$ (Đỉnh treo).</li><li>Đỉnh 5 không có cạnh nào nối với nó $\\rightarrow \\text{deg}(5) = 0$ (Đỉnh cô lập).</li><li>Đỉnh 2 có bậc là 3 (nối với 1, 3, 4) $\\rightarrow \\text{deg}(2) = 3$.</li></ul><p>Vậy đỉnh 1 và đỉnh 3 là các đỉnh treo của đồ thị. Đáp án đúng là D.</p>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đỉnh treo là các đỉnh nằm ở phần tận cùng của các nhánh đồ thị, chỉ nối với đúng 1 cạnh duy nhất. Trên hình vẽ, đỉnh 1 và 3 chỉ có 1 vạch nối vào đỉnh 2, chọn ngay D.</p>"
+    "correctAnswer": "C",
+    "explanation": "<p><strong>Xác định các đỉnh treo của đồ thị:</strong></p><p>Một đỉnh trong đồ thị vô hướng được gọi là <strong>đỉnh treo</strong> (pendant vertex) nếu bậc của nó bằng 1 (chỉ có duy nhất 1 cạnh liên thuộc với nó).</p><p>Dựa trên hình vẽ đồ thị (image6.jpg), ta có bậc của các đỉnh:</p><ul><li>Đỉnh 1: bậc 2 (nối với 2, 4)</li><li>Đỉnh 2: bậc 2 (nối với 1, 3)</li><li>Đỉnh 3: bậc 3 (nối với 2, 4, 5)</li><li>Đỉnh 4: bậc 2 (nối với 1, 3)</li><li>Đỉnh 5: bậc 3 (nối với 3, 6, 8)</li><li>Đỉnh 6: bậc 2 (nối với 5, 8)</li><li>Đỉnh 7: bậc 1 (nối với 9) $\\rightarrow$ Đỉnh treo</li><li>Đỉnh 8: bậc 2 (nối với 5, 6)</li><li>Đỉnh 9: bậc 2 (nối với 7, 10)</li><li>Đỉnh 10: bậc 1 (nối với 9) $\\rightarrow$ Đỉnh treo</li></ul><p>Do đó, đồ thị chỉ có hai đỉnh treo là <strong>đỉnh 7 và đỉnh 10</strong>. Đối chiếu với các phương án:</p><ul><li>Phương án A (Đỉnh 2, 9), B (Đỉnh 7, 9, 10), D (Đỉnh 1, 3), E (Đỉnh 5, 7) đều sai.</li></ul><p>Đáp án đúng là <strong>C. Các phương án khác đều sai.</strong></p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Đỉnh treo là đỉnh nằm ở phần tận cùng của các nhánh đồ thị. Nhìn nhanh trên hình, chỉ có đầu đỉnh 7 và đầu đỉnh 10 là chỉ có 1 vạch nối ra. Vì không có phương án nào chỉ chọn duy nhất {7, 10}, ta chọn phương án C.</p>"
   },
   {
     "id": 113,
@@ -2191,15 +2191,15 @@
     "questionText": "<p>Cho đồ thị vô hướng G = (V, E) như hình dưới. Chọn phương án đúng:</p>",
     "image": "images/image6.jpg",
     "options": {
-      "A": "<p>Các phương án khác đều sai.</p>",
+      "A": "<p>Hai đỉnh 1 và 3 kề nhau.</p>",
       "B": "<p>Hai đỉnh 1 và 4 kề nhau.</p>",
-      "C": "<p>Hai đỉnh 2 và 3 kề nhau.</p>",
+      "C": "<p>Hai đỉnh 2 và 4 kề nhau.</p>",
       "D": "<p>Hai đỉnh 7 và 8 kề nhau.</p>",
-      "E": "<p>Hai đỉnh 9 và 10 kề nhau.</p>"
+      "E": "<p>Các phương án khác đều sai.</p>"
     },
-    "correctAnswer": "A",
-    "explanation": "<p><strong>Đánh giá mối quan hệ kề nhau giữa các đỉnh trên đồ thị vô hướng:</strong></p><ul><li>Hai đỉnh trong đồ thị vô hướng được gọi là <strong>kề nhau</strong> (adjacent) nếu có một cạnh nối trực tiếp giữa chúng.</li><li>Dựa trên cấu trúc đồ thị vô hướng trong hình vẽ (image6.jpg):</li><li>Đỉnh 1 chỉ nối với duy nhất đỉnh 6 $\\rightarrow$ Đỉnh 1 và 4 không kề nhau (Loại B).</li><li>Đỉnh 3 là đỉnh treo chỉ nối với đỉnh 2 $\\rightarrow$ Đỉnh 2 và 3 kề nhau. Tuy nhiên, xem xét kỹ hình vẽ thực tế, đỉnh 3 nối với đỉnh 6, hoặc có thể đồ thị gốc không có cạnh (2,3) trực tiếp.</li><li>Đỉnh 7 không kề với 8, đỉnh 9 không kề với 10 (Loại D và E).</li><li>Do tất cả các mối quan hệ kề được mô tả ở các phương án B, C, D, E đều không chính xác so với hình ảnh thực tế của đồ thị, đáp án đúng là A: 'Các phương án khác đều sai'.</li></ul>",
-    "tip": "<p><strong>Mẹo làm nhanh:</strong> Nhìn trực quan vào hình vẽ đồ thị để kiểm tra các phương án:<br>- 1 và 4 có cạnh nối trực tiếp không? Không.<br>- 7 và 8 có cạnh nối trực tiếp không? Không.<br>- 9 và 10 có cạnh nối trực tiếp không? Không.<br>Do đó loại trừ hầu hết phương án cụ thể, chọn A.</p>"
+    "correctAnswer": "B",
+    "explanation": "<p><strong>Xác định quan hệ kề nhau giữa các đỉnh:</strong></p><p>Hai đỉnh trong đồ thị vô hướng được gọi là <strong>kề nhau</strong> nếu có một cạnh nối trực tiếp giữa chúng.</p><p>Dựa trên hình vẽ đồ thị (image6.jpg):</p><ul><li>Đỉnh 1 và 3 không có cạnh nối trực tiếp (Loại A).</li><li>Đỉnh 1 và 4 có cạnh nối trực tiếp $\\rightarrow$ 1 và 4 kề nhau (Phương án B đúng).</li><li>Đỉnh 2 và 4 không có cạnh nối trực tiếp (Loại C).</li><li>Đỉnh 7 và 8 không có cạnh nối trực tiếp (Loại D).</li></ul><p>Do đó, khẳng định đúng duy nhất là phương án B.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong> Dùng mắt quan sát trực quan trên hình vẽ đồ thị để xem cặp đỉnh nào có đường kẻ nối trực tiếp giữa chúng. Cặp (1,4) rõ ràng có cạnh nối trực tiếp ở phía bên trái đồ thị, chọn ngay B.</p>"
   },
   {
     "id": 139,
