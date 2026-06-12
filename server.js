@@ -18,7 +18,9 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-    let filePath = decodeURIComponent(req.url);
+    // Strip query parameters (e.g. "/index.html?abc" -> "/index.html")
+    const urlWithoutQuery = req.url.split('?')[0];
+    let filePath = decodeURIComponent(urlWithoutQuery);
     if (filePath === '/') {
         filePath = '/index.html';
     }
@@ -34,11 +36,11 @@ const server = http.createServer((req, res) => {
 
     fs.stat(fullPath, (err, stats) => {
         if (err || !stats.isFile()) {
-            res.statusCode = 404;
-            const errorPagePath = path.join(__dirname, '404.html');
-            fs.readFile(errorPagePath, (readErr, data) => {
+            // Serve the homepage (index.html) as fallback instead of 404.html
+            const homePagePath = path.join(__dirname, 'index.html');
+            fs.readFile(homePagePath, (readErr, data) => {
                 if (!readErr) {
-                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+                    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
                     res.end(data);
                 } else {
                     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
