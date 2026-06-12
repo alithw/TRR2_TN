@@ -4,7 +4,8 @@ const STORAGE_KEYS = {
     USER_STATES: 'trr2_quiz_user_states',
     SESSION_ORDER: 'trr2_quiz_session_order',
     THEME: 'trr2_quiz_theme_mode',
-    CURRENT_INDEX: 'trr2_quiz_current_index'
+    CURRENT_INDEX: 'trr2_quiz_current_index',
+    OPTIONS_ORDER: 'trr2_quiz_options_order'
 };
 
 // --- COOKIE HELPERS ---
@@ -99,6 +100,7 @@ function deserializeUserStates(str) {
 // Global App State
 let questions = [];          // Original questions from questions.json
 let sessionQuestions = [];   // Questions in active session order (shuffled)
+let optionShuffles = [];     // Option permutations for each question (indexed by id - 1)
 let currentIndex = 0;        // Index in sessionQuestions
 let userStates = {};         // Map of question ID -> { status: 'correct'|'incorrect'|'unanswered', answer: string|null, flagged: boolean }
 let activeFilter = 'all';
@@ -218,15 +220,17 @@ function loadUserData() {
     // 2. Load Session Order
     const savedOrder = getCookie(STORAGE_KEYS.SESSION_ORDER);
     const savedIndex = getCookie(STORAGE_KEYS.CURRENT_INDEX);
+    const savedOptionsOrder = getCookie(STORAGE_KEYS.OPTIONS_ORDER);
     
-    if (savedOrder) {
+    if (savedOrder && savedOptionsOrder) {
         const orderIds = savedOrder.split(',').map(Number).filter(Boolean);
         // Map back to question objects
         sessionQuestions = orderIds.map(id => questions.find(q => q.id === id)).filter(Boolean);
         currentIndex = savedIndex ? parseInt(savedIndex) : 0;
+        optionShuffles = savedOptionsOrder.split(',');
         
         // If order list size doesn't match total questions, reset
-        if (sessionQuestions.length !== questions.length) {
+        if (sessionQuestions.length !== questions.length || optionShuffles.length !== questions.length) {
             startNewSession();
         }
     } else {
@@ -244,6 +248,7 @@ function startNewSession() {
     eraseCookie(STORAGE_KEYS.USER_STATES);
     eraseCookie(STORAGE_KEYS.SESSION_ORDER);
     eraseCookie(STORAGE_KEYS.CURRENT_INDEX);
+    eraseCookie(STORAGE_KEYS.OPTIONS_ORDER);
 
     // Shuffle copy of questions array
     sessionQuestions = [...questions];
@@ -255,6 +260,23 @@ function startNewSession() {
     // Save shuffled IDs order
     const orderIds = sessionQuestions.map(q => q.id);
     setCookie(STORAGE_KEYS.SESSION_ORDER, orderIds.join(','), 365);
+    
+    // Generate and save options shuffles (order by original ID 1 to 305)
+    optionShuffles = [];
+    const shufflesList = [];
+    const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+    sortedQuestions.forEach(q => {
+        const originalKeys = Object.keys(q.options).sort(); // e.g., ['A', 'B', 'C', 'D', 'E']
+        const shuffledKeys = [...originalKeys];
+        for (let i = shuffledKeys.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledKeys[i], shuffledKeys[j]] = [shuffledKeys[j], shuffledKeys[i]];
+        }
+        const permutation = shuffledKeys.join('');
+        optionShuffles.push(permutation);
+        shufflesList.push(permutation);
+    });
+    setCookie(STORAGE_KEYS.OPTIONS_ORDER, shufflesList.join(','), 365);
     
     // Find index of Question 1 to start from it
     const q1Idx = sessionQuestions.findIndex(q => q.id === 1);
@@ -279,12 +301,11 @@ function startNewSession() {
     }
 }
 
-// --- UI RENDERING ---
 function getFilteredQuestions() {
     const query = searchInput.value.toLowerCase().trim();
-    const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+    const baseQuestions = sessionQuestions.length > 0 ? sessionQuestions : questions;
     
-    return sortedQuestions.filter(q => {
+    return baseQuestions.filter(q => {
         const state = userStates[q.id];
         
         // Apply Filters
@@ -315,6 +336,7 @@ function renderQuestionGrid() {
         
         const btn = document.createElement('button');
         btn.className = `q-badge-btn ${state.status}`;
+        btn.dataset.id = q.id; // Store original question ID
         if (state.flagged) btn.classList.add('flagged');
         if (sIdx === currentIndex) btn.classList.add('active');
         btn.textContent = q.id;
@@ -346,11 +368,9 @@ function renderActiveQuestion() {
     const state = userStates[q.id];
     
     // Reset active buttons highlight in sidebar
-    // NOTE: Sidebar is sorted by question ID (1-305), but currentIndex is a shuffled session index.
-    // We must compare by question ID, NOT by visual DOM index.
     const activeQId = q.id.toString();
     document.querySelectorAll('.q-badge-btn').forEach((btn) => {
-        if (btn.textContent.trim() === activeQId) btn.classList.add('active');
+        if (btn.dataset.id === activeQId) btn.classList.add('active');
         else btn.classList.remove('active');
     });
 
@@ -395,15 +415,21 @@ function renderActiveQuestion() {
         imageWrapper.classList.add('hidden');
     }
     
-    // 5. Set choices buttons
+    // 5. Set choices buttons (with option shuffling support)
+    const shufflePerm = (optionShuffles && optionShuffles[q.id - 1]) || Object.keys(q.options).sort().join('');
+    const mappedCorrectAnswer = String.fromCharCode(65 + shufflePerm.indexOf(q.correctAnswer));
+    
     choiceButtons.forEach(btn => {
         btn.className = 'choice-btn';
-        const letter = btn.dataset.choice;
+        const letter = btn.dataset.choice; // A, B, C, D, E
         
-        // Show correct letter
+        // Show correct letter label
         btn.querySelector('.choice-letter').textContent = letter;
         
-        const optionHtml = q.options[letter];
+        const idx = letter.charCodeAt(0) - 65; // A -> 0, B -> 1, C -> 2, etc.
+        const originalKey = shufflePerm[idx];
+        const optionHtml = originalKey ? q.options[originalKey] : null;
+        
         if (optionHtml) {
             btn.style.display = 'flex';
             btn.querySelector('.choice-desc').innerHTML = optionHtml;
@@ -424,7 +450,7 @@ function renderActiveQuestion() {
                 }
                 
                 // Reveal correct option
-                if (letter === q.correctAnswer) {
+                if (letter === mappedCorrectAnswer) {
                     btn.classList.add('correct');
                 }
             }
@@ -449,7 +475,7 @@ function renderActiveQuestion() {
         } else {
             feedbackBanner.className = 'feedback-banner incorrect';
             feedbackBanner.querySelector('i').className = 'fa-solid fa-circle-xmark';
-            feedbackMessage.textContent = `Chưa đúng! Đáp án chính xác là ${q.correctAnswer}`;
+            feedbackMessage.textContent = `Chưa đúng! Đáp án chính xác là ${mappedCorrectAnswer}`;
         }
         
         // Populate Solution & Tips
@@ -504,7 +530,10 @@ function handleChoiceSelection(letter) {
     
     if (state.status !== 'unanswered') return; // Already answered
     
-    const isCorrect = letter === q.correctAnswer;
+    const shufflePerm = (optionShuffles && optionShuffles[q.id - 1]) || Object.keys(q.options).sort().join('');
+    const mappedCorrectAnswer = String.fromCharCode(65 + shufflePerm.indexOf(q.correctAnswer));
+    const isCorrect = letter === mappedCorrectAnswer;
+    
     state.answer = letter;
     state.status = isCorrect ? 'correct' : 'incorrect';
     
@@ -513,7 +542,7 @@ function handleChoiceSelection(letter) {
     updateStats();
     
     // Update active badge in grid list
-    const activeBadgeBtn = questionGrid.children[currentIndex];
+    const activeBadgeBtn = questionGrid.querySelector(`.q-badge-btn[data-id="${q.id}"]`);
     if (activeBadgeBtn) {
         activeBadgeBtn.className = `q-badge-btn ${state.status} active`;
         if (state.flagged) activeBadgeBtn.classList.add('flagged');
@@ -531,7 +560,7 @@ function handleFlagToggle() {
     updateStats();
     
     // Update active badge in grid
-    const activeBadgeBtn = questionGrid.children[currentIndex];
+    const activeBadgeBtn = questionGrid.querySelector(`.q-badge-btn[data-id="${q.id}"]`);
     if (activeBadgeBtn) {
         if (state.flagged) activeBadgeBtn.classList.add('flagged');
         else activeBadgeBtn.classList.remove('flagged');
@@ -614,51 +643,33 @@ function setupEventListeners() {
     
     // Navigation Footer buttons
     prevBtn.addEventListener('click', () => {
-        const query = searchInput.value.toLowerCase().trim();
-        if (activeFilter === 'all' && !query) {
-            if (currentIndex > 0) {
-                currentIndex--;
+        const filtered = getFilteredQuestions();
+        const q = sessionQuestions[currentIndex];
+        const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
+        
+        if (currentFilteredIdx > 0) {
+            const prevQuestion = filtered[currentFilteredIdx - 1];
+            const prevSessionIdx = sessionQuestions.findIndex(sq => sq.id === prevQuestion.id);
+            if (prevSessionIdx !== -1) {
+                currentIndex = prevSessionIdx;
                 setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
                 renderActiveQuestion();
-            }
-        } else {
-            const filtered = getFilteredQuestions();
-            const q = sessionQuestions[currentIndex];
-            const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
-            
-            if (currentFilteredIdx > 0) {
-                const prevQuestion = filtered[currentFilteredIdx - 1];
-                const prevSessionIdx = sessionQuestions.findIndex(sq => sq.id === prevQuestion.id);
-                if (prevSessionIdx !== -1) {
-                    currentIndex = prevSessionIdx;
-                    setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
-                    renderActiveQuestion();
-                }
             }
         }
     });
     
     nextBtn.addEventListener('click', () => {
-        const query = searchInput.value.toLowerCase().trim();
-        if (activeFilter === 'all' && !query) {
-            if (currentIndex < sessionQuestions.length - 1) {
-                currentIndex++;
+        const filtered = getFilteredQuestions();
+        const q = sessionQuestions[currentIndex];
+        const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
+        
+        if (currentFilteredIdx !== -1 && currentFilteredIdx < filtered.length - 1) {
+            const nextQuestion = filtered[currentFilteredIdx + 1];
+            const nextSessionIdx = sessionQuestions.findIndex(sq => sq.id === nextQuestion.id);
+            if (nextSessionIdx !== -1) {
+                currentIndex = nextSessionIdx;
                 setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
                 renderActiveQuestion();
-            }
-        } else {
-            const filtered = getFilteredQuestions();
-            const q = sessionQuestions[currentIndex];
-            const currentFilteredIdx = filtered.findIndex(fq => fq.id === q.id);
-            
-            if (currentFilteredIdx !== -1 && currentFilteredIdx < filtered.length - 1) {
-                const nextQuestion = filtered[currentFilteredIdx + 1];
-                const nextSessionIdx = sessionQuestions.findIndex(sq => sq.id === nextQuestion.id);
-                if (nextSessionIdx !== -1) {
-                    currentIndex = nextSessionIdx;
-                    setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
-                    renderActiveQuestion();
-                }
             }
         }
     });
