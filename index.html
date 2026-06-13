@@ -40,19 +40,43 @@
                 </button>
             </div>
 
+            <!-- Mode Selector -->
+            <div class="mode-selector-container">
+                <button id="modePracticeBtn" class="mode-btn active" data-mode="practice">
+                    Câu hỏi ôn tập
+                </button>
+                <button id="modeExamBtn" class="mode-btn" data-mode="exam">
+                    Đề ôn tập
+                </button>
+            </div>
+
             <!-- Theme and Session Control -->
             <div class="controls-section">
-                <div class="theme-toggle-container">
-                    <span>Chế độ:</span>
-                    <button id="themeToggleBtn" class="theme-btn" title="Chuyển chế độ sáng/tối">
-                        <i class="fa-solid fa-moon"></i>
-                        <span id="themeText">Tối</span>
+                <!-- Upper Row: Giao diện + Làm lại tất cả -->
+                <div class="control-row row-upper">
+                    <div class="theme-toggle-container">
+                        <span>Giao diện:</span>
+                        <button id="themeToggleBtn" class="theme-btn" title="Chuyển chế độ sáng/tối">
+                            <i class="fa-solid fa-moon"></i>
+                            <span id="themeText">Tối</span>
+                        </button>
+                    </div>
+                    <button id="resetAllBtn" class="action-btn danger" title="Xóa tiến trình làm bài">
+                        <i class="fa-solid fa-rotate-right"></i> Làm lại tất cả
                     </button>
                 </div>
                 
-                <div class="session-actions">
-                    <button id="resetSessionBtn" class="action-btn danger" title="Tạo phiên ngẫu nhiên mới">
-                        <i class="fa-solid fa-rotate-right"></i> Đặt lại phiên
+                <!-- Lower Row: Đảo câu/đáp + Đảo lại -->
+                <div class="control-row row-lower">
+                    <div class="shuffle-container">
+                        <span>Đảo câu/đáp:</span>
+                        <label class="switch">
+                            <input type="checkbox" id="shuffleToggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <button id="reshuffleBtn" class="action-btn secondary" title="Đảo ngẫu nhiên lại câu hỏi/đáp án">
+                        <i class="fa-solid fa-shuffle"></i> Đảo lại
                     </button>
                 </div>
             </div>
@@ -101,6 +125,11 @@
                 <div class="question-grid" id="questionGrid">
                     <!-- Dynamic Question Buttons will be rendered here -->
                 </div>
+            </div>
+
+            <!-- Sidebar Footer / Source Footnote -->
+            <div class="sidebar-footer">
+                <span id="sourceFootnote" class="source-text">Nguồn: Cô Nguyễn Kiều Linh - TRR2 PTIT</span>
             </div>
         </aside>
 

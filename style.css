@@ -165,12 +165,12 @@ body {
 
 /* Controls (Theme & Session) */
 .controls-section {
-    padding: 10px 16px;
+    padding: 12px 16px;
     border-bottom: 1px solid var(--border-color);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     gap: 12px;
+    align-items: stretch;
 }
 
 .theme-toggle-container {
@@ -1055,6 +1055,10 @@ html.dark .tip-section {
         flex-direction: column;
         gap: 8px;
     }
+    .app-container.sidebar-collapsed #resetAllBtn,
+    .app-container.sidebar-collapsed .row-lower {
+        display: none !important;
+    }
     .app-container.sidebar-collapsed .theme-toggle-container {
         width: 100%;
         justify-content: center;
@@ -1299,3 +1303,171 @@ html.dark .question-text strong {
     vertical-align: top;
     padding: 12px 14px;
 }
+
+/* --- NEW MODE SELECTOR & EXAM CONTROLS --- */
+.mode-selector-container {
+    display: flex;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
+}
+
+.mode-btn.active {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+}
+
+.shuffle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Premium Switch design */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--active-unanswered-bg);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--accent-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+.controls-section .action-btn {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid transparent;
+    transition: all var(--transition-speed) ease;
+}
+
+.action-btn.secondary {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.action-btn.secondary:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.action-btn.danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--accent-red);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.action-btn.danger:hover {
+    background-color: var(--accent-red);
+    color: #ffffff;
+    border-color: var(--accent-red);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Sidebar Footer / Footnote */
+.sidebar-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-sidebar);
+    text-align: center;
+    margin-top: auto; /* Pushes to bottom */
+}
+
+.source-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+.pseudocode {
+    background: var(--surface-2);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    color: var(--text-color);
+    border-left: 4px solid var(--primary-color);
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+

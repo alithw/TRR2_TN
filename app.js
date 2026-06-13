@@ -8,6 +8,64 @@ const STORAGE_KEYS = {
     OPTIONS_ORDER: 'trr2_quiz_options_order'
 };
 
+// Global App State
+let practiceQuestions = [];  // Practice bank questions from questions.json
+let examQuestions = [];      // Exam questions from exam_questions.json
+let currentMode = 'practice'; // 'practice' or 'exam'
+
+let questions = [];          // Reference to the active questions list
+let sessionQuestions = [];   // Questions in active session order (shuffled or sequential)
+let optionShuffles = [];     // Option permutations for each question (indexed by position in sorted list)
+let currentIndex = 0;        // Index in sessionQuestions
+let userStates = {};         // Map of question ID -> { status: 'correct'|'incorrect'|'unanswered', answer: string|null, flagged: boolean }
+let activeFilter = 'all';
+let shuffleEnabled = true;
+
+// DOM Elements
+const sidebar = document.getElementById('sidebar');
+const menuToggleBtn = document.getElementById('menuToggleBtn');
+const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeToggleMobileBtn = document.getElementById('themeToggleMobileBtn');
+const themeText = document.getElementById('themeText');
+
+const modePracticeBtn = document.getElementById('modePracticeBtn');
+const modeExamBtn = document.getElementById('modeExamBtn');
+const shuffleToggle = document.getElementById('shuffleToggle');
+const reshuffleBtn = document.getElementById('reshuffleBtn');
+const resetAllBtn = document.getElementById('resetAllBtn');
+const sourceFootnote = document.getElementById('sourceFootnote');
+
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+const statCorrect = document.getElementById('statCorrect');
+const statIncorrect = document.getElementById('statIncorrect');
+const statFlagged = document.getElementById('statFlagged');
+
+const searchInput = document.getElementById('searchInput');
+const filterTabs = document.querySelectorAll('.filter-tab');
+const questionGrid = document.getElementById('questionGrid');
+
+const questionBadge = document.getElementById('questionBadge');
+const categoryBadge = document.getElementById('categoryBadge');
+const flagBtn = document.getElementById('flagBtn');
+const flagText = document.getElementById('flagText');
+const questionText = document.getElementById('questionText');
+const imageWrapper = document.getElementById('imageWrapper');
+const questionImage = document.getElementById('questionImage');
+const imageLoader = document.getElementById('imageLoader');
+
+const choiceButtons = document.querySelectorAll('.choice-btn');
+const feedbackArea = document.getElementById('feedbackArea');
+const feedbackBanner = document.getElementById('feedbackBanner');
+const feedbackMessage = document.getElementById('feedbackMessage');
+const explanationPanel = document.getElementById('explanationPanel');
+const solutionText = document.getElementById('solutionText');
+const tipText = document.getElementById('tipText');
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
 // --- COOKIE HELPERS ---
 function setCookie(name, value, days = 365) {
     let expires = "";
@@ -19,6 +77,7 @@ function setCookie(name, value, days = 365) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
 }
 
+// --- COOKIE HELPERS ---
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
@@ -32,6 +91,12 @@ function getCookie(name) {
 
 function eraseCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; SameSite=Strict';
+}
+
+// Helper to resolve cookie storage key based on active mode
+function getStorageKey(baseKey) {
+    if (baseKey === STORAGE_KEYS.THEME) return baseKey; // theme is shared
+    return currentMode === 'practice' ? baseKey : `${baseKey}_exam`;
 }
 
 // --- STATE SERIALIZATION (Sparse representation for 4KB limit) ---
@@ -91,58 +156,13 @@ function deserializeUserStates(str) {
             flagged = true;
         }
         
-        states[id] = { status, answer, flagged };
+        if (questions.some(q => q.id === id)) {
+            states[id] = { status, answer, flagged };
+        }
     });
     
     return states;
 }
-
-// Global App State
-let questions = [];          // Original questions from questions.json
-let sessionQuestions = [];   // Questions in active session order (shuffled)
-let optionShuffles = [];     // Option permutations for each question (indexed by id - 1)
-let currentIndex = 0;        // Index in sessionQuestions
-let userStates = {};         // Map of question ID -> { status: 'correct'|'incorrect'|'unanswered', answer: string|null, flagged: boolean }
-let activeFilter = 'all';
-
-// DOM Elements
-const sidebar = document.getElementById('sidebar');
-const menuToggleBtn = document.getElementById('menuToggleBtn');
-const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-const themeToggleBtn = document.getElementById('themeToggleBtn');
-const themeToggleMobileBtn = document.getElementById('themeToggleMobileBtn');
-const themeText = document.getElementById('themeText');
-const resetSessionBtn = document.getElementById('resetSessionBtn');
-
-const progressText = document.getElementById('progressText');
-const progressBar = document.getElementById('progressBar');
-const statCorrect = document.getElementById('statCorrect');
-const statIncorrect = document.getElementById('statIncorrect');
-const statFlagged = document.getElementById('statFlagged');
-
-const searchInput = document.getElementById('searchInput');
-const filterTabs = document.querySelectorAll('.filter-tab');
-const questionGrid = document.getElementById('questionGrid');
-
-const questionBadge = document.getElementById('questionBadge');
-const categoryBadge = document.getElementById('categoryBadge');
-const flagBtn = document.getElementById('flagBtn');
-const flagText = document.getElementById('flagText');
-const questionText = document.getElementById('questionText');
-const imageWrapper = document.getElementById('imageWrapper');
-const questionImage = document.getElementById('questionImage');
-const imageLoader = document.getElementById('imageLoader');
-
-const choiceButtons = document.querySelectorAll('.choice-btn');
-const feedbackArea = document.getElementById('feedbackArea');
-const feedbackBanner = document.getElementById('feedbackBanner');
-const feedbackMessage = document.getElementById('feedbackMessage');
-const explanationPanel = document.getElementById('explanationPanel');
-const solutionText = document.getElementById('solutionText');
-const tipText = document.getElementById('tipText');
-
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
 
 // --- INITIALIZATION ---
 async function initApp() {
@@ -150,18 +170,47 @@ async function initApp() {
     setupEventListeners();
     
     try {
-        // Load questions database
-        const response = await fetch('questions.json');
-        if (!response.ok) throw new Error("Failed to load questions.json");
-        questions = await response.load ? await response.load() : await response.json();
+        // Load practice database
+        const resPractice = await fetch('questions.json');
+        if (!resPractice.ok) throw new Error("Failed to load questions.json");
+        practiceQuestions = await resPractice.json();
         
-        // Load or initialize user states & session order
+        // Load exam database
+        const resExam = await fetch('exam_questions.json');
+        if (!resExam.ok) throw new Error("Failed to load exam_questions.json");
+        examQuestions = await resExam.json();
+        
+        // Load active mode (default: practice)
+        currentMode = getCookie('trr2_quiz_active_mode') || 'practice';
+        questions = currentMode === 'practice' ? practiceQuestions : examQuestions;
+        
+        // Highlight active mode buttons
+        if (modePracticeBtn && modeExamBtn) {
+            modePracticeBtn.classList.toggle('active', currentMode === 'practice');
+            modeExamBtn.classList.toggle('active', currentMode === 'exam');
+        }
+        
+        // Load shuffle toggle state (default: true)
+        const shuffleCookie = getCookie('trr2_quiz_shuffle_enabled');
+        if (shuffleCookie === '0') {
+            shuffleEnabled = false;
+            if (shuffleToggle) shuffleToggle.checked = false;
+        } else {
+            shuffleEnabled = true;
+            if (shuffleToggle) shuffleToggle.checked = true;
+        }
+        
+        // Load session and user progress
         loadUserData();
         
         // Render UI
+        updateFootnote();
         renderQuestionGrid();
         renderActiveQuestion();
         updateStats();
+
+        // Start live data polling for hot-reload
+        startDataPolling();
         
     } catch (err) {
         console.error(err);
@@ -193,12 +242,11 @@ function setTheme(theme) {
 
 // --- DATA PERSISTENCE & SESSION MANAGEMENT ---
 function loadUserData() {
-    // 1. Load User States (Correct/Incorrect/Flagged status)
-    const savedStates = getCookie(STORAGE_KEYS.USER_STATES);
+    // 1. Load User States
+    const savedStates = getCookie(getStorageKey(STORAGE_KEYS.USER_STATES));
     if (savedStates) {
         userStates = deserializeUserStates(savedStates);
     } else {
-        // Initialize empty states
         userStates = {};
         questions.forEach(q => {
             userStates[q.id] = {
@@ -210,7 +258,7 @@ function loadUserData() {
         saveUserStates();
     }
     
-    // Ensure new questions from updates are tracked
+    // Ensure all questions are tracked
     questions.forEach(q => {
         if (!userStates[q.id]) {
             userStates[q.id] = { status: 'unanswered', answer: null, flagged: false };
@@ -218,13 +266,12 @@ function loadUserData() {
     });
 
     // 2. Load Session Order
-    const savedOrder = getCookie(STORAGE_KEYS.SESSION_ORDER);
-    const savedIndex = getCookie(STORAGE_KEYS.CURRENT_INDEX);
-    const savedOptionsOrder = getCookie(STORAGE_KEYS.OPTIONS_ORDER);
+    const savedOrder = getCookie(getStorageKey(STORAGE_KEYS.SESSION_ORDER));
+    const savedIndex = getCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX));
+    const savedOptionsOrder = getCookie(getStorageKey(STORAGE_KEYS.OPTIONS_ORDER));
     
     if (savedOrder && savedOptionsOrder) {
         const orderIds = savedOrder.split(',').map(Number).filter(Boolean);
-        // Map back to question objects
         sessionQuestions = orderIds.map(id => questions.find(q => q.id === id)).filter(Boolean);
         currentIndex = savedIndex ? parseInt(savedIndex) : 0;
         optionShuffles = savedOptionsOrder.split(',');
@@ -240,66 +287,83 @@ function loadUserData() {
 
 function saveUserStates() {
     const serialized = serializeUserStates(userStates);
-    setCookie(STORAGE_KEYS.USER_STATES, serialized, 365);
+    setCookie(getStorageKey(STORAGE_KEYS.USER_STATES), serialized, 365);
 }
 
 function startNewSession() {
     // Erase existing session cookies first
-    eraseCookie(STORAGE_KEYS.USER_STATES);
-    eraseCookie(STORAGE_KEYS.SESSION_ORDER);
-    eraseCookie(STORAGE_KEYS.CURRENT_INDEX);
-    eraseCookie(STORAGE_KEYS.OPTIONS_ORDER);
+    eraseCookie(getStorageKey(STORAGE_KEYS.SESSION_ORDER));
+    eraseCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX));
+    eraseCookie(getStorageKey(STORAGE_KEYS.OPTIONS_ORDER));
 
-    // Shuffle copy of questions array
-    sessionQuestions = [...questions];
-    for (let i = sessionQuestions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [sessionQuestions[i], sessionQuestions[j]] = [sessionQuestions[j], sessionQuestions[i]];
+    if (shuffleEnabled) {
+        // Shuffle copy of questions array
+        sessionQuestions = [...questions];
+        for (let i = sessionQuestions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [sessionQuestions[i], sessionQuestions[j]] = [sessionQuestions[j], sessionQuestions[i]];
+        }
+        
+        // Generate and save options shuffles (order by sorted questions)
+        optionShuffles = [];
+        const shufflesList = [];
+        const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+        sortedQuestions.forEach(q => {
+            const originalKeys = Object.keys(q.options).sort();
+            const shuffledKeys = [...originalKeys];
+            for (let i = shuffledKeys.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledKeys[i], shuffledKeys[j]] = [shuffledKeys[j], shuffledKeys[i]];
+            }
+            const permutation = shuffledKeys.join('');
+            optionShuffles.push(permutation);
+            shufflesList.push(permutation);
+        });
+        setCookie(getStorageKey(STORAGE_KEYS.OPTIONS_ORDER), shufflesList.join(','), 365);
+    } else {
+        // Sequential questions
+        sessionQuestions = [...questions].sort((a, b) => a.id - b.id);
+        
+        // Sequential options
+        optionShuffles = [];
+        const shufflesList = [];
+        const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+        sortedQuestions.forEach(q => {
+            const permutation = Object.keys(q.options).sort().join('');
+            optionShuffles.push(permutation);
+            shufflesList.push(permutation);
+        });
+        setCookie(getStorageKey(STORAGE_KEYS.OPTIONS_ORDER), shufflesList.join(','), 365);
     }
     
-    // Save shuffled IDs order
+    // Save order
     const orderIds = sessionQuestions.map(q => q.id);
-    setCookie(STORAGE_KEYS.SESSION_ORDER, orderIds.join(','), 365);
+    setCookie(getStorageKey(STORAGE_KEYS.SESSION_ORDER), orderIds.join(','), 365);
     
-    // Generate and save options shuffles (order by original ID 1 to 305)
-    optionShuffles = [];
-    const shufflesList = [];
-    const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
-    sortedQuestions.forEach(q => {
-        const originalKeys = Object.keys(q.options).sort(); // e.g., ['A', 'B', 'C', 'D', 'E']
-        const shuffledKeys = [...originalKeys];
-        for (let i = shuffledKeys.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledKeys[i], shuffledKeys[j]] = [shuffledKeys[j], shuffledKeys[i]];
-        }
-        const permutation = shuffledKeys.join('');
-        optionShuffles.push(permutation);
-        shufflesList.push(permutation);
-    });
-    setCookie(STORAGE_KEYS.OPTIONS_ORDER, shufflesList.join(','), 365);
-    
-    // Start session at index 0 (Câu 1)
+    // Start session at index 0
     currentIndex = 0;
-    setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
-    
-    // Reset answers and flags
-    userStates = {};
-    questions.forEach(q => {
-        userStates[q.id] = {
-            status: 'unanswered',
-            answer: null,
-            flagged: false
-        };
-    });
-    saveUserStates();
+    setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), '0', 365);
     
     if (questions.length > 0) {
         renderQuestionGrid();
         renderActiveQuestion();
         updateStats();
+        scrollActiveQuestionIntoView();
     }
 }
 
+// Update the source text label dynamically
+function updateFootnote() {
+    if (sourceFootnote) {
+        if (currentMode === 'practice') {
+            sourceFootnote.textContent = 'Nguồn: Cô Nguyễn Kiều Linh - TRR2 PTIT';
+        } else {
+            sourceFootnote.textContent = 'Source: Cô Nguyễn Kiều Linh - Tổng hợp đề TRR2 PTIT';
+        }
+    }
+}
+
+// --- RENDERING PIPELINE ---
 function getFilteredQuestions() {
     const query = searchInput.value.toLowerCase().trim();
     const baseQuestions = sessionQuestions.length > 0 ? sessionQuestions : questions;
@@ -319,7 +383,7 @@ function getFilteredQuestions() {
             const sIdx = sessionQuestions.findIndex(sq => sq.id === q.id);
             const matchesIndex = (sIdx + 1).toString().includes(query);
             
-            // Match text content (HTML stripped) or raw content (including equations)
+            // Match text content (HTML stripped) or raw content
             const cleanQuestionText = q.questionText.replace(/<[^>]+>/g, '').toLowerCase();
             const matchesQuestion = cleanQuestionText.includes(query) || q.questionText.toLowerCase().includes(query);
             
@@ -340,7 +404,7 @@ function renderQuestionGrid() {
         
         const btn = document.createElement('button');
         btn.className = `q-badge-btn ${state.status}`;
-        btn.dataset.id = q.id; // Store original question ID
+        btn.dataset.id = q.id;
         if (state.flagged) btn.classList.add('flagged');
         if (sIdx === currentIndex) btn.classList.add('active');
         btn.textContent = sIdx + 1;
@@ -348,15 +412,13 @@ function renderQuestionGrid() {
         
         btn.addEventListener('click', () => {
             currentIndex = sIdx;
-            setCookie(STORAGE_KEYS.CURRENT_INDEX, sIdx.toString(), 365);
+            setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), sIdx.toString(), 365);
             
-            // Highlight active in grid
             document.querySelectorAll('.q-badge-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
             renderActiveQuestion();
             
-            // Close sidebar on mobile
             if (window.innerWidth <= 992) {
                 sidebar.classList.remove('open');
             }
@@ -420,14 +482,15 @@ function renderActiveQuestion() {
     }
     
     // 5. Set choices buttons (with option shuffling support)
-    const shufflePerm = (optionShuffles && optionShuffles[q.id - 1]) || Object.keys(q.options).sort().join('');
+    const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+    const qIdx = sortedQuestions.findIndex(x => x.id === q.id);
+    const shufflePerm = (optionShuffles && optionShuffles[qIdx]) || Object.keys(q.options).sort().join('');
     const mappedCorrectAnswer = String.fromCharCode(65 + shufflePerm.indexOf(q.correctAnswer));
     
     choiceButtons.forEach(btn => {
         btn.className = 'choice-btn';
         const letter = btn.dataset.choice; // A, B, C, D, E
         
-        // Show correct letter label
         btn.querySelector('.choice-letter').textContent = letter;
         
         const idx = letter.charCodeAt(0) - 65; // A -> 0, B -> 1, C -> 2, etc.
@@ -442,9 +505,17 @@ function renderActiveQuestion() {
                 btn.classList.remove('disabled');
             } else {
                 btn.classList.add('disabled');
-                
-                // Highlight selection
-                if (letter === state.answer) {
+
+                // Convert stored original key → current shuffled position.
+                // For correct answers always use mappedCorrectAnswer (immune to stale saves).
+                // For incorrect answers remap the stored key to wherever it sits in the new shuffle.
+                const userAnswerLetter = state.status === 'correct'
+                    ? mappedCorrectAnswer
+                    : (state.answer
+                        ? String.fromCharCode(65 + shufflePerm.indexOf(state.answer))
+                        : null);
+
+                if (letter === userAnswerLetter) {
                     btn.classList.add('selected');
                     if (state.status === 'correct') {
                         btn.classList.add('correct');
@@ -452,8 +523,7 @@ function renderActiveQuestion() {
                         btn.classList.add('incorrect');
                     }
                 }
-                
-                // Reveal correct option
+
                 if (letter === mappedCorrectAnswer) {
                     btn.classList.add('correct');
                 }
@@ -471,7 +541,6 @@ function renderActiveQuestion() {
         feedbackArea.classList.remove('hidden');
         explanationPanel.classList.remove('hidden');
         
-        // Set Banner Style
         if (state.status === 'correct') {
             feedbackBanner.className = 'feedback-banner correct';
             feedbackBanner.querySelector('i').className = 'fa-solid fa-circle-check';
@@ -482,9 +551,8 @@ function renderActiveQuestion() {
             feedbackMessage.textContent = `Chưa đúng! Đáp án chính xác là ${mappedCorrectAnswer}`;
         }
         
-        // Populate Solution & Tips
-        solutionText.innerHTML = parseMarkdown(remapOptionLetters(q.explanation, shufflePerm));
-        tipText.innerHTML = parseMarkdown(remapOptionLetters(q.tip, shufflePerm));
+        solutionText.innerHTML = remapOptionLetters(parseMarkdown(q.explanation), shufflePerm);
+        tipText.innerHTML = remapOptionLetters(parseMarkdown(q.tip), shufflePerm);
     }
     
     // 7. Navigation Buttons disabled state
@@ -499,6 +567,27 @@ function renderActiveQuestion() {
         nextBtn.disabled = currentFilteredIdx === -1 || currentFilteredIdx === filtered.length - 1;
     }
     renderMath();
+
+    // Scroll active question button into view in sidebar
+    scrollActiveQuestionIntoView();
+}
+
+// Smoothly scroll the currently-active q-badge-btn into view inside the sidebar list
+function scrollActiveQuestionIntoView() {
+    const activeBtn = questionGrid.querySelector('.q-badge-btn.active');
+    if (!activeBtn) return;
+    // Use scrollIntoView with block:'nearest' so it doesn't jump when already visible
+    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Smoothly scroll feedbackArea / explanationPanel into view (main content area)
+function scrollToFeedback() {
+    const target = feedbackArea && !feedbackArea.classList.contains('hidden')
+        ? feedbackArea
+        : explanationPanel;
+    if (target && !target.classList.contains('hidden')) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function renderMath() {
@@ -518,9 +607,7 @@ function renderMath() {
 function parseMarkdown(text) {
     if (!text) return "";
     let formatted = text;
-    // Replace **text** with <strong>text</strong>
     formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    // Replace `text` with <code>text</code>
     formatted = formatted.replace(/`([^`]+)`/g, '<code>$1</code>');
     return formatted;
 }
@@ -528,48 +615,61 @@ function parseMarkdown(text) {
 function remapOptionLetters(text, shufflePerm) {
     if (!text) return "";
     
-    // Map original option keys (A-E) to their new shuffled option keys
     const originalToShuffled = {};
     for (let i = 0; i < shufflePerm.length; i++) {
         const originalKey = shufflePerm[i];
-        const shuffledLetter = String.fromCharCode(65 + i); // 'A', 'B', 'C', 'D', 'E'
+        const shuffledLetter = String.fromCharCode(65 + i);
         originalToShuffled[originalKey] = shuffledLetter;
     }
     
     let result = text;
     
-    // 1. Remap letters wrapped in bold tags, e.g., <strong>A</strong> or <b>A</b>
     result = result.replace(/(<strong>|<b>)([A-E])(<\/strong>|<\/b>)/g, (match, p1, letter, p2) => {
         return p1 + (originalToShuffled[letter] || letter) + p2;
     });
 
-    // Helper to replace isolated A-E letters inside a matched substring
     const replaceInside = (match) => {
-        return match.replace(/\b([A-E])\b/g, (m, letter) => {
+        // Replace bare A-E letters (word boundaries)
+        let out = match.replace(/\b([A-E])\b/g, (m, letter) => {
             return originalToShuffled[letter] || letter;
         });
+        // Also replace A-E inside <strong>/<b> tags
+        out = out.replace(/(<strong>|<b>)([A-E])(<\/strong>|<\/b>)/g, (m, p1, letter, p2) => {
+            return p1 + (originalToShuffled[letter] || letter) + p2;
+        });
+        return out;
     };
 
-    // 2. Prefix match with possible words/phrases in-between, using lookaheads to avoid choice labels like A(1)
-    const patternPrefixList = /\b(phương án|đáp án|lựa chọn|chọn|khẳng định|phát biểu)\s+(?:đúng\s+|chính\s+xác\s+|sai\s+|đều\s+|là\s+|đều\s+là\s+|không\s+phải\s+là\s+)*([A-E])(?!\()(?:\s*,\s*[A-E](?!\())*(?:\s+(?:và|hoặc)\s*[A-E](?!\())?\b/gi;
+    // NOTE: \b does NOT work with Vietnamese non-ASCII starters (đ, ă, ơ, etc.)
+    // Use (?<![a-zA-Z0-9_]) lookbehind instead for all prefix patterns.
+    const patternPrefixList = /(?<![a-zA-Z0-9_])(phương án|đáp án|lựa chọn|chọn|khẳng định|phát biểu)\s+(?:đúng\s+|chính\s+xác\s+|sai\s+|đều\s+|là\s+|đều\s+là\s+|không\s+phải\s+là\s+)*([A-E])(?!\()(?:\s*,\s*[A-E](?!\())*(?:\s+(?:và|hoặc)\s*[A-E](?!\())?/gi;
     result = result.replace(patternPrefixList, replaceInside);
-    
-    // 3. Isolated letter followed by "là đáp án" / "là phương án"
+
+    // Handle "chọn đáp án A" / "chọn phương án B" compound phrases
+    const patternCompound = /(?<![a-zA-Z0-9_])(chọn\s+(?:đáp án|phương án|lựa chọn))\s+([A-E])(?![(\w])/gi;
+    result = result.replace(patternCompound, (match, prefix, letter) => {
+        return prefix + ' ' + (originalToShuffled[letter] || letter);
+    });
+
+    // Handle "A là đáp án / là phương án / là lựa chọn"
     result = result.replace(/\b([A-E])\s*(là đáp án|là phương án|là lựa chọn)/gi, (match, letter, rest) => {
         return (originalToShuffled[letter] || letter) + " " + rest;
     });
     
-    // 4. Multiple choices with index labels, e.g. "lựa chọn A(1), B(3)"
-    const patternChoicesNums = /\b(lựa chọn)\s+[A-E]\(\d+\)(?:\s*,\s*[A-E]\(\d+\))*/gi;
+    const patternChoicesNums = /(?<![a-zA-Z0-9_])(lựa chọn)\s+[A-E]\(\d+\)(?:\s*,\s*[A-E]\(\d+\))*/gi;
     result = result.replace(patternChoicesNums, replaceInside);
 
-    // 5. Special lists format, e.g. "các phương án: A có 3 cạnh, B có 3..."
-    const patternSpecTip = /các phương án:\s*[A-E][^.]*/gi;
+    const patternSpecTip = /(?<![a-zA-Z0-9_])các phương án:\s*[A-E][^.]*/gi;
     result = result.replace(patternSpecTip, replaceInside);
 
-    // 6. Parenthesis-wrapped letters, e.g., (A), (B)
+    // Handle (A), (B), ... in parentheses
     result = result.replace(/\(([A-E])\)/g, (match, letter) => {
         return '(' + (originalToShuffled[letter] || letter) + ')';
+    });
+
+    // Handle trailing markers like "đáp án A □" / "phương án A ✓"
+    result = result.replace(/(?<=(đáp án|phương án|lựa chọn)\s)([A-E])(?=\s*[□✓✗\s]|$)/gi, (match, _prefix, letter) => {
+        return originalToShuffled[letter] || letter;
     });
 
     return result;
@@ -593,7 +693,6 @@ function updateStats() {
     statIncorrect.textContent = incorrect;
     statFlagged.textContent = flagged;
     
-    // Progress Bar
     const total = questions.length;
     if (total > 0) {
         const percentage = Math.round((answered / total) * 100);
@@ -607,20 +706,25 @@ function handleChoiceSelection(letter) {
     const q = sessionQuestions[currentIndex];
     const state = userStates[q.id];
     
-    if (state.status !== 'unanswered') return; // Already answered
+    if (state.status !== 'unanswered') return;
     
-    const shufflePerm = (optionShuffles && optionShuffles[q.id - 1]) || Object.keys(q.options).sort().join('');
+    const sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+    const qIdx = sortedQuestions.findIndex(x => x.id === q.id);
+    const shufflePerm = (optionShuffles && optionShuffles[qIdx]) || Object.keys(q.options).sort().join('');
     const mappedCorrectAnswer = String.fromCharCode(65 + shufflePerm.indexOf(q.correctAnswer));
     const isCorrect = letter === mappedCorrectAnswer;
     
-    state.answer = letter;
+    // Store the ORIGINAL option key (before shuffle) so the answer survives reshuffling
+    state.answer = shufflePerm[letter.charCodeAt(0) - 65] || letter;
     state.status = isCorrect ? 'correct' : 'incorrect';
     
     saveUserStates();
     renderActiveQuestion();
     updateStats();
+
+    // Scroll feedback into view after answering
+    scrollToFeedback();
     
-    // Update active badge in grid list
     const activeBadgeBtn = questionGrid.querySelector(`.q-badge-btn[data-id="${q.id}"]`);
     if (activeBadgeBtn) {
         activeBadgeBtn.className = `q-badge-btn ${state.status} active`;
@@ -638,7 +742,6 @@ function handleFlagToggle() {
     renderActiveQuestion();
     updateStats();
     
-    // Update active badge in grid
     const activeBadgeBtn = questionGrid.querySelector(`.q-badge-btn[data-id="${q.id}"]`);
     if (activeBadgeBtn) {
         if (state.flagged) activeBadgeBtn.classList.add('flagged');
@@ -646,12 +749,35 @@ function handleFlagToggle() {
     }
 }
 
+// --- SWITCH MODES ---
+function switchMode(newMode) {
+    if (currentMode === newMode) return;
+    
+    modePracticeBtn.classList.toggle('active', newMode === 'practice');
+    modeExamBtn.classList.toggle('active', newMode === 'exam');
+    
+    currentMode = newMode;
+    setCookie('trr2_quiz_active_mode', currentMode, 365);
+    
+    questions = currentMode === 'practice' ? practiceQuestions : examQuestions;
+    
+    loadUserData();
+    updateFootnote();
+    
+    // Reset search and filters
+    activeFilter = 'all';
+    filterTabs.forEach(t => t.classList.toggle('active', t.dataset.filter === 'all'));
+    searchInput.value = '';
+    
+    renderQuestionGrid();
+    renderActiveQuestion();
+    updateStats();
+}
+
 // --- EVENT LISTENERS SETUP ---
 function setupEventListeners() {
-    // Sidebar Hamburger Menu Toggles
     menuToggleBtn.addEventListener('click', () => sidebar.classList.add('open'));
     
-    // Close sidebar (handles mobile close and desktop collapse/expand toggle)
     mobileCloseBtn.addEventListener('click', () => {
         if (window.innerWidth <= 992) {
             sidebar.classList.remove('open');
@@ -660,7 +786,6 @@ function setupEventListeners() {
         }
     });
     
-    // Expand sidebar when search icon is clicked while collapsed
     const searchIcon = document.querySelector('.search-icon');
     if (searchIcon) {
         searchIcon.addEventListener('click', () => {
@@ -672,7 +797,6 @@ function setupEventListeners() {
         });
     }
     
-    // Close sidebar on background click (mobile only)
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 992 && 
             !sidebar.contains(e.target) && 
@@ -682,7 +806,6 @@ function setupEventListeners() {
         }
     });
 
-    // Theme toggles
     const toggleThemeMode = () => {
         const isDark = document.documentElement.classList.contains('dark');
         setTheme(isDark ? 'light' : 'dark');
@@ -690,14 +813,85 @@ function setupEventListeners() {
     themeToggleBtn.addEventListener('click', toggleThemeMode);
     themeToggleMobileBtn.addEventListener('click', toggleThemeMode);
     
-    // Session resets
-    resetSessionBtn.addEventListener('click', () => {
-        if (confirm("Bạn có chắc chắn muốn đặt lại phiên ôn tập? Điều này sẽ xóa toàn bộ câu trả lời hiện tại và xáo trộn ngẫu nhiên lại câu hỏi.")) {
-            startNewSession();
-        }
-    });
+    // Mode switcher buttons
+    if (modePracticeBtn) {
+        modePracticeBtn.addEventListener('click', () => switchMode('practice'));
+    }
+    if (modeExamBtn) {
+        modeExamBtn.addEventListener('click', () => switchMode('exam'));
+    }
     
-    // Search & Filter
+    // Shuffle Toggle
+    if (shuffleToggle) {
+        shuffleToggle.addEventListener('change', (e) => {
+            shuffleEnabled = e.target.checked;
+            setCookie('trr2_quiz_shuffle_enabled', shuffleEnabled ? '1' : '0', 365);
+            
+            // Try to keep user on same question
+            const activeQ = sessionQuestions[currentIndex];
+            const activeId = activeQ ? activeQ.id : null;
+            
+            if (shuffleEnabled) {
+                startNewSession();
+            } else {
+                sessionQuestions = [...questions].sort((a, b) => a.id - b.id);
+                optionShuffles = questions.map(q => Object.keys(q.options).sort().join(''));
+                
+                const orderIds = sessionQuestions.map(q => q.id);
+                setCookie(getStorageKey(STORAGE_KEYS.SESSION_ORDER), orderIds.join(','), 365);
+                setCookie(getStorageKey(STORAGE_KEYS.OPTIONS_ORDER), optionShuffles.join(','), 365);
+                
+                if (activeId !== null) {
+                    currentIndex = sessionQuestions.findIndex(q => q.id === activeId);
+                    if (currentIndex === -1) currentIndex = 0;
+                } else {
+                    currentIndex = 0;
+                }
+                setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), currentIndex.toString(), 365);
+                
+                renderQuestionGrid();
+                renderActiveQuestion();
+                updateStats();
+                scrollActiveQuestionIntoView();
+            }
+        });
+    }
+    
+    // Reshuffle button
+    if (reshuffleBtn) {
+        reshuffleBtn.addEventListener('click', () => {
+            if (!shuffleToggle.checked) {
+                shuffleToggle.checked = true;
+                shuffleEnabled = true;
+                setCookie('trr2_quiz_shuffle_enabled', '1', 365);
+            }
+            startNewSession();
+        });
+    }
+    
+    // Reset all button
+    if (resetAllBtn) {
+        resetAllBtn.addEventListener('click', () => {
+            if (confirm("Bạn có chắc chắn muốn làm lại tất cả câu hỏi của chế độ hiện tại? Điều này sẽ xóa toàn bộ lịch sử làm bài (Đúng/Sai/Xem lại).")) {
+                userStates = {};
+                questions.forEach(q => {
+                    userStates[q.id] = { status: 'unanswered', answer: null, flagged: false };
+                });
+                saveUserStates();
+                
+                if (shuffleEnabled) {
+                    startNewSession();
+                } else {
+                    currentIndex = 0;
+                    setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), '0', 365);
+                    renderQuestionGrid();
+                    renderActiveQuestion();
+                    updateStats();
+                }
+            }
+        });
+    }
+    
     searchInput.addEventListener('input', renderQuestionGrid);
     
     filterTabs.forEach(tab => {
@@ -709,7 +903,6 @@ function setupEventListeners() {
         });
     });
     
-    // Choice selection
     choiceButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const letter = btn.dataset.choice;
@@ -717,10 +910,8 @@ function setupEventListeners() {
         });
     });
     
-    // Bookmark flag toggle
     flagBtn.addEventListener('click', handleFlagToggle);
     
-    // Navigation Footer buttons
     prevBtn.addEventListener('click', () => {
         const filtered = getFilteredQuestions();
         const q = sessionQuestions[currentIndex];
@@ -731,7 +922,7 @@ function setupEventListeners() {
             const prevSessionIdx = sessionQuestions.findIndex(sq => sq.id === prevQuestion.id);
             if (prevSessionIdx !== -1) {
                 currentIndex = prevSessionIdx;
-                setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
+                setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), currentIndex.toString(), 365);
                 renderActiveQuestion();
             }
         }
@@ -747,15 +938,13 @@ function setupEventListeners() {
             const nextSessionIdx = sessionQuestions.findIndex(sq => sq.id === nextQuestion.id);
             if (nextSessionIdx !== -1) {
                 currentIndex = nextSessionIdx;
-                setCookie(STORAGE_KEYS.CURRENT_INDEX, currentIndex.toString(), 365);
+                setCookie(getStorageKey(STORAGE_KEYS.CURRENT_INDEX), currentIndex.toString(), 365);
                 renderActiveQuestion();
             }
         }
     });
     
-    // Keyboard navigation (Arrow keys & A-E shortcuts)
     document.addEventListener('keydown', (e) => {
-        // Ignore keydowns when user is typing in search bar
         if (document.activeElement === searchInput) return;
         
         if (e.key === 'ArrowLeft') {
@@ -774,5 +963,116 @@ function setupEventListeners() {
     });
 }
 
-// Load App on load
+// --- LIVE DATA POLLING (hot-reload without F5) ---
+// Uses ETag / Last-Modified headers to detect server-side updates.
+const DATA_POLL_INTERVAL_MS = 15000; // check every 15 seconds
+const dataVersions = {}; // { url: lastETagOrModified }
+
+async function pollDataFile(url, onUpdate) {
+    try {
+        const headRes = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+        if (!headRes.ok) return;
+        const etag = headRes.headers.get('etag') || headRes.headers.get('last-modified') || null;
+        if (etag === null) return; // server doesn't send version headers — skip
+
+        if (dataVersions[url] === undefined) {
+            // First check — just record the version, don't reload
+            dataVersions[url] = etag;
+            return;
+        }
+
+        if (dataVersions[url] !== etag) {
+            dataVersions[url] = etag;
+            // Fetch the actual updated data
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) return;
+            const newData = await res.json();
+            onUpdate(newData);
+        }
+    } catch (e) {
+        // Network error or JSON parse error — silently ignore
+    }
+}
+
+function applyUpdatedQuestions(newData, targetMode) {
+    if (targetMode === 'practice') {
+        practiceQuestions = newData;
+    } else {
+        examQuestions = newData;
+    }
+
+    // Only re-render if this mode is currently active
+    if (currentMode !== targetMode) return;
+
+    const prevId = sessionQuestions[currentIndex]?.id ?? null;
+
+    // Rebuild the question list reference
+    questions = targetMode === 'practice' ? practiceQuestions : examQuestions;
+
+    // Ensure userStates covers new question set
+    questions.forEach(q => {
+        if (!userStates[q.id]) {
+            userStates[q.id] = { status: 'unanswered', answer: null, flagged: false };
+        }
+    });
+
+    // Rebuild session order (keep same IDs if still present)
+    const prevSessionIds = sessionQuestions.map(q => q.id);
+    sessionQuestions = prevSessionIds
+        .map(id => questions.find(q => q.id === id))
+        .filter(Boolean);
+    // Append any brand-new questions
+    questions.forEach(q => {
+        if (!sessionQuestions.find(sq => sq.id === q.id)) {
+            sessionQuestions.push(q);
+        }
+    });
+
+    // Restore index to same question if possible
+    if (prevId !== null) {
+        const newIdx = sessionQuestions.findIndex(q => q.id === prevId);
+        if (newIdx !== -1) currentIndex = newIdx;
+    }
+
+    renderQuestionGrid();
+    renderActiveQuestion();
+    updateStats();
+
+    // Show a subtle toast notification
+    showToast('Dữ liệu câu hỏi đã được cập nhật.');
+}
+
+function showToast(message) {
+    let toast = document.getElementById('liveUpdateToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'liveUpdateToast';
+        toast.style.cssText = [
+            'position:fixed', 'bottom:24px', 'right:24px', 'z-index:9999',
+            'background:var(--accent,#6c63ff)', 'color:#fff',
+            'padding:10px 18px', 'border-radius:10px',
+            'font-size:0.85rem', 'font-family:inherit',
+            'box-shadow:0 4px 20px rgba(0,0,0,0.3)',
+            'opacity:0', 'transition:opacity 0.3s',
+            'pointer-events:none'
+        ].join(';');
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+}
+
+function startDataPolling() {
+    // Initial fingerprinting pass (no reload on first call)
+    pollDataFile('questions.json',     data => applyUpdatedQuestions(data, 'practice'));
+    pollDataFile('exam_questions.json', data => applyUpdatedQuestions(data, 'exam'));
+
+    setInterval(() => {
+        pollDataFile('questions.json',     data => applyUpdatedQuestions(data, 'practice'));
+        pollDataFile('exam_questions.json', data => applyUpdatedQuestions(data, 'exam'));
+    }, DATA_POLL_INTERVAL_MS);
+}
+
 window.addEventListener('DOMContentLoaded', initApp);
