@@ -4866,5 +4866,21 @@
     "correctAnswer": "C",
     "explanation": "<p><strong>Bổ sung mã nguồn cho thuật toán Floyd-Warshall:</strong></p><ul><li>Thuật toán Floyd-Warshall cập nhật khoảng cách ngắn nhất giữa mọi cặp đỉnh $(i, j)$ bằng cách xét đỉnh trung gian $k$.</li><li>Công thức quy hoạch động cập nhật khoảng cách là: $d[i][j] = \\min(d[i][j], d[i][k] + d[k][j])$.</li><li>Nếu đi qua đỉnh trung gian $k$ ngắn hơn, tức là $d[i][j] > d[i][k] + d[k][j]$, ta cập nhật lại $d[i][j]$ và lưu đỉnh truy vết của $j$ trên đường đi từ $i$ là $e[i][j] = e[k][j]$.</li><li>Điều này tương ứng chính xác với đoạn mã ở phương án <strong>C</strong>.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Công thức Floyd chuẩn cập nhật khoảng cách từ $i$ đến $j$ qua trung gian $k$: `d[i][j] > d[i][k] + d[k][j]`. Do đó chỉ có C hoặc A là có cấu trúc này, nhưng vì vai trò của $k$ là trung gian nên phải so sánh giữa $d[i][j]$ với $d[i][k] + d[k][j]$. Chọn C.</p>"
+  },
+  {
+    "id": 306,
+    "category_name": "Khái niệm đồ thị cơ bản",
+    "questionText": "<p>Đồ thị vô hướng G = (V, E) gồm 6 đỉnh được biểu diễn dưới dạng danh sách cạnh như dưới đây. Tổng bậc các đỉnh của đồ thị là bao nhiêu?</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n<th style=\"text-align: center;\">Đỉnh đầu</th>\n<th style=\"text-align: center;\">Đỉnh cuối</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">6</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\"></td>\n<td style=\"text-align: center;\"></td>\n</tr>\n</tbody>\n</table>",
+    "image": "",
+    "options": {
+      "A": "<p>8</p>",
+      "B": "<p>15</p>",
+      "C": "<p>Các phương án khác đều sai.</p>",
+      "D": "<p>7</p>",
+      "E": "<p>14</p>"
+    },
+    "correctAnswer": "E",
+    "explanation": "<p><strong>Tổng bậc các đỉnh trong đồ thị vô hướng:</strong></p><p>Theo định lý bắt tay (handshaking lemma), trong một đơn đồ thị vô hướng, tổng bậc của tất cả các đỉnh luôn bằng hai lần số cạnh của đồ thị:</p>$$\\sum_{v \\in V} \\text{deg}(v) = 2 \\times |E|$$<p>Đếm số lượng cạnh từ danh sách cạnh của đồ thị G:</p><ul>  <li>Nhánh bên trái gồm 4 cạnh: (1,2), (1,5), (2,3), (2,4)</li>  <li>Nhánh bên phải gồm 3 cạnh: (2,6), (4,6), (5,6)</li></ul><p>Tổng số cạnh của đồ thị G là: $|E| = 4 + 3 = 7$ cạnh.</p><p>Vậy tổng bậc của các đỉnh là: $2 \\times 7 = 14$.</p><p>Đây chính là giá trị ở phương án <strong>E</strong>. Do đó, đáp án chính xác là <strong>E</strong>.</p>",
+    "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul>  <li>Trong đồ thị vô hướng, tổng bậc của các đỉnh luôn bằng 2 lần số cạnh.</li>  <li>Đếm nhanh số dòng dữ liệu cạnh trong bảng: bảng bên trái có 4 cạnh, bảng bên phải có 3 cạnh &rightarrow; tổng số cạnh là 7.</li>  <li>Tổng bậc = $2 \\times 7 = 14$. Chọn ngay phương án <strong>E</strong>.</li></ul>"
   }
 ]
