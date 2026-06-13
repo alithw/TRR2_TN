@@ -3049,18 +3049,18 @@
   },
   {
     "id": 192,
-    "category_name": "Khái niệm đồ thị cơ bản",
-    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (3.4) trong mô tả thuật toán Bellman-Ford... Chọn phương án đúng:</p>",
+    "category_name": "Thuật toán Bellman-Ford",
+    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (3.4) trong mô tả thuật toán Bellman-Ford tìm đường đi ngắn nhất từ đỉnh s đến các đỉnh còn lại của đơn đồ thị có trọng số G gồm n đỉnh biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) for v ∈ G do {\n    (1.2)     d[v] = a[s][v]; e[v] = s; }\n(2) Bắt đầu tìm kiếm từ s:\n    (2.1) d[s] = 0; e[s] = 0;\n    (2.2) ok = 0;\n(3) Thực hiện n-1 lần lặp:\n    (3.1) ok = 1;\n    (3.2) for v ∈ G do\n    (3.3)     for u ∈ G do\n    (3.4)         [ Cần bổ sung ]\n    (3.5) Nếu (ok = 1) thì chuyển bước (4);\n(4) Nếu (ok = 1) thì đưa ra d[v] và đường đi từ s đến v với mọi v ∈ G, v khác s;\n(5) Nếu (ok = 0) thì đưa ra thông báo G chứa chu trình âm;</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"choice-code\">if  (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
-      "B": "<pre class=\"choice-code\">if  (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
-      "C": "<pre class=\"choice-code\">if (vs[u] = 0) & (d[u] > d[v] + a[v][u]) { e[u] = v; d[u] = d[v] + a[v][u]; ok = 0; }</pre>",
-      "D": "<pre class=\"choice-code\">if  (vs[v] = 0) & (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</pre>",
+      "A": "<pre class=\"choice-code\">if (d[u] > d[v] + a[v][u]) {\n    e[u] = v;\n    d[u] = d[v] + a[v][u];\n    ok = 0;\n}</pre>",
+      "B": "<pre class=\"choice-code\">if (d[v] > d[u] + a[u][v]) {\n    e[v] = u;\n    d[v] = d[u] + a[u][v];\n    ok = 0;\n}</pre>",
+      "C": "<pre class=\"choice-code\">if (vs[u] = 0) &amp; (d[u] > d[v] + a[v][u]) {\n    e[u] = v;\n    d[u] = d[v] + a[v][u];\n    ok = 0;\n}</pre>",
+      "D": "<pre class=\"choice-code\">if (vs[v] = 0) &amp; (d[v] > d[u] + a[u][v]) {\n    e[v] = u;\n    d[v] = d[u] + a[u][v];\n    ok = 0;\n}</pre>",
       "E": "<p>Các phương án khác đều sai.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Bước cập nhật relaxation chuẩn của thuật toán Bellman-Ford là if (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }. Đây chính là nội dung của phương án B. Lời giải cho rằng phương án B thiếu điều kiện là sai.</p>",
+    "explanation": "<p>Bước cập nhật relaxation (tối ưu hóa nhãn khoảng cách) chuẩn của thuật toán Bellman-Ford khi duyệt qua các cung là: <code>if (d[v] > d[u] + a[u][v]) { e[v] = u; d[v] = d[u] + a[u][v]; ok = 0; }</code>.</p><p>Đây chính là nội dung của phương án <strong>B</strong>. Do đó, đáp án chính xác là <strong>B</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Bellman-Ford relaxation: if d[v] > d[u]+w(u,v) → cập nhật d[v] và e[v]=u, đặt ok=0.</li><li>Không dùng vs[] (mảng đánh dấu Dijkstra) trong Bellman-Ford.</li><li>ok=1 ban đầu, nếu có cập nhật thì ok=0 → chưa hội tụ.</li></ul>"
   },
   {
