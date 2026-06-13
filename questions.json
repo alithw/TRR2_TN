@@ -3348,7 +3348,7 @@
       "E": "<p>T không phải là cây vì T không liên thông.</p>"
     },
     "correctAnswer": "B",
-    "explanation": "<p>Đồ thị T không liên thông (vì {1,2,3} không có đường nối đến {4,5}) và có chứa chu trình (1-2-3-1). <strong>C</strong>ả 4 phương án A, C, D, E đều là những phát biểu đúng về lý do T không phải là cây. Do đó phương án B (<strong>C</strong>ác phương án khác đều đúng) là lựa chọn chính xác nhất.</p>",
+    "explanation": "<p>Đồ thị T không liên thông (vì {1,2,3} không có đường nối đến {4,5}) và có chứa chu trình (1-2-3-1). Cả 4 phương án A, C, D, E đều là những phát biểu đúng về lý do T không phải là cây. Do đó phương án B (Các phương án khác đều đúng) là lựa chọn chính xác nhất.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong></p><ul><li>Cây: liên thông + không chu trình + n-1 cạnh. Nếu vi phạm một trong ba → không phải cây.</li><li>Cạnh cầu: cạnh mà xóa đi làm tăng số thành phần liên thông.</li><li>Trong chu trình: không cạnh nào là cầu.</li></ul>"
   },
   {
