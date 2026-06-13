@@ -4855,16 +4855,16 @@
   {
     "id": 305,
     "category_name": "Thuật toán Floyd",
-    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (2.4) trong mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<table class=\"quiz-table\">\n<thead>\n<tr>\n<th style=\"text-align: left;\">*(1) Khởi tạo:       (1.1) d[i][j]= a[i][j];       (1.2) e[i][j]= i; (2) Thực hiện 3 vòng lặp lồng nhau:       (2.1) for  k ∈ G do       (2.2)       for i ∈ G do       (2.3)              for  j ∈ G do        (2.4)                 (3) Xuất kết quả:        (3.1) Nếu có đỉnh u mà d[u][u] < 0 thì xuất thông báo G chứa chu trình âm;       (3.2) Ngược lại xuất d[i][j]  và e[i][j].*</th>\n</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
+    "questionText": "<p>Cần bổ sung nội dung thực hiện của bước (2.4) trong mô tả thuật toán Floyd tìm đường đi ngắn nhất giữa các cặp đỉnh của đơn đồ thị có trọng số G biểu diễn dưới dạng ma trận trọng số a[][]:</p>\n<pre class=\"code-block\">(1) Khởi tạo:\n    (1.1) d[i][j] = a[i][j];\n    (1.2) e[i][j] = i;\n(2) Thực hiện 3 vòng lặp lồng nhau:\n    (2.1) for k ∈ G do\n    (2.2)     for i ∈ G do\n    (2.3)         for j ∈ G do\n    (2.4)             [ Cần bổ sung ]\n(3) Xuất kết quả:\n    (3.1) Nếu có đỉnh u mà d[u][u] &lt; 0 thì xuất thông báo G chứa chu trình âm;\n    (3.2) Ngược lại xuất d[i][j] và e[i][j].</pre>\n<p>Chọn phương án đúng trong các phương án dưới đây:</p>",
     "image": "",
     "options": {
-      "A": "<pre class=\"choice-code\">if (d[k][j]> d[k][i] + d[i][j]) {  \ne[k][j]= e[k][i]; d[k][j]= d[k][i] + d[i][j]; }</pre>",
-      "B": "<pre class=\"choice-code\">if (d[j][k]> d[j][i] + d[i][k]) {  \ne[j][k]= e[k][i]; d[j][k]= d[j][i] + d[i][k]; }</pre>",
-      "C": "<pre class=\"choice-code\">if (d[i][j]> d[i][k] + d[k][j]) {  \ne[i][j]= e[k][j]; d[i][j]= d[i][k] + d[k][j]; }</pre>",
-      "D": "<pre class=\"choice-code\">if (d[i][k]> d[i][j] + d[j][k]) {  \ne[i][k]= e[k][j]; d[i][k]= d[i][j] + d[j][k]; }</pre>"
+      "A": "<pre class=\"choice-code\">if (d[k][j] > d[k][i] + d[i][j]) {\n    e[k][j] = e[k][i];\n    d[k][j] = d[k][i] + d[i][j];\n}</pre>",
+      "B": "<pre class=\"choice-code\">if (d[j][k] > d[j][i] + d[i][k]) {\n    e[j][k] = e[k][i];\n    d[j][k] = d[j][i] + d[i][k];\n}</pre>",
+      "C": "<pre class=\"choice-code\">if (d[i][j] > d[i][k] + d[k][j]) {\n    e[i][j] = e[k][j];\n    d[i][j] = d[i][k] + d[k][j];\n}</pre>",
+      "D": "<pre class=\"choice-code\">if (d[i][k] > d[i][j] + d[j][k]) {\n    e[i][k] = e[k][j];\n    d[i][k] = d[i][j] + d[j][k];\n}</pre>"
     },
     "correctAnswer": "C",
-    "explanation": "<p><strong>Bổ sung mã nguồn cho thuật toán Floyd-Warshall:</strong></p><ul><li>Thuật toán Floyd-Warshall cập nhật khoảng cách ngắn nhất giữa mọi cặp đỉnh $(i, j)$ bằng cách xét đỉnh trung gian $k$.</li><li>Công thức quy hoạch động cập nhật khoảng cách là: $d[i][j] = \\min(d[i][j], d[i][k] + d[k][j])$.</li><li>Nếu đi qua đỉnh trung gian $k$ ngắn hơn, tức là $d[i][j] > d[i][k] + d[k][j]$, ta cập nhật lại $d[i][j]$ và lưu đỉnh truy vết của $j$ trên đường đi từ $i$ là $e[i][j] = e[k][j]$.</li><li>Điều này tương ứng chính xác với đoạn mã ở phương án **C**.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
+    "explanation": "<p><strong>Bổ sung mã nguồn cho thuật toán Floyd-Warshall:</strong></p><ul><li>Thuật toán Floyd-Warshall cập nhật khoảng cách ngắn nhất giữa mọi cặp đỉnh $(i, j)$ bằng cách xét đỉnh trung gian $k$.</li><li>Công thức quy hoạch động cập nhật khoảng cách là: $d[i][j] = \\min(d[i][j], d[i][k] + d[k][j])$.</li><li>Nếu đi qua đỉnh trung gian $k$ ngắn hơn, tức là $d[i][j] > d[i][k] + d[k][j]$, ta cập nhật lại $d[i][j]$ và lưu đỉnh truy vết của $j$ trên đường đi từ $i$ là $e[i][j] = e[k][j]$.</li><li>Điều này tương ứng chính xác với đoạn mã ở phương án <strong>C</strong>.</li></ul><p>Do đó, đáp án đúng là <strong>C</strong>.</p>",
     "tip": "<p><strong>Mẹo làm nhanh:</strong> Công thức Floyd chuẩn cập nhật khoảng cách từ $i$ đến $j$ qua trung gian $k$: `d[i][j] > d[i][k] + d[k][j]`. Do đó chỉ có C hoặc A là có cấu trúc này, nhưng vì vai trò của $k$ là trung gian nên phải so sánh giữa $d[i][j]$ với $d[i][k] + d[k][j]$. Chọn C.</p>"
   }
 ]
