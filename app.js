@@ -312,13 +312,18 @@ function getFilteredQuestions() {
         if (activeFilter === 'incorrect' && state.status !== 'incorrect') return false;
         if (activeFilter === 'flagged' && !state.flagged) return false;
         
-        // Apply Search (Matches ID or category)
+        // Apply Search (Matches ID, category, or question text)
         if (query) {
             const matchesId = q.id.toString().includes(query);
             const matchesCategory = q.category_name.toLowerCase().includes(query);
             const sIdx = sessionQuestions.findIndex(sq => sq.id === q.id);
             const matchesIndex = (sIdx + 1).toString().includes(query);
-            if (!matchesId && !matchesIndex && !matchesCategory) return false;
+            
+            // Match text content (HTML stripped) or raw content (including equations)
+            const cleanQuestionText = q.questionText.replace(/<[^>]+>/g, '').toLowerCase();
+            const matchesQuestion = cleanQuestionText.includes(query) || q.questionText.toLowerCase().includes(query);
+            
+            if (!matchesId && !matchesIndex && !matchesCategory && !matchesQuestion) return false;
         }
         
         return true;
